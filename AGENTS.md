@@ -82,6 +82,8 @@ When reducing scope for the demo:
 
 ### Language and Stack
 - Use Python unless a task explicitly requires something else.
+- Use `uv` for Python dependency management, virtual environments, lockfiles, and running Python scripts/tests.
+- Use `pnpm` for Node.js or frontend tooling if a web UI or other JS-based component is added.
 - Prefer standard, well-maintained libraries.
 - Avoid introducing heavy dependencies unless clearly justified.
 - If a library is added to satisfy an assignment requirement, document why that library was chosen over simpler alternatives.
@@ -93,6 +95,10 @@ When reducing scope for the demo:
 - Metadata fields used in retrieval or security filtering must survive all serialization boundaries.
 
 ### Directory Responsibilities
+- `src/tax_rag/common/`
+  - shared utilities, constants, logging helpers, and simple cross-module types
+- `src/tax_rag/schemas/`
+  - shared data models and typed contracts for documents, chunks, retrieval outputs, citations, and answers
 - `src/tax_rag/ingestion/`
   - raw source parsing and normalization only
 - `src/tax_rag/chunking/`

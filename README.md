@@ -1,3 +1,7 @@
+Tooling:
+- Python environment and dependencies are managed with `uv`.
+- Node.js or frontend tooling should use `pnpm` if applicable.
+
 tax-rag-demo/
 ├── assignment.md
 ├── AGENTS.md

@@ -20,6 +20,8 @@ Create the initial folder structure:
 - `data/chunks/`
 - `data/eval/`
 - `scripts/`
+- `src/tax_rag/common/`
+- `src/tax_rag/schemas/`
 - `src/tax_rag/ingestion/`
 - `src/tax_rag/chunking/`
 - `src/tax_rag/retrieval/`
