@@ -1,4 +1,19 @@
-data/*
+# Generated data artifacts
+data/raw/**
+!data/raw/.gitkeep
+!data/raw/laws/.gitkeep
+!data/raw/cases/.gitkeep
+data/parsed/**
+!data/parsed/.gitkeep
+data/chunks/**
+!data/chunks/.gitkeep
+data/indexes/**
+!data/indexes/embeddings/.gitkeep
+!data/indexes/lexical/.gitkeep
+!data/indexes/metadata/.gitkeep
+data/eval/eval_runs/**
+!data/eval/eval_runs/.gitkeep
+data/__pycache__/
 
 # Python-generated files
 __pycache__/

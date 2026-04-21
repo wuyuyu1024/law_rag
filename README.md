@@ -16,7 +16,9 @@ tax-rag-demo/
 │   ├── retrieval.yaml
 │   ├── security.yaml
 │   ├── indexing.yaml
-│   └── eval.yaml
+│   ├── eval.yaml
+│   ├── data_sources.sample.json
+│   └── demo_corpus.lock.json
 │
 ├── data/
 │   ├── raw/

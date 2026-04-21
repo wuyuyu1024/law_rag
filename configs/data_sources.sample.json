@@ -1,0 +1,76 @@
+{
+  "laws": [
+    {
+      "name": "wet_inkomstenbelasting_2001",
+      "bwb_id": "BWBR0011353",
+      "version_date": "2026-02-21"
+    },
+    {
+      "name": "algemene_wet_inzake_rijksbelastingen",
+      "bwb_id": "BWBR0002320",
+      "version_date": "2026-04-11"
+    },
+    {
+      "name": "wet_op_de_omzetbelasting_1968",
+      "bwb_id": "BWBR0002629",
+      "version_date": "2026-01-01"
+    },
+    {
+      "name": "algemene_wet_bestuursrecht",
+      "bwb_id": "BWBR0005537",
+      "version_date": "2026-01-01"
+    },
+    {
+      "name": "wet_op_de_loonbelasting_1964",
+      "bwb_id": "BWBR0002471",
+      "version_date": "2026-01-01"
+    },
+    {
+      "name": "uitvoeringsbesluit_loonbelasting_1965",
+      "bwb_id": "BWBR0002489",
+      "version_date": "2026-01-01"
+    }
+  ],
+  "cases": [
+    {
+      "ecli": "ECLI:NL:HR:2026:281",
+      "name": "hr_2026_281_omzetbelasting"
+    },
+    {
+      "ecli": "ECLI:NL:HR:2025:335",
+      "name": "hr_2025_335_omzetbelasting"
+    },
+    {
+      "ecli": "ECLI:NL:HR:2025:99",
+      "name": "hr_2025_99_omzetbelasting"
+    },
+    {
+      "ecli": "ECLI:NL:HR:2026:59",
+      "name": "hr_2026_59_belastingkamer"
+    },
+    {
+      "ecli": "ECLI:NL:RBDHA:2025:17324",
+      "name": "rbdha_2025_17324_navorderingsaanslag"
+    },
+    {
+      "ecli": "ECLI:NL:HR:2008:BB3438",
+      "name": "hr_2008_bb3438_30pct_grondslag"
+    },
+    {
+      "ecli": "ECLI:NL:GHAMS:2014:3488",
+      "name": "ghams_2014_3488_30pct_uit_ander_land_aangeworven"
+    },
+    {
+      "ecli": "ECLI:NL:GHDHA:2023:2457",
+      "name": "ghdha_2023_2457_30pct_toewijzing"
+    },
+    {
+      "ecli": "ECLI:NL:GHAMS:2021:4309",
+      "name": "ghams_2021_4309_30pct_looptijd"
+    },
+    {
+      "ecli": "ECLI:NL:RBZWB:2025:7267",
+      "name": "rbzwb_2025_7267_30pct_internship"
+    }
+  ]
+}

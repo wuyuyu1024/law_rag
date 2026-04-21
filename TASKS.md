@@ -138,8 +138,8 @@ Implement parsing for `data/raw/cases/*.xml`.
 
 ---
 
-## Task 1.4 - Parse law HTML files
-Implement parsing for `data/raw/laws/*.html`.
+## Task 1.4 - Parse law XML files
+Implement parsing for `data/raw/laws/*.xml`.
 
 ### Output
 - `data/parsed/laws.jsonl`
@@ -619,7 +619,7 @@ Start with these in order:
 4. Task 0.4 - Add explicit config files
 5. Task 1.1 - Define canonical document schema
 6. Task 1.3 - Parse case law XML files
-7. Task 1.4 - Parse law HTML files
+7. Task 1.4 - Parse law XML files
 8. Task 1.6 - Merge parsed documents
 9. Task 2.1 - Implement law chunker
 10. Task 2.2 - Implement case law chunker

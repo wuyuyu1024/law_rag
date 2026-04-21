@@ -1,0 +1,146 @@
+[
+  {
+    "source_type": "law",
+    "identifier": "BWBR0011353",
+    "name": "wet_inkomstenbelasting_2001",
+    "version_date": "2026-02-21",
+    "saved_path": "data/raw/laws/wet_inkomstenbelasting_2001.xml",
+    "url": "https://wetten.overheid.nl/BWBR0011353/2026-02-21/0/xml",
+    "sha256": "c20fbf4011bf4c709302f85c52bf6f484e197e583773eaeef2c85c7ae9e64dcd"
+  },
+  {
+    "source_type": "law",
+    "identifier": "BWBR0002320",
+    "name": "algemene_wet_inzake_rijksbelastingen",
+    "version_date": "2026-04-11",
+    "saved_path": "data/raw/laws/algemene_wet_inzake_rijksbelastingen.xml",
+    "url": "https://wetten.overheid.nl/BWBR0002320/2026-04-11/0/xml",
+    "sha256": "df711b636de085dab3fc8947a7b796957ba82b1e303b4e44d142714e3aa398b5"
+  },
+  {
+    "source_type": "law",
+    "identifier": "BWBR0002629",
+    "name": "wet_op_de_omzetbelasting_1968",
+    "version_date": "2026-01-01",
+    "saved_path": "data/raw/laws/wet_op_de_omzetbelasting_1968.xml",
+    "url": "https://wetten.overheid.nl/BWBR0002629/2026-01-01/0/xml",
+    "sha256": "5df2c7156afdfc828f078a2768d12323532c55d54afe49124e1ad4f39f4c5913"
+  },
+  {
+    "source_type": "law",
+    "identifier": "BWBR0005537",
+    "name": "algemene_wet_bestuursrecht",
+    "version_date": "2026-01-01",
+    "saved_path": "data/raw/laws/algemene_wet_bestuursrecht.xml",
+    "url": "https://wetten.overheid.nl/BWBR0005537/2026-01-01/0/xml",
+    "sha256": "f07929932d64aca382ba5b268aa10c7ac8186821e7988014d56196a5246e31eb"
+  },
+  {
+    "source_type": "law",
+    "identifier": "BWBR0002471",
+    "name": "wet_op_de_loonbelasting_1964",
+    "version_date": "2026-01-01",
+    "saved_path": "data/raw/laws/wet_op_de_loonbelasting_1964.xml",
+    "url": "https://wetten.overheid.nl/BWBR0002471/2026-01-01/0/xml",
+    "sha256": "9dc0f8cf83e261fae258a45077bb1160bec404f2affe5963ec89f4de0697d2d0"
+  },
+  {
+    "source_type": "law",
+    "identifier": "BWBR0002489",
+    "name": "uitvoeringsbesluit_loonbelasting_1965",
+    "version_date": "2026-01-01",
+    "saved_path": "data/raw/laws/uitvoeringsbesluit_loonbelasting_1965.xml",
+    "url": "https://wetten.overheid.nl/BWBR0002489/2026-01-01/0/xml",
+    "sha256": "1eddf91ebce1994d566d9683df67fffe8f2c6050d6dd879c9ba94f0458a60635"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:HR:2026:281",
+    "name": "hr_2026_281_omzetbelasting",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_hr_2026_281.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AHR%3A2026%3A281",
+    "sha256": "6bf552838c1958cfc6f3ad6bf031ff210000650d3de2624d54d632b03fd908b5"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:HR:2025:335",
+    "name": "hr_2025_335_omzetbelasting",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_hr_2025_335.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AHR%3A2025%3A335",
+    "sha256": "6e7bcab523358fff4dd48447cfbb573ed3be965e535e09d1dd8a8355001f2dbf"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:HR:2025:99",
+    "name": "hr_2025_99_omzetbelasting",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_hr_2025_99.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AHR%3A2025%3A99",
+    "sha256": "a7830f2dffe855e707ac6690e5a3fde91ab888b58fb09190a3bc37bea5ac80d3"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:HR:2026:59",
+    "name": "hr_2026_59_belastingkamer",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_hr_2026_59.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AHR%3A2026%3A59",
+    "sha256": "b3b3408cc5c074ce462bc9732c5d08c9b3859bcc707baf2a3caa8721d20486d4"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:RBDHA:2025:17324",
+    "name": "rbdha_2025_17324_navorderingsaanslag",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_rbdha_2025_17324.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3ARBDHA%3A2025%3A17324",
+    "sha256": "00f9c03b7c77a5c7fc29bc8c63eaaf25a0803cf5bb756e6276ec7f8b4359bd0c"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:HR:2008:BB3438",
+    "name": "hr_2008_bb3438_30pct_grondslag",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_hr_2008_bb3438.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AHR%3A2008%3ABB3438",
+    "sha256": "144e2dfb8b3cd79f7c11310d63cb78ab478f47443e641e1f145db6dfed1cd6d5"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:GHAMS:2014:3488",
+    "name": "ghams_2014_3488_30pct_uit_ander_land_aangeworven",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_ghams_2014_3488.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AGHAMS%3A2014%3A3488",
+    "sha256": "dc7f8befcdd5aa4f9b537373cf61b0531a3eaa3d71026d334796722abe392e0e"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:GHDHA:2023:2457",
+    "name": "ghdha_2023_2457_30pct_toewijzing",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_ghdha_2023_2457.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AGHDHA%3A2023%3A2457",
+    "sha256": "c949aa369cc252f5a60f16deae00f917b7e83b0238a11f8e471647b3290a63d3"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:GHAMS:2021:4309",
+    "name": "ghams_2021_4309_30pct_looptijd",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_ghams_2021_4309.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3AGHAMS%3A2021%3A4309",
+    "sha256": "7c52db8923206e3112d9dcccdcba85f0d2249c23ef0933ccb1b94510972d7768"
+  },
+  {
+    "source_type": "case",
+    "identifier": "ECLI:NL:RBZWB:2025:7267",
+    "name": "rbzwb_2025_7267_30pct_internship",
+    "version_date": null,
+    "saved_path": "data/raw/cases/ecli_nl_rbzwb_2025_7267.xml",
+    "url": "https://data.rechtspraak.nl/uitspraken/content?id=ECLI%3ANL%3ARBZWB%3A2025%3A7267",
+    "sha256": "a7cfb73af311bd9893e450df8a90fbdda9ce167fa957e029149cb6bb2e3f103d"
+  }
+]
