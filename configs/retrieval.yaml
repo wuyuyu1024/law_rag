@@ -1,0 +1,8 @@
+retrieval:
+  lexical_top_k: 50
+  dense_top_k: 50
+  final_top_k: 10
+  fusion_strategy: rrf
+  rrf_k: 60
+  dense_model: placeholder
+  exact_identifier_boost: 3.0

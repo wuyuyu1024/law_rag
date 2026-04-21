@@ -1,139 +1,105 @@
-Tooling:
-- Python environment and dependencies are managed with `uv`.
-- Node.js or frontend tooling should use `pnpm` if applicable.
+# law-rag
 
-tax-rag-demo/
-├── assignment.md
-├── AGENTS.md
-├── TASKS.md
-├── README.md
-├── pyproject.toml
-├── .env.example
-│
-├── configs/
-│   ├── app.yaml
-│   ├── chunking.yaml
-│   ├── retrieval.yaml
-│   ├── security.yaml
-│   ├── indexing.yaml
-│   ├── eval.yaml
-│   ├── data_sources.sample.json
-│   └── demo_corpus.lock.json
-│
-├── data/
-│   ├── raw/
-│   │   ├── laws/
-│   │   ├── cases/
-│   │   └── manifest.json
-│   ├── parsed/
-│   │   ├── laws.jsonl
-│   │   ├── cases.jsonl
-│   │   └── documents.jsonl
-│   ├── chunks/
-│   │   ├── laws_chunks.jsonl
-│   │   ├── case_chunks.jsonl
-│   │   ├── legal_chunks.jsonl
-│   │   └── citation_map.json
-│   ├── indexes/
-│   │   ├── embeddings/
-│   │   ├── lexical/
-│   │   └── metadata/
-│   └── eval/
-│       ├── gold_questions.jsonl
-│       ├── expected_behavior.jsonl
-│       └── eval_runs/
-│
-├── scripts/
-│   ├── download_legal_demo_data.py
-│   ├── parse_raw_data.py
-│   ├── build_chunks.py
-│   ├── build_index.py
-│   ├── run_demo.py
-│   ├── run_eval.py
-│   └── inspect_data.py
-│
-├── src/
-│   └── tax_rag/
-│       ├── __init__.py
-│       │
-│       ├── common/
-│       │   ├── logging.py
-│       │   ├── utils.py
-│       │   ├── constants.py
-│       │   └── types.py
-│       │
-│       ├── schemas/
-│       │   ├── document.py
-│       │   ├── chunk.py
-│       │   ├── citation.py
-│       │   ├── retrieval.py
-│       │   └── answer.py
-│       │
-│       ├── ingestion/
-│       │   ├── parser_laws.py
-│       │   ├── parser_cases.py
-│       │   ├── normalizer.py
-│       │   └── merge_documents.py
-│       │
-│       ├── chunking/
-│       │   ├── legal_chunker.py
-│       │   ├── case_chunker.py
-│       │   ├── metadata_builder.py
-│       │   └── citation_builder.py
-│       │
-│       ├── indexing/
-│       │   ├── embeddings.py
-│       │   ├── lexical_index.py
-│       │   ├── vector_store.py
-│       │   ├── qdrant_store.py
-│       │   └── upsert.py
-│       │
-│       ├── retrieval/
-│       │   ├── exact_search.py
-│       │   ├── dense_search.py
-│       │   ├── hybrid_search.py
-│       │   ├── reranker.py
-│       │   ├── filters.py
-│       │   └── citation_resolver.py
-│       │
-│       ├── security/
-│       │   ├── roles.py
-│       │   ├── policies.py
-│       │   ├── access_context.py
-│       │   └── retrieval_filter.py
-│       │
-│       ├── agent/
-│       │   ├── query_transform.py
-│       │   ├── grader.py
-│       │   ├── control_loop.py
-│       │   ├── refusal.py
-│       │   └── answer_generator.py
-│       │
-│       ├── cache/
-│       │   └── semantic_cache.py
-│       │
-│       ├── eval/
-│       │   ├── dataset.py
-│       │   ├── runner.py
-│       │   ├── metrics.py
-│       │   └── regression.py
-│       │
-│       └── app/
-│           ├── api.py
-│           ├── ui.py
-│           └── demo_service.py
-│
-├── tests/
-│   ├── test_parser_laws.py
-│   ├── test_parser_cases.py
-│   ├── test_chunking.py
-│   ├── test_citations.py
-│   ├── test_retrieval.py
-│   ├── test_rbac.py
-│   ├── test_agent_flow.py
-│   └── test_eval_runner.py
-│
-└── notebooks/
-    ├── 01_inspect_raw_data.ipynb
-    ├── 02_preview_chunks.ipynb
-    └── 03_retrieval_debug.ipynb
+Demo implementation for a technical assessment: a secure, citation-grounded, permission-aware RAG assistant for a national tax authority.
+
+The primary requirements live in `assignment.md`. The implementation backlog lives in `TASKS.md`. If they disagree, follow `assignment.md`.
+
+## Current Status
+
+Phase 0 is the current baseline:
+- repository structure exists
+- the package is installable from `src/`
+- baseline config defaults exist in Python and in `configs/`
+- a reproducible legal demo corpus downloader is implemented
+- a minimal pytest scaffold is in place
+
+The core RAG pipeline is not implemented yet. Parsing, chunking, retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
+
+## Tooling
+
+- Python environment and dependencies are managed with `uv`
+- Node.js or frontend tooling should use `pnpm` if applicable
+
+## Quick Start
+
+```bash
+uv run python -c "import tax_rag; print(tax_rag.__version__)"
+uv run pytest -q
+uv run python main.py
+```
+
+To refresh the demo raw corpus:
+
+```bash
+uv run python scripts/download_legal_demo_data.py \
+  --config configs/data_sources.sample.json \
+  --out-dir data/raw \
+  --lock-file configs/demo_corpus.lock.json
+```
+
+## Repository Layout
+
+The directories below exist today. Some contain only placeholders until later phases are implemented.
+
+```text
+configs/
+data/
+  raw/
+  parsed/
+  chunks/
+  indexes/
+  eval/
+scripts/
+src/tax_rag/
+  common/
+  schemas/
+  ingestion/
+  chunking/
+  retrieval/
+  security/
+  agent/
+  eval/
+  app/
+tests/
+```
+
+## Implemented So Far
+
+`scripts/download_legal_demo_data.py` downloads a small Dutch legal demo corpus with:
+- version-pinned law XML fetches
+- exact ECLI case fetches
+- SHA-256 hashing
+- manifest generation
+- lock-file verification for reproducibility
+
+This is a demo-scope stand-in for the broader corpus described in the assignment.
+
+## Config Defaults
+
+Phase 0 includes placeholder config files for:
+- chunking
+- retrieval
+- reranking
+- security
+- cache
+- evaluation
+
+Importable defaults are available from `tax_rag.common`.
+
+## Environment Variables
+
+See `.env.example` for the current baseline variables:
+- environment and log level
+- data directory locations
+- default role and retrieval settings
+- demo security mode
+
+## Assignment Mapping
+
+The repo is structured around the four required modules from `assignment.md`:
+- Ingestion and knowledge structuring
+- Retrieval strategy
+- Agentic RAG and self-healing
+- Production ops, security, and evaluation
+
+The current code only establishes the baseline needed to start implementing those modules safely and incrementally.

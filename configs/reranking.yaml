@@ -1,0 +1,5 @@
+reranking:
+  enabled: false
+  model: placeholder
+  input_top_k: 20
+  output_top_k: 5

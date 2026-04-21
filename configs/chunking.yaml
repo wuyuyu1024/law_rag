@@ -1,0 +1,14 @@
+chunking:
+  law:
+    target_unit: article_paragraph
+    fallback_target_chars: 1400
+    overlap_chars: 120
+    preserve_citation_path: true
+  case_law:
+    preferred_sections:
+      - facts
+      - reasoning
+      - holding
+    fallback_target_chars: 1500
+    overlap_chars: 120
+    preserve_ecli: true

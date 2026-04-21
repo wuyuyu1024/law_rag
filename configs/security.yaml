@@ -1,0 +1,8 @@
+security:
+  enforcement_stage: pre_retrieval
+  default_classification: public
+  default_allowed_roles:
+    - helpdesk
+    - inspector
+    - legal_counsel
+  strict_mode: true

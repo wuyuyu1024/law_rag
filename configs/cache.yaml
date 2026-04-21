@@ -1,0 +1,5 @@
+cache:
+  enabled: false
+  backend: placeholder
+  semantic_similarity_threshold: 0.96
+  namespace_by_role: true

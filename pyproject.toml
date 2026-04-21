@@ -1,7 +1,19 @@
+[build-system]
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
 [project]
 name = "law-rag"
 version = "0.1.0"
-description = "Add your description here"
+description = "Demo implementation of a permission-aware legal/tax RAG assistant."
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+  "pytest>=8.3,<9",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tax_rag"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

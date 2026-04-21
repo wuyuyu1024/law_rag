@@ -1,0 +1,11 @@
+evaluation:
+  gold_set_path: data/eval/gold_questions.jsonl
+  run_output_dir: data/eval/eval_runs
+  metrics:
+    - answerable_vs_refused
+    - citation_presence
+    - unauthorized_retrieval_failures
+    - exact_lookup_success
+    - semantic_retrieval_success
+    - faithfulness
+    - context_precision
