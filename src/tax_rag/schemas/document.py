@@ -87,3 +87,10 @@ class NormalizedDocument:
     def to_json(self) -> str:
         return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
 
+    @classmethod
+    def from_dict(cls, payload: dict[str, Any]) -> "NormalizedDocument":
+        data = dict(payload)
+        data["source_type"] = SourceType.from_value(data["source_type"])
+        data["security_classification"] = SecurityClassification(data["security_classification"])
+        data["allowed_roles"] = tuple(data.get("allowed_roles", ()))
+        return cls(**data)
