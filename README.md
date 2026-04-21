@@ -13,7 +13,13 @@ Phase 0 is the current baseline:
 - a reproducible legal demo corpus downloader is implemented
 - a minimal pytest scaffold is in place
 
-The core RAG pipeline is not implemented yet. Parsing, chunking, retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
+Phase 1 ingestion is now partially implemented:
+- canonical normalized document schema exists
+- raw Dutch law XML is parsed into article-level normalized records
+- raw Rechtspraak XML is parsed into case-level normalized records
+- internal policy and e-learning sources are represented by fixture-backed adapters for architecture coverage
+
+Chunking, retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
 
 ## Tooling
 
@@ -72,7 +78,12 @@ tests/
 - manifest generation
 - lock-file verification for reproducibility
 
-This is a demo-scope stand-in for the broader corpus described in the assignment.
+`scripts/parse_raw_data.py` parses that corpus into:
+- `data/parsed/laws.jsonl`
+- `data/parsed/cases.jsonl`
+- `data/parsed/documents.jsonl`
+
+This remains a demo-scope stand-in for the broader corpus described in the assignment.
 
 ## Config Defaults
 
