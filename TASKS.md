@@ -9,6 +9,44 @@ This backlog is organized to stay faithful to `assignment.md` while still suppor
 
 ---
 
+# Cross-Cutting Assignment Constraints
+
+The three strict system constraints from `assignment.md` are not optional feature ideas. They are cross-cutting requirements that should stay visible across phases.
+
+## Constraint A - Zero-Hallucination Tolerance
+
+Every answer must stay grounded in retrieved evidence and exact citations. If evidence is weak, ambiguous, conflicting, outdated, or unauthorized, the system should refuse rather than guess.
+
+Primary task coverage:
+- Phase 1 schema and metadata preservation
+- Phase 2 legal-aware chunking
+- Phase 3 citation-preserving retrieval
+- Phase 4 evidence grading, corrective control flow, and refusal reasons
+- Phase 5 evaluation for citation presence, faithfulness, and refusal correctness
+
+## Constraint B - Security and Access Control
+
+RBAC must apply before retrieval influence. Unauthorized documents must not affect ranking, reranking, generation, cache behavior, or evaluation.
+
+Primary task coverage:
+- Phase 1 source and security metadata modeling
+- Phase 2 chunk-level `allowed_roles` preservation
+- Phase 3 RBAC-constrained candidate generation
+- Phase 5 cache isolation, evaluation, and observability of security behavior
+
+## Constraint C - High Performance at Scale
+
+The architecture must support roughly 500k documents and 20M+ chunks while keeping uncached-path TTFT under `1.5s`. Cache is an optimization, not the primary defense for the latency target.
+
+Primary task coverage:
+- Phase 3 vector database selection and scale assumptions
+- Phase 3 concrete ANN/index settings, quantization, and latency budget
+- Phase 3 persistent vector index build/load path for the demo architecture
+- Phase 3 uncached-path latency benchmark harness
+- Phase 5 semantic cache as an additional optimization layer
+
+---
+
 # Phase 0 - Repository Skeleton
 
 ## Task 0.1 - Create repository structure
@@ -372,6 +410,45 @@ Document the latency budget for retrieval and generation to stay within the assi
 - TTFT target of under 1.5 seconds is acknowledged
 - Retrieval, reranking, and generation budget assumptions are broken down
 - Notes distinguish demo performance from target production architecture
+
+---
+
+## Task 3.11 - Add persistent vector index build/load path
+Move the dense retrieval path from demo-only local in-memory indexing toward a persistent deployment-shaped path.
+
+Examples:
+- explicit collection creation
+- payload index creation
+- index build/load scripts
+- collection existence checks
+- repeatable local/dev startup flow
+
+### Acceptance criteria
+- Dense retrieval can run without rebuilding the full index on every query
+- Payload fields used for filtering are explicitly indexed
+- README or docs explain the demo path versus the intended production path
+- The implementation still preserves pre-retrieval RBAC behavior
+
+---
+
+## Task 3.12 - Add uncached-path latency benchmark harness
+Create a repeatable benchmark that measures the uncached request path against the assignment TTFT target.
+
+At minimum, measure:
+- request parsing / setup
+- lexical retrieval
+- dense retrieval
+- fusion
+- reranking
+- evidence grading
+- answer construction or first-token proxy
+
+### Acceptance criteria
+- Benchmark can be run locally with a clear entrypoint
+- Per-stage timings are reported, not only a single total
+- Results distinguish cached versus uncached paths where relevant
+- The benchmark records whether the uncached path stays under the `1.5s` target
+- Notes distinguish demo benchmark results from production-scale expectations
 
 ---
 

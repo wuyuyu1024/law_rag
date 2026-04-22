@@ -17,3 +17,4 @@ Current ADRs:
 - `007-corrective-control-flow.md`
 - `008-deterministic-evaluation-baseline.md`
 - `009-deterministic-reranking-and-semantic-normalization.md`
+- `010-ttft-and-scale-strategy.md`
