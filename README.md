@@ -17,12 +17,13 @@ Phase 1 ingestion is implemented for the demo corpus:
 - canonical normalized document schema exists
 - raw Dutch law XML is parsed into article-level normalized records
 - raw Rechtspraak XML is parsed into case-level normalized records
-- internal policy and e-learning sources are represented by fixture-backed adapters for architecture coverage
+- synthetic internal policy and e-learning source fixtures are parsed into normalized records for architecture coverage
 
 Phase 2 chunking is implemented for the demo corpus:
 - legal-aware law chunking preserves article / `lid` / list-item citation context
 - case-law chunking preserves section-aware boundaries and canonical `facts` / `reasoning` / `holding` labels
-- chunk export writes `data/chunks/laws_chunks.jsonl`, `data/chunks/case_chunks.jsonl`, and `data/chunks/legal_chunks.jsonl`
+- synthetic internal policy and e-learning documents are chunked on section boundaries
+- chunk export writes source-specific chunk files plus merged `data/chunks/legal_chunks.jsonl`
 
 Retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
 
@@ -86,14 +87,18 @@ tests/
 `scripts/parse_raw_data.py` parses that corpus into:
 - `data/parsed/laws.jsonl`
 - `data/parsed/cases.jsonl`
+- `data/parsed/policies.jsonl`
+- `data/parsed/e_learning.jsonl`
 - `data/parsed/documents.jsonl`
 
 `scripts/build_chunks.py` then exports legal-aware chunk datasets:
 - `data/chunks/laws_chunks.jsonl`
 - `data/chunks/case_chunks.jsonl`
+- `data/chunks/policies_chunks.jsonl`
+- `data/chunks/e_learning_chunks.jsonl`
 - `data/chunks/legal_chunks.jsonl`
 
-This remains a demo-scope stand-in for the broader corpus described in the assignment.
+The internal-policy and e-learning records are synthetic stand-ins for the broader restricted/internal corpus described in the assignment.
 
 ## Config Defaults
 
@@ -110,6 +115,7 @@ Importable defaults are available from `tax_rag.common`.
 The chunking config now documents the concrete Phase 2 strategy:
 - laws split on article, `lid`, and list items while preserving citation context
 - cases split on section and `paragroup` boundaries with canonical `facts` / `reasoning` / `holding` mapping
+- synthetic internal-policy and e-learning sources split on section headings to preserve training/manual context
 
 ## Environment Variables
 

@@ -19,6 +19,7 @@ def normalize_policy_fixture(
     source_path: str,
     security_classification: str = "internal",
     allowed_roles: tuple[str, ...] = ("inspector", "legal_counsel"),
+    metadata: dict[str, object] | None = None,
 ) -> NormalizedDocument:
     return NormalizedDocument(
         doc_id=doc_id,
@@ -30,7 +31,7 @@ def normalize_policy_fixture(
         citation_path=title,
         security_classification=SecurityClassification(security_classification),
         allowed_roles=allowed_roles,
-        metadata={"simulated_source": True},
+        metadata={"simulated_source": True, **(metadata or {})},
     )
 
 
@@ -41,6 +42,7 @@ def normalize_e_learning_fixture(
     text: str,
     source_path: str,
     allowed_roles: tuple[str, ...] = ("helpdesk", "inspector", "legal_counsel"),
+    metadata: dict[str, object] | None = None,
 ) -> NormalizedDocument:
     return NormalizedDocument(
         doc_id=doc_id,
@@ -51,5 +53,5 @@ def normalize_e_learning_fixture(
         source_path=source_path,
         citation_path=title,
         allowed_roles=allowed_roles,
-        metadata={"simulated_source": True},
+        metadata={"simulated_source": True, **(metadata or {})},
     )

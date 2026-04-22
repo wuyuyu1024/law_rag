@@ -18,17 +18,23 @@ def main() -> int:
     parsed_dir = Path(args.parsed_dir)
     chunks_dir = Path(args.chunks_dir)
 
-    law_count, case_count, merged_count = export_chunk_sets(
+    counts = export_chunk_sets(
         laws_path=parsed_dir / "laws.jsonl",
         cases_path=parsed_dir / "cases.jsonl",
+        policies_path=parsed_dir / "policies.jsonl",
+        e_learning_path=parsed_dir / "e_learning.jsonl",
         laws_out=chunks_dir / "laws_chunks.jsonl",
         cases_out=chunks_dir / "case_chunks.jsonl",
+        policies_out=chunks_dir / "policies_chunks.jsonl",
+        e_learning_out=chunks_dir / "e_learning_chunks.jsonl",
         merged_out=chunks_dir / "legal_chunks.jsonl",
     )
 
-    print(f"Wrote {law_count} law chunks to {chunks_dir / 'laws_chunks.jsonl'}")
-    print(f"Wrote {case_count} case chunks to {chunks_dir / 'case_chunks.jsonl'}")
-    print(f"Wrote {merged_count} merged chunks to {chunks_dir / 'legal_chunks.jsonl'}")
+    print(f"Wrote {counts['laws']} law chunks to {chunks_dir / 'laws_chunks.jsonl'}")
+    print(f"Wrote {counts['cases']} case chunks to {chunks_dir / 'case_chunks.jsonl'}")
+    print(f"Wrote {counts['policies']} policy chunks to {chunks_dir / 'policies_chunks.jsonl'}")
+    print(f"Wrote {counts['e_learning']} e-learning chunks to {chunks_dir / 'e_learning_chunks.jsonl'}")
+    print(f"Wrote {counts['merged']} merged chunks to {chunks_dir / 'legal_chunks.jsonl'}")
     return 0
 
 

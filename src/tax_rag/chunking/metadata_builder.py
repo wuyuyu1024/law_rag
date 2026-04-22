@@ -38,6 +38,15 @@ def build_case_chunk_id(
     return ":".join([document.doc_id, "section", _slug(section_type), _slug(ordinal)])
 
 
+def build_support_chunk_id(
+    document: NormalizedDocument,
+    *,
+    section_label: str,
+    ordinal: str,
+) -> str:
+    return ":".join([document.doc_id, "section", _slug(section_label), _slug(ordinal)])
+
+
 def build_chunk_record(
     document: NormalizedDocument,
     *,

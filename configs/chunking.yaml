@@ -45,7 +45,32 @@ chunking:
       - source_type
       - jurisdiction
       - allowed_roles
+  internal_policy:
+    input_dataset: data/parsed/policies.jsonl
+    synthetic_demo_source: true
+    split_on:
+      - markdown_heading
+      - paragraph
+    preserve_fields:
+      - source_type
+      - jurisdiction
+      - allowed_roles
+      - security_classification
+    citation_template: "{title} > {section_title}"
+  e_learning:
+    input_dataset: data/parsed/e_learning.jsonl
+    synthetic_demo_source: true
+    split_on:
+      - markdown_heading
+      - paragraph
+    preserve_fields:
+      - source_type
+      - jurisdiction
+      - allowed_roles
+    citation_template: "{title} > {section_title}"
 outputs:
   law_chunks: data/chunks/laws_chunks.jsonl
   case_chunks: data/chunks/case_chunks.jsonl
+  policy_chunks: data/chunks/policies_chunks.jsonl
+  e_learning_chunks: data/chunks/e_learning_chunks.jsonl
   legal_chunks: data/chunks/legal_chunks.jsonl
