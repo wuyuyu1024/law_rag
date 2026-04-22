@@ -6,10 +6,24 @@ from tax_rag.schemas.document import (
     SecurityClassification,
     SourceType,
 )
+from tax_rag.schemas.retrieval import (
+    RetrievalMethod,
+    RetrievalRequest,
+    RetrievalResponse,
+    RetrievalResult,
+    ScoreTrace,
+    SourceReference,
+)
 
 __all__ = [
     "ChunkRecord",
     "NormalizedDocument",
+    "RetrievalMethod",
+    "RetrievalRequest",
+    "RetrievalResponse",
+    "RetrievalResult",
     "SecurityClassification",
+    "ScoreTrace",
+    "SourceReference",
     "SourceType",
 ]
