@@ -1,0 +1,10 @@
+agent:
+  relevant_rrf_score_threshold: 0.02
+  relevant_dense_score_threshold: 0.55
+  relevant_lexical_score_threshold: 55.0
+  ambiguous_rrf_score_floor: 0.01
+  ambiguous_dense_score_floor: 0.30
+  ambiguous_lexical_score_floor: 20.0
+  conflicting_score_margin: 0.01
+  max_answer_citations: 2
+  snippet_max_chars: 240

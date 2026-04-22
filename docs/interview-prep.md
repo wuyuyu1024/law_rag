@@ -92,6 +92,16 @@ Repo references:
 - `src/tax_rag/ingestion/parser_laws.py`
 - `src/tax_rag/ingestion/parser_cases.py`
 
+### Why refuse instead of answering weakly?
+
+Short answer:
+Because the assignment is zero-hallucination and citation-grounded. In a tax/legal system, weak, conflicting, or outdated evidence should stop the answer path. Refusal is a safety feature, not a UX failure.
+
+Repo references:
+- `src/tax_rag/agent/evidence.py`
+- `src/tax_rag/agent/baseline.py`
+- `docs/decisions/006-evidence-gating-and-refusal.md`
+
 ### What is still missing?
 
 Short answer:

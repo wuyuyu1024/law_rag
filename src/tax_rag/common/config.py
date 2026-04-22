@@ -65,6 +65,19 @@ class CacheConfig:
 
 
 @dataclass(frozen=True)
+class AgentConfig:
+    relevant_rrf_score_threshold: float = 0.02
+    relevant_dense_score_threshold: float = 0.55
+    relevant_lexical_score_threshold: float = 55.0
+    ambiguous_rrf_score_floor: float = 0.01
+    ambiguous_dense_score_floor: float = 0.30
+    ambiguous_lexical_score_floor: float = 20.0
+    conflicting_score_margin: float = 0.01
+    max_answer_citations: int = 2
+    snippet_max_chars: int = 240
+
+
+@dataclass(frozen=True)
 class EvaluationConfig:
     gold_set_path: str = "data/eval/gold_questions.jsonl"
     run_output_dir: str = "data/eval/eval_runs"
@@ -86,6 +99,7 @@ class AppConfig:
     reranking: RerankingConfig = field(default_factory=RerankingConfig)
     security: SecurityConfig = field(default_factory=SecurityConfig)
     cache: CacheConfig = field(default_factory=CacheConfig)
+    agent: AgentConfig = field(default_factory=AgentConfig)
     evaluation: EvaluationConfig = field(default_factory=EvaluationConfig)
 
 

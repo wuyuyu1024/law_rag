@@ -1,5 +1,13 @@
 """Typed contracts shared across modules."""
 
+from tax_rag.schemas.answer import (
+    AgentResponse,
+    AnswerCitation,
+    AnswerOutcome,
+    EvidenceAssessment,
+    EvidenceGrade,
+    RefusalReason,
+)
 from tax_rag.schemas.chunk import ChunkRecord
 from tax_rag.schemas.document import (
     NormalizedDocument,
@@ -16,8 +24,14 @@ from tax_rag.schemas.retrieval import (
 )
 
 __all__ = [
+    "AgentResponse",
+    "AnswerCitation",
+    "AnswerOutcome",
     "ChunkRecord",
+    "EvidenceAssessment",
+    "EvidenceGrade",
     "NormalizedDocument",
+    "RefusalReason",
     "RetrievalMethod",
     "RetrievalRequest",
     "RetrievalResponse",

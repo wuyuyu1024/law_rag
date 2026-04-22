@@ -32,6 +32,12 @@ Phase 3 retrieval and RBAC are now implemented in a minimal but runnable form:
 - hybrid retrieval fuses lexical and dense results with RRF
 - retrieval outputs preserve inspectable scores, chunk IDs, and source references
 
+Phase 4 baseline answer control is now implemented in a deterministic local form:
+- retrieval evidence is graded as `relevant`, `ambiguous`, or `irrelevant`
+- the system answers only from retrieved evidence graded as relevant
+- ambiguous or weak evidence triggers explicit structured refusal reasons
+- no external API key is required for the baseline answer/refusal flow
+
 Generation and evaluation are still upcoming phases.
 
 ## Tooling
@@ -114,6 +120,7 @@ The repo now includes config files for:
 - retrieval
 - reranking
 - security
+- agent
 - cache
 - evaluation
 
@@ -128,6 +135,11 @@ The retrieval config now documents the Phase 3 baseline:
 - `qdrant` is the selected vector store for the demo dense path
 - dense retrieval uses a local Qdrant collection with deterministic embeddings for repeatable tests
 - hybrid fusion uses RRF with explicit top-k settings from `configs/retrieval.yaml`
+
+The agent config now documents the Phase 4 baseline:
+- explicit thresholds control evidence grading and answer/refusal gating
+- refusal remains structured and inspectable
+- the baseline answer layer stays local and deterministic
 
 ## Vector DB Selection
 
