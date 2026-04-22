@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from time import perf_counter
 
 from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.retrieval.common import request_allows_chunk
@@ -25,6 +26,10 @@ _ARTICLE_PATTERN = re.compile(r"\b(?:artikel|article|art\.?)\s+([0-9]+(?:[.:][0-
 _PARAGRAPH_PATTERN = re.compile(r"\b(?:lid|paragraph)\s+([0-9]+)\b", re.IGNORECASE)
 _SUBPARAGRAPH_PATTERN = re.compile(r"\b(?:onderdeel|subparagraph|sub)\s+([a-z])\b", re.IGNORECASE)
 _NON_ALNUM_PATTERN = re.compile(r"[^a-z0-9]+")
+
+
+def _elapsed_ms(start: float) -> float:
+    return round((perf_counter() - start) * 1000, 3)
 
 
 def _normalize_text(value: str) -> str:
@@ -179,9 +184,15 @@ def retrieve_lexical(
     *,
     contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
 ) -> RetrievalResponse:
+    total_start = perf_counter()
+    filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
     request_scoped_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
+    security_filter_ms = _elapsed_ms(filter_start)
+    lexical_start = perf_counter()
     results = _rank_lexical_chunks(request_scoped_chunks, request)
+    lexical_retrieval_ms = _elapsed_ms(lexical_start)
+    retrieval_total_ms = _elapsed_ms(total_start)
 
     return RetrievalResponse(
         request=request,
@@ -193,5 +204,14 @@ def retrieve_lexical(
             "denied_count": authorized.denied_count,
             "total_chunk_count": len(chunks),
             "query_terms": _extract_query_terms(request.query),
+            "timings_ms": {
+                "request_scoping_ms": 0.0,
+                "security_filter_ms": security_filter_ms,
+                "lexical_retrieval_ms": lexical_retrieval_ms,
+                "dense_retrieval_ms": 0.0,
+                "fusion_ms": 0.0,
+                "reranking_ms": 0.0,
+                "retrieval_total_ms": retrieval_total_ms,
+            },
         },
     )

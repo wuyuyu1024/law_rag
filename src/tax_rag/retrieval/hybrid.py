@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from time import perf_counter
 
 from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.retrieval.common import request_allows_chunk
@@ -17,6 +18,10 @@ from tax_rag.security import (
 )
 
 _EXACT_IDENTIFIER_PATTERN = re.compile(r"\b(?:ecli:|artikel|article|art\.?)", re.IGNORECASE)
+
+
+def _elapsed_ms(start: float) -> float:
+    return round((perf_counter() - start) * 1000, 3)
 
 
 def _rrf_contribution(rank: int, *, rrf_k: int) -> float:
@@ -40,9 +45,13 @@ def retrieve_hybrid(
     *,
     contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
 ) -> RetrievalResponse:
+    total_start = perf_counter()
+    filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
     authorized_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
+    security_filter_ms = _elapsed_ms(filter_start)
 
+    request_scoping_start = perf_counter()
     lexical_request = RetrievalRequest(
         query=request.query,
         role=request.role,
@@ -59,11 +68,17 @@ def retrieve_hybrid(
         jurisdiction=request.jurisdiction,
         metadata=request.metadata,
     )
+    request_scoping_ms = _elapsed_ms(request_scoping_start)
 
+    lexical_start = perf_counter()
     lexical_results = _rank_lexical_chunks(authorized_chunks, lexical_request)
+    lexical_retrieval_ms = _elapsed_ms(lexical_start)
+    dense_start = perf_counter()
     dense_results = _rank_dense_chunks(authorized_chunks, dense_request)
+    dense_retrieval_ms = _elapsed_ms(dense_start)
     rrf_k = DEFAULT_CONFIG.retrieval.rrf_k
 
+    fusion_start = perf_counter()
     by_chunk_id: dict[str, dict[str, object]] = {}
 
     for result in lexical_results:
@@ -120,6 +135,7 @@ def retrieve_hybrid(
         fused_candidates.sort(key=lambda item: (-item[1], item[2].chunk_id))
     candidate_limit = max(request.top_k, DEFAULT_CONFIG.reranking.input_top_k)
     top_candidates = fused_candidates[:candidate_limit]
+    fusion_ms = _elapsed_ms(fusion_start)
 
     results: list[RetrievalResult] = []
     for rank, (_, _, base_result, matched_terms, scores) in enumerate(top_candidates, start=1):
@@ -139,12 +155,16 @@ def retrieve_hybrid(
         )
 
     reranking_applied = False
+    reranking_ms = 0.0
     should_rerank = DEFAULT_CONFIG.reranking.enabled and _EXACT_IDENTIFIER_PATTERN.search(request.query) is None
     if should_rerank:
+        reranking_start = perf_counter()
         reranking_applied = True
         results = list(rerank_results(tuple(results), request))
+        reranking_ms = _elapsed_ms(reranking_start)
 
     results = results[: request.top_k]
+    retrieval_total_ms = _elapsed_ms(total_start)
 
     return RetrievalResponse(
         request=request,
@@ -163,5 +183,14 @@ def retrieve_hybrid(
             "reranking_applied": reranking_applied,
             "reranker_model": DEFAULT_CONFIG.reranking.model if reranking_applied else None,
             "reranker_input_count": len(top_candidates) if reranking_applied else 0,
+            "timings_ms": {
+                "request_scoping_ms": request_scoping_ms,
+                "security_filter_ms": security_filter_ms,
+                "lexical_retrieval_ms": lexical_retrieval_ms,
+                "dense_retrieval_ms": dense_retrieval_ms,
+                "fusion_ms": fusion_ms,
+                "reranking_ms": reranking_ms,
+                "retrieval_total_ms": retrieval_total_ms,
+            },
         },
     )

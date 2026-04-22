@@ -155,6 +155,19 @@ The evaluation baseline now includes:
 - saved summary and per-case outputs for inspection
 - explicit proxy metrics for faithfulness and context precision until richer evaluators are added
 
+## Benchmarking TTFT
+
+Run the uncached-path latency benchmark with:
+
+```bash
+uv run python scripts/benchmark_ttft.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --gold-path data/eval/gold_questions.jsonl \
+  --output-dir data/eval/benchmark_runs
+```
+
+The benchmark reports per-stage timings for request setup, filtered retrieval, fusion, reranking, evidence grading, and answer construction, then writes summary and per-case artifacts for inspection.
+
 ## Vector DB Selection
 
 For the assessment architecture, the selected vector database is **Qdrant**.

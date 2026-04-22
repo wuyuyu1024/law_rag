@@ -7,7 +7,7 @@ from typing import Any
 
 from pydantic import Field, field_validator
 
-from tax_rag.schemas import AnswerOutcome, EvidenceGrade, RefusalReason
+from tax_rag.schemas import AnswerOutcome, EvidenceGrade, RefusalReason, RetrievalMethod
 from tax_rag.schemas.document import SchemaModel
 
 
@@ -64,6 +64,40 @@ class EvalReport(SchemaModel):
     passed_cases: int
     metrics: dict[str, float | int]
     cases: tuple[EvalCaseResult, ...]
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("generated_at")
+    @classmethod
+    def _valid_datetime(cls, value: str) -> str:
+        datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return value
+
+
+class LatencyCaseResult(SchemaModel):
+    case_id: str
+    category: str
+    query: str
+    role: str
+    retrieval_method: RetrievalMethod
+    outcome: AnswerOutcome
+    evidence_grade: EvidenceGrade
+    transform_strategy: str
+    cache_enabled: bool
+    retrieval_result_count: int
+    target_ttft_ms: float
+    total_uncached_ms: float
+    target_met: bool
+    stage_timings_ms: dict[str, float] = Field(default_factory=dict)
+    notes: str | None = None
+
+
+class LatencyReport(SchemaModel):
+    generated_at: str
+    total_cases: int
+    cases_under_target: int
+    target_ttft_ms: float
+    metrics: dict[str, float | int]
+    cases: tuple[LatencyCaseResult, ...]
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("generated_at")

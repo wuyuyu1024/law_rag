@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import math
+from time import perf_counter
 from typing import Any
 
 from qdrant_client import QdrantClient, models
@@ -32,6 +33,10 @@ _CLASSIFICATION_ORDER = {
     SecurityClassification.CONFIDENTIAL: 2,
     SecurityClassification.RESTRICTED: 3,
 }
+
+
+def _elapsed_ms(start: float) -> float:
+    return round((perf_counter() - start) * 1000, 3)
 
 
 def _character_ngrams(token: str, size: int = 3) -> list[str]:
@@ -199,6 +204,8 @@ def retrieve_dense(
     *,
     contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
 ) -> RetrievalResponse:
+    total_start = perf_counter()
+    filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
     request_scoped_chunks = tuple(
         chunk
@@ -206,7 +213,11 @@ def retrieve_dense(
         if (not request.source_types or chunk.source_type in request.source_types)
         and (request.jurisdiction is None or chunk.jurisdiction == request.jurisdiction)
     )
-    results = _rank_dense_chunks(chunks, request)
+    security_filter_ms = _elapsed_ms(filter_start)
+    dense_start = perf_counter()
+    results = _rank_dense_chunks(request_scoped_chunks, request)
+    dense_retrieval_ms = _elapsed_ms(dense_start)
+    retrieval_total_ms = _elapsed_ms(total_start)
 
     return RetrievalResponse(
         request=request,
@@ -220,5 +231,14 @@ def retrieve_dense(
             "dense_model": DEFAULT_CONFIG.retrieval.dense_model,
             "dense_dimensions": DEFAULT_CONFIG.retrieval.dense_dimensions,
             "vector_backend": "qdrant_local",
+            "timings_ms": {
+                "request_scoping_ms": 0.0,
+                "security_filter_ms": security_filter_ms,
+                "lexical_retrieval_ms": 0.0,
+                "dense_retrieval_ms": dense_retrieval_ms,
+                "fusion_ms": 0.0,
+                "reranking_ms": 0.0,
+                "retrieval_total_ms": retrieval_total_ms,
+            },
         },
     )
