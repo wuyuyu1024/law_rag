@@ -83,6 +83,11 @@ tests/
 - `data/parsed/cases.jsonl`
 - `data/parsed/documents.jsonl`
 
+`scripts/build_chunks.py` then exports legal-aware chunk datasets:
+- `data/chunks/laws_chunks.jsonl`
+- `data/chunks/case_chunks.jsonl`
+- `data/chunks/legal_chunks.jsonl`
+
 This remains a demo-scope stand-in for the broader corpus described in the assignment.
 
 ## Config Defaults
@@ -96,6 +101,10 @@ Phase 0 includes placeholder config files for:
 - evaluation
 
 Importable defaults are available from `tax_rag.common`.
+
+The chunking config now documents the concrete Phase 2 strategy:
+- laws split on article, `lid`, and list items while preserving citation context
+- cases split on section and `paragroup` boundaries with canonical `facts` / `reasoning` / `holding` mapping
 
 ## Environment Variables
 

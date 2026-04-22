@@ -1,14 +1,51 @@
 chunking:
   law:
-    target_unit: article_paragraph
-    fallback_target_chars: 1400
-    overlap_chars: 120
+    input_dataset: data/parsed/laws.jsonl
+    base_unit: article
+    split_on:
+      - lid
+      - lijst/li
+    fallback_when_no_structure: article_body
     preserve_citation_path: true
+    preserve_fields:
+      - article
+      - paragraph
+      - subparagraph
+      - source_type
+      - jurisdiction
+      - allowed_roles
+    chunk_id_templates:
+      article: "{doc_id}:body"
+      paragraph: "{doc_id}:paragraph:{paragraph}"
+      subparagraph: "{doc_id}:paragraph:{paragraph}:subparagraph:{subparagraph_slug}"
   case_law:
+    input_dataset: data/parsed/cases.jsonl
     preferred_sections:
       - facts
       - reasoning
       - holding
-    fallback_target_chars: 1500
-    overlap_chars: 120
+    infer_from:
+      facts:
+        - procesverloop
+        - feiten
+        - geding
+      reasoning:
+        - overwegingen
+        - beoordeling
+        - juridisch kader
+      holding:
+        - beslissing
+    fallback_when_no_paragroups: section_body
     preserve_ecli: true
+    preserve_fields:
+      - ecli
+      - court
+      - decision_date
+      - section_type
+      - source_type
+      - jurisdiction
+      - allowed_roles
+outputs:
+  law_chunks: data/chunks/laws_chunks.jsonl
+  case_chunks: data/chunks/case_chunks.jsonl
+  legal_chunks: data/chunks/legal_chunks.jsonl
