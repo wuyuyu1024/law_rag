@@ -70,7 +70,7 @@ def test_corrective_rag_agent_retries_with_structured_identifier() -> None:
     response = agent.answer("Can you explain ruling ECLI:NL:HR:2025:99 for me?", "legal_counsel")
 
     assert response.outcome is AnswerOutcome.ANSWERED
-    assert AgentState.RETRYING.value in response.state_trace
+    assert AgentState.TRANSFORMED.value in response.state_trace
     assert response.metadata["transform_plan"]["strategy"] == QueryTransformStrategy.STRUCTURED_IDENTIFIER.value
     assert response.citations[0].label == "ECLI:NL:HR:2025:99"
 

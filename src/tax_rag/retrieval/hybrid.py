@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import re
+
 from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.retrieval.common import request_allows_chunk
 from tax_rag.retrieval.dense import _rank_dense_chunks
 from tax_rag.retrieval.lexical import _rank_lexical_chunks
+from tax_rag.retrieval.rerank import rerank_results
 from tax_rag.schemas import RetrievalMethod, RetrievalRequest, RetrievalResponse, RetrievalResult, ScoreTrace
 from tax_rag.security import (
     DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
@@ -13,9 +16,22 @@ from tax_rag.security import (
     filter_authorized_chunks,
 )
 
+_EXACT_IDENTIFIER_PATTERN = re.compile(r"\b(?:ecli:|artikel|article|art\.?)", re.IGNORECASE)
+
 
 def _rrf_contribution(rank: int, *, rrf_k: int) -> float:
     return 1.0 / (rrf_k + rank)
+
+
+def _exact_priority(scores: list[ScoreTrace]) -> float:
+    exact_metrics = {
+        "ecli_exact_match",
+        "article_exact_match",
+        "paragraph_exact_match",
+        "subparagraph_exact_match",
+        "citation_path_exact_match",
+    }
+    return sum(score.value for score in scores if score.metric in exact_metrics)
 
 
 def retrieve_hybrid(
@@ -91,18 +107,22 @@ def retrieve_hybrid(
             ScoreTrace(metric="rrf_dense", value=contribution, rank=rank, metadata={"source_rank": rank})
         )
 
-    fused_candidates: list[tuple[float, RetrievalResult, set[str], list[ScoreTrace]]] = []
+    fused_candidates: list[tuple[float, float, RetrievalResult, set[str], list[ScoreTrace]]] = []
     for entry in by_chunk_id.values():
         base_result = entry["result"]
         scores = list(entry["scores"])
         scores.append(ScoreTrace(metric="rrf_score", value=entry["rrf_score"]))
-        fused_candidates.append((entry["rrf_score"], base_result, entry["matched_terms"], scores))
+        fused_candidates.append((_exact_priority(scores), entry["rrf_score"], base_result, entry["matched_terms"], scores))
 
-    fused_candidates.sort(key=lambda item: (-item[0], item[1].chunk_id))
-    top_candidates = fused_candidates[: request.top_k]
+    if _EXACT_IDENTIFIER_PATTERN.search(request.query):
+        fused_candidates.sort(key=lambda item: (-item[0], -item[1], item[2].chunk_id))
+    else:
+        fused_candidates.sort(key=lambda item: (-item[1], item[2].chunk_id))
+    candidate_limit = max(request.top_k, DEFAULT_CONFIG.reranking.input_top_k)
+    top_candidates = fused_candidates[:candidate_limit]
 
     results: list[RetrievalResult] = []
-    for rank, (_, base_result, matched_terms, scores) in enumerate(top_candidates, start=1):
+    for rank, (_, _, base_result, matched_terms, scores) in enumerate(top_candidates, start=1):
         ranked_scores = tuple(
             ScoreTrace(metric=score.metric, value=score.value, rank=rank if score.rank is None else score.rank, metadata=score.metadata)
             for score in scores
@@ -118,6 +138,14 @@ def retrieve_hybrid(
             )
         )
 
+    reranking_applied = False
+    should_rerank = DEFAULT_CONFIG.reranking.enabled and _EXACT_IDENTIFIER_PATTERN.search(request.query) is None
+    if should_rerank:
+        reranking_applied = True
+        results = list(rerank_results(tuple(results), request))
+
+    results = results[: request.top_k]
+
     return RetrievalResponse(
         request=request,
         retrieval_method=RetrievalMethod.HYBRID,
@@ -131,5 +159,9 @@ def retrieve_hybrid(
             "dense_result_count": len(dense_results),
             "fusion_strategy": DEFAULT_CONFIG.retrieval.fusion_strategy,
             "rrf_k": rrf_k,
+            "reranking_enabled": DEFAULT_CONFIG.reranking.enabled,
+            "reranking_applied": reranking_applied,
+            "reranker_model": DEFAULT_CONFIG.reranking.model if reranking_applied else None,
+            "reranker_input_count": len(top_candidates) if reranking_applied else 0,
         },
     )

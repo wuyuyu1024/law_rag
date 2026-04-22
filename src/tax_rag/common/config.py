@@ -31,7 +31,7 @@ class ChunkingConfig:
 class RetrievalConfig:
     vector_store: str = "qdrant"
     lexical_top_k: int = 50
-    dense_top_k: int = 50
+    dense_top_k: int = 100
     final_top_k: int = 10
     fusion_strategy: str = "rrf"
     rrf_k: int = 60
@@ -42,10 +42,19 @@ class RetrievalConfig:
 
 @dataclass(frozen=True)
 class RerankingConfig:
-    enabled: bool = False
-    model: str = "placeholder"
-    input_top_k: int = 20
-    output_top_k: int = 5
+    enabled: bool = True
+    model: str = "deterministic-legal-reranker-v1"
+    input_top_k: int = 50
+    output_top_k: int = 10
+    concept_overlap_weight: float = 0.32
+    lexical_overlap_weight: float = 0.26
+    dense_weight: float = 0.16
+    lexical_weight: float = 0.12
+    rrf_weight: float = 0.08
+    legislation_bonus: float = 0.08
+    max_source_bonus: float = 0.16
+    lexical_normalizer: float = 100.0
+    rrf_normalizer: float = 0.03
 
 
 @dataclass(frozen=True)
@@ -69,9 +78,11 @@ class AgentConfig:
     relevant_rrf_score_threshold: float = 0.02
     relevant_dense_score_threshold: float = 0.55
     relevant_lexical_score_threshold: float = 55.0
+    relevant_rerank_score_threshold: float = 0.20
     ambiguous_rrf_score_floor: float = 0.01
     ambiguous_dense_score_floor: float = 0.30
     ambiguous_lexical_score_floor: float = 20.0
+    ambiguous_rerank_score_floor: float = 0.13
     conflicting_score_margin: float = 0.01
     max_retry_attempts: int = 1
     max_answer_citations: int = 2

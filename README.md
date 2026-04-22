@@ -30,6 +30,7 @@ Phase 3 retrieval and RBAC are now implemented in a minimal but runnable form:
 - exact lexical retrieval supports ECLI, article, paragraph, subparagraph, and citation-path lookups
 - dense retrieval runs through local Qdrant-backed vector search
 - hybrid retrieval fuses lexical and dense results with RRF
+- hybrid retrieval now applies a deterministic reranking layer for semantic improvement while preserving inspectable scores
 - retrieval outputs preserve inspectable scores, chunk IDs, and source references
 
 Phase 4 baseline answer control is now implemented in a deterministic local form:
@@ -141,6 +142,7 @@ The retrieval config now documents the Phase 3 baseline:
 - `qdrant` is the selected vector store for the demo dense path
 - dense retrieval uses a local Qdrant collection with deterministic embeddings for repeatable tests
 - hybrid fusion uses RRF with explicit top-k settings from `configs/retrieval.yaml`
+- deterministic semantic reranking improves natural-language retrieval without requiring an external model key in the default path
 
 The agent config now documents the Phase 4 baseline:
 - explicit thresholds control evidence grading and answer/refusal gating

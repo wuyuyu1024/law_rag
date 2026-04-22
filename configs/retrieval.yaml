@@ -1,7 +1,7 @@
 retrieval:
   vector_store: qdrant
   lexical_top_k: 50
-  dense_top_k: 50
+  dense_top_k: 100
   final_top_k: 10
   fusion_strategy: rrf
   rrf_k: 60

@@ -16,3 +16,4 @@ Current ADRs:
 - `006-evidence-gating-and-refusal.md`
 - `007-corrective-control-flow.md`
 - `008-deterministic-evaluation-baseline.md`
+- `009-deterministic-reranking-and-semantic-normalization.md`

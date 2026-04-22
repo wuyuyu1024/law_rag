@@ -64,6 +64,42 @@ def test_retrieve_dense_ranks_semantically_closest_authorized_chunk() -> None:
     assert response.results[0].score_map()["dense_score"] > response.results[1].score_map()["dense_score"]
 
 
+def test_retrieve_dense_bridges_english_query_to_dutch_employer_change_rule() -> None:
+    statutory_rule = _chunk(
+        chunk_id="law-30-percent-switch-employer",
+        source_type=SourceType.LEGISLATION,
+        text=(
+            "Indien een ingekomen werknemer tijdens de looptijd een andere inhoudingsplichtige krijgt, "
+            "blijft de bewijsregel gedurende de resterende looptijd van toepassing."
+        ),
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ed > Lid 1",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ed",
+        paragraph="1",
+    )
+    case_fact = _chunk(
+        chunk_id="case-30-percent-fact",
+        source_type=SourceType.CASE_LAW,
+        text="Belanghebbende veranderde van baan en kreeg later een andere werkgever.",
+        citation_path="ECLI:NL:GHAMS:2021:4309 > 2 Feiten > 5.2",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        ecli="ECLI:NL:GHAMS:2021:4309",
+    )
+
+    response = retrieve_dense(
+        [case_fact, statutory_rule],
+        RetrievalRequest(
+            query="how does 30% ruling work if the employee changes jobs to another employer",
+            role="helpdesk",
+            top_k=5,
+        ),
+    )
+
+    assert response.results[0].chunk_id == "law-30-percent-switch-employer"
+
+
 def test_retrieve_dense_excludes_unauthorized_candidates_before_similarity_scoring() -> None:
     restricted = _chunk(
         chunk_id="restricted-fraud-manual",
@@ -157,3 +193,51 @@ def test_retrieve_hybrid_returns_inspectable_stage_scores() -> None:
     assert score_map["rrf_lexical"] == pytest.approx(1 / 61)
     assert score_map["rrf_dense"] == pytest.approx(1 / 61)
     assert score_map["rrf_score"] == pytest.approx(2 / 61)
+
+
+def test_retrieve_hybrid_reranks_generic_30_percent_question_to_statutory_rule() -> None:
+    statutory_rule = _chunk(
+        chunk_id="law-10ed-1",
+        source_type=SourceType.LEGISLATION,
+        text=(
+            "Indien een ingekomen werknemer tijdens de looptijd een andere inhoudingsplichtige krijgt, "
+            "blijft de bewijsregel gedurende de resterende looptijd van toepassing."
+        ),
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ed > Lid 1",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ed",
+        paragraph="1",
+    )
+    case_fact = _chunk(
+        chunk_id="case-switch-fact",
+        source_type=SourceType.CASE_LAW,
+        text="Belanghebbende wisselde van baan en werkte later voor een andere werkgever.",
+        citation_path="ECLI:NL:GHAMS:2021:4309 > 2 Feiten > 5.2",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        ecli="ECLI:NL:GHAMS:2021:4309",
+    )
+    continuation_rule = _chunk(
+        chunk_id="law-10ed-2",
+        source_type=SourceType.LEGISLATION,
+        text="Bij een nieuw verzoek moet de nieuwe inhoudingsplichtige opnieuw aannemelijk maken dat de werknemer een ingekomen werknemer is.",
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ed > Lid 2",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ed",
+        paragraph="2",
+    )
+
+    response = retrieve_hybrid(
+        [case_fact, continuation_rule, statutory_rule],
+        RetrievalRequest(
+            query="how does 30% ruling work if the employee changes jobs to another employer",
+            role="helpdesk",
+            top_k=3,
+        ),
+    )
+
+    assert response.results[0].chunk_id == "law-10ed-1"
+    assert response.results[0].score_map()["rerank_score"] > response.results[1].score_map()["rerank_score"]
+    assert response.metadata["reranking_applied"] is True

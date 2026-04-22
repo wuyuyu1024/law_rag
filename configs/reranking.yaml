@@ -1,5 +1,12 @@
 reranking:
-  enabled: false
-  model: placeholder
-  input_top_k: 20
-  output_top_k: 5
+  enabled: true
+  model: deterministic-legal-reranker-v1
+  input_top_k: 50
+  output_top_k: 10
+  concept_overlap_weight: 0.32
+  lexical_overlap_weight: 0.26
+  dense_weight: 0.16
+  lexical_weight: 0.12
+  rrf_weight: 0.08
+  legislation_bonus: 0.08
+  max_source_bonus: 0.16

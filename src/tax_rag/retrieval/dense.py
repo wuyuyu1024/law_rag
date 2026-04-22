@@ -4,12 +4,12 @@ from __future__ import annotations
 
 import hashlib
 import math
-import re
 from typing import Any
 
 from qdrant_client import QdrantClient, models
 
 from tax_rag.common import DEFAULT_CONFIG
+from tax_rag.retrieval.semantic import semantic_features
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -26,17 +26,12 @@ from tax_rag.security import (
     filter_authorized_chunks,
 )
 
-_TOKEN_PATTERN = re.compile(r"[a-z0-9:.\-]+", re.IGNORECASE)
 _CLASSIFICATION_ORDER = {
     SecurityClassification.PUBLIC: 0,
     SecurityClassification.INTERNAL: 1,
     SecurityClassification.CONFIDENTIAL: 2,
     SecurityClassification.RESTRICTED: 3,
 }
-
-
-def _tokenize(value: str) -> list[str]:
-    return [token.lower() for token in _TOKEN_PATTERN.findall(value)]
 
 
 def _character_ngrams(token: str, size: int = 3) -> list[str]:
@@ -53,12 +48,13 @@ def _hashed_index(token: str, dimensions: int) -> int:
 
 def embed_text(value: str, *, dimensions: int = 256) -> list[float]:
     weights = [0.0] * dimensions
-    for token in _tokenize(value):
-        token_index = _hashed_index(f"tok:{token}", dimensions)
-        weights[token_index] += 1.0
-        for gram in _character_ngrams(token):
+    for feature, weight in semantic_features(value).items():
+        token_index = _hashed_index(f"tok:{feature}", dimensions)
+        weights[token_index] += weight
+        gram_token = feature.replace("concept:", "").replace("_", "")
+        for gram in _character_ngrams(gram_token):
             gram_index = _hashed_index(f"tri:{gram}", dimensions)
-            weights[gram_index] += 0.35
+            weights[gram_index] += 0.2 * weight
 
     norm = math.sqrt(sum(weight * weight for weight in weights))
     if norm == 0.0:
@@ -75,6 +71,7 @@ def _dense_text(chunk: ChunkRecord) -> str:
             chunk.article or "",
             chunk.ecli or "",
             chunk.section_type or "",
+            chunk.source_type.value,
         )
         if part
     )

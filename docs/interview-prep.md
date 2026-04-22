@@ -16,7 +16,7 @@ I normalized raw sources into canonical document and chunk schemas so the retrie
 RBAC is enforced before retrieval candidates are ranked. Unauthorized chunks do not enter lexical retrieval, dense retrieval, fusion, reranking, generation, cache behavior, or evaluation.
 
 4. Retrieval model
-The retrieval path is hybrid. Lexical retrieval handles exact identifiers like ECLI and article references. Dense retrieval handles semantic recall. RRF combines them without fragile score calibration.
+The retrieval path is hybrid. Lexical retrieval handles exact identifiers like ECLI and article references. Dense retrieval handles semantic recall. RRF combines them without fragile score calibration, and a deterministic reranker improves semantic ranking while keeping scores inspectable.
 
 5. Infrastructure choices
 I used `lxml` for stronger XML handling, `pydantic` for schema boundaries, and Qdrant for dense retrieval because the assignment needs explicit filtered vector search and concrete ANN settings.
@@ -73,6 +73,16 @@ Repo references:
 - `src/tax_rag/retrieval/hybrid.py`
 - `src/tax_rag/common/config.py`
 
+### Why add a deterministic reranker instead of a model-based reranker immediately?
+
+Short answer:
+Because the immediate problem was evaluation quality, not model sophistication. I needed a stronger semantic baseline that stayed local, testable, and inspectable, so I added semantic normalization plus a deterministic reranker first. That improves retrieval now without hiding behavior inside an opaque model call.
+
+Repo references:
+- `src/tax_rag/retrieval/semantic.py`
+- `src/tax_rag/retrieval/rerank.py`
+- `docs/decisions/009-deterministic-reranking-and-semantic-normalization.md`
+
 ### Why use Pydantic if it did not reduce much code?
 
 Short answer:
@@ -115,7 +125,7 @@ Repo references:
 ### What is still missing?
 
 Short answer:
-The main next steps are evidence grading, corrective retrieval/refusal control flow, reranking with a real reranker, and a formal evaluation runner with a gold set. The current system has the data, security, and retrieval foundation those steps depend on.
+The main next steps are upgrading the deterministic reranker to a real learned reranker, improving the remaining exact and refusal edge cases in the eval set, and only then adding a stronger generation layer. The current system already has evidence grading, corrective control flow, and a formal evaluation runner.
 
 Repo references:
 - `TASKS.md`
@@ -156,5 +166,6 @@ If time is limited, memorize these points:
 - Lexical retrieval is necessary for legal identifiers.
 - Dense retrieval is necessary for semantic recall.
 - Hybrid retrieval with RRF is the initial baseline.
+- Deterministic semantic reranking is the current quality-improvement layer.
 - Qdrant was chosen because filtered retrieval is the core requirement.
 - Refusal is a feature in a zero-hallucination domain.

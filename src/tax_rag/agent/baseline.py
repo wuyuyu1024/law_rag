@@ -17,6 +17,14 @@ from tax_rag.schemas import (
     SourceType,
 )
 
+_EXACT_MATCH_METRICS = {
+    "ecli_exact_match",
+    "article_exact_match",
+    "paragraph_exact_match",
+    "subparagraph_exact_match",
+    "citation_path_exact_match",
+}
+
 
 def _truncate_snippet(text: str) -> str:
     max_chars = DEFAULT_CONFIG.agent.snippet_max_chars
@@ -26,9 +34,15 @@ def _truncate_snippet(text: str) -> str:
     return normalized[: max_chars - 3].rstrip() + "..."
 
 
+def _answer_result_limit(response: RetrievalResponse) -> int:
+    if response.results and any(metric in response.results[0].score_map() for metric in _EXACT_MATCH_METRICS):
+        return 1
+    return DEFAULT_CONFIG.agent.max_answer_citations
+
+
 def _answer_citations(response: RetrievalResponse) -> tuple[AnswerCitation, ...]:
     citations: list[AnswerCitation] = []
-    for result in response.results[: DEFAULT_CONFIG.agent.max_answer_citations]:
+    for result in response.results[: _answer_result_limit(response)]:
         resolved = resolve_result_citation(result)
         citations.append(
             AnswerCitation(
@@ -69,7 +83,7 @@ def build_agent_response(
         )
 
     fragments: list[str] = []
-    for index, result in enumerate(retrieval_response.results[: DEFAULT_CONFIG.agent.max_answer_citations], start=1):
+    for index, result in enumerate(retrieval_response.results[: _answer_result_limit(retrieval_response)], start=1):
         prefix = "Primary evidence" if index == 1 else "Additional evidence"
         fragments.append(f"{prefix} from {result.source.citation_path}: {_truncate_snippet(result.text)}")
 
