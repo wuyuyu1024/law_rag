@@ -24,6 +24,9 @@ I used `lxml` for stronger XML handling, `pydantic` for schema boundaries, and Q
 6. Demo vs production
 The runtime corpus is small and partly simulated, but the architecture is shaped around the full assignment: restricted documents, large-scale chunk counts, pre-retrieval authorization, and explicit retrieval controls.
 
+Use this clarification if pressed on scale:
+I kept the runnable corpus small on purpose so the demo stays inspectable. I represent scale mainly in the architecture and control plane: filtered ANN retrieval, payload indexes, bounded top-k, persistent indexing, and explicit latency budgets. The local benchmark is for catching bottlenecks and validating fixes, not for pretending I reproduced a 20M-chunk production environment on a demo machine.
+
 ## Likely Questions
 
 ### Why did you keep legal chunking custom?

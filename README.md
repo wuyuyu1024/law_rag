@@ -182,6 +182,29 @@ uv run python scripts/benchmark_ttft.py \
 
 The benchmark reports per-stage timings for request setup, filtered retrieval, fusion, reranking, evidence grading, and answer construction, then writes summary and per-case artifacts for inspection. For a representative uncached-path run, build the persistent dense index first so the benchmark does not include one-time local index creation.
 
+## Demo vs Production Scale
+
+This repository intentionally keeps the runnable corpus small. That is a demo choice, not a claim that the assignment's scale requirement disappeared.
+
+What the demo is meant to prove:
+- legal-aware chunking and citation preservation
+- RBAC before retrieval influence
+- hybrid retrieval behavior across exact and semantic queries
+- evidence-gated answering and refusal
+- the effect of removing obvious architectural bottlenecks, such as rebuilding the dense index on every query
+
+What is represented architecturally rather than fully reproduced in the demo runtime:
+- the 500k-document / 20M+-chunk scale target
+- production-oriented Qdrant settings such as HNSW tuning, payload indexes, quantization, and on-disk storage
+- production latency behavior under full enterprise load
+
+The benchmark in this repo should therefore be presented honestly:
+- it is a demo-scale uncached-path benchmark
+- it is useful for identifying bottlenecks and validating architectural fixes
+- it is not a substitute for a production-scale load test
+
+If additional stress testing is needed without turning the repo into a large-data project, prefer a clearly labeled synthetic benchmark mode that duplicates chunks only to stress indexing and retrieval overhead. Do not present that as legal-quality evaluation.
+
 ## Vector DB Selection
 
 For the assessment architecture, the selected vector database is **Qdrant**.
