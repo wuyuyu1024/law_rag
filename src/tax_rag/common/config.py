@@ -73,6 +73,7 @@ class AgentConfig:
     ambiguous_dense_score_floor: float = 0.30
     ambiguous_lexical_score_floor: float = 20.0
     conflicting_score_margin: float = 0.01
+    max_retry_attempts: int = 1
     max_answer_citations: int = 2
     snippet_max_chars: int = 240
 

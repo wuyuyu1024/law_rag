@@ -14,3 +14,4 @@ Current ADRs:
 - `004-rbac-retrieval.md`
 - `005-vector-db-and-hybrid-retrieval.md`
 - `006-evidence-gating-and-refusal.md`
+- `007-corrective-control-flow.md`

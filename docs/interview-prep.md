@@ -102,6 +102,16 @@ Repo references:
 - `src/tax_rag/agent/baseline.py`
 - `docs/decisions/006-evidence-gating-and-refusal.md`
 
+### Why add an explicit control flow instead of one retrieval call plus answer generation?
+
+Short answer:
+Because the assignment asks for agentic and corrective behavior, not a linear pipeline. I made the control states explicit so query transformation, retrieval, grading, retry, answer, and refusal are inspectable and testable.
+
+Repo references:
+- `src/tax_rag/agent/control.py`
+- `src/tax_rag/agent/transform.py`
+- `docs/decisions/007-corrective-control-flow.md`
+
 ### What is still missing?
 
 Short answer:

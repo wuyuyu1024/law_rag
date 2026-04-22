@@ -37,6 +37,7 @@ Phase 4 baseline answer control is now implemented in a deterministic local form
 - the system answers only from retrieved evidence graded as relevant
 - ambiguous or weak evidence triggers explicit structured refusal reasons
 - no external API key is required for the baseline answer/refusal flow
+- corrective control flow now includes explicit query transformation, bounded retry, and inspectable state transitions
 
 Generation and evaluation are still upcoming phases.
 
@@ -140,6 +141,7 @@ The agent config now documents the Phase 4 baseline:
 - explicit thresholds control evidence grading and answer/refusal gating
 - refusal remains structured and inspectable
 - the baseline answer layer stays local and deterministic
+- bounded retry behavior is explicit and configuration-backed
 
 ## Vector DB Selection
 

@@ -8,6 +8,7 @@ from tax_rag.schemas.answer import (
     EvidenceGrade,
     RefusalReason,
 )
+from tax_rag.schemas.agent import AgentState, QueryTransformPlan, QueryTransformStrategy
 from tax_rag.schemas.chunk import ChunkRecord
 from tax_rag.schemas.document import (
     NormalizedDocument,
@@ -25,12 +26,15 @@ from tax_rag.schemas.retrieval import (
 
 __all__ = [
     "AgentResponse",
+    "AgentState",
     "AnswerCitation",
     "AnswerOutcome",
     "ChunkRecord",
     "EvidenceAssessment",
     "EvidenceGrade",
     "NormalizedDocument",
+    "QueryTransformPlan",
+    "QueryTransformStrategy",
     "RefusalReason",
     "RetrievalMethod",
     "RetrievalRequest",

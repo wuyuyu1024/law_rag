@@ -6,5 +6,6 @@ agent:
   ambiguous_dense_score_floor: 0.30
   ambiguous_lexical_score_floor: 20.0
   conflicting_score_margin: 0.01
+  max_retry_attempts: 1
   max_answer_citations: 2
   snippet_max_chars: 240
