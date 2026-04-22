@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from functools import lru_cache
-from xml.etree import ElementTree as ET
+
+from lxml import etree as ET
 
 from tax_rag.chunking.metadata_builder import build_case_chunk_id, build_chunk_record
 from tax_rag.schemas import ChunkRecord, NormalizedDocument
@@ -12,6 +13,8 @@ NS = {"rs": "http://www.rechtspraak.nl/schema/rechtspraak-1.0"}
 
 
 def _local_name(tag: str) -> str:
+    if not isinstance(tag, str):
+        return ""
     return tag.rsplit("}", 1)[-1]
 
 
@@ -19,11 +22,11 @@ def _normalize_whitespace(value: str) -> str:
     return " ".join(value.replace("\xa0", " ").split())
 
 
-def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> str:
+def _element_text(element: ET._Element, ignored_tags: set[str] | None = None) -> str:
     ignored_tags = ignored_tags or set()
     parts: list[str] = []
 
-    def visit(node: ET.Element) -> None:
+    def visit(node: ET._Element) -> None:
         if _local_name(node.tag) in ignored_tags:
             return
         if node.text and node.text.strip():
@@ -38,17 +41,20 @@ def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> 
 
 
 @lru_cache(maxsize=32)
-def _parse_xml(source_path: str) -> ET.Element:
-    return ET.parse(source_path).getroot()
+def _parse_xml(source_path: str) -> ET._Element:
+    return ET.parse(
+        source_path,
+        parser=ET.XMLParser(remove_blank_text=True, recover=True, huge_tree=True),
+    ).getroot()
 
 
-def _section_title(section: ET.Element) -> str:
+def _section_title(section: ET._Element) -> str:
     title = section.find("./rs:title", NS)
     title_text = _element_text(title) if title is not None else ""
     return title_text or section.attrib.get("role") or "section"
 
 
-def _canonical_section_type(section: ET.Element, title: str) -> str:
+def _canonical_section_type(section: ET._Element, title: str) -> str:
     role = (section.attrib.get("role") or "").lower()
     title_lower = title.lower()
     if role == "overwegingen":
@@ -62,9 +68,9 @@ def _canonical_section_type(section: ET.Element, title: str) -> str:
     return _normalize_whitespace(title_lower or "section")
 
 
-def _leaf_paragroups(node: ET.Element) -> list[ET.Element]:
+def _leaf_paragroups(node: ET._Element) -> list[ET._Element]:
     paragroups = node.findall("./rs:paragroup", NS)
-    leaves: list[ET.Element] = []
+    leaves: list[ET._Element] = []
     for group in paragroups:
         nested = _leaf_paragroups(group)
         if nested:

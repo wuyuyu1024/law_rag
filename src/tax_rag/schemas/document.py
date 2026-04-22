@@ -3,10 +3,11 @@
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, dataclass, field
 from datetime import date
 from enum import StrEnum
 from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class SourceType(StrEnum):
@@ -31,17 +32,27 @@ class SecurityClassification(StrEnum):
     RESTRICTED = "restricted"
 
 
-def _validate_iso_date(value: str | None, field_name: str) -> None:
+def _validate_iso_date(value: str | None, field_name: str) -> str | None:
     if value is None:
-        return
+        return None
     try:
         date.fromisoformat(value)
     except ValueError as exc:
         raise ValueError(f"{field_name} must be ISO-8601 formatted (YYYY-MM-DD), got: {value}") from exc
+    return value
 
 
-@dataclass(frozen=True)
-class NormalizedDocument:
+class SchemaModel(BaseModel):
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    def to_dict(self) -> dict[str, Any]:
+        return self.model_dump(mode="json")
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
+
+
+class NormalizedDocument(SchemaModel):
     doc_id: str
     source_type: SourceType
     title: str
@@ -58,39 +69,33 @@ class NormalizedDocument:
     decision_date: str | None = None
     section_type: str | None = None
     security_classification: SecurityClassification = SecurityClassification.PUBLIC
-    allowed_roles: tuple[str, ...] = field(default_factory=lambda: ("helpdesk", "inspector", "legal_counsel"))
-    metadata: dict[str, Any] = field(default_factory=dict)
+    allowed_roles: tuple[str, ...] = ("helpdesk", "inspector", "legal_counsel")
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
-    def __post_init__(self) -> None:
-        if not self.doc_id.strip():
-            raise ValueError("doc_id must not be empty")
-        if not self.title.strip():
-            raise ValueError("title must not be empty")
-        if not self.jurisdiction.strip():
-            raise ValueError("jurisdiction must not be empty")
-        if not self.text.strip():
-            raise ValueError("text must not be empty")
-        if not self.source_path.strip():
-            raise ValueError("source_path must not be empty")
-        if not self.allowed_roles:
+    @field_validator("doc_id", "title", "jurisdiction", "text", "source_path")
+    @classmethod
+    def _non_empty_string(cls, value: str, info: Any) -> str:
+        if not value.strip():
+            raise ValueError(f"{info.field_name} must not be empty")
+        return value
+
+    @field_validator("allowed_roles")
+    @classmethod
+    def _roles_must_not_be_empty(cls, value: tuple[str, ...]) -> tuple[str, ...]:
+        if not value:
             raise ValueError("allowed_roles must not be empty")
-        _validate_iso_date(self.effective_date, "effective_date")
-        _validate_iso_date(self.decision_date, "decision_date")
+        return value
 
-    def to_dict(self) -> dict[str, Any]:
-        payload = asdict(self)
-        payload["source_type"] = self.source_type.value
-        payload["security_classification"] = self.security_classification.value
-        payload["allowed_roles"] = list(self.allowed_roles)
-        return payload
+    @field_validator("effective_date")
+    @classmethod
+    def _effective_date_is_iso(cls, value: str | None) -> str | None:
+        return _validate_iso_date(value, "effective_date")
 
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
+    @field_validator("decision_date")
+    @classmethod
+    def _decision_date_is_iso(cls, value: str | None) -> str | None:
+        return _validate_iso_date(value, "decision_date")
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "NormalizedDocument":
-        data = dict(payload)
-        data["source_type"] = SourceType.from_value(data["source_type"])
-        data["security_classification"] = SecurityClassification(data["security_classification"])
-        data["allowed_roles"] = tuple(data.get("allowed_roles", ()))
-        return cls(**data)
+        return cls.model_validate(payload)

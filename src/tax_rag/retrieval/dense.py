@@ -1,13 +1,15 @@
-"""Deterministic dense-style retrieval over RBAC-authorized chunk candidates."""
+"""Qdrant-backed dense retrieval over RBAC-authorized chunk candidates."""
 
 from __future__ import annotations
 
 import hashlib
 import math
 import re
+from typing import Any
+
+from qdrant_client import QdrantClient, models
 
 from tax_rag.common import DEFAULT_CONFIG
-from tax_rag.retrieval.common import request_allows_chunk
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -15,14 +17,22 @@ from tax_rag.schemas import (
     RetrievalResponse,
     RetrievalResult,
     ScoreTrace,
+    SecurityClassification,
 )
 from tax_rag.security import (
     DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
+    DEFAULT_ROLE_CLASSIFICATION_CLEARANCE,
     RetrievalSecurityContract,
     filter_authorized_chunks,
 )
 
 _TOKEN_PATTERN = re.compile(r"[a-z0-9:.\-]+", re.IGNORECASE)
+_CLASSIFICATION_ORDER = {
+    SecurityClassification.PUBLIC: 0,
+    SecurityClassification.INTERNAL: 1,
+    SecurityClassification.CONFIDENTIAL: 2,
+    SecurityClassification.RESTRICTED: 3,
+}
 
 
 def _tokenize(value: str) -> list[str]:
@@ -41,27 +51,19 @@ def _hashed_index(token: str, dimensions: int) -> int:
     return int(digest, 16) % dimensions
 
 
-def embed_text(value: str, *, dimensions: int = 256) -> dict[int, float]:
-    weights: dict[int, float] = {}
+def embed_text(value: str, *, dimensions: int = 256) -> list[float]:
+    weights = [0.0] * dimensions
     for token in _tokenize(value):
         token_index = _hashed_index(f"tok:{token}", dimensions)
-        weights[token_index] = weights.get(token_index, 0.0) + 1.0
+        weights[token_index] += 1.0
         for gram in _character_ngrams(token):
             gram_index = _hashed_index(f"tri:{gram}", dimensions)
-            weights[gram_index] = weights.get(gram_index, 0.0) + 0.35
+            weights[gram_index] += 0.35
 
-    norm = math.sqrt(sum(weight * weight for weight in weights.values()))
+    norm = math.sqrt(sum(weight * weight for weight in weights))
     if norm == 0.0:
-        return {}
-    return {index: weight / norm for index, weight in weights.items()}
-
-
-def _cosine_similarity(left: dict[int, float], right: dict[int, float]) -> float:
-    if not left or not right:
-        return 0.0
-    if len(left) > len(right):
-        left, right = right, left
-    return sum(value * right.get(index, 0.0) for index, value in left.items())
+        return weights
+    return [weight / norm for weight in weights]
 
 
 def _dense_text(chunk: ChunkRecord) -> str:
@@ -78,35 +80,117 @@ def _dense_text(chunk: ChunkRecord) -> str:
     )
 
 
+def _payload_for_chunk(chunk: ChunkRecord) -> dict[str, Any]:
+    return {
+        "chunk": chunk.to_dict(),
+        "allowed_roles": list(chunk.allowed_roles),
+        "source_type": chunk.source_type.value,
+        "jurisdiction": chunk.jurisdiction,
+        "security_classification": chunk.security_classification.value,
+        "security_classification_rank": _CLASSIFICATION_ORDER[chunk.security_classification],
+    }
+
+
+def _query_filter(request: RetrievalRequest) -> models.Filter | None:
+    clearance = DEFAULT_ROLE_CLASSIFICATION_CLEARANCE.get(request.role)
+    if clearance is None:
+        return None
+
+    must: list[models.Condition] = [
+        models.FieldCondition(
+            key="allowed_roles",
+            match=models.MatchAny(any=[request.role]),
+        ),
+        models.FieldCondition(
+            key="security_classification_rank",
+            range=models.Range(lte=_CLASSIFICATION_ORDER[clearance]),
+        ),
+    ]
+
+    if request.source_types:
+        must.append(
+            models.FieldCondition(
+                key="source_type",
+                match=models.MatchAny(any=[source_type.value for source_type in request.source_types]),
+            )
+        )
+
+    if request.jurisdiction is not None:
+        must.append(
+            models.FieldCondition(
+                key="jurisdiction",
+                match=models.MatchValue(value=request.jurisdiction),
+            )
+        )
+
+    return models.Filter(must=must)
+
+
+def _build_local_qdrant(chunks: list[ChunkRecord] | tuple[ChunkRecord, ...], *, dimensions: int) -> QdrantClient:
+    client = QdrantClient(":memory:")
+    client.create_collection(
+        collection_name="dense_chunks",
+        vectors_config=models.VectorParams(size=dimensions, distance=models.Distance.COSINE),
+    )
+    client.upload_collection(
+        collection_name="dense_chunks",
+        ids=list(range(1, len(chunks) + 1)),
+        vectors=[embed_text(_dense_text(chunk), dimensions=dimensions) for chunk in chunks],
+        payload=[_payload_for_chunk(chunk) for chunk in chunks],
+    )
+    return client
+
+
 def _rank_dense_chunks(
     chunks: list[ChunkRecord] | tuple[ChunkRecord, ...],
     request: RetrievalRequest,
 ) -> tuple[RetrievalResult, ...]:
-    dimensions = 256
-    query_embedding = embed_text(request.query, dimensions=dimensions)
-    scored_candidates: list[tuple[float, ChunkRecord]] = []
+    if not chunks:
+        return ()
 
-    for chunk in chunks:
-        chunk_embedding = embed_text(_dense_text(chunk), dimensions=dimensions)
-        similarity = _cosine_similarity(query_embedding, chunk_embedding)
-        if similarity <= 0.0:
-            continue
-        scored_candidates.append((similarity, chunk))
+    dimensions = DEFAULT_CONFIG.retrieval.dense_dimensions
+    query_vector = embed_text(request.query, dimensions=dimensions)
+    if not any(query_vector):
+        return ()
 
-    scored_candidates.sort(key=lambda item: (-item[0], item[1].chunk_id))
-    top_candidates = scored_candidates[: request.top_k]
+    query_filter = _query_filter(request)
+    if query_filter is None:
+        return ()
+
+    client = _build_local_qdrant(chunks, dimensions=dimensions)
+    search_result = client.query_points(
+        collection_name="dense_chunks",
+        query=query_vector,
+        query_filter=query_filter,
+        limit=request.top_k,
+        with_payload=True,
+    )
 
     results: list[RetrievalResult] = []
-    for rank, (similarity, chunk) in enumerate(top_candidates, start=1):
+    for rank, point in enumerate(search_result.points, start=1):
+        payload = point.payload or {}
+        chunk_payload = payload.get("chunk")
+        if not isinstance(chunk_payload, dict):
+            continue
+        chunk = ChunkRecord.from_dict(chunk_payload)
+        similarity = float(point.score)
         results.append(
             RetrievalResult.from_chunk(
                 chunk,
                 retrieval_method=RetrievalMethod.DENSE,
                 scores=(
-                    ScoreTrace(metric="dense_cosine_similarity", value=similarity, rank=rank),
-                    ScoreTrace(metric="dense_score", value=similarity, rank=rank, metadata={"dimensions": dimensions}),
+                    ScoreTrace(metric="qdrant_score", value=similarity, rank=rank),
+                    ScoreTrace(
+                        metric="dense_score",
+                        value=similarity,
+                        rank=rank,
+                        metadata={
+                            "backend": "qdrant_local",
+                            "dimensions": dimensions,
+                        },
+                    ),
                 ),
-                metadata={"rank": rank, "authorized": True},
+                metadata={"rank": rank, "authorized": True, "backend": "qdrant_local"},
             )
         )
     return tuple(results)
@@ -119,8 +203,13 @@ def retrieve_dense(
     contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
 ) -> RetrievalResponse:
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
-    request_scoped_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
-    results = _rank_dense_chunks(request_scoped_chunks, request)
+    request_scoped_chunks = tuple(
+        chunk
+        for chunk in authorized.authorized_chunks
+        if (not request.source_types or chunk.source_type in request.source_types)
+        and (request.jurisdiction is None or chunk.jurisdiction == request.jurisdiction)
+    )
+    results = _rank_dense_chunks(chunks, request)
 
     return RetrievalResponse(
         request=request,
@@ -131,7 +220,8 @@ def retrieve_dense(
             "authorized_candidate_count": len(request_scoped_chunks),
             "denied_count": authorized.denied_count,
             "total_chunk_count": len(chunks),
-            "dense_model": "demo-hash-embedding-v1",
-            "dense_dimensions": 256,
+            "dense_model": DEFAULT_CONFIG.retrieval.dense_model,
+            "dense_dimensions": DEFAULT_CONFIG.retrieval.dense_dimensions,
+            "vector_backend": "qdrant_local",
         },
     )

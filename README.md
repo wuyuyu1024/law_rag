@@ -25,7 +25,14 @@ Phase 2 chunking is implemented for the demo corpus:
 - synthetic internal policy and e-learning documents are chunked on section boundaries
 - chunk export writes source-specific chunk files plus merged `data/chunks/legal_chunks.jsonl`
 
-Retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
+Phase 3 retrieval and RBAC are now implemented in a minimal but runnable form:
+- retrieval-facing security contract enforces pre-retrieval RBAC
+- exact lexical retrieval supports ECLI, article, paragraph, subparagraph, and citation-path lookups
+- dense retrieval runs through local Qdrant-backed vector search
+- hybrid retrieval fuses lexical and dense results with RRF
+- retrieval outputs preserve inspectable scores, chunk IDs, and source references
+
+Generation and evaluation are still upcoming phases.
 
 ## Tooling
 
@@ -117,6 +124,39 @@ The chunking config now documents the concrete Phase 2 strategy:
 - cases split on section and `paragroup` boundaries with canonical `facts` / `reasoning` / `holding` mapping
 - synthetic internal-policy and e-learning sources split on section headings to preserve training/manual context
 
+The retrieval config now documents the Phase 3 baseline:
+- `qdrant` is the selected vector store for the demo dense path
+- dense retrieval uses a local Qdrant collection with deterministic embeddings for repeatable tests
+- hybrid fusion uses RRF with explicit top-k settings from `configs/retrieval.yaml`
+
+## Vector DB Selection
+
+For the assessment architecture, the selected vector database is **Qdrant**.
+
+Why Qdrant fits this assignment:
+- The hardest requirement is security-constrained retrieval: unauthorized chunks must be excluded before they can influence ranking, reranking, caching, or generation.
+- Qdrant's payload model maps directly to this repository's metadata-first design, where each chunk carries `allowed_roles`, `security_classification`, `jurisdiction`, `source_type`, `article`, and `ecli`.
+- Qdrant supports payload filtering, payload indexes, and filter-aware HNSW tuning, which makes pre-retrieval RBAC enforcement explicit and inspectable.
+- Qdrant exposes concrete ANN controls such as HNSW `m`, `ef_construct`, search-time `ef`, and quantization settings, which aligns well with the assignment's request for specific operational parameters.
+- The Python client and local mode are practical for a Python-first demo while still mapping cleanly to a production deployment path.
+
+Recommended production-oriented Qdrant baseline:
+- HNSW `m`: `32` as the default starting point, increase to `64` for higher recall on dense legal corpora.
+- HNSW `ef_construct`: `200` for the baseline, increase to `512` for higher recall if indexing time is acceptable.
+- Search-time `ef`: `128` for normal traffic, increase to `256` for high-precision legal queries or evaluation runs.
+- Payload indexes: create indexes on `allowed_roles`, `security_classification`, `jurisdiction`, `source_type`, `article`, and `ecli` before bulk ingestion.
+- Quantization: start with scalar quantization for memory reduction, and evaluate product quantization if the corpus approaches the upper end of the assignment's scale assumptions.
+- Storage strategy: keep payload fields used in filtering indexed, and use on-disk vector storage plus quantization if RAM pressure becomes the bottleneck.
+
+Why not Weaviate as the primary choice:
+- Weaviate is a credible alternative. Its documentation describes efficient pre-filtered vector search, HNSW tuning, quantization, and built-in RBAC.
+- However, this repository's core retrieval contract is chunk-level, metadata-driven authorization. Qdrant's point-plus-payload model maps more directly to that design and keeps the authorization and retrieval control plane more explicit in code.
+- For this assessment, the deciding factor is not generic feature breadth. It is the ability to specify and defend pre-retrieval authorization with concrete filtering and indexing behavior.
+
+Fair comparison note:
+- Weaviate would still be a valid choice for the assessment, especially if the system prioritized built-in database authorization workflows or broader platform-level features.
+- Qdrant is preferred here because it makes the chunk-level filtered-retrieval story simpler to reason about and easier to document with explicit retrieval and indexing parameters.
+
 ## Environment Variables
 
 See `.env.example` for the current baseline variables:
@@ -134,3 +174,8 @@ The repo is structured around the four required modules from `assignment.md`:
 - Production ops, security, and evaluation
 
 The current code covers the baseline, ingestion, and demo-scope chunking needed to start implementing retrieval, security, and answer control incrementally.
+
+The implementation now also uses:
+- `lxml` for XML parsing in ingestion and legal-aware chunking
+- `pydantic` for schema validation and serialization boundaries
+- `qdrant-client` for the dense retrieval backend

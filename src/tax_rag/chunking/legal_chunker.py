@@ -3,14 +3,16 @@
 from __future__ import annotations
 
 from functools import lru_cache
-from pathlib import Path
-from xml.etree import ElementTree as ET
+
+from lxml import etree as ET
 
 from tax_rag.chunking.metadata_builder import build_chunk_record, build_law_chunk_id
 from tax_rag.schemas import ChunkRecord, NormalizedDocument
 
 
 def _local_name(tag: str) -> str:
+    if not isinstance(tag, str):
+        return ""
     return tag.rsplit("}", 1)[-1]
 
 
@@ -18,11 +20,11 @@ def _normalize_whitespace(value: str) -> str:
     return " ".join(value.replace("\xa0", " ").split())
 
 
-def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> str:
+def _element_text(element: ET._Element, ignored_tags: set[str] | None = None) -> str:
     ignored_tags = ignored_tags or set()
     parts: list[str] = []
 
-    def visit(node: ET.Element) -> None:
+    def visit(node: ET._Element) -> None:
         if _local_name(node.tag) in ignored_tags:
             return
         if node.text and node.text.strip():
@@ -37,11 +39,14 @@ def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> 
 
 
 @lru_cache(maxsize=32)
-def _parse_xml(source_path: str) -> ET.Element:
-    return ET.parse(source_path).getroot()
+def _parse_xml(source_path: str) -> ET._Element:
+    return ET.parse(
+        source_path,
+        parser=ET.XMLParser(remove_blank_text=True, recover=True, huge_tree=True),
+    ).getroot()
 
 
-def _article_node(document: NormalizedDocument) -> ET.Element | None:
+def _article_node(document: NormalizedDocument) -> ET._Element | None:
     root = _parse_xml(document.source_path)
     for article in root.findall(".//artikel"):
         article_nr = article.findtext("./kop/nr")
@@ -55,7 +60,7 @@ def _build_subparagraph_chunks(
     *,
     paragraph_number: str,
     intro_text: str,
-    list_items: list[ET.Element],
+    list_items: list[ET._Element],
 ) -> list[ChunkRecord]:
     chunks: list[ChunkRecord] = []
     paragraph_prefix = f"Lid {paragraph_number}."
@@ -116,7 +121,7 @@ def chunk_law_document(document: NormalizedDocument) -> list[ChunkRecord]:
     for lid in paragraphs:
         paragraph_number = _normalize_whitespace(lid.findtext("./lidnr") or "")
         intro_parts: list[str] = []
-        list_items: list[ET.Element] = []
+        list_items: list[ET._Element] = []
         for child in lid:
             child_name = _local_name(child.tag)
             if child_name in {"meta-data", "lidnr"}:

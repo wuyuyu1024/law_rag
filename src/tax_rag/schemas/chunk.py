@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-import json
-from dataclasses import asdict, dataclass, field
 from typing import Any
 
-from tax_rag.schemas.document import SecurityClassification, SourceType
+from pydantic import Field, field_validator
+
+from tax_rag.schemas.document import SchemaModel, SecurityClassification, SourceType
 
 
-@dataclass(frozen=True)
-class ChunkRecord:
+class ChunkRecord(SchemaModel):
     chunk_id: str
     doc_id: str
     text: str
@@ -27,34 +26,22 @@ class ChunkRecord:
     decision_date: str | None = None
     section_type: str | None = None
     security_classification: SecurityClassification = SecurityClassification.PUBLIC
-    metadata: dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
-    def __post_init__(self) -> None:
-        if not self.chunk_id.strip():
-            raise ValueError("chunk_id must not be empty")
-        if not self.doc_id.strip():
-            raise ValueError("doc_id must not be empty")
-        if not self.text.strip():
-            raise ValueError("text must not be empty")
-        if not self.citation_path.strip():
-            raise ValueError("citation_path must not be empty")
-        if not self.allowed_roles:
+    @field_validator("chunk_id", "doc_id", "text", "citation_path", "jurisdiction", "source_path")
+    @classmethod
+    def _non_empty_string(cls, value: str, info: Any) -> str:
+        if not value.strip():
+            raise ValueError(f"{info.field_name} must not be empty")
+        return value
+
+    @field_validator("allowed_roles")
+    @classmethod
+    def _roles_must_not_be_empty(cls, value: tuple[str, ...]) -> tuple[str, ...]:
+        if not value:
             raise ValueError("allowed_roles must not be empty")
-
-    def to_dict(self) -> dict[str, Any]:
-        payload = asdict(self)
-        payload["source_type"] = self.source_type.value
-        payload["security_classification"] = self.security_classification.value
-        payload["allowed_roles"] = list(self.allowed_roles)
-        return payload
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict(), ensure_ascii=False, sort_keys=True)
+        return value
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "ChunkRecord":
-        data = dict(payload)
-        data["source_type"] = SourceType(data["source_type"])
-        data["security_classification"] = SecurityClassification(data["security_classification"])
-        data["allowed_roles"] = tuple(data["allowed_roles"])
-        return cls(**data)
+        return cls.model_validate(payload)

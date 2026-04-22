@@ -4,12 +4,15 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Iterator
-from xml.etree import ElementTree as ET
+
+from lxml import etree as ET
 
 from tax_rag.schemas import NormalizedDocument, SourceType
 
 
 def _local_name(tag: str) -> str:
+    if not isinstance(tag, str):
+        return ""
     return tag.rsplit("}", 1)[-1]
 
 
@@ -17,11 +20,11 @@ def _normalize_whitespace(value: str) -> str:
     return " ".join(value.replace("\xa0", " ").split())
 
 
-def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> str:
+def _element_text(element: ET._Element, ignored_tags: set[str] | None = None) -> str:
     ignored_tags = ignored_tags or set()
     parts: list[str] = []
 
-    def visit(node: ET.Element) -> None:
+    def visit(node: ET._Element) -> None:
         if _local_name(node.tag) in ignored_tags:
             return
         if node.text and node.text.strip():
@@ -35,7 +38,7 @@ def _element_text(element: ET.Element, ignored_tags: set[str] | None = None) -> 
     return _normalize_whitespace(" ".join(parts))
 
 
-def _article_body(article: ET.Element) -> str:
+def _article_body(article: ET._Element) -> str:
     parts: list[str] = []
     for child in article:
         child_name = _local_name(child.tag)
@@ -49,7 +52,10 @@ def _article_body(article: ET.Element) -> str:
 
 def parse_law_file(path: str | Path) -> list[NormalizedDocument]:
     path = Path(path)
-    root = ET.parse(path).getroot()
+    root = ET.parse(
+        str(path),
+        parser=ET.XMLParser(remove_blank_text=True, recover=True, huge_tree=True),
+    ).getroot()
     bwb_id = root.attrib.get("bwb-id", path.stem)
     effective_date = root.attrib.get("inwerkingtreding")
     citeertitel_node = root.find(".//citeertitel")

@@ -29,6 +29,7 @@ class ChunkingConfig:
 
 @dataclass(frozen=True)
 class RetrievalConfig:
+    vector_store: str = "qdrant"
     lexical_top_k: int = 50
     dense_top_k: int = 50
     final_top_k: int = 10

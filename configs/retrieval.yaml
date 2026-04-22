@@ -1,4 +1,5 @@
 retrieval:
+  vector_store: qdrant
   lexical_top_k: 50
   dense_top_k: 50
   final_top_k: 10
