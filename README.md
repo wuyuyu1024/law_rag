@@ -39,6 +39,11 @@ Phase 4 baseline answer control is now implemented in a deterministic local form
 - no external API key is required for the baseline answer/refusal flow
 - corrective control flow now includes explicit query transformation, bounded retry, and inspectable state transitions
 
+Phase 5 evaluation now has an initial deterministic baseline:
+- `data/eval/gold_questions.jsonl` provides a small gold set across exact lookup, semantic lookup, multi-part, unauthorized-role, and should-refuse cases
+- `scripts/run_eval.py` runs the current agent against that gold set
+- summary metrics and per-case outputs are written to `data/eval/eval_runs/`
+
 Generation and evaluation are still upcoming phases.
 
 ## Tooling
@@ -142,6 +147,11 @@ The agent config now documents the Phase 4 baseline:
 - refusal remains structured and inspectable
 - the baseline answer layer stays local and deterministic
 - bounded retry behavior is explicit and configuration-backed
+
+The evaluation baseline now includes:
+- a rerunnable gold-question regression set
+- saved summary and per-case outputs for inspection
+- explicit proxy metrics for faithfulness and context precision until richer evaluators are added
 
 ## Vector DB Selection
 

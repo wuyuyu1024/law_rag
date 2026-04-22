@@ -1,0 +1,73 @@
+"""Evaluation schemas for gold questions and regression reports."""
+
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Any
+
+from pydantic import Field, field_validator
+
+from tax_rag.schemas import AnswerOutcome, EvidenceGrade, RefusalReason
+from tax_rag.schemas.document import SchemaModel
+
+
+class GoldEvalCase(SchemaModel):
+    case_id: str
+    category: str
+    query: str
+    role: str
+    expected_outcome: AnswerOutcome
+    expected_grade: EvidenceGrade | None = None
+    expected_refusal_reason: RefusalReason | None = None
+    expected_citation_substrings: tuple[str, ...] = ()
+    forbidden_citation_substrings: tuple[str, ...] = ()
+    notes: str | None = None
+
+    @field_validator("case_id", "category", "query", "role")
+    @classmethod
+    def _non_empty_string(cls, value: str, info: Any) -> str:
+        if not value.strip():
+            raise ValueError(f"{info.field_name} must not be empty")
+        return value
+
+
+class EvalCaseResult(SchemaModel):
+    case_id: str
+    category: str
+    passed: bool
+    outcome_match: bool
+    grade_match: bool
+    refusal_reason_match: bool
+    citation_presence: bool
+    expected_citation_match_count: int
+    expected_citation_total: int
+    unauthorized_retrieval_failure: bool
+    faithfulness_proxy_pass: bool
+    context_precision_proxy: float
+    query: str
+    role: str
+    expected_outcome: AnswerOutcome
+    actual_outcome: AnswerOutcome
+    expected_grade: EvidenceGrade | None = None
+    actual_grade: EvidenceGrade | None = None
+    expected_refusal_reason: RefusalReason | None = None
+    actual_refusal_reason: RefusalReason | None = None
+    citations: tuple[str, ...] = ()
+    state_trace: tuple[str, ...] = ()
+    answer_text: str | None = None
+    notes: str | None = None
+
+
+class EvalReport(SchemaModel):
+    generated_at: str
+    total_cases: int
+    passed_cases: int
+    metrics: dict[str, float | int]
+    cases: tuple[EvalCaseResult, ...]
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("generated_at")
+    @classmethod
+    def _valid_datetime(cls, value: str) -> str:
+        datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return value

@@ -122,6 +122,17 @@ Repo references:
 - `src/tax_rag/agent/`
 - `src/tax_rag/eval/`
 
+### How do you evaluate the system before changing retrieval or models?
+
+Short answer:
+I added a deterministic gold-set runner first so retrieval, refusal, and citation behavior can be checked locally and repeatedly. The current faithfulness and context-precision signals are explicit proxies, and the design is intended to be extended later with Ragas or DeepEval rather than replaced.
+
+Repo references:
+- `data/eval/gold_questions.jsonl`
+- `src/tax_rag/eval/runner.py`
+- `scripts/run_eval.py`
+- `docs/decisions/008-deterministic-evaluation-baseline.md`
+
 ## Fast Defense Pattern
 
 When you answer a design question, use this pattern:

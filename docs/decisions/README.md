@@ -15,3 +15,4 @@ Current ADRs:
 - `005-vector-db-and-hybrid-retrieval.md`
 - `006-evidence-gating-and-refusal.md`
 - `007-corrective-control-flow.md`
+- `008-deterministic-evaluation-baseline.md`
