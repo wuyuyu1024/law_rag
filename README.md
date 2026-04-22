@@ -45,7 +45,7 @@ Phase 5 evaluation now has an initial deterministic baseline:
 - `scripts/run_eval.py` runs the current agent against that gold set
 - summary metrics and per-case outputs are written to `data/eval/eval_runs/`
 
-Generation and evaluation are still upcoming phases.
+Phase 5 still has follow-up work open around cache policy, promotion hooks, and observability, but the evaluation baseline is already implemented.
 
 ## Tooling
 
@@ -57,7 +57,6 @@ Generation and evaluation are still upcoming phases.
 ```bash
 uv run python -c "import tax_rag; print(tax_rag.__version__)"
 uv run pytest -q
-uv run python main.py
 ```
 
 To refresh the demo raw corpus:
@@ -68,6 +67,37 @@ uv run python scripts/download_legal_demo_data.py \
   --out-dir data/raw \
   --lock-file configs/demo_corpus.lock.json
 ```
+
+## Demo Runbook
+
+Minimal end-to-end flow:
+
+```bash
+uv run pytest -q
+uv run python scripts/parse_raw_data.py
+uv run python scripts/build_chunks.py
+uv run python scripts/build_dense_index.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --index-path data/indexes/qdrant \
+  --collection-name dense_chunks \
+  --recreate
+uv run python scripts/benchmark_ttft.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --gold-path data/eval/gold_questions.jsonl \
+  --output-dir data/eval/benchmark_runs \
+  --dense-index-path data/indexes/qdrant \
+  --dense-collection-name dense_chunks
+uv run python scripts/run_eval.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --gold-path data/eval/gold_questions.jsonl \
+  --output-dir data/eval/eval_runs
+```
+
+What this runbook demonstrates:
+- parsed and chunked legal data
+- persistent dense index creation
+- uncached-path TTFT benchmark
+- regression/evaluation run over the gold set
 
 ## Repository Layout
 
