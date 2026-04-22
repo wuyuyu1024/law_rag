@@ -91,6 +91,11 @@ uv run python scripts/run_eval.py \
   --chunks-path data/chunks/legal_chunks.jsonl \
   --gold-path data/eval/gold_questions.jsonl \
   --output-dir data/eval/eval_runs
+uv run python scripts/demo_cli.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --dense-index-path data/indexes/qdrant \
+  --query "Artikel 3.114 lid 2" \
+  --role helpdesk
 ```
 
 What this runbook demonstrates:
@@ -98,6 +103,7 @@ What this runbook demonstrates:
 - persistent dense index creation
 - uncached-path TTFT benchmark
 - regression/evaluation run over the gold set
+- a minimal CLI answer/refusal demo with citations, state trace, and timing metadata
 
 ## Repository Layout
 
