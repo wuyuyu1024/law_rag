@@ -1,0 +1,129 @@
+# Interview Prep
+
+This file is a short defense guide for the main design choices in the repository.
+
+## Five-Minute Walkthrough
+
+Use this order:
+
+1. Problem and constraints
+The assistant is for a national tax authority, so the system is not a generic chatbot. The hard constraints are legal hierarchy preservation, strict RBAC before retrieval, exact citations, and abstention when evidence is weak or unauthorized.
+
+2. Data model
+I normalized raw sources into canonical document and chunk schemas so the retrieval system works on structured legal records, not only raw text. That is why fields like `doc_id`, `citation_path`, `allowed_roles`, `article`, and `ecli` are first-class data fields.
+
+3. Security model
+RBAC is enforced before retrieval candidates are ranked. Unauthorized chunks do not enter lexical retrieval, dense retrieval, fusion, reranking, generation, cache behavior, or evaluation.
+
+4. Retrieval model
+The retrieval path is hybrid. Lexical retrieval handles exact identifiers like ECLI and article references. Dense retrieval handles semantic recall. RRF combines them without fragile score calibration.
+
+5. Infrastructure choices
+I used `lxml` for stronger XML handling, `pydantic` for schema boundaries, and Qdrant for dense retrieval because the assignment needs explicit filtered vector search and concrete ANN settings.
+
+6. Demo vs production
+The runtime corpus is small and partly simulated, but the architecture is shaped around the full assignment: restricted documents, large-scale chunk counts, pre-retrieval authorization, and explicit retrieval controls.
+
+## Likely Questions
+
+### Why did you keep legal chunking custom?
+
+Short answer:
+Because legal hierarchy is part of the assignment, not an implementation detail. Generic splitters optimize for token length, but I needed chunks that remain traceable to article, paragraph, subparagraph, or case section.
+
+Repo references:
+- `src/tax_rag/chunking/legal_chunker.py`
+- `src/tax_rag/chunking/case_chunker.py`
+
+### Why enforce RBAC before retrieval instead of after?
+
+Short answer:
+Because post-filtering still allows unauthorized chunks to influence scoring and ranking. The assignment requires that unauthorized material must not affect retrieval or generation at all, so the filter must apply before candidate scoring matters.
+
+Repo references:
+- `src/tax_rag/security/contract.py`
+- `src/tax_rag/security/rbac.py`
+
+### Why did you choose Qdrant over Weaviate?
+
+Short answer:
+Weaviate is a valid alternative, but Qdrant maps more directly to the chunk-plus-payload model in this repository. I wanted explicit control over payload filtering, HNSW settings, and metadata-driven authorization at retrieval time.
+
+Repo references:
+- `README.md`
+- `src/tax_rag/retrieval/dense.py`
+- `docs/decisions/005-vector-db-and-hybrid-retrieval.md`
+
+### Why hybrid retrieval instead of dense-only retrieval?
+
+Short answer:
+Legal search includes exact identifiers and semantic concepts. Dense retrieval is useful for semantic recall, but article numbers and ECLI references need a precise lexical path. Hybrid retrieval covers both and is more defensible for this domain.
+
+Repo references:
+- `src/tax_rag/retrieval/lexical.py`
+- `src/tax_rag/retrieval/dense.py`
+- `src/tax_rag/retrieval/hybrid.py`
+
+### Why did you use RRF instead of weighted score blending?
+
+Short answer:
+RRF is simpler and more robust as an initial legal-search baseline. It combines rank evidence from lexical and dense retrieval without relying on fragile score calibration between very different scorers.
+
+Repo references:
+- `src/tax_rag/retrieval/hybrid.py`
+- `src/tax_rag/common/config.py`
+
+### Why use Pydantic if it did not reduce much code?
+
+Short answer:
+The point was not line-count reduction. The point was to make schema validation and serialization more reliable at system boundaries. Most of the remaining code is domain logic, not generic plumbing.
+
+Repo references:
+- `src/tax_rag/schemas/document.py`
+- `src/tax_rag/schemas/chunk.py`
+- `src/tax_rag/schemas/retrieval.py`
+
+### Why use lxml?
+
+Short answer:
+The corpus is XML-heavy and structure-sensitive. I needed a stronger XML tool than the minimal standard-library parser because the system must preserve legal structure, namespace-heavy case law content, and later XPath-friendly extensibility.
+
+Repo references:
+- `src/tax_rag/ingestion/parser_laws.py`
+- `src/tax_rag/ingestion/parser_cases.py`
+
+### What is still missing?
+
+Short answer:
+The main next steps are evidence grading, corrective retrieval/refusal control flow, reranking with a real reranker, and a formal evaluation runner with a gold set. The current system has the data, security, and retrieval foundation those steps depend on.
+
+Repo references:
+- `TASKS.md`
+- `src/tax_rag/agent/`
+- `src/tax_rag/eval/`
+
+## Fast Defense Pattern
+
+When you answer a design question, use this pattern:
+
+1. Name the assignment constraint.
+2. State the decision.
+3. State the rejected alternative.
+4. Explain the tradeoff you accepted.
+
+Example:
+
+The assignment requires RBAC before retrieval influence. I therefore filtered candidates before lexical and dense ranking rather than retrieving first and filtering later. That trades some recall if metadata is incomplete, but in this domain abstention is safer than leaking restricted evidence.
+
+## What To Memorize
+
+If time is limited, memorize these points:
+
+- This is not a generic chatbot. It is a secure legal retrieval system.
+- Metadata preservation is a first-class design rule.
+- RBAC is pre-retrieval, not post-retrieval.
+- Lexical retrieval is necessary for legal identifiers.
+- Dense retrieval is necessary for semantic recall.
+- Hybrid retrieval with RRF is the initial baseline.
+- Qdrant was chosen because filtered retrieval is the core requirement.
+- Refusal is a feature in a zero-hallucination domain.

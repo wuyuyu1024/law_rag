@@ -214,6 +214,7 @@ A task is considered done when:
 - existing functionality is not broken
 - minimal tests are added or updated
 - configuration or README notes are updated when needed
+- any affected architecture decision record in `docs/decisions/` is added or updated when the change modifies a meaningful design choice
 - any demo simplification affecting assignment fidelity is called out explicitly
 
 ## Change Guidelines for Agents
@@ -225,6 +226,7 @@ When implementing tasks:
 - prefer clear code over clever code
 - preserve repository structure unless explicitly asked to change it
 - prefer explicit configs and typed structures for retrieval/security behavior over hidden constants
+- if a change affects a major design choice such as schema boundaries, XML parsing, chunking strategy, retrieval/security architecture, vector database selection, or other interviewer-relevant tradeoffs, update the corresponding file in `docs/decisions/`
 
 If something is ambiguous:
 - choose the simplest implementation that keeps future extension possible
