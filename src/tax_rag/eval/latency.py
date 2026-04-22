@@ -174,9 +174,15 @@ def run_latency_benchmark_from_paths(
     limit: int | None = None,
     method: RetrievalMethod = RetrievalMethod.HYBRID,
     target_ttft_ms: float = 1500.0,
+    dense_index_path: str | None = None,
+    dense_collection_name: str = "dense_chunks",
 ) -> LatencyReport:
     runner = LatencyBenchmarkRunner(
-        retrieval_service=RetrievalService.from_jsonl(str(chunks_path)),
+        retrieval_service=RetrievalService.from_jsonl(
+            str(chunks_path),
+            dense_index_path=dense_index_path,
+            dense_collection_name=dense_collection_name,
+        ),
         target_ttft_ms=target_ttft_ms,
         cache_enabled=False,
     )

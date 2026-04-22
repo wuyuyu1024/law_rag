@@ -2,15 +2,13 @@
 
 from __future__ import annotations
 
-import hashlib
-import math
 from time import perf_counter
-from typing import Any
 
 from qdrant_client import QdrantClient, models
 
 from tax_rag.common import DEFAULT_CONFIG
-from tax_rag.retrieval.semantic import semantic_features
+from tax_rag.common.dense import CLASSIFICATION_ORDER, dense_text, embed_text, payload_for_chunk
+from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME, ensure_local_qdrant_index
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -18,7 +16,6 @@ from tax_rag.schemas import (
     RetrievalResponse,
     RetrievalResult,
     ScoreTrace,
-    SecurityClassification,
 )
 from tax_rag.security import (
     DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
@@ -27,70 +24,8 @@ from tax_rag.security import (
     filter_authorized_chunks,
 )
 
-_CLASSIFICATION_ORDER = {
-    SecurityClassification.PUBLIC: 0,
-    SecurityClassification.INTERNAL: 1,
-    SecurityClassification.CONFIDENTIAL: 2,
-    SecurityClassification.RESTRICTED: 3,
-}
-
-
 def _elapsed_ms(start: float) -> float:
     return round((perf_counter() - start) * 1000, 3)
-
-
-def _character_ngrams(token: str, size: int = 3) -> list[str]:
-    normalized = token.replace(" ", "")
-    if len(normalized) < size:
-        return [normalized]
-    return [normalized[index : index + size] for index in range(len(normalized) - size + 1)]
-
-
-def _hashed_index(token: str, dimensions: int) -> int:
-    digest = hashlib.blake2b(token.encode("utf-8"), digest_size=8).hexdigest()
-    return int(digest, 16) % dimensions
-
-
-def embed_text(value: str, *, dimensions: int = 256) -> list[float]:
-    weights = [0.0] * dimensions
-    for feature, weight in semantic_features(value).items():
-        token_index = _hashed_index(f"tok:{feature}", dimensions)
-        weights[token_index] += weight
-        gram_token = feature.replace("concept:", "").replace("_", "")
-        for gram in _character_ngrams(gram_token):
-            gram_index = _hashed_index(f"tri:{gram}", dimensions)
-            weights[gram_index] += 0.2 * weight
-
-    norm = math.sqrt(sum(weight * weight for weight in weights))
-    if norm == 0.0:
-        return weights
-    return [weight / norm for weight in weights]
-
-
-def _dense_text(chunk: ChunkRecord) -> str:
-    return " ".join(
-        part
-        for part in (
-            chunk.citation_path,
-            chunk.text,
-            chunk.article or "",
-            chunk.ecli or "",
-            chunk.section_type or "",
-            chunk.source_type.value,
-        )
-        if part
-    )
-
-
-def _payload_for_chunk(chunk: ChunkRecord) -> dict[str, Any]:
-    return {
-        "chunk": chunk.to_dict(),
-        "allowed_roles": list(chunk.allowed_roles),
-        "source_type": chunk.source_type.value,
-        "jurisdiction": chunk.jurisdiction,
-        "security_classification": chunk.security_classification.value,
-        "security_classification_rank": _CLASSIFICATION_ORDER[chunk.security_classification],
-    }
 
 
 def _query_filter(request: RetrievalRequest) -> models.Filter | None:
@@ -105,7 +40,7 @@ def _query_filter(request: RetrievalRequest) -> models.Filter | None:
         ),
         models.FieldCondition(
             key="security_classification_rank",
-            range=models.Range(lte=_CLASSIFICATION_ORDER[clearance]),
+            range=models.Range(lte=CLASSIFICATION_ORDER[clearance]),
         ),
     ]
 
@@ -137,10 +72,20 @@ def _build_local_qdrant(chunks: list[ChunkRecord] | tuple[ChunkRecord, ...], *, 
     client.upload_collection(
         collection_name="dense_chunks",
         ids=list(range(1, len(chunks) + 1)),
-        vectors=[embed_text(_dense_text(chunk), dimensions=dimensions) for chunk in chunks],
-        payload=[_payload_for_chunk(chunk) for chunk in chunks],
+        vectors=[embed_text(dense_text(chunk), dimensions=dimensions) for chunk in chunks],
+        payload=[payload_for_chunk(chunk) for chunk in chunks],
     )
     return client
+
+
+def _persistent_index_settings(request: RetrievalRequest) -> tuple[str | None, str]:
+    path = request.metadata.get("dense_index_path")
+    collection_name = request.metadata.get("dense_collection_name", DEFAULT_DENSE_COLLECTION_NAME)
+    if not isinstance(path, str) or not path.strip():
+        return None, collection_name
+    if not isinstance(collection_name, str) or not collection_name.strip():
+        collection_name = DEFAULT_DENSE_COLLECTION_NAME
+    return path, collection_name
 
 
 def _rank_dense_chunks(
@@ -159,9 +104,22 @@ def _rank_dense_chunks(
     if query_filter is None:
         return ()
 
-    client = _build_local_qdrant(chunks, dimensions=dimensions)
+    persistent_index_path, collection_name = _persistent_index_settings(request)
+    backend = "qdrant_local"
+    if persistent_index_path is not None:
+        ensure_local_qdrant_index(
+            chunks,
+            path=persistent_index_path,
+            collection_name=collection_name,
+            dimensions=dimensions,
+        )
+        client = QdrantClient(path=persistent_index_path)
+        backend = "qdrant_local_persistent"
+    else:
+        client = _build_local_qdrant(chunks, dimensions=dimensions)
+        collection_name = DEFAULT_DENSE_COLLECTION_NAME
     search_result = client.query_points(
-        collection_name="dense_chunks",
+        collection_name=collection_name,
         query=query_vector,
         query_filter=query_filter,
         limit=request.top_k,
@@ -187,12 +145,12 @@ def _rank_dense_chunks(
                         value=similarity,
                         rank=rank,
                         metadata={
-                            "backend": "qdrant_local",
+                            "backend": backend,
                             "dimensions": dimensions,
                         },
                     ),
                 ),
-                metadata={"rank": rank, "authorized": True, "backend": "qdrant_local"},
+                metadata={"rank": rank, "authorized": True, "backend": backend},
             )
         )
     return tuple(results)
@@ -230,7 +188,10 @@ def retrieve_dense(
             "total_chunk_count": len(chunks),
             "dense_model": DEFAULT_CONFIG.retrieval.dense_model,
             "dense_dimensions": DEFAULT_CONFIG.retrieval.dense_dimensions,
-            "vector_backend": "qdrant_local",
+            "vector_backend": (
+                "qdrant_local_persistent" if _persistent_index_settings(request)[0] is not None else "qdrant_local"
+            ),
+            "dense_collection_name": _persistent_index_settings(request)[1],
             "timings_ms": {
                 "request_scoping_ms": 0.0,
                 "security_filter_ms": security_filter_ms,

@@ -155,6 +155,18 @@ The evaluation baseline now includes:
 - saved summary and per-case outputs for inspection
 - explicit proxy metrics for faithfulness and context precision until richer evaluators are added
 
+## Building Dense Index
+
+Build the persistent local Qdrant index with:
+
+```bash
+uv run python scripts/build_dense_index.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --index-path data/indexes/qdrant \
+  --collection-name dense_chunks \
+  --recreate
+```
+
 ## Benchmarking TTFT
 
 Run the uncached-path latency benchmark with:
@@ -163,10 +175,12 @@ Run the uncached-path latency benchmark with:
 uv run python scripts/benchmark_ttft.py \
   --chunks-path data/chunks/legal_chunks.jsonl \
   --gold-path data/eval/gold_questions.jsonl \
-  --output-dir data/eval/benchmark_runs
+  --output-dir data/eval/benchmark_runs \
+  --dense-index-path data/indexes/qdrant \
+  --dense-collection-name dense_chunks
 ```
 
-The benchmark reports per-stage timings for request setup, filtered retrieval, fusion, reranking, evidence grading, and answer construction, then writes summary and per-case artifacts for inspection.
+The benchmark reports per-stage timings for request setup, filtered retrieval, fusion, reranking, evidence grading, and answer construction, then writes summary and per-case artifacts for inspection. For a representative uncached-path run, build the persistent dense index first so the benchmark does not include one-time local index creation.
 
 ## Vector DB Selection
 

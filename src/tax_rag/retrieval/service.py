@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from tax_rag.common import DEFAULT_CONFIG
+from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME
 from tax_rag.retrieval.common import load_chunk_records
 from tax_rag.retrieval.dense import retrieve_dense
 from tax_rag.retrieval.hybrid import retrieve_hybrid
@@ -16,6 +17,8 @@ from tax_rag.schemas import ChunkRecord, RetrievalMethod, RetrievalRequest, Retr
 class RetrievalService:
     chunks: list[ChunkRecord] = field(default_factory=list)
     default_method: RetrievalMethod = RetrievalMethod.HYBRID
+    dense_index_path: str | None = None
+    dense_collection_name: str = DEFAULT_DENSE_COLLECTION_NAME
 
     @classmethod
     def from_jsonl(
@@ -23,8 +26,15 @@ class RetrievalService:
         path: str,
         *,
         default_method: RetrievalMethod = RetrievalMethod.HYBRID,
+        dense_index_path: str | None = None,
+        dense_collection_name: str = DEFAULT_DENSE_COLLECTION_NAME,
     ) -> "RetrievalService":
-        return cls(chunks=load_chunk_records(path), default_method=default_method)
+        return cls(
+            chunks=load_chunk_records(path),
+            default_method=default_method,
+            dense_index_path=dense_index_path,
+            dense_collection_name=dense_collection_name,
+        )
 
     def retrieve(
         self,
@@ -42,6 +52,10 @@ class RetrievalService:
             top_k=top_k or DEFAULT_CONFIG.retrieval.final_top_k,
             source_types=source_types,
             jurisdiction=jurisdiction,
+            metadata={
+                "dense_index_path": self.dense_index_path,
+                "dense_collection_name": self.dense_collection_name,
+            },
         )
         retrieval_method = method or self.default_method
 
