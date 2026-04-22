@@ -6,20 +6,25 @@ The primary requirements live in `assignment.md`. The implementation backlog liv
 
 ## Current Status
 
-Phase 0 is the current baseline:
+Phase 0 baseline is complete:
 - repository structure exists
 - the package is installable from `src/`
 - baseline config defaults exist in Python and in `configs/`
 - a reproducible legal demo corpus downloader is implemented
 - a minimal pytest scaffold is in place
 
-Phase 1 ingestion is now partially implemented:
+Phase 1 ingestion is implemented for the demo corpus:
 - canonical normalized document schema exists
 - raw Dutch law XML is parsed into article-level normalized records
 - raw Rechtspraak XML is parsed into case-level normalized records
 - internal policy and e-learning sources are represented by fixture-backed adapters for architecture coverage
 
-Chunking, retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
+Phase 2 chunking is implemented for the demo corpus:
+- legal-aware law chunking preserves article / `lid` / list-item citation context
+- case-law chunking preserves section-aware boundaries and canonical `facts` / `reasoning` / `holding` labels
+- chunk export writes `data/chunks/laws_chunks.jsonl`, `data/chunks/case_chunks.jsonl`, and `data/chunks/legal_chunks.jsonl`
+
+Retrieval, RBAC enforcement, generation, and evaluation are still upcoming phases.
 
 ## Tooling
 
@@ -92,7 +97,7 @@ This remains a demo-scope stand-in for the broader corpus described in the assig
 
 ## Config Defaults
 
-Phase 0 includes placeholder config files for:
+The repo now includes config files for:
 - chunking
 - retrieval
 - reranking
@@ -122,4 +127,4 @@ The repo is structured around the four required modules from `assignment.md`:
 - Agentic RAG and self-healing
 - Production ops, security, and evaluation
 
-The current code only establishes the baseline needed to start implementing those modules safely and incrementally.
+The current code covers the baseline, ingestion, and demo-scope chunking needed to start implementing retrieval, security, and answer control incrementally.

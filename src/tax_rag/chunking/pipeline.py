@@ -9,6 +9,11 @@ from tax_rag.chunking.case_chunker import chunk_case_document
 from tax_rag.chunking.legal_chunker import chunk_law_document
 from tax_rag.schemas import ChunkRecord, NormalizedDocument, SourceType
 
+SUPPORTED_CHUNK_SOURCE_TYPES = {
+    SourceType.LEGISLATION,
+    SourceType.CASE_LAW,
+}
+
 
 def load_documents(path: str | Path) -> list[NormalizedDocument]:
     records: list[NormalizedDocument] = []
@@ -27,7 +32,12 @@ def build_chunks(documents: list[NormalizedDocument]) -> list[ChunkRecord]:
         elif document.source_type is SourceType.CASE_LAW:
             chunks.extend(chunk_case_document(document))
         else:
-            continue
+            supported = ", ".join(sorted(source_type.value for source_type in SUPPORTED_CHUNK_SOURCE_TYPES))
+            raise ValueError(
+                "Unsupported source type for chunking "
+                f"'{document.source_type.value}' for doc_id '{document.doc_id}'. "
+                f"Supported types: {supported}"
+            )
     return chunks
 
 
