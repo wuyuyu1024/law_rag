@@ -34,7 +34,8 @@ class RetrievalConfig:
     final_top_k: int = 10
     fusion_strategy: str = "rrf"
     rrf_k: int = 60
-    dense_model: str = "placeholder"
+    dense_model: str = "demo-hash-embedding-v1"
+    dense_dimensions: int = 256
     exact_identifier_boost: float = 3.0
 
 

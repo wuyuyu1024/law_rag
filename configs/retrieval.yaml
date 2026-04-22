@@ -4,5 +4,6 @@ retrieval:
   final_top_k: 10
   fusion_strategy: rrf
   rrf_k: 60
-  dense_model: placeholder
+  dense_model: demo-hash-embedding-v1
+  dense_dimensions: 256
   exact_identifier_boost: 3.0

@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-import json
 import re
-from pathlib import Path
 
 from tax_rag.common import DEFAULT_CONFIG
+from tax_rag.retrieval.common import request_allows_chunk
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -40,15 +39,6 @@ def _normalize_for_match(value: str | None) -> str:
 
 def _normalize_subparagraph(value: str | None) -> str:
     return _normalize_for_match(value).replace(" ", "")
-
-
-def load_chunk_records(path: str | Path) -> list[ChunkRecord]:
-    records: list[ChunkRecord] = []
-    for line in Path(path).read_text(encoding="utf-8").splitlines():
-        if not line.strip():
-            continue
-        records.append(ChunkRecord.from_dict(json.loads(line)))
-    return records
 
 
 def _extract_query_terms(query: str) -> dict[str, str]:
@@ -145,25 +135,12 @@ def _score_chunk_against_query(chunk: ChunkRecord, query: str) -> tuple[tuple[Sc
     return tuple(scores), tuple(dict.fromkeys(matched_terms))
 
 
-def _request_allows_chunk(chunk: ChunkRecord, request: RetrievalRequest) -> bool:
-    if request.source_types and chunk.source_type not in request.source_types:
-        return False
-    if request.jurisdiction is not None and chunk.jurisdiction != request.jurisdiction:
-        return False
-    return True
-
-
-def retrieve_lexical(
+def _rank_lexical_chunks(
     chunks: list[ChunkRecord] | tuple[ChunkRecord, ...],
     request: RetrievalRequest,
-    *,
-    contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
-) -> RetrievalResponse:
-    authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
-    request_scoped_chunks = [chunk for chunk in authorized.authorized_chunks if _request_allows_chunk(chunk, request)]
-
+) -> tuple[RetrievalResult, ...]:
     scored_candidates: list[tuple[float, ChunkRecord, tuple[ScoreTrace, ...], tuple[str, ...]]] = []
-    for chunk in request_scoped_chunks:
+    for chunk in chunks:
         score_traces, matched_terms = _score_chunk_against_query(chunk, request.query)
         if not score_traces:
             continue
@@ -193,11 +170,23 @@ def retrieve_lexical(
                 metadata={"rank": rank, "authorized": True},
             )
         )
+    return tuple(results)
+
+
+def retrieve_lexical(
+    chunks: list[ChunkRecord] | tuple[ChunkRecord, ...],
+    request: RetrievalRequest,
+    *,
+    contract: RetrievalSecurityContract = DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
+) -> RetrievalResponse:
+    authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
+    request_scoped_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
+    results = _rank_lexical_chunks(request_scoped_chunks, request)
 
     return RetrievalResponse(
         request=request,
         retrieval_method=RetrievalMethod.LEXICAL,
-        results=tuple(results),
+        results=results,
         security_stage=authorized.enforcement_stage,
         metadata={
             "authorized_candidate_count": len(request_scoped_chunks),
@@ -206,4 +195,3 @@ def retrieve_lexical(
             "query_terms": _extract_query_terms(request.query),
         },
     )
-
