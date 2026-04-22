@@ -73,6 +73,8 @@ def test_run_latency_benchmark_from_paths_reports_stage_timings_and_saves_artifa
     assert report.total_cases == 1
     assert report.cases_under_target == 1
     assert report.metadata["cache_enabled"] is False
+    assert report.metadata["synthetic_multiplier"] == 1
+    assert report.metadata["synthetic_stress_mode"] is False
     case = report.cases[0]
     for stage_key in (
         "request_setup_ms",
@@ -91,3 +93,45 @@ def test_run_latency_benchmark_from_paths_reports_stage_timings_and_saves_artifa
 
     assert any(path.suffix == ".json" for path in output_dir.iterdir())
     assert any(path.suffix == ".jsonl" for path in output_dir.iterdir())
+
+
+def test_run_latency_benchmark_supports_synthetic_stress_multiplier(tmp_path: Path) -> None:
+    chunk = _chunk(
+        chunk_id="law-home-office",
+        source_type=SourceType.LEGISLATION,
+        text="Home office expense deductions are limited for mixed private and business use.",
+        citation_path="Wet inkomstenbelasting 2001 > Artikel 3.16",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="3.16",
+    )
+    chunks_path = tmp_path / "chunks.jsonl"
+    chunks_path.write_text(f"{json.dumps(chunk.to_dict(), ensure_ascii=False)}\n", encoding="utf-8")
+
+    gold_path = tmp_path / "gold.jsonl"
+    _write_gold(
+        gold_path,
+        [
+            GoldEvalCase(
+                case_id="benchmark_home_office_stress",
+                category="semantic_lookup",
+                query="deductibility of home office expenses",
+                role="helpdesk",
+                expected_outcome=AnswerOutcome.ANSWERED,
+            )
+        ],
+    )
+
+    report = run_latency_benchmark_from_paths(
+        chunks_path=chunks_path,
+        gold_path=gold_path,
+        output_dir=tmp_path / "benchmark_runs",
+        limit=1,
+        method=RetrievalMethod.HYBRID,
+        target_ttft_ms=100_000.0,
+        synthetic_multiplier=3,
+    )
+
+    assert report.metadata["synthetic_multiplier"] == 3
+    assert report.metadata["synthetic_stress_mode"] is True
+    assert report.metadata["effective_chunk_count"] == 3

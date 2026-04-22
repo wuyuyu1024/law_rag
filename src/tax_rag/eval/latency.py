@@ -176,12 +176,14 @@ def run_latency_benchmark_from_paths(
     target_ttft_ms: float = 1500.0,
     dense_index_path: str | None = None,
     dense_collection_name: str = "dense_chunks",
+    synthetic_multiplier: int = 1,
 ) -> LatencyReport:
     runner = LatencyBenchmarkRunner(
         retrieval_service=RetrievalService.from_jsonl(
             str(chunks_path),
             dense_index_path=dense_index_path,
             dense_collection_name=dense_collection_name,
+            synthetic_multiplier=synthetic_multiplier,
         ),
         target_ttft_ms=target_ttft_ms,
         cache_enabled=False,
@@ -190,5 +192,15 @@ def run_latency_benchmark_from_paths(
     if limit is not None:
         cases = cases[:limit]
     report = runner.run_cases(cases, method=method)
+    report = report.model_copy(
+        update={
+            "metadata": {
+                **report.metadata,
+                "synthetic_multiplier": synthetic_multiplier,
+                "synthetic_stress_mode": synthetic_multiplier > 1,
+                "effective_chunk_count": len(runner.retrieval_service.chunks),
+            }
+        }
+    )
     runner.save_report(report, output_dir)
     return report

@@ -167,6 +167,8 @@ uv run python scripts/build_dense_index.py \
   --recreate
 ```
 
+For a synthetic indexing stress run, add `--synthetic-multiplier <N>`. This duplicates the existing chunk set only to stress indexing and retrieval overhead. It is not a substitute for a real larger legal corpus.
+
 ## Benchmarking TTFT
 
 Run the uncached-path latency benchmark with:
@@ -181,6 +183,8 @@ uv run python scripts/benchmark_ttft.py \
 ```
 
 The benchmark reports per-stage timings for request setup, filtered retrieval, fusion, reranking, evidence grading, and answer construction, then writes summary and per-case artifacts for inspection. For a representative uncached-path run, build the persistent dense index first so the benchmark does not include one-time local index creation.
+
+For synthetic stress mode, pass the same `--synthetic-multiplier <N>` value to both the index build and benchmark commands. Outputs are explicitly labeled as synthetic stress mode so they are not confused with legal-quality evaluation.
 
 ## Demo vs Production Scale
 

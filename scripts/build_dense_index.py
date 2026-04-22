@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 
+from tax_rag.common import expand_chunks_for_stress
 from tax_rag.indexing import ensure_local_qdrant_index
 from tax_rag.retrieval import load_chunk_records
 
@@ -15,9 +16,15 @@ def main() -> int:
     parser.add_argument("--index-path", default="data/indexes/qdrant", help="Directory for the local persistent Qdrant store")
     parser.add_argument("--collection-name", default="dense_chunks", help="Collection name inside the local Qdrant store")
     parser.add_argument("--recreate", action="store_true", help="Delete and rebuild the collection if it already exists")
+    parser.add_argument(
+        "--synthetic-multiplier",
+        type=int,
+        default=1,
+        help="Synthetic stress-mode multiplier for indexing overhead only; not legal-quality corpus expansion",
+    )
     args = parser.parse_args()
 
-    chunks = load_chunk_records(args.chunks_path)
+    chunks = expand_chunks_for_stress(load_chunk_records(args.chunks_path), multiplier=args.synthetic_multiplier)
     result = ensure_local_qdrant_index(
         chunks,
         path=args.index_path,
@@ -28,6 +35,8 @@ def main() -> int:
     print(f"collection_name: {result['collection_name']}")
     print(f"created: {result['created']}")
     print(f"point_count: {result['point_count']}")
+    print(f"synthetic_multiplier: {args.synthetic_multiplier}")
+    print(f"synthetic_stress_mode: {args.synthetic_multiplier > 1}")
     return 0
 
 

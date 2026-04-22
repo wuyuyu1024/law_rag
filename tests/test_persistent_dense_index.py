@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from tax_rag.common import expand_chunks_for_stress
 from tax_rag.indexing import ensure_local_qdrant_index
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
 from tax_rag.schemas import ChunkRecord, SecurityClassification, SourceType
@@ -59,3 +60,22 @@ def test_persistent_local_qdrant_index_is_built_and_reused(tmp_path: Path) -> No
     assert response_a.metadata["vector_backend"] == "qdrant_local_persistent"
     assert response_b.metadata["vector_backend"] == "qdrant_local_persistent"
     assert response_b.results[0].chunk_id == "law-home-office"
+
+
+def test_expand_chunks_for_stress_creates_distinct_replicas() -> None:
+    chunk = _chunk(
+        chunk_id="law-home-office",
+        source_type=SourceType.LEGISLATION,
+        text="Home office expense deductions are limited for mixed private and business use.",
+        citation_path="Wet inkomstenbelasting 2001 > Artikel 3.16",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="3.16",
+    )
+
+    expanded = expand_chunks_for_stress([chunk], multiplier=3)
+
+    assert len(expanded) == 3
+    assert expanded[0].chunk_id.endswith("::stress:1")
+    assert expanded[1].chunk_id.endswith("::stress:2")
+    assert expanded[2].metadata["synthetic_stress"] is True

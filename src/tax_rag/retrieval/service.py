@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from tax_rag.common import DEFAULT_CONFIG
+from tax_rag.common import DEFAULT_CONFIG, expand_chunks_for_stress
 from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME
 from tax_rag.retrieval.common import load_chunk_records
 from tax_rag.retrieval.dense import retrieve_dense
@@ -28,9 +28,10 @@ class RetrievalService:
         default_method: RetrievalMethod = RetrievalMethod.HYBRID,
         dense_index_path: str | None = None,
         dense_collection_name: str = DEFAULT_DENSE_COLLECTION_NAME,
+        synthetic_multiplier: int = 1,
     ) -> "RetrievalService":
         return cls(
-            chunks=load_chunk_records(path),
+            chunks=expand_chunks_for_stress(load_chunk_records(path), multiplier=synthetic_multiplier),
             default_method=default_method,
             dense_index_path=dense_index_path,
             dense_collection_name=dense_collection_name,

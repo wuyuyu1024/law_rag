@@ -16,6 +16,12 @@ def main() -> int:
     parser.add_argument("--output-dir", default="data/eval/benchmark_runs", help="Directory for benchmark outputs")
     parser.add_argument("--dense-index-path", default=None, help="Optional persistent local Qdrant index directory")
     parser.add_argument("--dense-collection-name", default="dense_chunks", help="Persistent Qdrant collection name")
+    parser.add_argument(
+        "--synthetic-multiplier",
+        type=int,
+        default=1,
+        help="Synthetic stress-mode multiplier for indexing/retrieval overhead only; not legal-quality evaluation",
+    )
     parser.add_argument("--limit", type=int, default=None, help="Optional maximum number of gold cases to benchmark")
     parser.add_argument(
         "--method",
@@ -40,11 +46,15 @@ def main() -> int:
         target_ttft_ms=args.target_ttft_ms,
         dense_index_path=args.dense_index_path,
         dense_collection_name=args.dense_collection_name,
+        synthetic_multiplier=args.synthetic_multiplier,
     )
 
     print(f"Benchmarked {report.total_cases} uncached cases")
     print(f"Cases under {report.target_ttft_ms} ms: {report.cases_under_target}")
     print(f"cache_enabled: {report.metadata['cache_enabled']}")
+    print(f"synthetic_multiplier: {report.metadata['synthetic_multiplier']}")
+    print(f"synthetic_stress_mode: {report.metadata['synthetic_stress_mode']}")
+    print(f"effective_chunk_count: {report.metadata['effective_chunk_count']}")
     for metric_name, value in report.metrics.items():
         print(f"{metric_name}: {value}")
     return 0
