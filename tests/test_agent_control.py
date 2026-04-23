@@ -73,6 +73,9 @@ def test_corrective_rag_agent_retries_with_structured_identifier() -> None:
     assert AgentState.TRANSFORMED.value in response.state_trace
     assert response.metadata["transform_plan"]["strategy"] == QueryTransformStrategy.STRUCTURED_IDENTIFIER.value
     assert response.citations[0].label == "ECLI:NL:HR:2025:99"
+    trace = response.metadata["execution_trace"]
+    assert any(event["event"] == "retrieval_completed" for event in trace)
+    assert trace[-1]["event"] == "response_finalized"
 
 
 def test_corrective_rag_agent_answers_when_all_subqueries_are_supported() -> None:
@@ -113,6 +116,7 @@ def test_corrective_rag_agent_answers_when_all_subqueries_are_supported() -> Non
     assert AgentState.TRANSFORMED.value in response.state_trace
     assert response.metadata["subqueries"][0]["evidence_grade"] == "relevant"
     assert "For 'What does Artikel 3.114 lid 2 say'" in response.answer_text
+    assert response.metadata["execution_trace"][1]["event"] == "query_transform_planned"
 
 
 def test_corrective_rag_agent_refuses_when_a_subquery_lacks_evidence() -> None:

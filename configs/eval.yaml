@@ -1,6 +1,7 @@
 evaluation:
   gold_set_path: data/eval/gold_questions.jsonl
   run_output_dir: data/eval/eval_runs
+  trace_output_enabled: true
   metrics:
     - answerable_vs_refused
     - citation_presence
@@ -9,3 +10,16 @@ evaluation:
     - semantic_retrieval_success
     - faithfulness
     - context_precision
+  promotion:
+    enabled: true
+    min_answerable_vs_refused_accuracy: 0.55
+    min_citation_presence_rate: 0.95
+    max_unauthorized_retrieval_failures: 0
+    min_exact_lookup_success: 0.35
+    min_semantic_retrieval_success: 0.70
+    min_faithfulness_proxy: 0.85
+    min_context_precision_proxy: 0.70
+    max_accuracy_regression: 0.05
+    max_exact_lookup_regression: 0.05
+    max_semantic_regression: 0.05
+    max_context_precision_regression: 0.05

@@ -87,6 +87,24 @@ class AgentConfig:
     max_retry_attempts: int = 1
     max_answer_citations: int = 2
     snippet_max_chars: int = 240
+    emit_execution_trace: bool = True
+    trace_top_results: int = 3
+
+
+@dataclass(frozen=True)
+class PromotionConfig:
+    enabled: bool = True
+    min_answerable_vs_refused_accuracy: float = 0.55
+    min_citation_presence_rate: float = 0.95
+    max_unauthorized_retrieval_failures: int = 0
+    min_exact_lookup_success: float = 0.35
+    min_semantic_retrieval_success: float = 0.70
+    min_faithfulness_proxy: float = 0.85
+    min_context_precision_proxy: float = 0.70
+    max_accuracy_regression: float = 0.05
+    max_exact_lookup_regression: float = 0.05
+    max_semantic_regression: float = 0.05
+    max_context_precision_regression: float = 0.05
 
 
 @dataclass(frozen=True)
@@ -102,6 +120,8 @@ class EvaluationConfig:
         "faithfulness",
         "context_precision",
     )
+    trace_output_enabled: bool = True
+    promotion: PromotionConfig = field(default_factory=PromotionConfig)
 
 
 @dataclass(frozen=True)

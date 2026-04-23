@@ -3,11 +3,20 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Any
 
 from tax_rag.agent.baseline import _answer_citations, _truncate_snippet, build_agent_response
 from tax_rag.agent.evidence import grade_evidence
 from tax_rag.agent.transform import transform_query
-from tax_rag.common import DEFAULT_CONFIG
+from tax_rag.common import (
+    DEFAULT_CONFIG,
+    evidence_trace_event,
+    response_trace_event,
+    retrieval_trace_event,
+    retry_trace_event,
+    trace_event,
+    transform_trace_event,
+)
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
 from tax_rag.schemas import (
     AgentResponse,
@@ -141,6 +150,17 @@ def _refuse_for_subquery_failure(
 class CorrectiveRAGAgent:
     retrieval_service: RetrievalService
 
+    def _append_trace(self, events: list[dict[str, Any]], event: dict[str, Any]) -> None:
+        if DEFAULT_CONFIG.agent.emit_execution_trace:
+            events.append(event)
+
+    def _with_trace(self, response: AgentResponse, events: list[dict[str, Any]]) -> AgentResponse:
+        if not DEFAULT_CONFIG.agent.emit_execution_trace:
+            return response
+        trace = list(events)
+        trace.append(response_trace_event(len(trace) + 1, response))
+        return response.model_copy(update={"metadata": {**response.metadata, "execution_trace": tuple(trace)}})
+
     def answer(
         self,
         query: str,
@@ -153,12 +173,23 @@ class CorrectiveRAGAgent:
     ) -> AgentResponse:
         plan = transform_query(query)
         states = [AgentState.UNDERSTOOD.value]
+        execution_trace: list[dict[str, Any]] = []
+        self._append_trace(
+            execution_trace,
+            trace_event(
+                sequence=1,
+                event="query_received",
+                state=AgentState.UNDERSTOOD.value,
+                payload={"query": query, "role": role, "jurisdiction": jurisdiction},
+            ),
+        )
         if plan.strategy is not QueryTransformStrategy.NONE:
             states.append(AgentState.TRANSFORMED.value)
+        self._append_trace(execution_trace, transform_trace_event(len(execution_trace) + 1, plan))
 
         if plan.strategy is QueryTransformStrategy.DECOMPOSITION:
             subquery_results: list[tuple[str, RetrievalResponse, EvidenceAssessment]] = []
-            for subquery in plan.transformed_queries:
+            for index, subquery in enumerate(plan.transformed_queries, start=1):
                 states.append(AgentState.RETRIEVED.value)
                 retrieval_response = self.retrieval_service.retrieve(
                     query=subquery,
@@ -168,26 +199,46 @@ class CorrectiveRAGAgent:
                     source_types=source_types,
                     jurisdiction=jurisdiction,
                 )
+                self._append_trace(
+                    execution_trace,
+                    retrieval_trace_event(
+                        len(execution_trace) + 1,
+                        retrieval_response,
+                        query=subquery,
+                        attempt_label=f"subquery_{index}",
+                    ),
+                )
                 states.append(AgentState.GRADED.value)
                 evidence = grade_evidence(retrieval_response)
+                self._append_trace(
+                    execution_trace,
+                    evidence_trace_event(
+                        len(execution_trace) + 1,
+                        evidence,
+                        query=subquery,
+                        attempt_label=f"subquery_{index}",
+                    ),
+                )
                 subquery_results.append((subquery, retrieval_response, evidence))
 
             if subquery_results and all(evidence.grade is EvidenceGrade.RELEVANT for _, _, evidence in subquery_results):
                 states.append(AgentState.ANSWERED.value)
-                return _combine_subquery_answers(
+                response = _combine_subquery_answers(
                     query=query,
                     role=role,
                     subquery_results=subquery_results,
                     state_trace=tuple(states),
                 )
+                return self._with_trace(response, execution_trace)
 
             states.append(AgentState.REFUSED.value)
-            return _refuse_for_subquery_failure(
+            response = _refuse_for_subquery_failure(
                 query=query,
                 role=role,
                 subquery_results=subquery_results,
                 state_trace=tuple(states),
             )
+            return self._with_trace(response, execution_trace)
 
         states.append(AgentState.RETRIEVED.value)
         retrieval_response = self.retrieval_service.retrieve(
@@ -198,8 +249,26 @@ class CorrectiveRAGAgent:
             source_types=source_types,
             jurisdiction=jurisdiction,
         )
+        self._append_trace(
+            execution_trace,
+            retrieval_trace_event(
+                len(execution_trace) + 1,
+                retrieval_response,
+                query=query,
+                attempt_label="initial",
+            ),
+        )
         states.append(AgentState.GRADED.value)
         evidence = grade_evidence(retrieval_response)
+        self._append_trace(
+            execution_trace,
+            evidence_trace_event(
+                len(execution_trace) + 1,
+                evidence,
+                query=query,
+                attempt_label="initial",
+            ),
+        )
 
         if evidence.grade is EvidenceGrade.RELEVANT:
             states.append(AgentState.ANSWERED.value)
@@ -209,12 +278,13 @@ class CorrectiveRAGAgent:
                 retrieval_response=retrieval_response,
                 evidence=evidence,
             )
-            return response.model_copy(
+            response = response.model_copy(
                 update={
                     "state_trace": tuple(states),
                     "metadata": {**response.metadata, "transform_plan": plan.to_dict()},
                 }
             )
+            return self._with_trace(response, execution_trace)
 
         if (
             plan.strategy is QueryTransformStrategy.STRUCTURED_IDENTIFIER
@@ -224,6 +294,10 @@ class CorrectiveRAGAgent:
             states.append(AgentState.RETRYING.value)
             best = (retrieval_response, evidence)
             for focused_query in plan.transformed_queries[: DEFAULT_CONFIG.agent.max_retry_attempts]:
+                self._append_trace(
+                    execution_trace,
+                    retry_trace_event(len(execution_trace) + 1, focused_query=focused_query),
+                )
                 states.append(AgentState.RETRIEVED.value)
                 retry_response = self.retrieval_service.retrieve(
                     query=focused_query,
@@ -233,8 +307,26 @@ class CorrectiveRAGAgent:
                     source_types=source_types,
                     jurisdiction=jurisdiction,
                 )
+                self._append_trace(
+                    execution_trace,
+                    retrieval_trace_event(
+                        len(execution_trace) + 1,
+                        retry_response,
+                        query=focused_query,
+                        attempt_label="retry",
+                    ),
+                )
                 states.append(AgentState.GRADED.value)
                 retry_evidence = grade_evidence(retry_response)
+                self._append_trace(
+                    execution_trace,
+                    evidence_trace_event(
+                        len(execution_trace) + 1,
+                        retry_evidence,
+                        query=focused_query,
+                        attempt_label="retry",
+                    ),
+                )
                 best = _choose_better_response(best, (retry_response, retry_evidence))
 
             best_response, best_evidence = best
@@ -246,7 +338,7 @@ class CorrectiveRAGAgent:
                 retrieval_response=best_response,
                 evidence=best_evidence,
             )
-            return response.model_copy(
+            response = response.model_copy(
                 update={
                     "state_trace": tuple(states),
                     "metadata": {
@@ -255,6 +347,7 @@ class CorrectiveRAGAgent:
                     },
                 }
             )
+            return self._with_trace(response, execution_trace)
 
         states.append(AgentState.REFUSED.value)
         response = build_agent_response(
@@ -263,9 +356,10 @@ class CorrectiveRAGAgent:
             retrieval_response=retrieval_response,
             evidence=evidence,
         )
-        return response.model_copy(
+        response = response.model_copy(
             update={
                 "state_trace": tuple(states),
                 "metadata": {**response.metadata, "transform_plan": plan.to_dict()},
             }
         )
+        return self._with_trace(response, execution_trace)

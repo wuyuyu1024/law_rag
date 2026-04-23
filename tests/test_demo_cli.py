@@ -35,6 +35,10 @@ def test_format_agent_response_includes_answer_citations_state_trace_and_timings
         retrieval_method=RetrievalMethod.HYBRID,
         state_trace=("understood", "retrieved", "graded", "answered"),
         metadata={
+            "execution_trace": (
+                {"sequence": 1, "event": "query_received", "state": "understood", "payload": {}},
+                {"sequence": 2, "event": "response_finalized", "state": "answered", "payload": {"outcome": "answered"}},
+            ),
             "transform_plan": {"strategy": "structured_identifier", "transformed_queries": ["Artikel 3.114 lid 2"]},
             "retrieval_metadata": {
                 "authorized_candidate_count": 10,
@@ -60,6 +64,8 @@ def test_format_agent_response_includes_answer_citations_state_trace_and_timings
     assert "citations:" in rendered
     assert "state_trace:" in rendered
     assert "understood -> retrieved -> graded -> answered" in rendered
+    assert "execution_trace:" in rendered
+    assert "event=query_received" in rendered
     assert "retrieval:" in rendered
     assert "- dense_retrieval_ms: 40.000 ms" in rendered
 

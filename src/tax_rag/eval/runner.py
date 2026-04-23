@@ -2,15 +2,23 @@
 
 from __future__ import annotations
 
-import json
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
+from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.agent import CorrectiveRAGAgent
 from tax_rag.retrieval import RetrievalService
 from tax_rag.schemas import AnswerOutcome
-from tax_rag.eval.schemas import EvalCaseResult, EvalReport, GoldEvalCase
+from tax_rag.eval.schemas import (
+    EvalCaseResult,
+    EvalReport,
+    EvalTraceRecord,
+    GoldEvalCase,
+    PromotionCheck,
+    PromotionDecision,
+)
 
 
 def load_gold_cases(path: str | Path) -> tuple[GoldEvalCase, ...]:
@@ -67,6 +75,78 @@ def _faithfulness_proxy(answer_text: str | None, citations: tuple[str, ...], chu
     return False
 
 
+def _report_metric(report: EvalReport, name: str) -> float | int:
+    value = report.metrics[name]
+    if isinstance(value, bool):
+        return int(value)
+    return value
+
+
+def evaluate_promotion(
+    candidate_report: EvalReport,
+    *,
+    baseline_report: EvalReport | None = None,
+    candidate_label: str = "candidate",
+) -> PromotionDecision:
+    promotion = DEFAULT_CONFIG.evaluation.promotion
+    checks: list[PromotionCheck] = []
+
+    absolute_thresholds = (
+        ("answerable_vs_refused_accuracy", ">=", promotion.min_answerable_vs_refused_accuracy),
+        ("citation_presence_rate", ">=", promotion.min_citation_presence_rate),
+        ("unauthorized_retrieval_failures", "<=", promotion.max_unauthorized_retrieval_failures),
+        ("exact_lookup_success", ">=", promotion.min_exact_lookup_success),
+        ("semantic_retrieval_success", ">=", promotion.min_semantic_retrieval_success),
+        ("faithfulness_proxy", ">=", promotion.min_faithfulness_proxy),
+        ("context_precision_proxy", ">=", promotion.min_context_precision_proxy),
+    )
+    for metric_name, comparator, expected in absolute_thresholds:
+        actual = _report_metric(candidate_report, metric_name)
+        passed = actual >= expected if comparator == ">=" else actual <= expected
+        checks.append(
+            PromotionCheck(
+                name=metric_name,
+                passed=passed,
+                comparator=comparator,
+                actual=actual,
+                expected=expected,
+            )
+        )
+
+    if baseline_report is not None:
+        regression_thresholds = (
+            ("answerable_vs_refused_accuracy", promotion.max_accuracy_regression),
+            ("exact_lookup_success", promotion.max_exact_lookup_regression),
+            ("semantic_retrieval_success", promotion.max_semantic_regression),
+            ("context_precision_proxy", promotion.max_context_precision_regression),
+        )
+        for metric_name, tolerance in regression_thresholds:
+            baseline_value = float(_report_metric(baseline_report, metric_name))
+            candidate_value = float(_report_metric(candidate_report, metric_name))
+            allowed_floor = baseline_value - tolerance
+            checks.append(
+                PromotionCheck(
+                    name=f"{metric_name}_vs_baseline",
+                    passed=candidate_value >= allowed_floor,
+                    comparator=">=",
+                    actual=candidate_value,
+                    expected=allowed_floor,
+                    details=f"baseline={baseline_value:.6f}, max_regression={tolerance:.6f}",
+                )
+            )
+
+    return PromotionDecision(
+        evaluated_at=datetime.now(UTC).isoformat().replace("+00:00", "Z"),
+        candidate_label=candidate_label,
+        passed=all(check.passed for check in checks),
+        checks=tuple(checks),
+        metadata={
+            "candidate_report_generated_at": candidate_report.generated_at,
+            "baseline_report_generated_at": baseline_report.generated_at if baseline_report is not None else None,
+        },
+    )
+
+
 @dataclass
 class EvalRunner:
     retrieval_service: RetrievalService
@@ -78,6 +158,9 @@ class EvalRunner:
     def run_case(self, case: GoldEvalCase) -> EvalCaseResult:
         response = self.agent.answer(case.query, case.role)
         citations = tuple(citation.citation_path for citation in response.citations)
+        execution_trace = tuple(
+            event for event in response.metadata.get("execution_trace", ()) if isinstance(event, dict)
+        )
         expected_citation_match_count = _citation_match_count(case.expected_citation_substrings, citations)
         expected_citation_total = len(case.expected_citation_substrings)
         outcome_match = response.outcome is case.expected_outcome
@@ -133,6 +216,7 @@ class EvalRunner:
             actual_refusal_reason=response.evidence.refusal_reason,
             citations=citations,
             state_trace=response.state_trace,
+            execution_trace=execution_trace,
             answer_text=response.answer_text,
             notes=case.notes,
         )
@@ -185,11 +269,20 @@ class EvalRunner:
         stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         summary_path = output_dir / f"eval_report_{stamp}.json"
         details_path = output_dir / f"eval_cases_{stamp}.jsonl"
+        traces_path = output_dir / f"eval_traces_{stamp}.jsonl"
         summary_path.write_text(report.model_dump_json(indent=2), encoding="utf-8")
         details_path.write_text(
             "".join(f"{case.model_dump_json()}\n" for case in report.cases),
             encoding="utf-8",
         )
+        if DEFAULT_CONFIG.evaluation.trace_output_enabled:
+            traces_path.write_text(
+                "".join(
+                    f"{EvalTraceRecord(case_id=case.case_id, query=case.query, role=case.role, outcome=case.actual_outcome, evidence_grade=case.actual_grade, refusal_reason=case.actual_refusal_reason, state_trace=case.state_trace, execution_trace=case.execution_trace).model_dump_json()}\n"
+                    for case in report.cases
+                ),
+                encoding="utf-8",
+            )
         return summary_path
 
 
@@ -198,9 +291,12 @@ def run_eval_from_paths(
     chunks_path: str | Path,
     gold_path: str | Path,
     output_dir: str | Path,
+    report_metadata: dict[str, Any] | None = None,
 ) -> EvalReport:
     runner = EvalRunner(RetrievalService.from_jsonl(str(chunks_path)))
     cases = load_gold_cases(gold_path)
     report = runner.run_cases(cases)
+    if report_metadata:
+        report = report.model_copy(update={"metadata": {**report.metadata, **report_metadata}})
     runner.save_report(report, output_dir)
     return report

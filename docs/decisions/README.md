@@ -18,3 +18,4 @@ Current ADRs:
 - `008-deterministic-evaluation-baseline.md`
 - `009-deterministic-reranking-and-semantic-normalization.md`
 - `010-ttft-and-scale-strategy.md`
+- `011-promotion-gates-and-structured-traces.md`

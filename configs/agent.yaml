@@ -11,3 +11,5 @@ agent:
   max_retry_attempts: 1
   max_answer_citations: 2
   snippet_max_chars: 240
+  emit_execution_trace: true
+  trace_top_results: 3

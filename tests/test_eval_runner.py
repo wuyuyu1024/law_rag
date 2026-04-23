@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from tax_rag.eval import EvalRunner, GoldEvalCase, load_gold_cases
+from tax_rag.eval import EvalRunner, EvalReport, GoldEvalCase, evaluate_promotion, load_gold_cases
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
 from tax_rag.schemas import AnswerOutcome, ChunkRecord, SecurityClassification, SourceType
 
@@ -71,6 +71,7 @@ def test_load_gold_cases_and_run_eval(tmp_path: Path) -> None:
     assert report.total_cases == 1
     assert report.passed_cases == 1
     assert report.metrics["exact_lookup_success"] == 1.0
+    assert report.cases[0].execution_trace[-1]["event"] == "response_finalized"
 
 
 def test_eval_runner_tracks_unauthorized_retrieval_failures_and_saves_report(tmp_path: Path) -> None:
@@ -107,4 +108,43 @@ def test_eval_runner_tracks_unauthorized_retrieval_failures_and_saves_report(tmp
 
     assert report.metrics["unauthorized_retrieval_failures"] == 0
     assert summary_path.exists()
-    assert any(path.suffix == ".jsonl" for path in output_dir.iterdir())
+    output_files = list(output_dir.iterdir())
+    assert any(path.suffix == ".jsonl" for path in output_files)
+    assert any(path.name.startswith("eval_traces_") for path in output_files)
+
+
+def test_evaluate_promotion_compares_candidate_against_thresholds_and_baseline() -> None:
+    baseline_report = EvalReport(
+        generated_at="2026-04-23T00:00:00Z",
+        total_cases=10,
+        passed_cases=8,
+        metrics={
+            "answerable_vs_refused_accuracy": 0.8,
+            "citation_presence_rate": 1.0,
+            "unauthorized_retrieval_failures": 0,
+            "exact_lookup_success": 0.8,
+            "semantic_retrieval_success": 0.8,
+            "faithfulness_proxy": 0.9,
+            "context_precision_proxy": 0.85,
+        },
+        cases=(),
+        metadata={},
+    )
+    candidate_report = baseline_report.model_copy(
+        update={
+            "generated_at": "2026-04-23T01:00:00Z",
+            "metrics": {
+                **baseline_report.metrics,
+                "answerable_vs_refused_accuracy": 0.76,
+                "exact_lookup_success": 0.76,
+                "semantic_retrieval_success": 0.76,
+                "context_precision_proxy": 0.81,
+            },
+        }
+    )
+
+    decision = evaluate_promotion(candidate_report, baseline_report=baseline_report, candidate_label="test-candidate")
+
+    assert decision.candidate_label == "test-candidate"
+    assert decision.passed
+    assert any(check.name == "exact_lookup_success_vs_baseline" for check in decision.checks)

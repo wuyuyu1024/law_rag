@@ -43,9 +43,10 @@ Phase 4 baseline answer control is now implemented in a deterministic local form
 Phase 5 evaluation now has an initial deterministic baseline:
 - `data/eval/gold_questions.jsonl` provides a small gold set across exact lookup, semantic lookup, multi-part, unauthorized-role, and should-refuse cases
 - `scripts/run_eval.py` runs the current agent against that gold set
-- summary metrics and per-case outputs are written to `data/eval/eval_runs/`
+- summary metrics, per-case outputs, and structured execution traces are written to `data/eval/eval_runs/`
+- promotion gating can compare a candidate run against explicit thresholds and an optional baseline report before rollout
 
-Phase 5 still has follow-up work open around cache policy, promotion hooks, and observability, but the evaluation baseline is already implemented.
+Phase 5 still has follow-up work open around semantic cache policy, but promotion gating and observability are now implemented in the local baseline.
 
 ## Tooling
 
@@ -90,7 +91,9 @@ uv run python scripts/benchmark_ttft.py \
 uv run python scripts/run_eval.py \
   --chunks-path data/chunks/legal_chunks.jsonl \
   --gold-path data/eval/gold_questions.jsonl \
-  --output-dir data/eval/eval_runs
+  --output-dir data/eval/eval_runs \
+  --candidate-label local-baseline \
+  --gate-promotion
 uv run python scripts/demo_cli.py \
   --chunks-path data/chunks/legal_chunks.jsonl \
   --dense-index-path data/indexes/qdrant \
@@ -103,7 +106,8 @@ What this runbook demonstrates:
 - persistent dense index creation
 - uncached-path TTFT benchmark
 - regression/evaluation run over the gold set
-- a minimal CLI answer/refusal demo with citations, state trace, and timing metadata
+- a promotion gate for candidate model/retrieval changes
+- a minimal CLI answer/refusal demo with citations, state trace, timing metadata, and execution traces
 
 ## Repository Layout
 
@@ -185,11 +189,41 @@ The agent config now documents the Phase 4 baseline:
 - refusal remains structured and inspectable
 - the baseline answer layer stays local and deterministic
 - bounded retry behavior is explicit and configuration-backed
+- execution traces capture retrieval decisions, grading outcomes, retries, and final refusal/answer state
 
 The evaluation baseline now includes:
 - a rerunnable gold-question regression set
 - saved summary and per-case outputs for inspection
+- saved structured trace artifacts for regression debugging
+- an explicit promotion gate with concrete threshold and non-regression checks
 - explicit proxy metrics for faithfulness and context precision until richer evaluators are added
+
+## Promotion Gate
+
+Use the evaluation runner as a local pre-deployment gate for retrieval or model changes:
+
+```bash
+uv run python scripts/run_eval.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --gold-path data/eval/gold_questions.jsonl \
+  --output-dir data/eval/eval_runs \
+  --candidate-label embed-v2-rerank-v1 \
+  --embedding-model demo-hash-embedding-v2 \
+  --reranker-model deterministic-legal-reranker-v1 \
+  --gate-promotion \
+  --baseline-report data/eval/eval_runs/eval_report_previous.json
+```
+
+What the gate checks:
+- absolute thresholds for answer/refusal accuracy, citation presence, unauthorized retrieval failures, exact lookup, semantic retrieval, faithfulness proxy, and context precision proxy
+- non-regression tolerances against a prior approved report for the most important retrieval-quality metrics
+- candidate metadata persisted into the saved report so the evaluated embedding/reranker/generator version is inspectable later
+
+Saved artifacts:
+- `eval_report_*.json`
+- `eval_cases_*.jsonl`
+- `eval_traces_*.jsonl`
+- `promotion_decision_<candidate-label>.json` when `--gate-promotion` is used
 
 ## Building Dense Index
 

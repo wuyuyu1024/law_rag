@@ -128,7 +128,7 @@ Repo references:
 ### What is still missing?
 
 Short answer:
-The main next steps are upgrading the deterministic reranker to a real learned reranker, improving the remaining exact and refusal edge cases in the eval set, and only then adding a stronger generation layer. The current system already has evidence grading, corrective control flow, and a formal evaluation runner.
+The main next steps are semantic cache design, upgrading the deterministic reranker to a real learned reranker, improving the remaining exact and refusal edge cases in the eval set, and only then adding a stronger generation layer. The current system already has evidence grading, corrective control flow, promotion gating, and structured trace artifacts.
 
 Repo references:
 - `TASKS.md`
@@ -138,7 +138,7 @@ Repo references:
 ### How do you evaluate the system before changing retrieval or models?
 
 Short answer:
-I added a deterministic gold-set runner first so retrieval, refusal, and citation behavior can be checked locally and repeatedly. The current faithfulness and context-precision signals are explicit proxies, and the design is intended to be extended later with Ragas or DeepEval rather than replaced.
+I added a deterministic gold-set runner first so retrieval, refusal, and citation behavior can be checked locally and repeatedly. Candidate runs can now be gated against explicit thresholds and a prior approved baseline report before promotion. The current faithfulness and context-precision signals are explicit proxies, and the design is intended to be extended later with Ragas or DeepEval rather than replaced.
 
 Repo references:
 - `data/eval/gold_questions.jsonl`

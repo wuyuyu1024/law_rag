@@ -27,6 +27,29 @@ def _format_timings(timings: dict[str, Any]) -> list[str]:
     return lines
 
 
+def _format_execution_trace(events: list[dict[str, Any]]) -> list[str]:
+    lines: list[str] = []
+    for event in events:
+        sequence = event.get("sequence")
+        name = event.get("event")
+        state = event.get("state")
+        payload = event.get("payload", {})
+        summary_parts = [f"step={sequence}", f"event={name}"]
+        if state:
+            summary_parts.append(f"state={state}")
+        if isinstance(payload, dict):
+            if "attempt_label" in payload:
+                summary_parts.append(f"attempt={payload['attempt_label']}")
+            if "grade" in payload:
+                summary_parts.append(f"grade={payload['grade']}")
+            if "outcome" in payload:
+                summary_parts.append(f"outcome={payload['outcome']}")
+            if "focused_query" in payload:
+                summary_parts.append(f"focused_query={payload['focused_query']}")
+        lines.append("- " + ", ".join(summary_parts))
+    return lines
+
+
 def format_agent_response(response: AgentResponse) -> str:
     lines = [
         f"outcome: {response.outcome.value}",
@@ -52,6 +75,13 @@ def format_agent_response(response: AgentResponse) -> str:
 
     if response.state_trace:
         lines.extend(["", "state_trace:", " -> ".join(response.state_trace)])
+
+    execution_trace = response.metadata.get("execution_trace")
+    if isinstance(execution_trace, (list, tuple)) and execution_trace:
+        trace_events = [event for event in execution_trace if isinstance(event, dict)]
+        if trace_events:
+            lines.extend(["", "execution_trace:"])
+            lines.extend(_format_execution_trace(trace_events))
 
     transform_plan = response.metadata.get("transform_plan")
     if isinstance(transform_plan, dict):

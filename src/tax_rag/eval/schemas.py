@@ -54,6 +54,7 @@ class EvalCaseResult(SchemaModel):
     actual_refusal_reason: RefusalReason | None = None
     citations: tuple[str, ...] = ()
     state_trace: tuple[str, ...] = ()
+    execution_trace: tuple[dict[str, Any], ...] = ()
     answer_text: str | None = None
     notes: str | None = None
 
@@ -71,6 +72,40 @@ class EvalReport(SchemaModel):
     def _valid_datetime(cls, value: str) -> str:
         datetime.fromisoformat(value.replace("Z", "+00:00"))
         return value
+
+
+class PromotionCheck(SchemaModel):
+    name: str
+    passed: bool
+    comparator: str
+    actual: float | int
+    expected: float | int
+    details: str | None = None
+
+
+class PromotionDecision(SchemaModel):
+    evaluated_at: str
+    candidate_label: str
+    passed: bool
+    checks: tuple[PromotionCheck, ...]
+    metadata: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("evaluated_at")
+    @classmethod
+    def _valid_evaluated_at(cls, value: str) -> str:
+        datetime.fromisoformat(value.replace("Z", "+00:00"))
+        return value
+
+
+class EvalTraceRecord(SchemaModel):
+    case_id: str
+    query: str
+    role: str
+    outcome: AnswerOutcome
+    evidence_grade: EvidenceGrade | None = None
+    refusal_reason: RefusalReason | None = None
+    state_trace: tuple[str, ...] = ()
+    execution_trace: tuple[dict[str, Any], ...] = ()
 
 
 class LatencyCaseResult(SchemaModel):
