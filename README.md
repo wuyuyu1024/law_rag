@@ -4,6 +4,8 @@ Demo implementation for a technical assessment: a secure, citation-grounded, per
 
 The primary requirements live in `assignment.md`. The implementation backlog lives in `TASKS.md`. If they disagree, follow `assignment.md`.
 
+For an interviewer-facing summary that answers the assignment module by module, start with [`SUBMISSION.md`](./SUBMISSION.md).
+
 ## Current Status
 
 Phase 0 baseline is complete:
