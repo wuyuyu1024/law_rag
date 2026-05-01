@@ -21,3 +21,4 @@ Current ADRs:
 - `011-promotion-gates-and-structured-traces.md`
 - `012-validity-aware-retrieval-and-stricter-gold-eval.md`
 - `013-redis-backed-semantic-cache-adapter.md`
+- `014-reranker-backend-boundary.md`

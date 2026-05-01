@@ -9,7 +9,7 @@ from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.retrieval.common import scope_chunks_for_request
 from tax_rag.retrieval.dense import _rank_dense_chunks
 from tax_rag.retrieval.lexical import _rank_lexical_chunks
-from tax_rag.retrieval.rerank import rerank_results
+from tax_rag.retrieval.rerank import get_reranker_backend, rerank_results
 from tax_rag.schemas import RetrievalMethod, RetrievalRequest, RetrievalResponse, RetrievalResult, ScoreTrace
 from tax_rag.security import (
     DEFAULT_RETRIEVAL_SECURITY_CONTRACT,
@@ -128,7 +128,9 @@ def retrieve_hybrid(
         base_result = entry["result"]
         scores = list(entry["scores"])
         scores.append(ScoreTrace(metric="rrf_score", value=entry["rrf_score"]))
-        fused_candidates.append((_exact_priority(scores), entry["rrf_score"], base_result, entry["matched_terms"], scores))
+        fused_candidates.append(
+            (_exact_priority(scores), entry["rrf_score"], base_result, entry["matched_terms"], scores)
+        )
 
     if _EXACT_IDENTIFIER_PATTERN.search(request.query):
         fused_candidates.sort(key=lambda item: (-item[0], -item[1], item[2].chunk_id))
@@ -143,7 +145,12 @@ def retrieve_hybrid(
     results: list[RetrievalResult] = []
     for rank, (_, _, base_result, matched_terms, scores) in enumerate(top_candidates, start=1):
         ranked_scores = tuple(
-            ScoreTrace(metric=score.metric, value=score.value, rank=rank if score.rank is None else score.rank, metadata=score.metadata)
+            ScoreTrace(
+                metric=score.metric,
+                value=score.value,
+                rank=rank if score.rank is None else score.rank,
+                metadata=score.metadata,
+            )
             for score in scores
         )
         results.append(
@@ -159,11 +166,16 @@ def retrieve_hybrid(
 
     reranking_applied = False
     reranking_ms = 0.0
+    reranker_backend_name = None
+    reranker_model = None
     should_rerank = DEFAULT_CONFIG.reranking.enabled and _EXACT_IDENTIFIER_PATTERN.search(request.query) is None
     if should_rerank:
         reranking_start = perf_counter()
         reranking_applied = True
-        results = list(rerank_results(tuple(results), request))
+        reranker_backend = get_reranker_backend()
+        reranker_backend_name = reranker_backend.name
+        reranker_model = reranker_backend.model_name
+        results = list(rerank_results(tuple(results), request, backend=reranker_backend))
         reranking_ms = _elapsed_ms(reranking_start)
 
     results = results[: request.top_k]
@@ -188,7 +200,8 @@ def retrieve_hybrid(
             "rrf_k": rrf_k,
             "reranking_enabled": DEFAULT_CONFIG.reranking.enabled,
             "reranking_applied": reranking_applied,
-            "reranker_model": DEFAULT_CONFIG.reranking.model if reranking_applied else None,
+            "reranker_backend": reranker_backend_name,
+            "reranker_model": reranker_model,
             "reranker_input_count": len(top_candidates) if reranking_applied else 0,
             "timings_ms": {
                 "request_scoping_ms": request_scoping_ms,

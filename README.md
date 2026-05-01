@@ -32,7 +32,7 @@ Phase 3 retrieval and RBAC are now implemented in a minimal but runnable form:
 - exact lexical retrieval supports ECLI, article, paragraph, subparagraph, and citation-path lookups
 - dense retrieval runs through local Qdrant-backed vector search
 - hybrid retrieval fuses lexical and dense results with RRF
-- hybrid retrieval now applies a deterministic reranking layer for semantic improvement while preserving inspectable scores
+- hybrid retrieval applies a configurable reranking backend; the deterministic backend is the local default, and an optional cross-encoder adapter is available for production-shaped demos
 - retrieval outputs preserve inspectable scores, chunk IDs, and source references
 
 Phase 4 baseline answer control is now implemented in a deterministic local form:
@@ -50,6 +50,8 @@ Phase 5 evaluation now has an initial deterministic baseline:
 - the current local gold gate passes all 19 cases with zero unauthorized retrieval failures
 
 Phase 5 now includes both conservative in-memory cache policy and a Redis-backed semantic cache adapter. The in-memory backend remains the deterministic local default; Redis is available for infrastructure-backed demos.
+
+The reranker follows the same pattern: `configs/reranking.yaml` defaults to `backend: deterministic` so tests and demos remain reproducible, while `backend: cross_encoder` selects the optional `BAAI/bge-reranker-v2-m3` adapter when `sentence-transformers` is installed and model downloads are allowed.
 
 ## Tooling
 

@@ -262,9 +262,17 @@ def test_retrieve_hybrid_reranks_generic_30_percent_question_to_statutory_rule()
         article="10ed",
         paragraph="2",
     )
+    restricted_policy = _chunk(
+        chunk_id="restricted-employer-switch-policy",
+        source_type=SourceType.INTERNAL_POLICY,
+        text="Internal operational policy about 30 percent ruling employer changes.",
+        citation_path="Internal 30 Percent Manual > Employer Switches",
+        allowed_roles=("inspector", "legal_counsel"),
+        security_classification=SecurityClassification.RESTRICTED,
+    )
 
     response = retrieve_hybrid(
-        [case_fact, continuation_rule, statutory_rule],
+        [restricted_policy, case_fact, continuation_rule, statutory_rule],
         RetrievalRequest(
             query="how does 30% ruling work if the employee changes jobs to another employer",
             role="helpdesk",
@@ -273,5 +281,9 @@ def test_retrieve_hybrid_reranks_generic_30_percent_question_to_statutory_rule()
     )
 
     assert response.results[0].chunk_id == "law-10ed-1"
+    assert "restricted-employer-switch-policy" not in {result.chunk_id for result in response.results}
     assert response.results[0].score_map()["rerank_score"] > response.results[1].score_map()["rerank_score"]
+    assert response.metadata["denied_count"] == 1
     assert response.metadata["reranking_applied"] is True
+    assert response.metadata["reranker_backend"] == "deterministic"
+    assert response.metadata["reranker_model"] == "deterministic-legal-reranker-v1"

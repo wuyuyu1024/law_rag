@@ -50,7 +50,9 @@ class RetrievalConfig:
 @dataclass(frozen=True)
 class RerankingConfig:
     enabled: bool = True
+    backend: str = "deterministic"
     model: str = "deterministic-legal-reranker-v1"
+    cross_encoder_model: str = "BAAI/bge-reranker-v2-m3"
     input_top_k: int = 50
     output_top_k: int = 10
     concept_overlap_weight: float = 0.32

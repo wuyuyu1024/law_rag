@@ -5,7 +5,14 @@ from tax_rag.retrieval.common import load_chunk_records
 from tax_rag.retrieval.dense import embed_text, retrieve_dense
 from tax_rag.retrieval.hybrid import retrieve_hybrid
 from tax_rag.retrieval.lexical import retrieve_lexical
-from tax_rag.retrieval.rerank import rerank_results
+from tax_rag.retrieval.rerank import (
+    CrossEncoderReranker,
+    DeterministicReranker,
+    RerankerBackend,
+    RerankerUnavailableError,
+    get_reranker_backend,
+    rerank_results,
+)
 from tax_rag.retrieval.service import RetrievalService
 from tax_rag.schemas.retrieval import (
     RetrievalMethod,
@@ -19,7 +26,12 @@ from tax_rag.schemas.retrieval import (
 __all__ = [
     "ResolvedCitation",
     "RetrievalService",
+    "CrossEncoderReranker",
+    "DeterministicReranker",
+    "RerankerBackend",
+    "RerankerUnavailableError",
     "embed_text",
+    "get_reranker_backend",
     "load_chunk_records",
     "retrieve_dense",
     "retrieve_hybrid",

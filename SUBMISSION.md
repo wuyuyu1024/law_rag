@@ -17,7 +17,7 @@ Implemented in demo:
 - legal-aware chunking with citation preservation
 - pre-retrieval RBAC
 - lexical, dense, and hybrid retrieval
-- deterministic reranking baseline
+- configurable reranking backend with a deterministic local default
 - evidence grading, refusal, bounded retry, and execution traces
 - local evaluation runner, promotion gate, and TTFT benchmark harness
 
@@ -150,7 +150,8 @@ Recommended production dense model:
 Decision:
 
 - production path: use a multilingual cross-encoder reranker over a narrow candidate window
-- demo path: keep the current deterministic reranker as the local baseline
+- demo path: keep the current deterministic reranker as the default local backend
+- implementation boundary: expose reranker backend selection so the production adapter can be enabled without changing hybrid retrieval control flow
 
 Recommended production reranker:
 
@@ -171,6 +172,8 @@ Concrete reranking parameters:
 Implemented in demo:
 
 - deterministic reranker using concept overlap, lexical overlap, dense score, and a small legislation prior
+- optional `cross_encoder` reranker adapter that lazy-loads a `sentence-transformers` `CrossEncoder` when that dependency and model are available
+- reranker metadata records both backend and model in retrieval traces
 
 ## Module 3: Agentic RAG and Self-Healing
 
@@ -312,7 +315,8 @@ Recommended production extension:
 These limitations are intentional and should be stated plainly to the interviewer:
 
 - the runtime corpus is small and partly simulated
-- the current dense embedding and reranking path is a deterministic local baseline, not the final production relevance stack
+- the current dense embedding and default reranking path are deterministic local baselines, not the final production relevance stack
+- the cross-encoder reranker boundary is implemented, but the heavy model dependency is intentionally optional rather than required for local tests
 - the repo documents a production TTFT strategy but does not prove `< 1.5 s` at production scale end to end
 - the semantic cache has both deterministic in-memory and Redis-backed adapters; wiring cache reads/writes into a production API path would be the next integration step
 

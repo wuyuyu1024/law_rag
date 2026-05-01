@@ -1,6 +1,8 @@
 reranking:
   enabled: true
+  backend: deterministic
   model: deterministic-legal-reranker-v1
+  cross_encoder_model: BAAI/bge-reranker-v2-m3
   input_top_k: 50
   output_top_k: 10
   concept_overlap_weight: 0.32
