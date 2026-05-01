@@ -47,9 +47,9 @@ Phase 5 evaluation now has an initial deterministic baseline:
 - `scripts/run_eval.py` runs the current agent against that gold set
 - summary metrics, per-case outputs, and structured execution traces are written to `data/eval/eval_runs/`
 - promotion gating can compare a candidate run against explicit thresholds and an optional baseline report before rollout
-- the current local gold gate passes all 18 cases with zero unauthorized retrieval failures
+- the current local gold gate passes all 19 cases with zero unauthorized retrieval failures
 
-Phase 5 still has follow-up work open around a Redis-backed semantic cache, but conservative in-memory cache policy, promotion gating, and observability are implemented in the local baseline.
+Phase 5 now includes both conservative in-memory cache policy and a Redis-backed semantic cache adapter. The in-memory backend remains the deterministic local default; Redis is available for infrastructure-backed demos.
 
 ## Tooling
 
@@ -112,6 +112,14 @@ Optional local API:
 ```bash
 uv run uvicorn tax_rag.api.main:app --reload
 ```
+
+Optional infrastructure services:
+
+```bash
+docker compose up -d qdrant redis
+```
+
+The Python demo and tests do not require these containers. Use Compose when demonstrating the production-shaped Qdrant/Redis infrastructure path.
 
 What this runbook demonstrates:
 - parsed and chunked legal data

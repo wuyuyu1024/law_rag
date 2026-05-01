@@ -257,7 +257,7 @@ Implemented in demo:
 
 - threshold and namespace defaults are documented in config
 - an in-memory semantic cache enforces the conservative cacheability policy for local tests and demos
-- full Redis-backed semantic cache is intentionally not implemented yet
+- a Redis-backed semantic cache adapter uses the same conservative policy and role/jurisdiction/version namespace boundaries
 
 ### Database-level security
 
@@ -314,7 +314,7 @@ These limitations are intentional and should be stated plainly to the interviewe
 - the runtime corpus is small and partly simulated
 - the current dense embedding and reranking path is a deterministic local baseline, not the final production relevance stack
 - the repo documents a production TTFT strategy but does not prove `< 1.5 s` at production scale end to end
-- the semantic cache design is specified here, but a full Redis-backed implementation is still future work
+- the semantic cache has both deterministic in-memory and Redis-backed adapters; wiring cache reads/writes into a production API path would be the next integration step
 
 ## Final Position
 

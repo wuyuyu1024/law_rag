@@ -20,3 +20,4 @@ Current ADRs:
 - `010-ttft-and-scale-strategy.md`
 - `011-promotion-gates-and-structured-traces.md`
 - `012-validity-aware-retrieval-and-stricter-gold-eval.md`
+- `013-redis-backed-semantic-cache-adapter.md`

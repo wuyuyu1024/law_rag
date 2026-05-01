@@ -76,7 +76,9 @@ class SecurityConfig:
 class CacheConfig:
     enabled: bool = False
     backend: str = "in_memory"
+    redis_url: str = "redis://localhost:6379/0"
     semantic_similarity_threshold: float = 0.985
+    semantic_cache_ttl_seconds: int = 86_400
     namespace_by_role: bool = True
 
 

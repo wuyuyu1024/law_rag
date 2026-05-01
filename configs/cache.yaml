@@ -1,5 +1,7 @@
 cache:
   enabled: false
   backend: in_memory
+  redis_url: redis://localhost:6379/0
   semantic_similarity_threshold: 0.985
+  semantic_cache_ttl_seconds: 86400
   namespace_by_role: true
