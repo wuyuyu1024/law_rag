@@ -38,6 +38,13 @@ class RetrievalConfig:
     dense_model: str = "demo-hash-embedding-v1"
     dense_dimensions: int = 256
     exact_identifier_boost: float = 3.0
+    qdrant_hnsw_m: int = 32
+    qdrant_ef_construct: int = 200
+    qdrant_search_ef: int = 128
+    qdrant_scalar_quantization: bool = True
+    qdrant_scalar_quantile: float = 0.99
+    qdrant_quantization_always_ram: bool = True
+    qdrant_on_disk_vectors: bool = False
 
 
 @dataclass(frozen=True)

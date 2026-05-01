@@ -2,13 +2,15 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 from time import perf_counter
 
 from qdrant_client import QdrantClient, models
 
 from tax_rag.common import DEFAULT_CONFIG
 from tax_rag.common.dense import CLASSIFICATION_ORDER, dense_text, embed_text, payload_for_chunk
-from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME, ensure_local_qdrant_index
+from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME, ensure_local_qdrant_index, qdrant_vector_params
+from tax_rag.retrieval.common import scope_chunks_for_request
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -60,6 +62,25 @@ def _query_filter(request: RetrievalRequest) -> models.Filter | None:
             )
         )
 
+    if request.as_of_date is not None:
+        as_of = datetime.fromisoformat(request.as_of_date)
+        must.append(
+            models.Filter(
+                should=[
+                    models.IsEmptyCondition(is_empty=models.PayloadField(key="valid_from")),
+                    models.FieldCondition(key="valid_from", range=models.DatetimeRange(lte=as_of)),
+                ]
+            )
+        )
+        must.append(
+            models.Filter(
+                should=[
+                    models.IsEmptyCondition(is_empty=models.PayloadField(key="valid_to")),
+                    models.FieldCondition(key="valid_to", range=models.DatetimeRange(gte=as_of)),
+                ]
+            )
+        )
+
     return models.Filter(must=must)
 
 
@@ -67,7 +88,7 @@ def _build_local_qdrant(chunks: list[ChunkRecord] | tuple[ChunkRecord, ...], *, 
     client = QdrantClient(":memory:")
     client.create_collection(
         collection_name="dense_chunks",
-        vectors_config=models.VectorParams(size=dimensions, distance=models.Distance.COSINE),
+        vectors_config=qdrant_vector_params(dimensions),
     )
     client.upload_collection(
         collection_name="dense_chunks",
@@ -122,6 +143,7 @@ def _rank_dense_chunks(
         collection_name=collection_name,
         query=query_vector,
         query_filter=query_filter,
+        search_params=models.SearchParams(hnsw_ef=DEFAULT_CONFIG.retrieval.qdrant_search_ef),
         limit=request.top_k,
         with_payload=True,
     )
@@ -165,15 +187,10 @@ def retrieve_dense(
     total_start = perf_counter()
     filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
-    request_scoped_chunks = tuple(
-        chunk
-        for chunk in authorized.authorized_chunks
-        if (not request.source_types or chunk.source_type in request.source_types)
-        and (request.jurisdiction is None or chunk.jurisdiction == request.jurisdiction)
-    )
+    request_scope = scope_chunks_for_request(authorized.authorized_chunks, request)
     security_filter_ms = _elapsed_ms(filter_start)
     dense_start = perf_counter()
-    results = _rank_dense_chunks(request_scoped_chunks, request)
+    results = _rank_dense_chunks(request_scope.chunks, request)
     dense_retrieval_ms = _elapsed_ms(dense_start)
     retrieval_total_ms = _elapsed_ms(total_start)
 
@@ -183,9 +200,13 @@ def retrieve_dense(
         results=results,
         security_stage=authorized.enforcement_stage,
         metadata={
-            "authorized_candidate_count": len(request_scoped_chunks),
+            "authorized_candidate_count": len(request_scope.chunks),
             "denied_count": authorized.denied_count,
             "total_chunk_count": len(chunks),
+            "source_type_filtered_count": request_scope.source_type_filtered_count,
+            "jurisdiction_filtered_count": request_scope.jurisdiction_filtered_count,
+            "validity_filtered_count": request_scope.validity_filtered_count,
+            "as_of_date": request.as_of_date,
             "dense_model": DEFAULT_CONFIG.retrieval.dense_model,
             "dense_dimensions": DEFAULT_CONFIG.retrieval.dense_dimensions,
             "vector_backend": (

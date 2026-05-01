@@ -24,6 +24,8 @@ def _chunk(
     paragraph: str | None = None,
     ecli: str | None = None,
     decision_date: str | None = None,
+    valid_from: str | None = None,
+    valid_to: str | None = None,
 ) -> ChunkRecord:
     return ChunkRecord(
         chunk_id=chunk_id,
@@ -34,6 +36,8 @@ def _chunk(
         jurisdiction="NL",
         allowed_roles=allowed_roles,
         source_path=f"fixtures/{chunk_id}.xml",
+        valid_from=valid_from,
+        valid_to=valid_to,
         article=article,
         paragraph=paragraph,
         ecli=ecli,
@@ -188,3 +192,29 @@ def test_corrective_rag_agent_refuses_when_a_subquery_lacks_evidence() -> None:
     assert response.outcome is AnswerOutcome.REFUSED
     assert response.evidence.refusal_reason in {RefusalReason.INSUFFICIENT_EVIDENCE, RefusalReason.NO_AUTHORIZED_SOURCE}
     assert response.state_trace[-1] == AgentState.REFUSED.value
+
+
+def test_corrective_rag_agent_refuses_when_no_version_is_valid_for_requested_date() -> None:
+    service = RetrievalService(
+        chunks=[
+            _chunk(
+                chunk_id="law-expired",
+                source_type=SourceType.LEGISLATION,
+                text="Expired version of the rule.",
+                citation_path="Demo Tax Act > Artikel 9.1",
+                allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+                security_classification=SecurityClassification.PUBLIC,
+                article="9.1",
+                valid_from="2020-01-01",
+                valid_to="2024-12-31",
+            )
+        ],
+        default_method=RetrievalMethod.LEXICAL,
+    )
+    agent = CorrectiveRAGAgent(retrieval_service=service)
+
+    response = agent.answer("Artikel 9.1 as of 2026-01-01", "helpdesk")
+
+    assert response.outcome is AnswerOutcome.REFUSED
+    assert response.evidence.refusal_reason is RefusalReason.OUTDATED_EVIDENCE
+    assert response.metadata["retrieval_metadata"]["validity_filtered_count"] == 1

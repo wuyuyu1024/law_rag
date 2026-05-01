@@ -113,7 +113,7 @@ def test_retrieve_lexical_ranks_article_paragraph_subparagraph_matches() -> None
         RetrievalRequest(query="Artikel 3.114 lid 2 onderdeel a", role="helpdesk", top_k=5),
     )
 
-    assert [result.chunk_id for result in response.results] == ["law-3-114-lid-2-a", "law-3-114-lid-1"]
+    assert [result.chunk_id for result in response.results] == ["law-3-114-lid-2-a"]
     assert response.results[0].score_map()["article_exact_match"] == 120.0
     assert response.results[0].score_map()["paragraph_exact_match"] == 20.0
     assert response.results[0].score_map()["subparagraph_exact_match"] == 10.0

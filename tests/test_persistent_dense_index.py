@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from tax_rag.common import expand_chunks_for_stress
-from tax_rag.indexing import ensure_local_qdrant_index
+from tax_rag.common import DEFAULT_CONFIG, expand_chunks_for_stress
+from tax_rag.indexing import ensure_local_qdrant_index, qdrant_vector_params
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
 from tax_rag.schemas import ChunkRecord, SecurityClassification, SourceType
 
@@ -79,3 +79,13 @@ def test_expand_chunks_for_stress_creates_distinct_replicas() -> None:
     assert expanded[0].chunk_id.endswith("::stress:1")
     assert expanded[1].chunk_id.endswith("::stress:2")
     assert expanded[2].metadata["synthetic_stress"] is True
+
+
+def test_qdrant_vector_params_use_configured_ann_and_quantization_settings() -> None:
+    params = qdrant_vector_params(256)
+
+    assert params.hnsw_config is not None
+    assert params.hnsw_config.m == DEFAULT_CONFIG.retrieval.qdrant_hnsw_m
+    assert params.hnsw_config.ef_construct == DEFAULT_CONFIG.retrieval.qdrant_ef_construct
+    assert params.quantization_config is not None
+    assert params.on_disk == DEFAULT_CONFIG.retrieval.qdrant_on_disk_vectors

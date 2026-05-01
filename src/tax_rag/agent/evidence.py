@@ -15,6 +15,7 @@ from tax_rag.schemas import (
 
 _YEAR_PATTERN = re.compile(r"\b(19|20)\d{2}\b")
 _GENERIC_ELIGIBILITY_PATTERN = re.compile(r"\b(?:if someone|can they|can someone|qualified|qualify|eligible)\b", re.IGNORECASE)
+_EXACT_IDENTIFIER_PATTERN = re.compile(r"\b(?:ecli:|artikel|article|art\.?)", re.IGNORECASE)
 _EXACT_MATCH_METRICS = {
     "ecli_exact_match",
     "article_exact_match",
@@ -75,13 +76,16 @@ def grade_evidence(response: RetrievalResponse) -> EvidenceAssessment:
         refusal_reason = (
             RefusalReason.NO_AUTHORIZED_SOURCE
             if response.metadata.get("denied_count", 0) > 0 and response.metadata.get("authorized_candidate_count", 0) == 0
+            else RefusalReason.OUTDATED_EVIDENCE
+            if response.metadata.get("validity_filtered_count", 0) > 0 and response.metadata.get("authorized_candidate_count", 0) == 0
             else RefusalReason.INSUFFICIENT_EVIDENCE
         )
-        explanation = (
-            "No authorized retrieval evidence was available for this role."
-            if refusal_reason is RefusalReason.NO_AUTHORIZED_SOURCE
-            else "Retrieval returned no sufficiently relevant evidence."
-        )
+        if refusal_reason is RefusalReason.NO_AUTHORIZED_SOURCE:
+            explanation = "No authorized retrieval evidence was available for this role."
+        elif refusal_reason is RefusalReason.OUTDATED_EVIDENCE:
+            explanation = "Authorized evidence exists, but not for the requested validity date."
+        else:
+            explanation = "Retrieval returned no sufficiently relevant evidence."
         return EvidenceAssessment(
             grade=EvidenceGrade.IRRELEVANT,
             explanation=explanation,
@@ -94,6 +98,25 @@ def grade_evidence(response: RetrievalResponse) -> EvidenceAssessment:
     top_score_map = top_result.score_map()
     top_score = _primary_score(response, top_score_map)
     exact_match = any(metric in top_score_map for metric in _EXACT_MATCH_METRICS)
+    if (
+        response.request.as_of_date is not None
+        and response.metadata.get("validity_filtered_count", 0) > 0
+        and _EXACT_IDENTIFIER_PATTERN.search(response.request.query)
+        and not any(
+            metric in result.score_map()
+            for result in response.results
+            for metric in _EXACT_MATCH_METRICS
+        )
+    ):
+        return EvidenceAssessment(
+            grade=EvidenceGrade.AMBIGUOUS,
+            explanation="The requested legal identifier was found only outside the requested validity date.",
+            result_count=len(response.results),
+            supporting_chunk_ids=tuple(result.chunk_id for result in response.results[:2]),
+            top_score=top_score,
+            refusal_reason=RefusalReason.OUTDATED_EVIDENCE,
+            metadata=dict(response.metadata),
+        )
 
     query_year = _query_year(response.request.query)
     if (

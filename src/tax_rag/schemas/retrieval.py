@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import date
 from enum import StrEnum
 from typing import Any
 
@@ -31,6 +32,7 @@ class RetrievalRequest(SchemaModel):
     top_k: int = 10
     source_types: tuple[SourceType, ...] = ()
     jurisdiction: str | None = None
+    as_of_date: str | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("query", "role")
@@ -54,6 +56,17 @@ class RetrievalRequest(SchemaModel):
             raise ValueError("jurisdiction must not be blank when provided")
         return value
 
+    @field_validator("as_of_date")
+    @classmethod
+    def _as_of_date_is_iso(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        try:
+            date.fromisoformat(value)
+        except ValueError as exc:
+            raise ValueError(f"as_of_date must be ISO-8601 formatted (YYYY-MM-DD), got: {value}") from exc
+        return value
+
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "RetrievalRequest":
         return cls.model_validate(payload)
@@ -68,6 +81,8 @@ class SourceReference(SchemaModel):
     jurisdiction: str
     allowed_roles: tuple[str, ...]
     security_classification: SecurityClassification
+    valid_from: str | None = None
+    valid_to: str | None = None
     article: str | None = None
     paragraph: str | None = None
     subparagraph: str | None = None
@@ -101,6 +116,8 @@ class SourceReference(SchemaModel):
             jurisdiction=chunk.jurisdiction,
             allowed_roles=chunk.allowed_roles,
             security_classification=chunk.security_classification,
+            valid_from=chunk.valid_from,
+            valid_to=chunk.valid_to,
             article=chunk.article,
             paragraph=chunk.paragraph,
             subparagraph=chunk.subparagraph,

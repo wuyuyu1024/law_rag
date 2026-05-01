@@ -6,7 +6,7 @@ import re
 from time import perf_counter
 
 from tax_rag.common import DEFAULT_CONFIG
-from tax_rag.retrieval.common import request_allows_chunk
+from tax_rag.retrieval.common import scope_chunks_for_request
 from tax_rag.retrieval.dense import _rank_dense_chunks
 from tax_rag.retrieval.lexical import _rank_lexical_chunks
 from tax_rag.retrieval.rerank import rerank_results
@@ -48,7 +48,8 @@ def retrieve_hybrid(
     total_start = perf_counter()
     filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
-    authorized_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
+    request_scope = scope_chunks_for_request(authorized.authorized_chunks, request)
+    authorized_chunks = request_scope.chunks
     security_filter_ms = _elapsed_ms(filter_start)
 
     request_scoping_start = perf_counter()
@@ -131,6 +132,8 @@ def retrieve_hybrid(
 
     if _EXACT_IDENTIFIER_PATTERN.search(request.query):
         fused_candidates.sort(key=lambda item: (-item[0], -item[1], item[2].chunk_id))
+        if any(exact_priority > 0 for exact_priority, *_ in fused_candidates):
+            fused_candidates = [item for item in fused_candidates if item[0] > 0]
     else:
         fused_candidates.sort(key=lambda item: (-item[1], item[2].chunk_id))
     candidate_limit = max(request.top_k, DEFAULT_CONFIG.reranking.input_top_k)
@@ -175,6 +178,10 @@ def retrieve_hybrid(
             "authorized_candidate_count": len(authorized_chunks),
             "denied_count": authorized.denied_count,
             "total_chunk_count": len(chunks),
+            "source_type_filtered_count": request_scope.source_type_filtered_count,
+            "jurisdiction_filtered_count": request_scope.jurisdiction_filtered_count,
+            "validity_filtered_count": request_scope.validity_filtered_count,
+            "as_of_date": request.as_of_date,
             "lexical_result_count": len(lexical_results),
             "dense_result_count": len(dense_results),
             "fusion_strategy": DEFAULT_CONFIG.retrieval.fusion_strategy,

@@ -6,7 +6,7 @@ import re
 from time import perf_counter
 
 from tax_rag.common import DEFAULT_CONFIG
-from tax_rag.retrieval.common import request_allows_chunk
+from tax_rag.retrieval.common import scope_chunks_for_request
 from tax_rag.schemas import (
     ChunkRecord,
     RetrievalMethod,
@@ -81,6 +81,11 @@ def _score_chunk_against_query(chunk: ChunkRecord, query: str) -> tuple[tuple[Sc
         matched_terms.append(query_terms["ecli"])
 
     if query_terms.get("article") and chunk.article and query_terms["article"] == chunk.article:
+        if query_terms.get("paragraph") and chunk.paragraph != query_terms["paragraph"]:
+            return (), ()
+        if query_terms.get("subparagraph") and _normalize_subparagraph(chunk.subparagraph) != query_terms["subparagraph"]:
+            return (), ()
+
         article_score = 40.0 * exact_identifier_boost
         scores.append(
             ScoreTrace(
@@ -187,10 +192,10 @@ def retrieve_lexical(
     total_start = perf_counter()
     filter_start = perf_counter()
     authorized = filter_authorized_chunks(chunks, role=request.role, contract=contract)
-    request_scoped_chunks = [chunk for chunk in authorized.authorized_chunks if request_allows_chunk(chunk, request)]
+    request_scope = scope_chunks_for_request(authorized.authorized_chunks, request)
     security_filter_ms = _elapsed_ms(filter_start)
     lexical_start = perf_counter()
-    results = _rank_lexical_chunks(request_scoped_chunks, request)
+    results = _rank_lexical_chunks(request_scope.chunks, request)
     lexical_retrieval_ms = _elapsed_ms(lexical_start)
     retrieval_total_ms = _elapsed_ms(total_start)
 
@@ -200,9 +205,13 @@ def retrieve_lexical(
         results=results,
         security_stage=authorized.enforcement_stage,
         metadata={
-            "authorized_candidate_count": len(request_scoped_chunks),
+            "authorized_candidate_count": len(request_scope.chunks),
             "denied_count": authorized.denied_count,
             "total_chunk_count": len(chunks),
+            "source_type_filtered_count": request_scope.source_type_filtered_count,
+            "jurisdiction_filtered_count": request_scope.jurisdiction_filtered_count,
+            "validity_filtered_count": request_scope.validity_filtered_count,
+            "as_of_date": request.as_of_date,
             "query_terms": _extract_query_terms(request.query),
             "timings_ms": {
                 "request_scoping_ms": 0.0,

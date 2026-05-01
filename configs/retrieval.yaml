@@ -8,3 +8,10 @@ retrieval:
   dense_model: demo-hash-embedding-v1
   dense_dimensions: 256
   exact_identifier_boost: 3.0
+  qdrant_hnsw_m: 32
+  qdrant_ef_construct: 200
+  qdrant_search_ef: 128
+  qdrant_scalar_quantization: true
+  qdrant_scalar_quantile: 0.99
+  qdrant_quantization_always_ram: true
+  qdrant_on_disk_vectors: false

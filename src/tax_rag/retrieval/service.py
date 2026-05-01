@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 
 from tax_rag.common import DEFAULT_CONFIG, expand_chunks_for_stress
 from tax_rag.indexing import DEFAULT_DENSE_COLLECTION_NAME
-from tax_rag.retrieval.common import load_chunk_records
+from tax_rag.retrieval.common import infer_as_of_date, load_chunk_records
 from tax_rag.retrieval.dense import retrieve_dense
 from tax_rag.retrieval.hybrid import retrieve_hybrid
 from tax_rag.retrieval.lexical import retrieve_lexical
@@ -46,6 +46,7 @@ class RetrievalService:
         method: RetrievalMethod | None = None,
         source_types: tuple[SourceType, ...] = (),
         jurisdiction: str | None = "NL",
+        as_of_date: str | None = None,
     ) -> RetrievalResponse:
         request = RetrievalRequest(
             query=query,
@@ -53,6 +54,7 @@ class RetrievalService:
             top_k=top_k or DEFAULT_CONFIG.retrieval.final_top_k,
             source_types=source_types,
             jurisdiction=jurisdiction,
+            as_of_date=as_of_date or infer_as_of_date(query),
             metadata={
                 "dense_index_path": self.dense_index_path,
                 "dense_collection_name": self.dense_collection_name,

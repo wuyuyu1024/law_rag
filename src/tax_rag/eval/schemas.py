@@ -20,7 +20,10 @@ class GoldEvalCase(SchemaModel):
     expected_grade: EvidenceGrade | None = None
     expected_refusal_reason: RefusalReason | None = None
     expected_citation_substrings: tuple[str, ...] = ()
+    expected_citation_paths: tuple[str, ...] = ()
+    expected_chunk_ids: tuple[str, ...] = ()
     forbidden_citation_substrings: tuple[str, ...] = ()
+    forbidden_chunk_ids: tuple[str, ...] = ()
     notes: str | None = None
 
     @field_validator("case_id", "category", "query", "role")
@@ -41,6 +44,10 @@ class EvalCaseResult(SchemaModel):
     citation_presence: bool
     expected_citation_match_count: int
     expected_citation_total: int
+    expected_exact_citation_match_count: int = 0
+    expected_exact_citation_total: int = 0
+    expected_chunk_match_count: int = 0
+    expected_chunk_total: int = 0
     unauthorized_retrieval_failure: bool
     faithfulness_proxy_pass: bool
     context_precision_proxy: float

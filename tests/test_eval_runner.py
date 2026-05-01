@@ -15,6 +15,8 @@ def _chunk(
     allowed_roles: tuple[str, ...],
     security_classification: SecurityClassification,
     article: str | None = None,
+    paragraph: str | None = None,
+    subparagraph: str | None = None,
     ecli: str | None = None,
 ) -> ChunkRecord:
     return ChunkRecord(
@@ -27,6 +29,8 @@ def _chunk(
         allowed_roles=allowed_roles,
         source_path=f"fixtures/{chunk_id}.xml",
         article=article,
+        paragraph=paragraph,
+        subparagraph=subparagraph,
         ecli=ecli,
         security_classification=security_classification,
     )
@@ -46,6 +50,8 @@ def test_load_gold_cases_and_run_eval(tmp_path: Path) -> None:
         allowed_roles=("helpdesk", "inspector", "legal_counsel"),
         security_classification=SecurityClassification.PUBLIC,
         article="1:1",
+        paragraph="1",
+        subparagraph="a.",
     )
     chunks_path.write_text(f"{json.dumps(chunk.to_dict(), ensure_ascii=False)}\n", encoding="utf-8")
 
@@ -60,6 +66,8 @@ def test_load_gold_cases_and_run_eval(tmp_path: Path) -> None:
                 role="helpdesk",
                 expected_outcome=AnswerOutcome.ANSWERED,
                 expected_citation_substrings=("Algemene wet bestuursrecht > Artikel 1:1",),
+                expected_citation_paths=("Algemene wet bestuursrecht > Artikel 1:1 > Lid 1 > Onderdeel a.",),
+                expected_chunk_ids=("law-1-1",),
             )
         ],
     )
@@ -71,6 +79,8 @@ def test_load_gold_cases_and_run_eval(tmp_path: Path) -> None:
     assert report.total_cases == 1
     assert report.passed_cases == 1
     assert report.metrics["exact_lookup_success"] == 1.0
+    assert report.cases[0].expected_exact_citation_match_count == 1
+    assert report.cases[0].expected_chunk_match_count == 1
     assert report.cases[0].execution_trace[-1]["event"] == "response_finalized"
 
 
@@ -123,6 +133,8 @@ def test_forbidden_citation_list_does_not_fail_when_only_allowed_citation_is_ret
         allowed_roles=("helpdesk", "inspector", "legal_counsel"),
         security_classification=SecurityClassification.PUBLIC,
         article="1:1",
+        paragraph="1",
+        subparagraph="a.",
     )
     chunks_path.write_text(f"{json.dumps(allowed.to_dict(), ensure_ascii=False)}\n", encoding="utf-8")
 

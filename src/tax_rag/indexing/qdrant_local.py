@@ -20,9 +20,33 @@ _PAYLOAD_INDEX_FIELDS: tuple[tuple[str, models.PayloadSchemaType], ...] = (
     ("jurisdiction", models.PayloadSchemaType.KEYWORD),
     ("security_classification", models.PayloadSchemaType.KEYWORD),
     ("security_classification_rank", models.PayloadSchemaType.INTEGER),
+    ("valid_from", models.PayloadSchemaType.DATETIME),
+    ("valid_to", models.PayloadSchemaType.DATETIME),
     ("article", models.PayloadSchemaType.KEYWORD),
     ("ecli", models.PayloadSchemaType.KEYWORD),
 )
+
+
+def qdrant_vector_params(dimensions: int) -> models.VectorParams:
+    quantization_config = None
+    if DEFAULT_CONFIG.retrieval.qdrant_scalar_quantization:
+        quantization_config = models.ScalarQuantization(
+            scalar=models.ScalarQuantizationConfig(
+                type=models.ScalarType.INT8,
+                quantile=DEFAULT_CONFIG.retrieval.qdrant_scalar_quantile,
+                always_ram=DEFAULT_CONFIG.retrieval.qdrant_quantization_always_ram,
+            )
+        )
+    return models.VectorParams(
+        size=dimensions,
+        distance=models.Distance.COSINE,
+        hnsw_config=models.HnswConfigDiff(
+            m=DEFAULT_CONFIG.retrieval.qdrant_hnsw_m,
+            ef_construct=DEFAULT_CONFIG.retrieval.qdrant_ef_construct,
+        ),
+        quantization_config=quantization_config,
+        on_disk=DEFAULT_CONFIG.retrieval.qdrant_on_disk_vectors,
+    )
 
 
 @dataclass(frozen=True)
@@ -52,7 +76,7 @@ class LocalQdrantIndex:
             created = True
             client.create_collection(
                 collection_name=self.collection_name,
-                vectors_config=models.VectorParams(size=self.dimensions, distance=models.Distance.COSINE),
+                vectors_config=qdrant_vector_params(self.dimensions),
             )
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore", UserWarning)

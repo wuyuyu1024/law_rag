@@ -69,6 +69,8 @@ def payload_for_chunk(chunk: ChunkRecord) -> dict[str, Any]:
         "jurisdiction": chunk.jurisdiction,
         "security_classification": chunk.security_classification.value,
         "security_classification_rank": CLASSIFICATION_ORDER[chunk.security_classification],
+        "valid_from": chunk.valid_from,
+        "valid_to": chunk.valid_to,
         "article": chunk.article,
         "ecli": chunk.ecli,
     }

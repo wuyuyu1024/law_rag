@@ -79,6 +79,7 @@ def build_agent_response(
             metadata={
                 "retrieval_metadata": retrieval_response.metadata,
                 "result_count": len(retrieval_response.results),
+                "retrieved_chunk_ids": tuple(result.chunk_id for result in retrieval_response.results),
                 "source_security_classifications": sorted(
                     {
                         result.source.security_classification.value
@@ -105,6 +106,7 @@ def build_agent_response(
         metadata={
             "retrieval_metadata": retrieval_response.metadata,
             "result_count": len(retrieval_response.results),
+            "retrieved_chunk_ids": tuple(result.chunk_id for result in retrieval_response.results),
             "source_types": sorted({citation.source_type.value for citation in citations}),
             "source_security_classifications": sorted(
                 {
@@ -129,6 +131,7 @@ class EvidenceGatedAgent:
         method: RetrievalMethod | None = None,
         source_types: tuple[SourceType, ...] = (),
         jurisdiction: str | None = "NL",
+        as_of_date: str | None = None,
     ) -> AgentResponse:
         retrieval_response = self.retrieval_service.retrieve(
             query=query,
@@ -137,6 +140,7 @@ class EvidenceGatedAgent:
             method=method,
             source_types=source_types,
             jurisdiction=jurisdiction,
+            as_of_date=as_of_date,
         )
         return build_agent_response(
             query=query,

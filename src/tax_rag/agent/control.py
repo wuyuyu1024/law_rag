@@ -18,6 +18,7 @@ from tax_rag.common import (
     transform_trace_event,
 )
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
+from tax_rag.retrieval.common import infer_as_of_date
 from tax_rag.schemas import (
     AgentResponse,
     AgentState,
@@ -91,6 +92,11 @@ def _combine_subquery_answers(
         retrieval_method=RetrievalMethodEnum.HYBRID,
         state_trace=state_trace,
         metadata={
+            "retrieved_chunk_ids": tuple(
+                result.chunk_id
+                for _, retrieval_response, _ in subquery_results
+                for result in retrieval_response.results
+            ),
             "subqueries": [
                 {
                     "query": subquery,
@@ -170,7 +176,9 @@ class CorrectiveRAGAgent:
         method: RetrievalMethod | None = None,
         source_types: tuple[SourceType, ...] = (),
         jurisdiction: str | None = "NL",
+        as_of_date: str | None = None,
     ) -> AgentResponse:
+        effective_as_of_date = as_of_date or infer_as_of_date(query)
         plan = transform_query(query)
         states = [AgentState.UNDERSTOOD.value]
         execution_trace: list[dict[str, Any]] = []
@@ -198,6 +206,7 @@ class CorrectiveRAGAgent:
                     method=method or RetrievalMethod.HYBRID,
                     source_types=source_types,
                     jurisdiction=jurisdiction,
+                    as_of_date=effective_as_of_date,
                 )
                 self._append_trace(
                     execution_trace,
@@ -255,6 +264,7 @@ class CorrectiveRAGAgent:
             method=initial_method,
             source_types=source_types,
             jurisdiction=jurisdiction,
+            as_of_date=effective_as_of_date,
         )
         self._append_trace(
             execution_trace,
@@ -313,6 +323,7 @@ class CorrectiveRAGAgent:
                     method=RetrievalMethod.LEXICAL,
                     source_types=source_types,
                     jurisdiction=jurisdiction,
+                    as_of_date=effective_as_of_date,
                 )
                 self._append_trace(
                     execution_trace,

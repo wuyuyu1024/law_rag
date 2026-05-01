@@ -67,6 +67,8 @@ def build_chunk_record(
         jurisdiction=document.jurisdiction,
         allowed_roles=document.allowed_roles,
         source_path=document.source_path,
+        valid_from=document.valid_from or document.effective_date,
+        valid_to=document.valid_to,
         article=document.article,
         paragraph=paragraph,
         subparagraph=subparagraph,

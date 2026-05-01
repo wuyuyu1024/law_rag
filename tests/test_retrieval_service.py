@@ -15,6 +15,8 @@ def _chunk(
     security_classification: SecurityClassification,
     article: str | None = None,
     ecli: str | None = None,
+    valid_from: str | None = None,
+    valid_to: str | None = None,
 ) -> ChunkRecord:
     return ChunkRecord(
         chunk_id=chunk_id,
@@ -25,6 +27,8 @@ def _chunk(
         jurisdiction="NL",
         allowed_roles=allowed_roles,
         source_path=f"fixtures/{chunk_id}.xml",
+        valid_from=valid_from,
+        valid_to=valid_to,
         article=article,
         ecli=ecli,
         security_classification=security_classification,
@@ -96,6 +100,43 @@ def test_retrieval_service_can_load_chunks_from_jsonl(tmp_path: Path) -> None:
 
     assert response.retrieval_method is RetrievalMethod.LEXICAL
     assert response.results[0].chunk_id == "law-citation"
+
+
+def test_retrieval_service_filters_chunks_by_as_of_date() -> None:
+    service = RetrievalService(
+        chunks=[
+            _chunk(
+                chunk_id="law-article-old",
+                source_type=SourceType.LEGISLATION,
+                text="Old version of the rule.",
+                citation_path="Demo Tax Act > Artikel 9.1",
+                allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+                security_classification=SecurityClassification.PUBLIC,
+                article="9.1",
+                valid_from="2020-01-01",
+                valid_to="2024-12-31",
+            ),
+            _chunk(
+                chunk_id="law-article-current",
+                source_type=SourceType.LEGISLATION,
+                text="Current version of the rule.",
+                citation_path="Demo Tax Act > Artikel 9.1",
+                allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+                security_classification=SecurityClassification.PUBLIC,
+                article="9.1",
+                valid_from="2025-01-01",
+            ),
+        ],
+        default_method=RetrievalMethod.LEXICAL,
+    )
+
+    current = service.retrieve("Artikel 9.1 as of 2026-01-01", "helpdesk")
+    historical = service.retrieve("Artikel 9.1", "helpdesk", as_of_date="2024-06-01")
+
+    assert current.request.as_of_date == "2026-01-01"
+    assert current.results[0].chunk_id == "law-article-current"
+    assert current.metadata["validity_filtered_count"] == 1
+    assert historical.results[0].chunk_id == "law-article-old"
 
 
 def test_resolve_result_citation_preserves_stable_linkage() -> None:

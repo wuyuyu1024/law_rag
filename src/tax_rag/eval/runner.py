@@ -46,9 +46,32 @@ def _citation_match_count(expected_substrings: tuple[str, ...], citations: tuple
     return count
 
 
+def _exact_citation_match_count(expected_paths: tuple[str, ...], citations: tuple[str, ...]) -> int:
+    if not expected_paths:
+        return 0
+    normalized_citations = {_normalize_text(citation) for citation in citations}
+    return sum(1 for path in expected_paths if _normalize_text(path) in normalized_citations)
+
+
+def _retrieved_chunk_ids(response_metadata: dict[str, Any], citations: tuple[Any, ...]) -> tuple[str, ...]:
+    from_metadata = response_metadata.get("retrieved_chunk_ids", ())
+    if isinstance(from_metadata, (list, tuple)) and all(isinstance(item, str) for item in from_metadata):
+        return tuple(from_metadata)
+    return tuple(citation.chunk_id for citation in citations)
+
+
+def _chunk_match_count(expected_chunk_ids: tuple[str, ...], retrieved_chunk_ids: tuple[str, ...]) -> int:
+    if not expected_chunk_ids:
+        return 0
+    retrieved = set(retrieved_chunk_ids)
+    return sum(1 for chunk_id in expected_chunk_ids if chunk_id in retrieved)
+
+
 def _unauthorized_retrieval_failure(
     forbidden_substrings: tuple[str, ...],
+    forbidden_chunk_ids: tuple[str, ...],
     citations: tuple[str, ...],
+    retrieved_chunk_ids: tuple[str, ...],
     answer_text: str | None,
 ) -> bool:
     normalized_citations = [_normalize_text(citation) for citation in citations]
@@ -59,6 +82,8 @@ def _unauthorized_retrieval_failure(
             return True
         if normalized_needle in normalized_answer:
             return True
+    if set(forbidden_chunk_ids) & set(retrieved_chunk_ids):
+        return True
     return False
 
 
@@ -157,11 +182,16 @@ class EvalRunner:
     def run_case(self, case: GoldEvalCase) -> EvalCaseResult:
         response = self.agent.answer(case.query, case.role)
         citations = tuple(citation.citation_path for citation in response.citations)
+        retrieved_chunk_ids = _retrieved_chunk_ids(response.metadata, response.citations)
         execution_trace = tuple(
             event for event in response.metadata.get("execution_trace", ()) if isinstance(event, dict)
         )
         expected_citation_match_count = _citation_match_count(case.expected_citation_substrings, citations)
         expected_citation_total = len(case.expected_citation_substrings)
+        expected_exact_citation_match_count = _exact_citation_match_count(case.expected_citation_paths, citations)
+        expected_exact_citation_total = len(case.expected_citation_paths)
+        expected_chunk_match_count = _chunk_match_count(case.expected_chunk_ids, retrieved_chunk_ids)
+        expected_chunk_total = len(case.expected_chunk_ids)
         outcome_match = response.outcome is case.expected_outcome
         grade_match = case.expected_grade is None or response.evidence.grade is case.expected_grade
         refusal_reason_match = (
@@ -170,7 +200,9 @@ class EvalRunner:
         citation_presence = bool(response.citations)
         unauthorized_failure = _unauthorized_retrieval_failure(
             case.forbidden_citation_substrings,
+            case.forbidden_chunk_ids,
             citations,
+            retrieved_chunk_ids,
             response.answer_text,
         )
         chunk_text_by_id = {chunk.chunk_id: chunk.text for chunk in self.retrieval_service.chunks}
@@ -181,7 +213,14 @@ class EvalRunner:
             tuple(citation.chunk_id for citation in response.citations),
         )
         context_precision_proxy = (
-            expected_citation_match_count / expected_citation_total if expected_citation_total > 0 else 1.0
+            (
+                expected_citation_match_count
+                + expected_exact_citation_match_count
+                + expected_chunk_match_count
+            )
+            / (expected_citation_total + expected_exact_citation_total + expected_chunk_total)
+            if (expected_citation_total + expected_exact_citation_total + expected_chunk_total) > 0
+            else 1.0
         )
         passed = (
             outcome_match
@@ -189,6 +228,11 @@ class EvalRunner:
             and refusal_reason_match
             and not unauthorized_failure
             and (expected_citation_total == 0 or expected_citation_match_count == expected_citation_total)
+            and (
+                expected_exact_citation_total == 0
+                or expected_exact_citation_match_count == expected_exact_citation_total
+            )
+            and (expected_chunk_total == 0 or expected_chunk_match_count == expected_chunk_total)
         )
 
         return EvalCaseResult(
@@ -201,6 +245,10 @@ class EvalRunner:
             citation_presence=citation_presence,
             expected_citation_match_count=expected_citation_match_count,
             expected_citation_total=expected_citation_total,
+            expected_exact_citation_match_count=expected_exact_citation_match_count,
+            expected_exact_citation_total=expected_exact_citation_total,
+            expected_chunk_match_count=expected_chunk_match_count,
+            expected_chunk_total=expected_chunk_total,
             unauthorized_retrieval_failure=unauthorized_failure,
             faithfulness_proxy_pass=faithfulness_pass,
             context_precision_proxy=context_precision_proxy,

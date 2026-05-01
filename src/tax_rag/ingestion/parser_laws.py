@@ -86,6 +86,7 @@ def parse_law_file(path: str | Path) -> list[NormalizedDocument]:
                 title=title,
                 jurisdiction="NL",
                 effective_date=effective_date,
+                valid_from=effective_date,
                 article=_normalize_whitespace(article_nr) if article_nr else None,
                 citation_path=citation_path,
                 text=article_text,

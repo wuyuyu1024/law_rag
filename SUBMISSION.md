@@ -43,7 +43,7 @@ Implemented in demo:
 
 - laws are chunked by article, paragraph (`lid`), and list-item boundaries
 - case law is chunked by section-aware boundaries such as `facts`, `reasoning`, and `holding`
-- every chunk preserves `chunk_id`, `doc_id`, `citation_path`, `source_type`, `jurisdiction`, and `allowed_roles`
+- every chunk preserves `chunk_id`, `doc_id`, `citation_path`, `source_type`, `jurisdiction`, `allowed_roles`, and validity metadata when available
 
 Pseudo-code:
 
@@ -94,6 +94,8 @@ Concrete production configuration:
   - `security_classification_rank`
   - `jurisdiction`
   - `source_type`
+  - `valid_from`
+  - `valid_to`
   - `article`
   - `ecli`
 - memory controls:
@@ -136,6 +138,7 @@ Implemented in demo:
 - exact lexical retrieval over legal identifiers
 - dense retrieval through Qdrant
 - hybrid retrieval with RRF
+- exact statutory queries are narrowed to the requested paragraph/subparagraph when that metadata is present
 
 Recommended production dense model:
 
@@ -285,6 +288,7 @@ Implemented in demo:
 - regression runner
 - promotion gate
 - structured execution traces
+- optional exact citation-path and chunk-id gold checks for stricter retrieval precision
 
 Metrics tracked now:
 
@@ -295,6 +299,7 @@ Metrics tracked now:
 - semantic retrieval success
 - faithfulness proxy
 - context precision proxy
+- exact chunk/citation-path match counts where the gold set specifies them
 
 Recommended production extension:
 

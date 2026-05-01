@@ -7,7 +7,7 @@ from datetime import date
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class SourceType(StrEnum):
@@ -60,6 +60,8 @@ class NormalizedDocument(SchemaModel):
     text: str
     source_path: str
     effective_date: str | None = None
+    valid_from: str | None = None
+    valid_to: str | None = None
     article: str | None = None
     paragraph: str | None = None
     subparagraph: str | None = None
@@ -91,10 +93,27 @@ class NormalizedDocument(SchemaModel):
     def _effective_date_is_iso(cls, value: str | None) -> str | None:
         return _validate_iso_date(value, "effective_date")
 
+    @field_validator("valid_from")
+    @classmethod
+    def _valid_from_is_iso(cls, value: str | None) -> str | None:
+        return _validate_iso_date(value, "valid_from")
+
+    @field_validator("valid_to")
+    @classmethod
+    def _valid_to_is_iso(cls, value: str | None) -> str | None:
+        return _validate_iso_date(value, "valid_to")
+
     @field_validator("decision_date")
     @classmethod
     def _decision_date_is_iso(cls, value: str | None) -> str | None:
         return _validate_iso_date(value, "decision_date")
+
+    @model_validator(mode="after")
+    def _valid_range_is_ordered(self) -> "NormalizedDocument":
+        if self.valid_from is not None and self.valid_to is not None:
+            if date.fromisoformat(self.valid_to) < date.fromisoformat(self.valid_from):
+                raise ValueError("valid_to must be on or after valid_from")
+        return self
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "NormalizedDocument":

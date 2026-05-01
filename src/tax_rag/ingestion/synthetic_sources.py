@@ -36,6 +36,8 @@ def parse_policy_fixture(path: str | Path) -> NormalizedDocument:
         source_path=str(fixture_path),
         security_classification=payload.get("security_classification", "internal"),
         allowed_roles=tuple(payload.get("allowed_roles", ("inspector", "legal_counsel"))),
+        valid_from=payload.get("valid_from"),
+        valid_to=payload.get("valid_to"),
         metadata=_common_metadata(payload),
     )
 
@@ -49,6 +51,8 @@ def parse_e_learning_fixture(path: str | Path) -> NormalizedDocument:
         text=payload["text"],
         source_path=str(fixture_path),
         allowed_roles=tuple(payload.get("allowed_roles", ("helpdesk", "inspector", "legal_counsel"))),
+        valid_from=payload.get("valid_from"),
+        valid_to=payload.get("valid_to"),
         metadata=_common_metadata(payload),
     )
 
