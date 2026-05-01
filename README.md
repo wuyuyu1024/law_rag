@@ -47,6 +47,7 @@ Phase 5 evaluation now has an initial deterministic baseline:
 - `scripts/run_eval.py` runs the current agent against that gold set
 - summary metrics, per-case outputs, and structured execution traces are written to `data/eval/eval_runs/`
 - promotion gating can compare a candidate run against explicit thresholds and an optional baseline report before rollout
+- the current local gold gate passes all 18 cases with zero unauthorized retrieval failures
 
 Phase 5 still has follow-up work open around a Redis-backed semantic cache, but conservative in-memory cache policy, promotion gating, and observability are implemented in the local baseline.
 

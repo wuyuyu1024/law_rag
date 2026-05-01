@@ -240,12 +240,19 @@ class CorrectiveRAGAgent:
             )
             return self._with_trace(response, execution_trace)
 
+        force_initial_retrieval = plan.metadata.get("force_initial_retrieval") is True and bool(plan.transformed_queries)
+        initial_query = plan.transformed_queries[0] if force_initial_retrieval else query
+        initial_method = (
+            RetrievalMethod.LEXICAL
+            if force_initial_retrieval and method in {None, RetrievalMethod.HYBRID}
+            else method
+        )
         states.append(AgentState.RETRIEVED.value)
         retrieval_response = self.retrieval_service.retrieve(
-            query=query,
+            query=initial_query,
             role=role,
             top_k=top_k,
-            method=method,
+            method=initial_method,
             source_types=source_types,
             jurisdiction=jurisdiction,
         )
@@ -254,7 +261,7 @@ class CorrectiveRAGAgent:
             retrieval_trace_event(
                 len(execution_trace) + 1,
                 retrieval_response,
-                query=query,
+                query=initial_query,
                 attempt_label="initial",
             ),
         )
@@ -265,7 +272,7 @@ class CorrectiveRAGAgent:
             evidence_trace_event(
                 len(execution_trace) + 1,
                 evidence,
-                query=query,
+                query=initial_query,
                 attempt_label="initial",
             ),
         )

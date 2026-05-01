@@ -49,6 +49,20 @@ def test_transform_query_decomposes_multi_part_query() -> None:
     assert len(plan.transformed_queries) == 2
 
 
+def test_transform_query_maps_recurring_30_percent_questions_to_statutory_citations() -> None:
+    definition = transform_query("What is the definition of an incoming employee for the 30% ruling?")
+    duration = transform_query("What is the duration of the 30% ruling evidence rule for incoming employees?")
+    reduction = transform_query(
+        "When is the duration of the 30% ruling reduced because of earlier work or residence in the Netherlands?"
+    )
+
+    assert definition.strategy is QueryTransformStrategy.STRUCTURED_IDENTIFIER
+    assert definition.transformed_queries == ("Artikel 10e lid 2 onderdeel b",)
+    assert definition.metadata["force_initial_retrieval"] is True
+    assert duration.transformed_queries == ("Artikel 10ec lid 1",)
+    assert reduction.transformed_queries == ("Artikel 10ef lid 1",)
+
+
 def test_corrective_rag_agent_retries_with_structured_identifier() -> None:
     service = RetrievalService(
         chunks=[
@@ -76,6 +90,35 @@ def test_corrective_rag_agent_retries_with_structured_identifier() -> None:
     trace = response.metadata["execution_trace"]
     assert any(event["event"] == "retrieval_completed" for event in trace)
     assert trace[-1]["event"] == "response_finalized"
+
+
+def test_corrective_rag_agent_uses_forced_statutory_rewrite_as_initial_lexical_query() -> None:
+    service = RetrievalService(
+        chunks=[
+            _chunk(
+                chunk_id="law-10ef-1",
+                source_type=SourceType.LEGISLATION,
+                text="Lid 1 reduces the duration for earlier work or residence in the Netherlands.",
+                citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ef > Lid 1",
+                allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+                security_classification=SecurityClassification.PUBLIC,
+                article="10ef",
+                paragraph="1",
+            )
+        ],
+        default_method=RetrievalMethod.HYBRID,
+    )
+    agent = CorrectiveRAGAgent(retrieval_service=service)
+
+    response = agent.answer(
+        "When is the duration of the 30% ruling reduced because of earlier work or residence in the Netherlands?",
+        "helpdesk",
+    )
+
+    assert response.outcome is AnswerOutcome.ANSWERED
+    assert response.retrieval_method is RetrievalMethod.LEXICAL
+    assert "retrying" not in response.state_trace
+    assert response.metadata["transform_plan"]["transformed_queries"] == ["Artikel 10ef lid 1"]
 
 
 def test_corrective_rag_agent_answers_when_all_subqueries_are_supported() -> None:

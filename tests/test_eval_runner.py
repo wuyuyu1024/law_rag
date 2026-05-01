@@ -113,6 +113,42 @@ def test_eval_runner_tracks_unauthorized_retrieval_failures_and_saves_report(tmp
     assert any(path.name.startswith("eval_traces_") for path in output_files)
 
 
+def test_forbidden_citation_list_does_not_fail_when_only_allowed_citation_is_returned(tmp_path: Path) -> None:
+    chunks_path = tmp_path / "chunks.jsonl"
+    allowed = _chunk(
+        chunk_id="law-1-1-a",
+        source_type=SourceType.LEGISLATION,
+        text="Lid 1. Onderdeel a. een orgaan van een publiekrechtelijke rechtspersoon.",
+        citation_path="Algemene wet bestuursrecht > Artikel 1:1 > Lid 1 > Onderdeel a.",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="1:1",
+    )
+    chunks_path.write_text(f"{json.dumps(allowed.to_dict(), ensure_ascii=False)}\n", encoding="utf-8")
+
+    gold_path = tmp_path / "gold.jsonl"
+    _write_gold(
+        gold_path,
+        [
+            GoldEvalCase(
+                case_id="exact_allowed_subparagraph",
+                category="exact_lookup",
+                query="Artikel 1:1 lid 1 onderdeel a",
+                role="helpdesk",
+                expected_outcome=AnswerOutcome.ANSWERED,
+                expected_citation_substrings=("Algemene wet bestuursrecht > Artikel 1:1 > Lid 1 > Onderdeel a.",),
+                forbidden_citation_substrings=("Algemene wet bestuursrecht > Artikel 1:1 > Lid 1 > Onderdeel b.",),
+            )
+        ],
+    )
+
+    runner = EvalRunner(RetrievalService.from_jsonl(str(chunks_path), default_method=RetrievalMethod.LEXICAL))
+    report = runner.run_cases(load_gold_cases(gold_path))
+
+    assert report.passed_cases == 1
+    assert report.cases[0].unauthorized_retrieval_failure is False
+
+
 def test_evaluate_promotion_compares_candidate_against_thresholds_and_baseline() -> None:
     baseline_report = EvalReport(
         generated_at="2026-04-23T00:00:00Z",

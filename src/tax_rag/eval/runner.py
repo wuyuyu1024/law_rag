@@ -50,7 +50,6 @@ def _unauthorized_retrieval_failure(
     forbidden_substrings: tuple[str, ...],
     citations: tuple[str, ...],
     answer_text: str | None,
-    outcome: AnswerOutcome,
 ) -> bool:
     normalized_citations = [_normalize_text(citation) for citation in citations]
     normalized_answer = _normalize_text(answer_text or "")
@@ -60,7 +59,7 @@ def _unauthorized_retrieval_failure(
             return True
         if normalized_needle in normalized_answer:
             return True
-    return outcome is AnswerOutcome.ANSWERED and bool(forbidden_substrings)
+    return False
 
 
 def _faithfulness_proxy(answer_text: str | None, citations: tuple[str, ...], chunk_text_by_id: dict[str, str], chunk_ids: tuple[str, ...]) -> bool:
@@ -173,7 +172,6 @@ class EvalRunner:
             case.forbidden_citation_substrings,
             citations,
             response.answer_text,
-            response.outcome,
         )
         chunk_text_by_id = {chunk.chunk_id: chunk.text for chunk in self.retrieval_service.chunks}
         faithfulness_pass = _faithfulness_proxy(
