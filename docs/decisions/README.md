@@ -2,6 +2,8 @@
 
 This folder contains short architecture decision records (ADRs) for the most important design choices in the repository.
 
+Do not read these first. Start with [../../README.md](../../README.md), [../../SUBMISSION.md](../../SUBMISSION.md), and [../demo-script.md](../demo-script.md). Use the ADRs only as an appendix when you want the rationale behind a specific choice.
+
 How to use them:
 - Read them before interviews so you can explain not just what was built, but why it was built that way.
 - Treat each ADR as a 30-60 second answer template.

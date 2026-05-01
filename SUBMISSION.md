@@ -1,12 +1,6 @@
 # Submission Summary
 
-This repository is a demo implementation for the technical assessment in [assignment.md](./assignment.md).
-
-It is intentionally smaller than the full production target, but it is designed to answer the assignment directly:
-
-- what is implemented in the runnable demo
-- what is recommended for production
-- which exact parameters and controls matter for a tax-authority RAG system
+This repository is a runnable architecture demo for the technical assessment in [assignment.md](./assignment.md). It is intentionally smaller than the production target, but it implements the security and retrieval control points that matter for a tax-authority RAG system.
 
 The system diagram is in [docs/architecture.md](./docs/architecture.md). The live presentation flow is in [docs/demo-script.md](./docs/demo-script.md), and the production-readiness gap list is in [docs/production-delta.md](./docs/production-delta.md). A curated live demo is available with:
 
@@ -14,9 +8,26 @@ The system diagram is in [docs/architecture.md](./docs/architecture.md). The liv
 uv run python scripts/run_interview_demo.py --dense-index-path data/indexes/qdrant
 ```
 
-## Scope Clarification
+## TL;DR
 
-Implemented in demo:
+- The demo preserves legal hierarchy and citations through ingestion, chunking, retrieval, and answer construction.
+- RBAC is enforced before retrieval scoring, fusion, reranking, caching, or generation, so unauthorized content cannot influence results.
+- Retrieval uses exact/lexical lookup plus dense retrieval, RRF fusion, and a configurable reranker boundary.
+- The answer path grades evidence and refuses when evidence is weak, ambiguous, outdated, conflicting, or unauthorized.
+- Production work remains around full corpus ingestion, served multilingual models, hardened Qdrant/Redis deployment, SSO/audit logging, observability, and load testing.
+
+## Assessment Map
+
+| Assignment Module | Runnable Demo | Production Blueprint |
+| --- | --- | --- |
+| Ingestion & Knowledge Structuring | Dutch law/case parsing, synthetic internal/e-learning stand-ins, legal-aware chunking, citation metadata | Full internal corpus, historical versions, complete metadata governance |
+| Retrieval Strategy | Exact lexical lookup, Qdrant dense retrieval, hybrid RRF, deterministic reranker, optional cross-encoder adapter | Multilingual embedding model, internally served cross-encoder, production BM25/sparse retrieval |
+| Agentic RAG & Self-Healing | Query transformation, bounded retry, evidence grading, structured refusal, traceable state transitions | Stronger LLM generation with structured output validation and broader corrective strategies |
+| Production Ops, Security & Evaluation | Pre-retrieval RBAC, Redis/in-memory semantic cache, gold eval set, promotion gate, TTFT benchmark harness | SSO/OIDC, audit logging, HA Qdrant/Redis, monitoring, expanded Ragas/DeepEval-style evaluation |
+
+## Scope
+
+Implemented demo surface:
 
 - Dutch legislation and Dutch case law ingestion
 - synthetic internal policy and e-learning stand-ins
@@ -28,13 +39,15 @@ Implemented in demo:
 - local evaluation runner, promotion gate, and TTFT benchmark harness
 - curated interview demo script
 
-Recommended for production:
+Main production deltas:
 
 - full internal corpus coverage, including restricted operational manuals, memos, wiki-style guidance, and historical versions
 - production Qdrant deployment with filter-aware ANN tuning, quantization, payload indexes, and persistent storage
 - learned multilingual embeddings and learned reranking
 - Redis-backed semantic cache with strict safety gates
 - deeper observability and richer CI evaluators
+
+For the full production checklist, see [docs/production-delta.md](./docs/production-delta.md).
 
 ## Module 1: Ingestion and Knowledge Structuring
 

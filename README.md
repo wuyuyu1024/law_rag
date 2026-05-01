@@ -6,6 +6,7 @@ The demo is intentionally smaller than the production target, but it implements 
 
 ## Start Here
 
+- [docs/index.md](./docs/index.md): recommended reading order
 - [SUBMISSION.md](./SUBMISSION.md): main module-by-module assessment answer
 - [docs/demo-script.md](./docs/demo-script.md): live presentation flow and what each demo case proves
 - [docs/architecture.md](./docs/architecture.md): system diagram
