@@ -128,12 +128,13 @@ Repo references:
 ### What is still missing?
 
 Short answer:
-The main next steps are semantic cache design, upgrading the deterministic reranker to a real learned reranker, improving the remaining exact and refusal edge cases in the eval set, and only then adding a stronger generation layer. The current system already has evidence grading, corrective control flow, promotion gating, and structured trace artifacts.
+The main next steps are production hardening: replacing the deterministic embedding/reranker baselines with served multilingual models, expanding the corpus and eval set, deploying Qdrant/Redis with monitoring and invalidation, adding SSO/audit logging, and load-testing the TTFT target. The current system already has evidence grading, corrective control flow, semantic cache integration, promotion gating, and structured trace artifacts.
 
 Repo references:
 - `TASKS.md`
 - `src/tax_rag/agent/`
 - `src/tax_rag/eval/`
+- `docs/production-delta.md`
 
 ### How do you evaluate the system before changing retrieval or models?
 

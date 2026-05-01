@@ -8,7 +8,7 @@ It is intentionally smaller than the full production target, but it is designed 
 - what is recommended for production
 - which exact parameters and controls matter for a tax-authority RAG system
 
-The system diagram is in [docs/architecture.md](./docs/architecture.md). A curated live demo is available with:
+The system diagram is in [docs/architecture.md](./docs/architecture.md). The live presentation flow is in [docs/demo-script.md](./docs/demo-script.md), and the production-readiness gap list is in [docs/production-delta.md](./docs/production-delta.md). A curated live demo is available with:
 
 ```bash
 uv run python scripts/run_interview_demo.py --dense-index-path data/indexes/qdrant
@@ -326,7 +326,7 @@ These limitations are intentional and should be stated plainly to the interviewe
 - the current dense embedding and default reranking path are deterministic local baselines, not the final production relevance stack
 - the cross-encoder reranker boundary is implemented, but the heavy model dependency is intentionally optional rather than required for local tests
 - the repo documents a production TTFT strategy but does not prove `< 1.5 s` at production scale end to end
-- the semantic cache has both deterministic in-memory and Redis-backed adapters; wiring cache reads/writes into a production API path would be the next integration step
+- the semantic cache is wired into the app/API answer path, but production Redis HA, invalidation, and monitoring remain deployment work
 
 ## Final Position
 

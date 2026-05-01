@@ -6,6 +6,8 @@ The primary requirements live in `assignment.md`. The implementation backlog liv
 
 For an interviewer-facing summary that answers the assignment module by module, start with [`SUBMISSION.md`](./SUBMISSION.md).
 For the system diagram, see [`docs/architecture.md`](./docs/architecture.md).
+For the live presentation flow, see [`docs/demo-script.md`](./docs/demo-script.md).
+For the production-readiness gap list, see [`docs/production-delta.md`](./docs/production-delta.md).
 
 ## Current Status
 
