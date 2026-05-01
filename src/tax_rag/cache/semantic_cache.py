@@ -37,6 +37,14 @@ class RedisCacheClient(Protocol):
     def delete(self, *names: str) -> object: ...
 
 
+class SemanticCacheBackend(Protocol):
+    def get(self, query: str, key: SemanticCacheKey) -> AgentResponse | None: ...
+
+    def set(self, response: AgentResponse, key: SemanticCacheKey) -> bool: ...
+
+    def can_cache(self, response: AgentResponse) -> bool: ...
+
+
 @dataclass(frozen=True)
 class _CacheEntry:
     query: str

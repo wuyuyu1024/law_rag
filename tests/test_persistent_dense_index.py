@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from tax_rag.common import DEFAULT_CONFIG, expand_chunks_for_stress
-from tax_rag.indexing import ensure_local_qdrant_index, qdrant_vector_params
+from tax_rag.indexing import ensure_local_qdrant_index, qdrant_payload_index_fields, qdrant_vector_params
 from tax_rag.retrieval import RetrievalMethod, RetrievalService
 from tax_rag.schemas import ChunkRecord, SecurityClassification, SourceType
 
@@ -46,6 +46,9 @@ def test_persistent_local_qdrant_index_is_built_and_reused(tmp_path: Path) -> No
 
     assert build_result["created"] is True
     assert build_result["point_count"] == 1
+    assert "allowed_roles" in build_result["payload_index_fields"]
+    assert "security_classification" in build_result["payload_index_fields"]
+    assert "valid_from" in build_result["payload_index_fields"]
 
     service = RetrievalService(
         chunks=[chunk],
@@ -89,3 +92,19 @@ def test_qdrant_vector_params_use_configured_ann_and_quantization_settings() -> 
     assert params.hnsw_config.ef_construct == DEFAULT_CONFIG.retrieval.qdrant_ef_construct
     assert params.quantization_config is not None
     assert params.on_disk == DEFAULT_CONFIG.retrieval.qdrant_on_disk_vectors
+
+
+def test_qdrant_payload_indexes_cover_security_scope_and_legal_identifiers() -> None:
+    fields = set(qdrant_payload_index_fields())
+
+    assert {
+        "allowed_roles",
+        "security_classification",
+        "security_classification_rank",
+        "jurisdiction",
+        "source_type",
+        "valid_from",
+        "valid_to",
+        "article",
+        "ecli",
+    }.issubset(fields)

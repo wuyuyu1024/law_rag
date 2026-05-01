@@ -18,6 +18,11 @@ dependencies = [
   "uvicorn>=0.30.0",
 ]
 
+[project.optional-dependencies]
+rerank = [
+  "sentence-transformers>=5.1.2",
+]
+
 [dependency-groups]
 dev = [
   "mypy>=1.11.0",

@@ -8,6 +8,12 @@ It is intentionally smaller than the full production target, but it is designed 
 - what is recommended for production
 - which exact parameters and controls matter for a tax-authority RAG system
 
+The system diagram is in [docs/architecture.md](./docs/architecture.md). A curated live demo is available with:
+
+```bash
+uv run python scripts/run_interview_demo.py --dense-index-path data/indexes/qdrant
+```
+
 ## Scope Clarification
 
 Implemented in demo:
@@ -20,6 +26,7 @@ Implemented in demo:
 - configurable reranking backend with a deterministic local default
 - evidence grading, refusal, bounded retry, and execution traces
 - local evaluation runner, promotion gate, and TTFT benchmark harness
+- curated interview demo script
 
 Recommended for production:
 
@@ -261,6 +268,7 @@ Implemented in demo:
 - threshold and namespace defaults are documented in config
 - an in-memory semantic cache enforces the conservative cacheability policy for local tests and demos
 - a Redis-backed semantic cache adapter uses the same conservative policy and role/jurisdiction/version namespace boundaries
+- the app/API answer path can wrap the corrective agent with either `in_memory` or `redis` semantic cache backends
 
 ### Database-level security
 

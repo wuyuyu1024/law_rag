@@ -5,6 +5,7 @@ Demo implementation for a technical assessment: a secure, citation-grounded, per
 The primary requirements live in `assignment.md`. The implementation backlog lives in `TASKS.md`. If they disagree, follow `assignment.md`.
 
 For an interviewer-facing summary that answers the assignment module by module, start with [`SUBMISSION.md`](./SUBMISSION.md).
+For the system diagram, see [`docs/architecture.md`](./docs/architecture.md).
 
 ## Current Status
 
@@ -52,6 +53,12 @@ Phase 5 evaluation now has an initial deterministic baseline:
 Phase 5 now includes both conservative in-memory cache policy and a Redis-backed semantic cache adapter. The in-memory backend remains the deterministic local default; Redis is available for infrastructure-backed demos.
 
 The reranker follows the same pattern: `configs/reranking.yaml` defaults to `backend: deterministic` so tests and demos remain reproducible, while `backend: cross_encoder` selects the optional `BAAI/bge-reranker-v2-m3` adapter when `sentence-transformers` is installed and model downloads are allowed.
+
+Optional real reranker setup:
+
+```bash
+uv sync --extra rerank
+```
 
 ## Tooling
 
@@ -107,6 +114,9 @@ uv run python scripts/demo_cli.py \
   --dense-index-path data/indexes/qdrant \
   --query "Artikel 3.114 lid 2" \
   --role helpdesk
+uv run python scripts/run_interview_demo.py \
+  --chunks-path data/chunks/legal_chunks.jsonl \
+  --dense-index-path data/indexes/qdrant
 ```
 
 Optional local API:
@@ -130,6 +140,7 @@ What this runbook demonstrates:
 - regression/evaluation run over the gold set
 - a promotion gate for candidate model/retrieval changes
 - a minimal CLI answer/refusal demo with citations, state trace, timing metadata, and execution traces
+- a curated interview demo covering exact lookup, semantic lookup, RBAC refusal, authorized restricted access, outdated evidence refusal, and semantic cache behavior
 
 ## Repository Layout
 

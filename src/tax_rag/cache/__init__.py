@@ -3,6 +3,7 @@
 from tax_rag.cache.semantic_cache import (
     InMemorySemanticCache,
     RedisSemanticCache,
+    SemanticCacheBackend,
     SemanticCacheKey,
     build_semantic_cache_key,
     can_cache_response,
@@ -11,6 +12,7 @@ from tax_rag.cache.semantic_cache import (
 __all__ = [
     "InMemorySemanticCache",
     "RedisSemanticCache",
+    "SemanticCacheBackend",
     "SemanticCacheKey",
     "build_semantic_cache_key",
     "can_cache_response",

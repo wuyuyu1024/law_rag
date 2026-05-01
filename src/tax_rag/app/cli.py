@@ -6,6 +6,7 @@ import argparse
 from typing import Any
 
 from tax_rag.agent import CorrectiveRAGAgent
+from tax_rag.app.cache import CachedCorrectiveRAGAgent, semantic_cache_from_config
 from tax_rag.retrieval import RetrievalService
 from tax_rag.schemas import AgentResponse, RetrievalMethod
 
@@ -77,6 +78,14 @@ def format_agent_response(response: AgentResponse) -> str:
     if response.state_trace:
         lines.extend(["", "state_trace:", " -> ".join(response.state_trace)])
 
+    semantic_cache = response.metadata.get("semantic_cache")
+    if isinstance(semantic_cache, dict):
+        lines.extend(["", "semantic_cache:"])
+        lines.append(f"- enabled: {semantic_cache.get('enabled')}")
+        lines.append(f"- backend: {semantic_cache.get('backend')}")
+        lines.append(f"- hit: {semantic_cache.get('hit')}")
+        lines.append(f"- stored: {semantic_cache.get('stored')}")
+
     execution_trace = response.metadata.get("execution_trace")
     if isinstance(execution_trace, (list, tuple)) and execution_trace:
         trace_events = [event for event in execution_trace if isinstance(event, dict)]
@@ -133,6 +142,7 @@ def run_demo_query(
     method: RetrievalMethod = RetrievalMethod.HYBRID,
     dense_index_path: str | None = None,
     dense_collection_name: str = "dense_chunks",
+    cache_backend: str | None = None,
 ) -> AgentResponse:
     retrieval_service = RetrievalService.from_jsonl(
         chunks_path,
@@ -140,13 +150,20 @@ def run_demo_query(
         dense_collection_name=dense_collection_name,
     )
     agent = CorrectiveRAGAgent(retrieval_service=retrieval_service)
-    return agent.answer(query, role, method=method)
+    cached_agent = CachedCorrectiveRAGAgent(
+        agent=agent,
+        cache=semantic_cache_from_config(cache_backend),
+        cache_backend_name=cache_backend,
+    )
+    return cached_agent.answer(query, role, method=method)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the minimal tax_rag CLI demo.")
     parser.add_argument("query", help="Question to run through the demo agent")
-    parser.add_argument("--chunks-path", default="data/chunks/legal_chunks.jsonl", help="Chunk JSONL used for retrieval")
+    parser.add_argument(
+        "--chunks-path", default="data/chunks/legal_chunks.jsonl", help="Chunk JSONL used for retrieval"
+    )
     parser.add_argument("--role", default="helpdesk", help="Role used for RBAC-constrained retrieval")
     parser.add_argument(
         "--method",
@@ -156,6 +173,12 @@ def main() -> int:
     )
     parser.add_argument("--dense-index-path", default=None, help="Optional persistent local Qdrant index directory")
     parser.add_argument("--dense-collection-name", default="dense_chunks", help="Persistent Qdrant collection name")
+    parser.add_argument(
+        "--cache-backend",
+        choices=("none", "in_memory", "redis"),
+        default=None,
+        help="Optional semantic cache backend for answer-level caching",
+    )
     args = parser.parse_args()
 
     response = run_demo_query(
@@ -165,6 +188,7 @@ def main() -> int:
         method=RetrievalMethod.from_value(args.method),
         dense_index_path=args.dense_index_path,
         dense_collection_name=args.dense_collection_name,
+        cache_backend=args.cache_backend,
     )
     print(format_agent_response(response))
     return 0

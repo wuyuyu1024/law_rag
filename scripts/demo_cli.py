@@ -11,7 +11,9 @@ from tax_rag.schemas import RetrievalMethod
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run the minimal tax_rag CLI demo.")
-    parser.add_argument("--chunks-path", default="data/chunks/legal_chunks.jsonl", help="Chunk JSONL used for retrieval")
+    parser.add_argument(
+        "--chunks-path", default="data/chunks/legal_chunks.jsonl", help="Chunk JSONL used for retrieval"
+    )
     parser.add_argument("--query", required=True, help="Question to run through the demo agent")
     parser.add_argument("--role", default="helpdesk", help="Role used for RBAC-constrained retrieval")
     parser.add_argument(
@@ -22,6 +24,12 @@ def main() -> int:
     )
     parser.add_argument("--dense-index-path", default=None, help="Optional persistent local Qdrant index directory")
     parser.add_argument("--dense-collection-name", default="dense_chunks", help="Persistent Qdrant collection name")
+    parser.add_argument(
+        "--cache-backend",
+        choices=("none", "in_memory", "redis"),
+        default=None,
+        help="Optional semantic cache backend for answer-level caching",
+    )
     args = parser.parse_args()
 
     response = run_demo_query(
@@ -31,6 +39,7 @@ def main() -> int:
         method=RetrievalMethod.from_value(args.method),
         dense_index_path=args.dense_index_path,
         dense_collection_name=args.dense_collection_name,
+        cache_backend=args.cache_backend,
     )
     print(format_agent_response(response))
     return 0

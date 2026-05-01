@@ -27,6 +27,10 @@ _PAYLOAD_INDEX_FIELDS: tuple[tuple[str, models.PayloadSchemaType], ...] = (
 )
 
 
+def qdrant_payload_index_fields() -> tuple[str, ...]:
+    return tuple(field_name for field_name, _field_schema in _PAYLOAD_INDEX_FIELDS)
+
+
 def qdrant_vector_params(dimensions: int) -> models.VectorParams:
     quantization_config = None
     if DEFAULT_CONFIG.retrieval.qdrant_scalar_quantization:
@@ -63,7 +67,7 @@ class LocalQdrantIndex:
         chunks: list[ChunkRecord] | tuple[ChunkRecord, ...],
         *,
         recreate: bool = False,
-    ) -> dict[str, int | str | bool]:
+    ) -> dict[str, object]:
         path = Path(self.path)
         path.mkdir(parents=True, exist_ok=True)
         client = self.client()
@@ -100,6 +104,7 @@ class LocalQdrantIndex:
             "collection_name": self.collection_name,
             "created": created,
             "point_count": int(point_count),
+            "payload_index_fields": qdrant_payload_index_fields(),
         }
 
 
@@ -110,6 +115,6 @@ def ensure_local_qdrant_index(
     collection_name: str = DEFAULT_DENSE_COLLECTION_NAME,
     dimensions: int = DEFAULT_CONFIG.retrieval.dense_dimensions,
     recreate: bool = False,
-) -> dict[str, int | str | bool]:
+) -> dict[str, object]:
     index = LocalQdrantIndex(path=path, collection_name=collection_name, dimensions=dimensions)
     return index.ensure_collection(chunks, recreate=recreate)

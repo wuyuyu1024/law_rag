@@ -38,10 +38,14 @@ Lookup still computes cosine similarity against cached vectors. It is not an exa
 
 - The adapter stores a small JSON list per namespace key rather than using a vector index inside Redis. This is enough for demo-scale cache semantics and keeps the implementation inspectable.
 - Production could replace this with Redis vector search or another ANN-backed cache if FAQ volume grows.
-- The current adapter is not wired into the agent request path by default. That is deliberate: the uncached path remains the baseline for evaluation and TTFT budgeting.
+- The adapter is optional in the app/API path rather than enabled by default. That is deliberate: the uncached path remains the baseline for evaluation and TTFT budgeting.
 
 ## Consequences
 
 - The repo now has a concrete Redis cache implementation for Module 4.
 - Docker Compose can be used to run Redis for infrastructure demos.
 - Tests continue to use a fake Redis client, so CI remains local and deterministic.
+
+## Update
+
+The app/API answer path now has a cache wrapper around the corrective agent. Cache reads happen before retrieval/generation, and writes happen only after the final answer passes the shared evidence and source-classification cacheability policy. The same wrapper can use the deterministic in-memory cache or the Redis-backed cache.
