@@ -68,8 +68,8 @@ class SecurityConfig:
 @dataclass(frozen=True)
 class CacheConfig:
     enabled: bool = False
-    backend: str = "placeholder"
-    semantic_similarity_threshold: float = 0.96
+    backend: str = "in_memory"
+    semantic_similarity_threshold: float = 0.985
     namespace_by_role: bool = True
 
 

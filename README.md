@@ -48,18 +48,21 @@ Phase 5 evaluation now has an initial deterministic baseline:
 - summary metrics, per-case outputs, and structured execution traces are written to `data/eval/eval_runs/`
 - promotion gating can compare a candidate run against explicit thresholds and an optional baseline report before rollout
 
-Phase 5 still has follow-up work open around semantic cache policy, but promotion gating and observability are now implemented in the local baseline.
+Phase 5 still has follow-up work open around a Redis-backed semantic cache, but conservative in-memory cache policy, promotion gating, and observability are implemented in the local baseline.
 
 ## Tooling
 
 - Python environment and dependencies are managed with `uv`
 - Node.js or frontend tooling should use `pnpm` if applicable
+- `uv run ruff check .` runs correctness linting
+- `uv run mypy` type-checks the API/cache surfaces that were added after the original baseline
 
 ## Quick Start
 
 ```bash
 uv run python -c "import tax_rag; print(tax_rag.__version__)"
 uv run pytest -q
+uv run tax-rag-demo "Artikel 10ec lid 1" --dense-index-path data/indexes/qdrant
 ```
 
 To refresh the demo raw corpus:
@@ -103,6 +106,12 @@ uv run python scripts/demo_cli.py \
   --role helpdesk
 ```
 
+Optional local API:
+
+```bash
+uv run uvicorn tax_rag.api.main:app --reload
+```
+
 What this runbook demonstrates:
 - parsed and chunked legal data
 - persistent dense index creation
@@ -134,6 +143,8 @@ src/tax_rag/
   agent/
   eval/
   app/
+  api/
+  cache/
 tests/
 ```
 

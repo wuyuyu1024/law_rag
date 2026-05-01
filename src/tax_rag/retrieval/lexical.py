@@ -22,7 +22,7 @@ from tax_rag.security import (
 )
 
 _ECLI_PATTERN = re.compile(r"\bECLI:[A-Z]{2}:[A-Z0-9]+:\d{4}:[A-Z0-9]+\b", re.IGNORECASE)
-_ARTICLE_PATTERN = re.compile(r"\b(?:artikel|article|art\.?)\s+([0-9]+(?:[.:][0-9]+)*)\b", re.IGNORECASE)
+_ARTICLE_PATTERN = re.compile(r"\b(?:artikel|article|art\.?)\s+([0-9]+[a-z]*(?:[.:][0-9]+[a-z]*)*)\b", re.IGNORECASE)
 _PARAGRAPH_PATTERN = re.compile(r"\b(?:lid|paragraph)\s+([0-9]+)\b", re.IGNORECASE)
 _SUBPARAGRAPH_PATTERN = re.compile(r"\b(?:onderdeel|subparagraph|sub)\s+([a-z])\b", re.IGNORECASE)
 _NON_ALNUM_PATTERN = re.compile(r"[^a-z0-9]+")

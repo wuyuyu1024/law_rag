@@ -113,6 +113,8 @@ When reducing scope for the demo:
   - evaluation datasets, metrics, regression runners
 - `src/tax_rag/app/`
   - API/UI-facing code only
+- `src/tax_rag/api/`
+  - optional FastAPI HTTP surface for local demos and integration checks
 - `scripts/`
   - runnable entrypoints and pipeline scripts
 - `configs/`
@@ -227,6 +229,7 @@ When implementing tasks:
 - preserve repository structure unless explicitly asked to change it
 - prefer explicit configs and typed structures for retrieval/security behavior over hidden constants
 - if a change affects a major design choice such as schema boundaries, XML parsing, chunking strategy, retrieval/security architecture, vector database selection, or other interviewer-relevant tradeoffs, update the corresponding file in `docs/decisions/`
+- after implementing and verifying a requested code change, create a git commit automatically unless the user explicitly asks not to commit
 
 If something is ambiguous:
 - choose the simplest implementation that keeps future extension possible

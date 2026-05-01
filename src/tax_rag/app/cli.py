@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import argparse
 from typing import Any
 
 from tax_rag.agent import CorrectiveRAGAgent
@@ -140,3 +141,30 @@ def run_demo_query(
     )
     agent = CorrectiveRAGAgent(retrieval_service=retrieval_service)
     return agent.answer(query, role, method=method)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run the minimal tax_rag CLI demo.")
+    parser.add_argument("query", help="Question to run through the demo agent")
+    parser.add_argument("--chunks-path", default="data/chunks/legal_chunks.jsonl", help="Chunk JSONL used for retrieval")
+    parser.add_argument("--role", default="helpdesk", help="Role used for RBAC-constrained retrieval")
+    parser.add_argument(
+        "--method",
+        choices=[member.value for member in RetrievalMethod],
+        default=RetrievalMethod.HYBRID.value,
+        help="Retrieval method used for the demo query",
+    )
+    parser.add_argument("--dense-index-path", default=None, help="Optional persistent local Qdrant index directory")
+    parser.add_argument("--dense-collection-name", default="dense_chunks", help="Persistent Qdrant collection name")
+    args = parser.parse_args()
+
+    response = run_demo_query(
+        chunks_path=args.chunks_path,
+        query=args.query,
+        role=args.role,
+        method=RetrievalMethod.from_value(args.method),
+        dense_index_path=args.dense_index_path,
+        dense_collection_name=args.dense_collection_name,
+    )
+    print(format_agent_response(response))
+    return 0

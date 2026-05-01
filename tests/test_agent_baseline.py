@@ -77,6 +77,55 @@ def test_grade_evidence_marks_exact_match_relevant() -> None:
     assert evidence.refusal_reason is None
 
 
+def test_grade_evidence_keeps_exact_hybrid_match_relevant_despite_close_dense_neighbor() -> None:
+    exact_chunk = _chunk(
+        chunk_id="law-10ec-1",
+        source_type=SourceType.LEGISLATION,
+        text="Lid 1. Voor ingekomen werknemers bedraagt de looptijd maximaal vijf jaar.",
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ec > Lid 1",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ec",
+        paragraph="1",
+    )
+    dense_neighbor = _chunk(
+        chunk_id="law-3-11-3",
+        source_type=SourceType.LEGISLATION,
+        text="Unrelated dense neighbor with a close fused score.",
+        citation_path="Algemene wet bestuursrecht > Artikel 3:11 > Lid 3",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="3:11",
+        paragraph="3",
+    )
+    response = RetrievalResponse(
+        request=RetrievalRequest(query="Artikel 10ec lid 1", role="helpdesk"),
+        retrieval_method=RetrievalMethod.HYBRID,
+        results=(
+            RetrievalResult.from_chunk(
+                exact_chunk,
+                retrieval_method=RetrievalMethod.HYBRID,
+                scores=(
+                    ScoreTrace(metric="article_exact_match", value=120.0, rank=1),
+                    ScoreTrace(metric="paragraph_exact_match", value=20.0, rank=1),
+                    ScoreTrace(metric="rrf_score", value=0.020, rank=1),
+                ),
+            ),
+            RetrievalResult.from_chunk(
+                dense_neighbor,
+                retrieval_method=RetrievalMethod.HYBRID,
+                scores=(ScoreTrace(metric="rrf_score", value=0.019, rank=2),),
+            ),
+        ),
+        security_stage="pre_retrieval",
+    )
+
+    evidence = grade_evidence(response)
+
+    assert evidence.grade is EvidenceGrade.RELEVANT
+    assert evidence.refusal_reason is None
+
+
 def test_grade_evidence_marks_close_top_results_ambiguous() -> None:
     chunk_a = _chunk(
         chunk_id="law-a",

@@ -195,6 +195,40 @@ def test_retrieve_hybrid_returns_inspectable_stage_scores() -> None:
     assert score_map["rrf_score"] == pytest.approx(2 / 61)
 
 
+def test_retrieve_hybrid_treats_alphanumeric_article_ids_as_exact_matches() -> None:
+    exact = _chunk(
+        chunk_id="law-10ec-1",
+        source_type=SourceType.LEGISLATION,
+        text="Lid 1. Voor ingekomen werknemers bedraagt de looptijd maximaal vijf jaar.",
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ec > Lid 1",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ec",
+        paragraph="1",
+    )
+    sibling = _chunk(
+        chunk_id="law-10ec-2",
+        source_type=SourceType.LEGISLATION,
+        text="Lid 2. Ingekoomen werknemer voorwaarden staan in een ander lid.",
+        citation_path="Uitvoeringsbesluit loonbelasting 1965 > Artikel 10ec > Lid 2",
+        allowed_roles=("helpdesk", "inspector", "legal_counsel"),
+        security_classification=SecurityClassification.PUBLIC,
+        article="10ec",
+        paragraph="2",
+    )
+
+    response = retrieve_hybrid(
+        [sibling, exact],
+        RetrievalRequest(query="Artikel 10ec lid 1", role="helpdesk", top_k=2),
+    )
+
+    score_map = response.results[0].score_map()
+
+    assert response.results[0].chunk_id == "law-10ec-1"
+    assert score_map["article_exact_match"] == 120.0
+    assert score_map["paragraph_exact_match"] == 20.0
+
+
 def test_retrieve_hybrid_reranks_generic_30_percent_question_to_statutory_rule() -> None:
     statutory_rule = _chunk(
         chunk_id="law-10ed-1",

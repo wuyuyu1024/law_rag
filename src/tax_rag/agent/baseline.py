@@ -79,6 +79,12 @@ def build_agent_response(
             metadata={
                 "retrieval_metadata": retrieval_response.metadata,
                 "result_count": len(retrieval_response.results),
+                "source_security_classifications": sorted(
+                    {
+                        result.source.security_classification.value
+                        for result in retrieval_response.results[: _answer_result_limit(retrieval_response)]
+                    }
+                ),
             },
         )
 
@@ -100,6 +106,12 @@ def build_agent_response(
             "retrieval_metadata": retrieval_response.metadata,
             "result_count": len(retrieval_response.results),
             "source_types": sorted({citation.source_type.value for citation in citations}),
+            "source_security_classifications": sorted(
+                {
+                    result.source.security_classification.value
+                    for result in retrieval_response.results[: _answer_result_limit(retrieval_response)]
+                }
+            ),
         },
     )
 

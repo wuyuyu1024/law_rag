@@ -253,6 +253,7 @@ Do not cache when:
 Implemented in demo:
 
 - threshold and namespace defaults are documented in config
+- an in-memory semantic cache enforces the conservative cacheability policy for local tests and demos
 - full Redis-backed semantic cache is intentionally not implemented yet
 
 ### Database-level security

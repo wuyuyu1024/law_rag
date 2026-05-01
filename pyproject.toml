@@ -7,16 +7,44 @@ name = "law-rag"
 version = "0.1.0"
 description = "Demo implementation of a permission-aware legal/tax RAG assistant."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11,<3.14"
 dependencies = [
+  "fastapi>=0.115.0",
   "lxml>=6.1.0",
   "pydantic>=2.13.3",
   "pytest>=8.3,<9",
   "qdrant-client[fastembed]>=1.17.1",
+  "uvicorn>=0.30.0",
 ]
+
+[dependency-groups]
+dev = [
+  "mypy>=1.11.0",
+  "ruff>=0.6.0",
+]
+
+[project.scripts]
+tax-rag-demo = "tax_rag.app.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/tax_rag"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["F"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true
+disallow_untyped_defs = true
+files = ["src/tax_rag/api", "src/tax_rag/cache"]

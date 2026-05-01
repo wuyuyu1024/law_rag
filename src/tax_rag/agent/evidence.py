@@ -132,6 +132,16 @@ def grade_evidence(response: RetrievalResponse) -> EvidenceAssessment:
             metadata=dict(response.metadata),
         )
 
+    if exact_match:
+        return EvidenceAssessment(
+            grade=EvidenceGrade.RELEVANT,
+            explanation="Retrieved evidence is sufficiently specific to support an answer.",
+            result_count=len(response.results),
+            supporting_chunk_ids=tuple(result.chunk_id for result in response.results[:2]),
+            top_score=top_score,
+            metadata=dict(response.metadata),
+        )
+
     if len(response.results) >= 2:
         second_result = response.results[1]
         second_score_map = second_result.score_map()
@@ -154,7 +164,7 @@ def grade_evidence(response: RetrievalResponse) -> EvidenceAssessment:
                 metadata=dict(response.metadata),
             )
 
-    if exact_match or _is_relevant_score(response, top_score_map, top_score):
+    if _is_relevant_score(response, top_score_map, top_score):
         return EvidenceAssessment(
             grade=EvidenceGrade.RELEVANT,
             explanation="Retrieved evidence is sufficiently specific to support an answer.",
