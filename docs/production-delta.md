@@ -22,6 +22,8 @@ This repository is a runnable architecture demo. The table below separates what 
 
 The assignment target is low TTFT despite tens of millions of chunks. The production path should use a latency budget like:
 
+Current demo evidence: the local uncached benchmark over 6,294 chunks is below the assignment target, with p95 TTFT at 728.637 ms. This validates the runnable control flow and timing instrumentation, but it is not a substitute for a production-scale 20M+ chunk load test.
+
 | Stage | Target |
 | --- | --- |
 | Auth/scope resolution | 20-50 ms |

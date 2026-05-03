@@ -53,4 +53,9 @@ strict = true
 warn_unused_ignores = true
 warn_return_any = true
 disallow_untyped_defs = true
-files = ["src/tax_rag/api", "src/tax_rag/cache"]
+files = [
+  "src/tax_rag/api",
+  "src/tax_rag/cache",
+  "src/tax_rag/schemas",
+  "src/tax_rag/security",
+]

@@ -14,6 +14,7 @@ uv run python scripts/run_interview_demo.py --dense-index-path data/indexes/qdra
 - RBAC is enforced before retrieval scoring, fusion, reranking, caching, or generation, so unauthorized content cannot influence results.
 - Retrieval uses exact/lexical lookup plus dense retrieval, RRF fusion, and a configurable reranker boundary.
 - The answer path grades evidence and refuses when evidence is weak, ambiguous, outdated, conflicting, or unauthorized.
+- The current local gate passes all 19 gold cases with zero unauthorized retrieval failures.
 - Production work remains around full corpus ingestion, served multilingual models, hardened Qdrant/Redis deployment, SSO/audit logging, observability, and load testing.
 
 ## Assessment Map
@@ -48,6 +49,25 @@ Main production deltas:
 - deeper observability and richer CI evaluators
 
 For the full production checklist, see [docs/production-delta.md](./docs/production-delta.md).
+
+## Demo Substitutions
+
+| Assignment concern | Demo substitution | Production replacement |
+| --- | --- | --- |
+| 500,000-document corpus | 1,794 parsed documents and 6,294 chunks | Full governed ingestion for laws, cases, internal policy, e-learning/wiki, and historical versions |
+| Internal/classified sources | Synthetic internal-policy and e-learning fixtures | Real internal repositories with source-level access policy and audit review |
+| Embeddings | Deterministic hash-style embedding baseline | Versioned multilingual legal/tax embedding model |
+| Reranker | Deterministic local reranker plus optional cross-encoder adapter | Internally served multilingual cross-encoder such as `BAAI/bge-reranker-v2-m3` |
+| Generator | Evidence-based deterministic answer construction | Approved internal LLM with citation-constrained structured output validation |
+| TTFT proof | Local benchmark over the demo corpus | Production-scale load test against the deployed Qdrant/OpenSearch/LLM stack |
+
+Recent local verification:
+
+```text
+pytest: 83 passed
+eval gate: 19/19 passed, unauthorized_retrieval_failures=0
+uncached demo TTFT: p95 728.637 ms over 6,294 chunks
+```
 
 ## Module 1: Ingestion and Knowledge Structuring
 
