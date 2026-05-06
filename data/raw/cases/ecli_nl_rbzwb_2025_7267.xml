@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:RBZWB:2025:7267</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-12-02T17:17:41</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-10-27</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Rechtbank_Zeeland-West-Brabant" scheme="overheid.RechterlijkeMacht">Rechtbank Zeeland-West-Brabant</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2025-10-27</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">BRE 24/6517</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#eersteAanlegEnkelvoudig">Eerste aanleg - enkelvoudig</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:spatial rdfs:label="Zittingsplaats">Breda</dcterms:spatial>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>Viditax (FutD) 2025110608</rdf:li>
+          <rdf:li>FutD 2025-2226</rdf:li>
+          <rdf:li>V-N Vandaag 2025/2236</rdf:li>
+          <rdf:li>NLF 2025/2359</rdf:li>
+          <rdf:li>Sdu Nieuws Belastingzaken 2025/1225</rdf:li>
+          <rdf:li>NDFR Nieuws 2025/1806</rdf:li>
+          <rdf:li>NTFR 2025/1911 met annotatie van mr. D. Hajer</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:RBZWB:2025:7267">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:RBZWB:2025:7267</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-11-04T12:37:07</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-11-06</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:RBZWB:2025:7267 Rechtbank Zeeland-West-Brabant , 27-10-2025 / BRE 24/6517</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:RBZWB:2025:7267:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Toepassing 30%-regeling. Belanghebbende voldoet niet aan het vereiste dat zij moet zijn aangeworven uit een ander land, omdat zij tijdens de totstandkoming van de arbeidsovereenkomst al in Nederland werkzaam was. Het internship kwalificeert niet als een stage. De rechtbank leidt uit het civiele recht en jurisprudentie van de Hoge Raad af dat een stage onder bepaalde omstandigheden ook na afronding van (het inhoudelijke gedeelte van) een studie kan plaatsvinden, anders dan in het Besluit van 23 augustus 2013, nr. DGB 2013/70M is bepaald. Als uitgangspunt geldt bij een volledig opgeleide beroepsbeoefenaar wel dat deze onbeperkt inzetbaar is voor de activiteiten voor de onderneming. Belanghebbende heeft niet aannemelijk gemaakt dat de werkzaamheden tijdens het internship zozeer gericht waren op het uitbreiden van haar eigen kennis en ervaring, dat van dit uitgangspunt moet worden afgeweken. Het beroep is ongegrond.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:RBZWB:2025:7267:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <para>
+    <emphasis role="bold">RECHTBANK ZEELAND-WEST-BRABANT</emphasis>
+  </para>
+  <parablock>
+    <para>Zittingsplaats Breda</para>
+  </parablock>
+  <parablock>
+    <para>Belastingrecht</para>
+  </parablock>
+  <parablock>
+    <para>zaaknummer: BRE 24/6517 </para>
+  </parablock>
+  <bridgehead>
+    <?linebreak?>uitspraak van de enkelvoudige kamer van 27 oktober 2025 in de zaak tussen</bridgehead>
+  <section>
+    <title>
+      <?linebreak?>
+      [belanghebbende] , uit [woonplaats] , belanghebbende</title>
+    <para>(gemachtigde: mr. J.P. Dagevos),</para>
+    <para />
+    <parablock>
+      <para>en</para>
+    </parablock>
+    <para />
+  </section>
+  <section>
+    <title>de inspecteur van de Belastingdienst, de inspecteur.</title>
+    <para />
+    <para />
+  </section>
+  <section>
+    <title>Inleiding</title>
+    <para />
+    <parablock>
+      <para>1. In deze uitspraak beoordeelt de rechtbank het beroep van belanghebbende tegen de uitspraak op bezwaar van de inspecteur van 25 juli 2024.</para>
+    </parablock>
+    <para />
+    <paragroup>
+      <nr>1.1.</nr>
+      <para>De inspecteur heeft bij beschikking van 4 januari 2024 het verzoek van belanghebbende om toepassing van de bewijsregel van artikel 10ea, eerste lid, van het Uitvoeringsbesluit loonbelasting 1965 (de 30%-regeling) afgewezen.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.2.</nr>
+      <para>De inspecteur heeft het bezwaar van belanghebbende ongegrond verklaard. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.3.</nr>
+      <para>De rechtbank heeft het beroep op 7 augustus 2025 op zitting behandeld. Hieraan hebben deelgenomen: belanghebbende en haar gemachtigde, en namens de [inspecteur 1] , [inspecteur 2] en [inspecteur 3] .</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>Beoordeling door de rechtbank </title>
+    <para />
+    <parablock>
+      <para>2. De rechtbank beoordeelt of belanghebbende recht heeft op de toepassing van de  30%-regeling. Zij doet de beoordeling aan de hand van de argumenten die belanghebbende heeft aangevoerd, de beroepsgronden. Partijen houdt verdeeld of belanghebbende uit een ander land is aangeworven. Het geschil spitst zich toe op de vraag of belanghebbende voorafgaand aan de tewerkstelling door [bedrijf] B.V. werkzaam was in Nederland en of zij in Nederland woonde.</para>
+    </parablock>
+    <para />
+    <paragroup>
+      <nr>2.1.</nr>
+      <para>Naar het oordeel van de rechtbank heeft belanghebbende niet aannemelijk gemaakt dat zij uit een ander land is aangeworven. Dit betekent dat de inspecteur het verzoek van belanghebbende om toepassing van de 30%-regeling terecht heeft afgewezen. Hierna legt de rechtbank uit hoe zij tot dit oordeel komt.</para>
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Feiten</title>
+    <para />
+    <parablock>
+      <para>3. Belanghebbende is geboren op 4 juni 1997. Belanghebbende woonde met haar familie in India.</para>
+    </parablock>
+    <para />
+    <paragroup>
+      <nr>3.1.</nr>
+      <para>Belanghebbende is op 29 augustus 2021 naar Nederland gekomen in het kader van het volgen van een studie op WO-niveau aan de [universiteit] in Nederland. Belanghebbende volgde een duale master in Zweden, waarvan de studie aan de [universiteit] onderdeel was. Het eerste deel van de master volgde belanghebbende in Zweden en het tweede deel in Eindhoven. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.2.</nr>
+      <para>Belanghebbende staat sinds 18 oktober 2021 ingeschreven in Nederland in de Basisregistratie personen. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.3.</nr>
+      <para>Belanghebbende heeft gedurende de periode maart 2022 tot en met augustus 2022 in het kader van een stage in Nederland gewerkt bij een Nederlandse [werkgever 1] B.V. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.4.</nr>
+      <para>Belanghebbende heeft haar studie aan de [universiteit] op 29 augustus 2022 succesvol afgerond. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.5.</nr>
+      <para>Aansluitend op het behalen van de studie aan de [universiteit] verbleef belanghebbende in Nederland op basis van een verblijfsvergunning (zoekjaar afgestudeerden). Deze vergunning geeft een jaar de tijd om een baan in Nederland te vinden. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.6.</nr>
+      <parablock>
+        <para>Belanghebbende heeft vanaf 26 september 2022 in Nederland werkzaamheden verricht bij een Nederlandse [werkgever 2] B.V. (het internship). In de internship agreement tussen [werkgever 2] B.V. en belanghebbende is het volgende bepaald:</para>
+        <para>
+          <emphasis role="italic">“</emphasis>
+          <emphasis role="bold italic">WHEREAS:</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">the Company wishes to give the Intern the opportunity to gain practical experience (hereinafter called “Internship”) for a limited period.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">(…)</emphasis>
+        </para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>1.1</nr>
+      <para>
+        <emphasis role="italic">The Internship shall commence on 26-09-2022 and, unless otherwise agreed, shall terminate on 26-03-2023 subject to clause 4 below.</emphasis>
+      </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.2</nr>
+      <parablock>
+        <para>
+          <emphasis role="italic">The internship will be performed for 40 hours per week.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">(…)</emphasis>
+        </para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>2.2</nr>
+      <para>
+        <emphasis role="italic">The Intern will perform all activities arising and ranging within the scope of the Internship, which may reasonably be assigned by or on behalf of the Company, to the best of his/her ability.</emphasis>
+      </para>
+    </paragroup>
+    <paragroup>
+      <nr>2.3</nr>
+      <parablock>
+        <para>
+          <emphasis role="italic">The nature and level of the activities performed by the Intern are to fit in with the Internship as agreed upon by the Intern and the Company.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">(…)</emphasis>
+        </para>
+        <para>
+          <emphasis role="bold italic">5  Internship Allowance</emphasis>
+        </para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>5.1</nr>
+      <para>
+        <emphasis role="italic">The Intern will receive an Internship allowance of </emphasis>
+        <emphasis role="bold italic">€400,00</emphasis>
+        <emphasis role="italic"> gross per month based on a 5-day or 40 hour working week, calculated pro-rata if the Intern works part-time.”</emphasis>
+      </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.7.</nr>
+      <para>Belanghebbende heeft op 27 februari 2023 een arbeidsovereenkomst met [bedrijf] B.V. (de inhoudingsplichtige) ondertekend. De tewerkstelling van belanghebbende bij de inhoudingsplichtige is aangevangen op 3 april 2023.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.8.</nr>
+      <para>Belanghebbende heeft op 25 mei 2023 haar diploma van de Zweedse masterstudie behaald. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.9.</nr>
+      <para>Namens belanghebbende en inhoudingsplichtige is een verzoek om toepassing van de 30%-regeling<footnote-ref linkend="_72266725-40bd-49d2-9460-e187ef3c281a" /> gedaan. De inspecteur heeft het verzoek afgewezen, vanwege de eerdere werkzaamheden van belanghebbende bij [werkgever 2] B.V. Bij uitspraak op bezwaar van 25 juli 2024 heeft hij de afwijzende beschikking gehandhaafd.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>Overwegingen</title>
+    <para />
+    <parablock>
+      <para>4. De 30%-regeling is een speciale regeling voor ingekomen werknemers. Onder een ingekomen werknemer wordt verstaan: een door een inhoudingsplichtige uit een ander land aangeworven werknemer met een specifieke deskundigheid die op de Nederlandse arbeidsmarkt niet of schaars aanwezig is.<footnote-ref linkend="_1754cc3b-59d2-4b59-a837-9723b853533e" /> Een werknemer die in het wetenschappelijk onderwijs een Nederlandse mastergraad of een hiermee gelijkwaardige buitenlandse graad heeft behaald en die de leeftijd van 30 jaar nog niet heeft bereikt beschikt over specifieke deskundigheid indien het loon meer bedraagt dat € 31.891<footnote-ref linkend="_6b8472f4-350b-4875-a393-24808af745e1" /> (de salarisnorm). </para>
+    </parablock>
+    <para />
+    <paragroup>
+      <nr>4.1.</nr>
+      <para>Niet in geschil is dat belanghebbende bij de werkzaamheden bij [werkgever 1] B.V. en [werkgever 2] B.V. niet voldeed aan het vereiste van specifieke deskundigheid, omdat niet werd voldaan aan de salarisnorm. Evenmin is in geschil dat belanghebbende wel over specifieke deskundigheid beschikt met betrekking tot haar dienstbetrekking bij de inhoudingsplichtige. Tussen partijen is specifiek in geschil of belanghebbende uit een ander land is aangeworven.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.2.</nr>
+      <para>De rechtbank overweegt dat de 30%-regeling een begunstigende regeling is. Een redelijke verdeling van de bewijslast brengt dan mee dat belanghebbende de feiten en omstandigheden stelt waaruit volgt dat is voldaan aan de voorwaarden van de regeling en dat zij die feiten en omstandigheden – bij gemotiveerde betwisting door de inspecteur –aannemelijk maakt. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.3.</nr>
+      <para>Uit jurisprudentie van de Hoge Raad<footnote-ref linkend="_ea9ae2c6-eadd-41b1-90b8-191d2a52cf85" /> volgt dat de term ‘aangeworven uit een ander land’ inhoudt dat de werknemer bij de totstandkoming van de arbeidsovereenkomst nog niet in Nederland woonde en ook niet – anders dan in situaties als opleiding of stage – in Nederland werkzaam was. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.4.</nr>
+      <para>De staatssecretaris van Financiën<footnote-ref linkend="_fe3c7f07-ba04-4f1f-8e3c-b217059bdb02" /> heeft in een besluit bepaald dat als stage wordt aangemerkt een periode van activiteiten en werkzaamheden in het kader van een studie of opleiding. </para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Was belanghebbende werkzaam in Nederland?</emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.5.</nr>
+      <para>In dit geval is de arbeidsovereenkomst met de inhoudingsplichtige op 27 februari 2023 gesloten en is dat dus het moment waarop moet worden beoordeeld of belanghebbende aan de voorwaarden voldoet. Partijen zijn het erover eens dat belanghebbende op dat moment nog werkzaam was bij [werkgever 2] B.V. De vraag die allereerst voorligt is of het internship bij [werkgever 2] B.V. toepassing van de 30%-regeling in de weg staat.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.6.</nr>
+      <para>Belanghebbende stelt dat het internship bij [werkgever 2] B.V. kwalificeert als stage en dat zij dus is aangeworven tijdens een stage. Daarmee is naar haar mening voldaan aan de uitzondering die de Hoge Raad heeft geformuleerd voor situaties van opleiding <emphasis role="italic">of </emphasis>stage. Belanghebbende vindt dat uit de jurisprudentie niet kan worden afgeleid dat de stage in het kader van een studie of opleiding moet worden verricht, zoals de staatssecretaris in het besluit heeft bepaald. Belanghebbende stelt subsidiair dat zij in het kader van haar studie stage heeft gelopen bij [werkgever 2] B.V., omdat de werkzaamheden verband houden met haar studie en zij haar masterstudie in Zweden op dat moment nog niet had afgerond.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.7.</nr>
+      <para>Vast staat het internship bij [werkgever 2] B.V. geen onderdeel was van de studie en dat de [universiteit] geen partij was bij de internship agreement. De situatie van belanghebbende wijkt daarmee af van de zaak die voorlag in het arrest van de Hoge Raad 24 oktober 2008<footnote-ref linkend="_8d3540c4-779f-42a6-a277-891d30b74ca3" />, waarbij vaststond dat de werkzaamheden plaatsvonden als onderdeel van een opleiding. Vast staat ook dat belanghebbende de studie aan de [universiteit] reeds succesvol had afgerond. Belanghebbende heeft ter zitting verklaard dat, in afwachting van de officiële afsluiting van de studie bij het onderwijsinstituut in Zweden, al een voorlopig diploma aan haar was uitgereikt. Met de afronding van de studie aan de [universiteit] had zij aan alle studievereisten voldaan, het wachten was alleen op het diploma als officiële afsluiting. Die omstandigheden maken naar het oordeel van de rechtbank dat deze situatie niet moet worden beoordeeld als een stage in het kader van de opleiding. De situatie van belanghebbende is vergelijkbaar met die van een stage na afronding van de studie. Voor de beoordeling of in het geval van belanghebbende sprake is van een stage sluit de rechtbank aan bij het civiele recht. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.8.</nr>
+      <para>De Hoge Raad heeft zich eerder, in een arrest van 9 oktober 2015<footnote-ref linkend="_685910eb-6413-4e07-b7f2-bffe7d794d8b" />, uitgelaten over de vraag of een stageovereenkomst (ook) aan te merken is als een arbeidsovereenkomst. </para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">“3.3.3.</emphasis> S<emphasis role="italic">tageovereenkomsten vertonen dikwijls kenmerken van een arbeidsovereenkomst. Soms kan een stagiair immers alleen de noodzakelijke ervaring opdoen door in het kader van zijn opleiding arbeid te verrichten die vergelijkbaar is met de arbeid van een gewone werknemer. Afhankelijk van de omstandigheden van het geval kan dan ook in bepaalde situaties naast een stageovereenkomst tevens sprake zijn van een arbeidsovereenkomst. (Kamerstukken II 1976-1977, 14 450, nrs. 1-2, p. 24; Kamerstukken II 1993-1994, 23 778, nr. 3, p. 140).</emphasis></para>
+      </parablock>
+      <paragroup>
+        <nr>3.3.4.</nr>
+        <para>
+          <emphasis role="italic">Bij de hiervoor in 3.3.2 bedoelde toetsing heeft als maatstaf te gelden of de werkzaamheden van de stagiair naar de bedoeling van partijen zozeer zijn gericht op het uitbreiden van eigen kennis en ervaring van de stagiair, zulks mede met het oog op de voltooiing van zijn opleiding, dat van een overeenkomst waarbij de ene partij zich verbindt voor de andere arbeid te verrichten niet kan worden gesproken (vgl. HR 29 oktober 1982, ECLI:NL:HR:1982:AC0442, NJ 1983/230 (Hesseling/Ombudsman)). Daaruit volgt dat het erop aankomt of het verrichten van de werkzaamheden van de stagiair in overwegende mate in het belang is van de opleiding die deze volgt.”</emphasis>
+        </para>
+        <para />
+      </paragroup>
+    </paragroup>
+    <paragroup>
+      <nr>4.9.</nr>
+      <para>In de noot bij de zaak Hesseling/Ombudsman<footnote-ref linkend="_5232d4c7-9601-475a-a10f-bc47c5336705" />, waarnaar wordt verwezen in het arrest van 9 oktober 2015, leidt de annotator uit het arrest af dat als het primaire doel van de arbeidsprestatie verschuift naar een (actieve) bijdrage aan de verwezenlijking van het primaire doel van de onderneming, men niet langer kan volhouden dat sprake is van een stageovereenkomst. Hij onderscheidt de situatie dat een overeenkomst met een volledig opgeleide beroepsbeoefenaar wordt gesloten. Een zodanige overeenkomst zal naar zijn mening in het algemeen als arbeidsovereenkomst kwalificeren. Als er al beperkingen zijn ten aanzien van de inzetbaarheid, liggen deze in dat geval niet besloten in het karakter van de overeenkomst als stagiair, maar uitsluitend in het gemis aan ervaring van de stagiair.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.10.</nr>
+      <para>In een kantonzaak<footnote-ref linkend="_f6170792-ed64-4b3e-8a1c-cc37c4ef31cd" /> waar ook geen sprake was van een opleidingssituatie, volgt de kantonrechter deze annotator en neemt als uitgangspunt dat indien sprake is van een volledig opgeleide beroepsbeoefenaar, deze volledig inzetbaar is voor de stageverlener. Voor de beoordeling is dus relevant of het gaat om een stage na de opleiding en of de stageverlener de stagiair al dan niet onbeperkt kan inzetten voor het primaire doel van de onderneming. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.11.</nr>
+      <para>De rechtbank is gelet op bovenstaande van oordeel dat het voor toepassing van de 30%-regeling niet noodzakelijk is dat een stage in het kader van de studie of opleiding wordt gedaan. De belastingkamer van de Hoge Raad maakt een uitzondering voor situaties van opleiding of stage zonder dat daaraan nadere voorwaarden worden gesteld. Civielrechtelijk is een stage zowel binnen als na een studie mogelijk. Het gaat erom dat de nadruk ligt op het leren binnen een werkomgeving en niet ‘gewoon werk’ wordt verricht door de stagiair. Een stage vindt veelal plaats binnen een studie, maar in bepaalde omstandigheden kan een stage ook op eigen initiatief buiten of na een studie plaatsvinden. De rechtbank is daarom van oordeel dat de uitleg van de staatssecretaris, niet volledig recht doet aan de (civielrechtelijke) invulling van het begrip stage. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.12.</nr>
+      <para>Daarbij past wel de kanttekening dat met name uit de laatste zin van het citaat van het arrest van 9 oktober 2015 volgt dat een stageovereenkomst vaak juist geen arbeidsovereenkomst is, omdat de verrichtte werkzaamheden in overwegende mate in het belang zijn van de gevolgde opleiding. Zoals reeds in 4.7 aan de orde is geweest is in dit geval geen sprake meer van het verrichten van werkzaamheden in het belang van de opleiding van belanghebbende. Voor een volledig opgeleide beroepsbeoefenaar, zoals belanghebbende, geldt als uitgangspunt dat deze volledig inzetbaar en als zodanig deelneemt aan de gebruikelijke dagelijkse activiteiten zoals die bij de onderneming worden uitgevoerd. Dat sprake is van een stage ligt dan minder voor de hand. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.13.</nr>
+      <para>De rechtbank leidt uit de internship agreement af dat belanghebbende, als volledig opgeleide beroepsbeoefenaar, tijdens het internship aan haar eigen ontwikkeling en kennisvergroting kan werken, maar ook dat zij zonder beperkingen inzetbaar is voor [werkgever 2] B.V. en daarbij een bijdrage levert aan het primaire doel van de onderneming. Het ligt op de weg van belanghebbende om aannemelijk te maken dat dat feitelijk anders was. Met hetgeen in de stukken staat en de toelichting van belanghebbende op zitting met betrekking tot haar werkzaamheden bij [werkgever 2] B.V. is belanghebbende daarin naar het oordeel van de rechtbank niet geslaagd. Daarom is in dit geval naar het oordeel van de rechtbank geen sprake van een stage als bedoeld in de arresten van de Hoge Raad.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.14.</nr>
+      <para>Dit betekent dat belanghebbende op het moment van totstandkoming van de arbeidsovereenkomst met de inhoudingsplichtige in Nederland werkzaam was anders dan in de situatie van opleiding of stage. Belanghebbende kan dan ook niet worden aangemerkt als ingekomen werknemer en heeft geen recht op toepassing van de 30%-regeling. De rechtbank oordeelt daarom dat de inspecteur het verzoek terecht heeft afgewezen. Aangezien het beroep van belanghebbende om die reden al wordt afgewezen, hoeft de vraag of belanghebbende op 27 februari 2023 inwoner was van Nederland niet meer te worden beoordeeld.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Conclusie en gevolgen </title>
+    <para />
+    <parablock>
+      <para>5. Het beroep is ongegrond. De rechtbank handhaaft de afwijzende beschikking van de inspecteur. Belanghebbende krijgt het griffierecht niet terug. Zij krijgt ook geen vergoeding van haar proceskosten. </para>
+    </parablock>
+    <para />
+    <para />
+  </section>
+  <section role="beslissing">
+    <title>Beslissing</title>
+    <para />
+    <parablock>
+      <para>De rechtbank verklaart het beroep ongegrond. </para>
+    </parablock>
+    <para />
+    <para />
+    <parablock>
+      <para>Deze uitspraak is gedaan door mr. drs. S.J. Willems-Ruesink, rechter, in aanwezigheid van mr. M.M. van de Langerijt-Suurmeijer, griffier, op 27 oktober 2025 en openbaar gemaakt door middel van geanonimiseerde publicatie op www.rechtspraak.nl.</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="colA" />
+        <colspec colname="colB" />
+        <tbody>
+          <row>
+            <entry>
+              <para>griffier</para>
+            </entry>
+            <entry>
+              <para>rechter</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para />
+    <para />
+    <parablock>
+      <para>Deze uitspraak is in Mijn Rechtspraak geplaatst.</para>
+    </parablock>
+    <para />
+  </section>
+  <section>
+    <title>Informatie over hoger beroep</title>
+    <para>Een partij die het niet eens is met deze uitspraak, kan een hogerberoepschrift sturen naar het gerechtshof ‘s-Hertogenbosch waarin wordt uitgelegd waarom deze partij het niet eens is met deze uitspraak. Het hogerberoepschrift moet worden ingediend binnen zes weken na de dag waarop deze uitspraak is verzonden. </para>
+    <para />
+    <parablock>
+      <para>Digitaal hoger beroep instellen kan via “Formulieren en inloggen” op www.rechtspraak.nl. Hoger beroep instellen kan eventueel ook nog steeds door verzending van een brief aan het gerechtshof ‘s-Hertogenbosch (belastingkamer), Postbus 70583, 5201 CZ 's-Hertogenbosch.</para>
+    </parablock>
+    <para />
+  </section>
+  <footnote id="_72266725-40bd-49d2-9460-e187ef3c281a" label="1">
+    <para> De regeling staat in artikel 31a, tweede lid, aanhef en onderdeel e, van de Wet op de loonbelasting 1964 (Wet LB) en artikel 10e en verder van het Uitvoeringsbesluit loonbelasting 1965 (UBLB).</para>
+  </footnote>
+  <footnote id="_1754cc3b-59d2-4b59-a837-9723b853533e" label="2">
+    <para> Artikel 10e, tweede lid onder b van het UBLB.</para>
+  </footnote>
+  <footnote id="_6b8472f4-350b-4875-a393-24808af745e1" label="3">
+    <para> Artikel 10eb, tweede lid van het UBLB (tekst 2023).</para>
+  </footnote>
+  <footnote id="_ea9ae2c6-eadd-41b1-90b8-191d2a52cf85" label="4">
+    <para> Hoge Raad 28 april 2006, ECLI:NL:HR:2006:AW4064 en Hoge Raad 28 april 2006, ECLI:NL:HR:2006:AW4068.</para>
+  </footnote>
+  <footnote id="_fe3c7f07-ba04-4f1f-8e3c-b217059bdb02" label="5">
+    <para>  Besluit van 23 augustus 2013, nr. DGB 2013/70M,  Stcrt. 2013, 25663,</para>
+  </footnote>
+  <footnote id="_8d3540c4-779f-42a6-a277-891d30b74ca3" label="6">
+    <para> Hoge Raad, 24 oktober 2008, ECLI:NL:HR:2008:BD3167.</para>
+  </footnote>
+  <footnote id="_685910eb-6413-4e07-b7f2-bffe7d794d8b" label="7">
+    <para> Hoge Raad, 9 oktober 2015, ECLI:NL:HR:2015:3019 (Logidex).</para>
+  </footnote>
+  <footnote id="_5232d4c7-9601-475a-a10f-bc47c5336705" label="8">
+    <para> NJ 1983, 230.</para>
+  </footnote>
+  <footnote id="_f6170792-ed64-4b3e-8a1c-cc37c4ef31cd" label="9">
+    <para> Rechtbank Den Haag, 6 april 2021, ECLI:NL:RBDHA:2021:3432. </para>
+  </footnote>
+</uitspraak>
+</open-rechtspraak>

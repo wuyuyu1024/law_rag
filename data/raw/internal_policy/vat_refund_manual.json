@@ -1,0 +1,11 @@
+{
+  "doc_id": "policy:synthetic:vat_refund_manual",
+  "title": "VAT Refund Verification Manual",
+  "security_classification": "internal",
+  "allowed_roles": ["inspector", "legal_counsel"],
+  "text": "## Purpose\nThis manual describes the minimum review steps for VAT refund claims selected for manual verification.\n\n## Required Evidence\nInspectors should confirm invoices, payment proof, supplier identity, and a transaction trail consistent with the claimed input VAT.\n\n## Decision Rules\nApprove only when the evidentiary package is complete and internally consistent. Request clarification when the trail is incomplete but potentially curable.\n\n## Recording Outcome\nThe final decision note must reference the reviewed evidence set, the applicable tax period, and the reason for approval or denial.",
+  "metadata": {
+    "owner_unit": "Indirect Tax Operations",
+    "synthetic_purpose": "assignment_coverage"
+  }
+}

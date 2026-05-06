@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:HR:2026:281</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2026-04-24T10:04:28</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2026-02-19</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Hoge_Raad_der_Nederlanden" scheme="overheid.RechterlijkeMacht">Hoge Raad</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2026-02-20</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">23/02418</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#cassatie">Cassatie</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:GHAMS:2023:1298" psi:type="http://psi.rechtspraak.nl/cassatie" psi:aanleg="http://psi.rechtspraak.nl/eerdereAanleg">In cassatie op : ECLI:NL:GHAMS:2023:1298</dcterms:relation>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>NDFR Nieuws 2026/273</rdf:li>
+          <rdf:li>Viditax (FutD) 2026022006</rdf:li>
+          <rdf:li>V-N Vandaag 2026/333</rdf:li>
+          <rdf:li>FutD 2026-0308</rdf:li>
+          <rdf:li>Sdu Nieuws Belastingzaken 2026/206</rdf:li>
+          <rdf:li>V-N 2026/10.14 met annotatie van Redactie</rdf:li>
+          <rdf:li>2026/0369 met annotatie van dr. mr. W.J.C.M. Gelderblom</rdf:li>
+          <rdf:li>NLF 2026/0369 met annotatie van dr. mr. W.J.C.M. Gelderblom</rdf:li>
+          <rdf:li>NJB 2026/551</rdf:li>
+          <rdf:li>NTFR 2026/570 met annotatie van mr. C.C. van den Berg</rdf:li>
+          <rdf:li>BNB 2026/61 met annotatie van M.M.W.D. Merkx</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2026:281">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2026:281</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2026-02-19T14:55:33</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2026-02-20</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:HR:2026:281 Hoge Raad , 20-02-2026 / 23/02418</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:HR:2026:281:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Omzetbelasting; art. 11, lid 1, letter i, onder 2º, en art. 15, lid 2, letter c, Wet OB 1968; omvang recht op aftrek gemengde kosten van handelaar in financiële instrumenten op effectenbeurzen; vaststelling vergoeding voor handelingen waarvoor recht op aftrek bestaat; toepassing arrest HvJ 14 juli 1998, First National Bank of Chicago, C-172/96, ECLI:EU:C:1998:354</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:HR:2026:281:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <uitspraak.info>
+    <para />
+    <parablock>
+      <para>HOGE RAAD DER NEDERLANDEN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>BELASTINGKAMER</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">Nummer </emphasis>23/02418 </para>
+      <para>
+        <emphasis role="bold">Datum	</emphasis>20 februari 2026</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>ARREST</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>in de zaak van</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>de fiscale eenheid [X] C.S. (hierna: belanghebbende)</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>tegen</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>de STAATSSECRETARIS VAN FINANCIËN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>op het beroep in cassatie tegen de uitspraak van het Gerechtshof Amsterdam van 11 mei 2023, nrs. 21/01830 tot en met 21/01840<footnote-ref linkend="_ae03145c-7096-4228-b690-a81948c29ab3" />, op het hoger beroep van belanghebbende tegen een uitspraak van de Rechtbank Noord-Holland (nrs. HAA 19/3459 tot en met HAA 19/3462, HAA 20/5184 tot en met HAA 20/5186, HAA 21/3591 tot en met HAA 20/3594) betreffende door belanghebbende op aangifte voldane bedragen aan omzetbelasting over tijdvakken in de periode 1 januari 2018 tot en met 31 december 2018 en 1 april 2019 tot en met 31 december 2020.</para>
+    </parablock>
+    <para />
+  </uitspraak.info>
+  <section>
+    <title>
+      <nr>1</nr>Geding in cassatie</title>
+    <parablock>
+      <para>Belanghebbende, vertegenwoordigd door F.J. Manzoni, heeft tegen de uitspraak van het Hof beroep in cassatie ingesteld. Het beroepschrift in cassatie is aan dit arrest gehecht en maakt daarvan deel uit.</para>
+      <para>De Staatssecretaris, vertegenwoordigd door [P], heeft een verweerschrift ingediend.</para>
+      <para>Belanghebbende heeft een conclusie van repliek ingediend.</para>
+    </parablock>
+  </section>
+  <section>
+    <title>
+      <nr>2</nr>Uitgangspunten in cassatie</title>
+    <paragroup>
+      <nr>2.1</nr>
+      <para>Belanghebbende is een fiscale eenheid in de zin van artikel 7, lid 4, van de Wet op de omzetbelasting 1968 (hierna: de Wet). </para>
+      <paragroup>
+        <nr>2.2.1</nr>
+        <para>Een tot belanghebbende behorende besloten vennootschap (hierna: de Vennootschap) houdt zich bezig met market making en binnen dat kader met handel in financiële instrumenten op effectenbeurzen. De Vennootschap zorgt ervoor dat op (elektronische) handelsplatformen zoals Euronext voor beleggers continu handel in effecten mogelijk is, in het bijzonder van zogenoemde [financiële producten]. Daartoe geeft de Vennootschap doorlopend en onder alle marktomstandigheden bied- en laatkoersen af, dat wil zeggen prijzen die zij zelf bereid is te betalen voor aankoop of verkoop ervan. De biedkoers geeft de hoogste prijs weer waarvoor de Vennootschap een [financieel product] wil kopen, de laatkoers is de laagste prijs waarvoor zij bereid is een [financieel product] te verkopen. Op basis van deze bied- en laatkoersen stuurt de Vennootschap voor eigen rekening en risico koop- en verkoopopdrachten naar de verschillende beurzen waarbij zij is aangesloten. Zij verdient aan de verschillen tussen de koop- en verkoopprijzen. In het navolgende worden deze activiteiten ook aangeduid als effectentransacties.</para>
+      </paragroup>
+      <paragroup>
+        <nr>2.2.2</nr>
+        <para>Verder geeft de Vennootschap op verzoek en tegen afzonderlijke vergoeding bied- en laatkoersen af aan institutionele partijen zoals pensioenfondsen, buiten de gereguleerde markten om. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.2.3</nr>
+        <para>Daarnaast garandeert de Vennootschap partijen die [financiële producten] uitgeven, dat zij bied- en laatprijzen zal afgeven op de effectenbeurs waar deze [financiële producten] zullen worden verhandeld. Voor deze activiteiten ontvangt de Vennootschap een vergoeding van de hier bedoelde partijen, aangeduid als liquidity provision.</para>
+      </paragroup>
+    </paragroup>
+    <paragroup>
+      <nr>2.3</nr>
+      <para>Alle hiervoor in 2.2.1 tot en met 2.2.3 omschreven activiteiten worden door de Vennootschap uitgeoefend binnen verschillende handelsdesks die opereren op beurzen binnen en buiten de Europese Unie. Onder de kopers en verkopers van de [financiële producten] (hierna: de gebruikers van het hiervoor in 2.2.1 bedoelde handelssysteem) en de hiervoor in 2.2.2 en 2.2.3 bedoelde partijen bevinden zich gebruikers respectievelijk partijen (hierna alle tezamen ook: de afnemers) die buiten de Europese Unie zijn gevestigd.</para>
+      <paragroup>
+        <nr>2.4.1</nr>
+        <para>Het internationale concern waarvan de tot belanghebbende behorende vennootschappen deel uitmaken, heeft dochtermaatschappijen die zijn gevestigd in Singapore, Hong Kong en de Verenigde Staten.<?linebreak?>Met elk van deze dochtermaatschappijen heeft de Vennootschap een Transfer Pricing Implementation Agreement gesloten (hierna: de Overeenkomsten). De Overeenkomsten zijn gebaseerd op de “2014 Transfer Pricing Master File” (hierna: de Master File). In de Master File en de Overeenkomsten is opgenomen dat de Vennootschap per 1 januari 2015 aan elk van deze dochtermaatschappijen zogenoemde support services verricht en dat zij aan elk van deze dochtermaatschappijen de door de Vennootschap ontwikkelde [X] Group Software ter beschikking stelt. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.4.2</nr>
+        <para>In de Overeenkomsten en in de Master File is bepaald dat de Vennootschap voor het verlenen van de support services aan de dochtermaatschappijen een vergoeding in rekening brengt waarvan de hoogte wordt bepaald op basis van de transactional net margin method met toepassing van een opslag (hierna: de TNMM-vergoedingen). Ter zake van deze support services reikt de Vennootschap facturen uit aan de dochtermaatschappijen.</para>
+      </paragroup>
+      <paragroup>
+        <nr>2.4.3</nr>
+        <para>In de Overeenkomsten en in de Master File is verder wat betreft het ter beschikking stellen van de [X] Group Software voorzien in een profit split, een verdeling van de winst waarbij de omvang van de door de dochtermaatschappijen aan de Vennootschap te verrichten betalingen wordt bepaald op grond van de residual profit split method (hierna: de RPSM-betalingen). De RPSM-betalingen worden berekend op een deel van de winst van de desbetreffende dochtermaatschappij na aftrek van de operationele kosten en van een vergoeding en kunnen zowel positief als negatief zijn. In het laatste geval moet de Vennootschap een bedrag betalen aan de dochtermaatschappij, hetgeen enige malen is voorgekomen. Ter zake van de RPSM-betalingen worden geen facturen uitgereikt. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.5.1</nr>
+        <para>De hiervoor in 2.2.1 tot en met 2.2.3 vermelde handelingen van belanghebbende zijn alle diensten als bedoeld in artikel 11, lid 1, letter i, onder 2°, van de Wet. Zij worden op grond van artikel 6, lid 1, van de Wet voor de heffing van omzetbelasting geacht plaats te vinden in het land van de afnemer indien zij jegens ondernemers worden verricht; indien deze diensten worden verricht jegens niet-ondernemers die buiten de Europese Unie zijn gevestigd, worden zij op grond van artikel 6i, letter e, van de Wet eveneens geacht plaats te vinden in het land waar de afnemer is gevestigd, dat wil zeggen buiten de Europese Unie. <?linebreak?>Op grond van artikel 15, lid 2, letter c, van de Wet geldt dat belanghebbende recht heeft op aftrek van de omzetbelasting die voor goederen en diensten in rekening wordt gebracht (voorbelasting) voor zover deze worden gebruikt voor diensten als bedoeld in artikel 11, lid 1, letter i, van de Wet, mits de ontvanger ervan buiten de Europese Unie is gevestigd. <?linebreak?>Voor belanghebbende betekent dit een en ander dat zij met betrekking tot de hiervoor in 2.2.1 tot en met 2.2.3 vermelde handelingen van de Vennootschap alleen recht op aftrek van voorbelasting heeft voor zover de afnemers ervan buiten de Europese Unie zijn gevestigd. Zij heeft dus geen recht op aftrek van voorbelasting voor zover de afnemers van deze diensten zijn gevestigd in de Europese Unie.</para>
+      </paragroup>
+      <paragroup>
+        <nr>2.5.2</nr>
+        <para>Voor de door de Vennootschap jegens haar dochtermaatschappijen verrichte diensten als hiervoor in 2.4 bedoeld geldt evenzeer dat deze diensten voor de heffing van omzetbelasting worden geacht plaats te vinden in het land waar de ontvanger, dat wil zeggen de respectieve dochtermaatschappij is gevestigd. Belanghebbende heeft voor deze diensten op grond van artikel 15, lid 2, letter a, van de Wet recht op aftrek van voorbelasting. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.5.3</nr>
+        <para>Voor de aftrek van voorbelasting ter zake van leveringen van goederen en diensten die niet rechtstreeks toerekenbaar zijn aan hetzij prestaties waarvoor recht op aftrek bestaat – zoals de hiervoor in 2.5.1 bedoelde diensten voor zover deze jegens afnemers buiten de Europese Unie worden verricht en de hiervoor in 2.5.2 bedoelde diensten – hetzij prestaties waarvoor dat recht niet bestaat (bijvoorbeeld de hiervoor in 2.5.1 bedoelde diensten waarvan de afnemers binnen de Europese Unie zijn gevestigd), geldt dat een evenredig recht op aftrek bestaat, in beginsel naar rato van de door de Vennootschap voor haar dienstverlening ontvangen vergoedingen. Gelet op artikel 15, lid 2, letter c, van de Wet is voor de bepaling van de omvang van dit recht op aftrek van voorbelasting ter zake van de hier bedoelde goederen en diensten (ook wel aangeduid als gemengde kosten) van belang de vestigingsplaats van de ontvangers van die diensten – binnen of buiten de Europese Unie – vast te stellen. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.6.1</nr>
+        <para>De Vennootschap heeft met de Inspecteur voor de periode 2007 tot en met 2011 en vervolgens voor de periode 2012 tot en met 2015 afspraken gemaakt over de berekening van de omvang van de in artikel 15, lid 2, van de Wet bedoelde aftrek van voorbelasting ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten. Mede omdat het bepalen van de vestigingsplaats van iedere afzonderlijke gebruiker van het hiervoor in 2.2.1 bedoelde handelssysteem voor belanghebbende onmogelijk was, zijn in het bijzonder afspraken gemaakt over de wijze waarop het gedeelte van de vergoedingen dat ziet op afnemers buiten de Europese Unie moet worden vastgesteld. De Vennootschap is in dit verband met de Inspecteur overeengekomen dat zij de vestigingsplaats van haar afnemers mag vaststellen op basis van haar (nominale) handelsvolumes, dat wil zeggen het totaal van haar aankoop- en verkooptransacties in een bepaalde periode op elk van de beurzen buiten de Europese Unie waarop de Vennootschap handelt, ten opzichte van haar totale handelsvolume op alle beurzen waar zij handelt.</para>
+      </paragroup>
+      <paragroup>
+        <nr>2.6.2</nr>
+        <parablock>
+          <para>Deze afspraken met de Inspecteur over de berekening van de evenredige aftrek zijn vastgelegd in een brief van 16 januari 2013. Die brief bevat de volgende passage: </para>
+          <para>“1. De verrekening van voorbelasting wordt bepaald door de verhouding EU / Non-EU van het nominale handelsvolume toe te passen op het bruto handelsresultaat;</para>
+        </parablock>
+        <para />
+        <parablock>
+          <para>2. Tussen ons is vastgesteld dat deze methode voor [de Vennootschap] op dit moment een aanvaardbare methode vormt om de aftrek van voorbelasting op grond van artikel 15-2-c van de Wet vast te stellen;</para>
+        </parablock>
+        <para />
+        <parablock>
+          <para>3. Hoewel het hier om brutoresultaat gaat en niet om bruto omzet, vinden wij dit aanvaardbaar op grond van het arrest van het Hof van Justitie EU First National Bank of Chicago (nr.C-172/96,dd. 14-7-’98);</para>
+        </parablock>
+        <para />
+        <parablock>
+          <para>4. Het pro rata percentage dient te worden vastgesteld op basis van de jaarcijfers van [de Vennootschap] (en niet op basis van de halfjaarcijfers);<?linebreak?>(…).”</para>
+        </parablock>
+      </paragroup>
+    </paragroup>
+    <paragroup>
+      <nr>2.7</nr>
+      <parablock>
+        <para>Bij brief van 12 april 2016 heeft de Vennootschap de Inspecteur verzocht om voortzetting van de hiervoor in 2.6.1 en 2.6.2 bedoelde afspraken, met dien verstande dat zij de omvang van de in aftrek te brengen omzetbelasting voortaan wilde bepalen door: </para>
+        <para>“de verhouding EU / Non-EU van het nominale handelsvolume toe te passen op het bruto handelsresultaat waarbij de [TNMM-vergoedingen en de RPSM-betalingen] worden toegevoegd aan de pro-rata verdeling van het bruto handelsresultaat.”</para>
+        <para>	De Inspecteur heeft belanghebbende bij brief van 31 augustus 2016 geïnformeerd dat hij bereid is de voor de jaren 2012 tot en met 2015 gemaakte afspraken ongewijzigd voort te zetten, maar dat hij geen aanleiding ziet om de TNMM-vergoedingen en de RPSM-betalingen bij deze berekening van de omvang van de aftrek in aanmerking te nemen. </para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>2.8</nr>
+      <para>Belanghebbende is bij het doen van de aangiften voor de omzetbelasting over de in geding zijnde tijdvakken, dat wil zeggen tijdvakken in de periode 1 januari 2018 tot en met 31 december 2020, wat betreft de aftrek van omzetbelasting ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten uitgegaan van voortzetting van de – inmiddels verlopen – afspraken met de Inspecteur zoals hiervoor in 2.6.1 en 2.6.2 weergegeven. Bij de vaststelling van de omvang van die aftrek heeft zij niet de TNMM-vergoedingen en de RPSM-betalingen in aanmerking genomen. Zij heeft tegen de op aangifte voldane bedragen bezwaar gemaakt, zich op het standpunt stellende dat de TNMM-vergoedingen en de RPSM-betalingen in aanmerking moeten worden genomen bij de berekening van de omvang van het recht op aftrek, namelijk als omzet waarvoor recht op aftrek bestaat, en dat zij daarom meer voorbelasting in aftrek kan brengen dan zij had aangegeven. De Inspecteur heeft de bezwaren bij uitspraak op bezwaar van 18 juni 2021 afgewezen.</para>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>3</nr>De oordelen van het Hof</title>
+    <paragroup>
+      <nr>3.1</nr>
+      <para>Voor het Hof was in geschil of belanghebbende méér omzetbelasting ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten in aftrek kan brengen dan zij bij de hiervoor in 2.8 bedoelde aangiften heeft gedaan. Belanghebbende stelt zich op het standpunt dat bij het bepalen van de omvang van de aftrek ook de TNMM-vergoedingen en de RPSM-betalingen in de verdeelsleutel moeten worden opgenomen als vergoedingen voor handelingen waarvoor recht op aftrek bestaat.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.2</nr>
+      <para>Het Hof heeft vooropgesteld dat belanghebbende bij het bepalen van de verdeelsleutel voor de evenredige aftrek in de betrokken tijdvakken niet in volle omvang onverkorte wetstoepassing voorstaat. Belanghebbende heeft ter zitting bij het Hof verduidelijkt dat zij voor de effectentransacties een beroep doet op de hiervoor in 2.6.1 en 2.6.2 weergegeven afspraken met de Inspecteur en, in aanvulling daarop, voor de dienstverlening aan de dochtermaatschappijen onverkorte wetstoepassing voorstaat, om de TNMM-vergoedingen en de RPSM-betalingen alsnog bij het bepalen van die verdeelsleutel te kunnen betrekken. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.3</nr>
+      <para>Vervolgens heeft het Hof geoordeeld dat de hiervoor in 2.6.1 en 2.6.2 weergegeven afspraken met de Inspecteur over de verdeelsleutel voor de evenredige aftrek<emphasis role="bold">,</emphasis> de totaliteit van belanghebbendes activiteiten betreft, waarbij alleen met handelsvolumes rekening mag worden gehouden.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.4</nr>
+      <para>Om omzetten uit handelingen jegens de dochtermaatschappijen in de bepaling van een verdeelsleutel voor de evenredige aftrek te kunnen betrekken, moet daarom volgens het Hof geheel worden teruggevallen op onverkorte wetstoepassing. Daarop heeft belanghebbende volgens het Hof geen beroep gedaan en daarvoor heeft zij naar het oordeel van het Hof ook onvoldoende cijfermatige informatie bijgebracht. Zo is het volgens het Hof onduidelijk welke verdeelsleutels voor evenredige aftrek zijn gebruikt in de aangiften, ontbreken relevante bedragen betreffende de handel in effecten en bestaat slechts globaal inzicht in de omvang van de TNMM-vergoedingen en die van de RPSM-betalingen. Bovendien bestaat onvoldoende inzicht in de mate waarin de locatie van de beurs van verhandeling van effecten de vestigingsplaats van de ontvanger van de dienst van belanghebbende weerspiegelt (binnen of buiten de Unie), terwijl andere aanknopingspunten ontbreken om die vestigingsplaatsen vast te stellen, aldus nog steeds het Hof.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.5</nr>
+      <para>Tot slot heeft het Hof geoordeeld dat bij onverkorte wetstoepassing ook de rechtskundige vragen rijzen of de vergoeding voor de diensten van een market maker in effecten inderdaad de gerealiseerde brutomarge over een bepaalde periode is, zoals bij deviezenhandel en, zo ja, of die globaal bepaalde vergoeding voor de toepassing van artikel 15, lid 2, letter c, van de Wet kan worden geïndividualiseerd naar onderscheiden ontvangers van diensten. Alleen als die vragen geheel bevestigend worden beantwoord, kan belanghebbende de evenredige aftrek in haar aangiften hebben bepaald overeenkomstig de omzetmethode en zou het mogelijk kunnen zijn aan de bestaande berekeningen aanvullend omzetbedragen toe te voegen.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.6</nr>
+      <para>Bij die stand van het geding heeft het Hof in het midden gelaten of de RPSM-betalingen vergoedingen vormen voor door belanghebbende jegens de dochtermaatschappijen verrichte diensten, zoals belanghebbende voorstaat en de Inspecteur bestrijdt. </para>
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>
+      <nr>4</nr>Beoordeling van de middelen</title>
+    <paragroup>
+      <nr>4.1</nr>
+      <para>Middel 1 is gericht tegen de hiervoor in 3.2 en 3.4 weergegeven oordelen van het Hof. De Hoge Raad heeft de klachten van middel 1 over de uitspraak van het Hof beoordeeld. De uitkomst hiervan is dat deze klachten niet kunnen leiden tot vernietiging van die uitspraak. De Hoge Raad hoeft niet te motiveren waarom hij tot dit oordeel is gekomen. Bij de beoordeling van deze klachten is het namelijk niet nodig om antwoord te geven op vragen die van belang zijn voor de eenheid of de ontwikkeling van het recht (zie artikel 81, lid 1, van de Wet op de rechterlijke organisatie).</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.2</nr>
+      <para>De middelen 2 en 3 zijn gericht tegen de hiervoor in 3.3 en 3.5 weergegeven oordelen van het Hof. De middelen lenen zich voor gezamenlijke behandeling. Zij betogen, kort gezegd, dat het Hof heeft miskend dat na de beëindiging van de hiervoor in 2.6.1 en 2.6.2 bedoelde afspraken op basis van onverkorte wetstoepassing, namelijk op grond van het bepaalde in artikel 15 van de Wet en artikel 11 van de Uitvoeringsbeschikking omzetbelasting 1968, moet worden vastgesteld in hoeverre belanghebbende recht heeft op aftrek van voorbelasting ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten, waarbij zij alles mag aandragen ten bewijze van de vaststelling van de omvang van dit recht. </para>
+    </paragroup>
+    <paragroup>
+      <nr>4.3</nr>
+      <para>De middelen 2 en 3 slagen in zoverre. Het Hof heeft weliswaar terecht geoordeeld dat de omvang van de aan belanghebbende toekomende evenredige aftrek van voorbelasting ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten na het verstrijken van de looptijd van de hiervoor in 2.6.1 en 2.6.2 bedoelde afspraken moet plaatsvinden op grond van de wettelijke regeling, maar het heeft miskend dat belanghebbende zich – ook voor dat geval – op het standpunt heeft gesteld dat de vergoedingen voor de effectentransacties kunnen worden bepaald volgens een methode die uitgaat van het bruto handelsresultaat van transacties in een bepaalde periode, dit naar analogie van hetgeen het Hof van Justitie van de Europese Unie met betrekking tot deviezentransacties heeft geoordeeld in het arrest van 14 juli 1998, First National Bank of Chicago, C-172/96, ECLI:EU:C:1998:354 (hierna: het arrest FNBC). Het Hof had dat standpunt moeten beoordelen. In aansluiting daarop had het moeten behandelen hoe belanghebbende voor de toepassing van artikel 15, lid 2, letter c, van de Wet kan bepalen in hoeverre de gebruikers van het hiervoor in 2.2.1 bedoelde handelssysteem buiten de Europese Unie zijn gevestigd. Het Hof had vervolgens, met het oog op de aftrek van voorbelasting, van het totaal van de voor de effectentransacties ontvangen vergoedingen een deel, evenredig aan het aldus vastgestelde aandeel van afnemers van effectentransacties dat buiten de Europese Unie is gevestigd, moeten beschouwen als van buiten de Europese Unie ontvangen vergoedingen.</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.4</nr>
+      <para>Gelet op hetgeen hiervoor in 4.3 is overwogen, kan de uitspraak van het Hof niet in stand blijven. De middelen 2 en 3 voor het overige behoeven geen behandeling. Verwijzing moet volgen om te beoordelen in hoeverre aan belanghebbende recht op aftrek toekomt van omzetbelasting die in rekening is gebracht voor goederen en diensten die niet uitsluitend gebruikt worden voor hetzij prestaties waarvoor recht op aftrek bestaat, hetzij prestaties waarvoor dit recht niet bestaat.</para>
+      <paragroup>
+        <nr>4.5.1</nr>
+        <parablock>
+          <para>Het verwijzingshof moet bij deze beoordeling het volgende in acht nemen.</para>
+          <para>
+            <emphasis role="italic">	Vaststelling maatstaf van heffing ter zake van de effectentransacties</emphasis>
+          </para>
+        </parablock>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.2</nr>
+        <para>In het arrest FNBC heeft het Hof van Justitie met betrekking tot deviezentransacties van een market maker in valuta geoordeeld dat transacties waarbij de ene partij een overeengekomen bedrag in een valuta koopt en daartegenover aan de andere partij een overeengekomen bedrag in een andere valuta verkoopt, waarbij de twee bedragen op dezelfde valutadatum betaalbaar zijn en partijen (mondeling, via elektronische weg of schriftelijk) overeenstemming hebben bereikt over de betrokken valuta's, de in die valuta's te kopen respectievelijk te verkopen bedragen, de valutadatum en over welke partij welke valuta koopt, diensten onder bezwarende titel zijn. Het Hof van Justitie verklaarde voor recht dat artikel 11A, lid 1, letter a, van de Zesde richtlijn (thans artikel 73 van BTW-richtlijn 2006) aldus moet worden uitgelegd dat in het geval van deviezentransacties waarbij geen kosten of provisie worden berekend voor bepaalde specifieke transacties, de maatstaf van heffing bestaat uit het bruto resultaat<footnote-ref linkend="_2cf4e2be-8f19-4eb4-af8a-eb4988635899" /> van de transacties van de dienstverrichter in een bepaalde periode.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.3</nr>
+        <parablock>
+          <para>Wanneer de omstandigheden waaronder de effectentransacties plaatsvinden vergelijkbaar zijn met de deviezentransacties die aan de orde waren in het arrest FNBC, is buiten redelijke twijfel dat hetgeen het Hof van Justitie in dat arrest voor recht heeft verklaard met betrekking tot het bepalen van de maatstaf van heffing bij deviezentransacties naar analogie kan worden toegepast.</para>
+          <para>
+            <emphasis role="italic">	Bewijsvoering artikel 15, lid 2, letter c, van de Wet</emphasis>
+          </para>
+        </parablock>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.4</nr>
+        <para>Op grond van artikel 15, lid 2, letter c, van de Wet heeft de ondernemer recht op aftrek van voorbelasting voor zover hij de goederen en diensten gebruikt voor handelingen als bedoeld in artikel 11, lid 1, letters i, j en k, van de Wet, mits de ontvanger van die diensten buiten de Europese Unie is gevestigd. De bewijslast daarvoor rust op de belanghebbende die het aftrekrecht wil uitoefenen.<footnote-ref linkend="_1ad0c15b-97d0-470b-86f2-2d295ec571e8" /></para>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.5</nr>
+        <para>BTW-richtlijn 2006 regelt niet op welke wijze het bewijs moet worden geleverd van de vestigingsplaats van de ontvanger van de in artikel 11, lid 1, letters i, j en k, van de Wet bedoelde diensten. Ook Uitvoeringsverordening EU nr. 282/2011<footnote-ref linkend="_d0f662d1-cda4-4edc-9add-62f4248ece6c" /> bevat geen bewijsregels ter bepaling van de vestigingsplaats van de afnemer als het gaat om toepassing van artikel 169, letter c, van BTW-richtlijn 2006<emphasis role="bold">, </emphasis>waarvan artikel 15, lid 2, letter c, van de Wet de implementatie is. Het is daarom een aangelegenheid van de interne rechtsorde van elke lidstaat om bewijsregels vast te stellen.<footnote-ref linkend="_90ef0c1a-1c4e-4bb3-8010-3246136cc491" /> De Wet noch het Nederlandse fiscale procesrecht kent bijzondere bewijsregels of bewijsstandaarden aan de hand waarvan kan of moet worden vastgesteld dat de ontvanger van een dienst buiten de Europese Unie is gevestigd. Dit betekent dat de ondernemer alles wat hem ter beschikking staat, mag aandragen als bewijsmiddel om de vestigingsplaats van zijn afnemers aannemelijk te maken.<footnote-ref linkend="_3c067120-2fd9-4493-a5c8-3fbd8eadc524" /></para>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.6</nr>
+        <para>In specifieke omstandigheden, waarin bedrijfsactiviteiten van dien aard zijn dat het niet op basis van objectieve gegevens mogelijk is om per afnemer vast te stellen wat diens vestigingsplaats is, en om de neutraliteit van de belastingdruk te kunnen garanderen, kan ter bepaling van de in artikel 15, lid 2, letter c, van de Wet bedoelde aftrek de verhouding tussen buiten de Europese Unie gevestigde afnemers en binnen de Europese Unie gevestigde afnemers ook op andere wijze aannemelijk worden gemaakt. Het aannemelijk maken van deze verhouding kan bijvoorbeeld op basis van redelijke schattingen plaatsvinden, mits de gegevens die daarvoor worden gebruikt nauwkeurig, betrouwbaar en actueel zijn.<footnote-ref linkend="_7309983d-d08b-4b9e-96d9-272ca53c3466" /></para>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.7</nr>
+        <para>Met het oog op het vaststellen van de omvang van de aftrek ter zake van de hiervoor in 2.5.3 bedoelde gemengde kosten is het aan het verwijzingshof om met inachtneming van hetgeen hiervoor in 4.5.4 tot en met 4.5.6 is geoordeeld, vast te stellen welk deel van de afnemers van de effectentransacties geacht kan worden buiten de Europese Unie te zijn gevestigd. De aan dat deel van de afnemers toe te rekenen vergoedingen vertegenwoordigen dan het deel van de voorbelasting ter zake van de effectentransacties dat in overeenstemming met artikel 15, lid 2, letter c, van de Wet voor aftrek in aanmerking komt.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.5.8</nr>
+        <para>Voor zover belanghebbende aannemelijk maakt dat zij nog andere vergoedingen heeft ontvangen voor prestaties waarvoor recht op aftrek bestaat, moeten ook deze vergoedingen in aanmerking worden genomen bij de bepaling van de evenredige aftrek ter zake van de gemengde kosten. In dit kader zal het verwijzingshof moeten beoordelen of de RPSM-betalingen moeten worden aangemerkt als vergoedingen voor aan de dochtermaatschappijen verrichte diensten.</para>
+      </paragroup>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>5</nr>Proceskosten</title>
+    <para>De Staatssecretaris zal worden veroordeeld in de kosten van het geding in cassatie.</para>
+  </section>
+  <section role="beslissing">
+    <title>
+      <nr>6</nr>Beslissing</title>
+    <parablock>
+      <para>De Hoge Raad: </para>
+      <para>- verklaart het beroep in cassatie gegrond,</para>
+      <para>- vernietigt de uitspraak van het Hof,</para>
+      <para>- verwijst het geding naar het Gerechtshof Den Haag ter verdere behandeling en beslissing van de zaak met inachtneming van dit arrest,</para>
+      <para>- draagt de Staatssecretaris van Financiën op aan belanghebbende te vergoeden het griffierecht dat belanghebbende voor de behandeling van het beroep in cassatie heeft betaald van € 548, en</para>
+      <para>- veroordeelt de Staatssecretaris van Financiën in de kosten van belanghebbende voor het geding in cassatie, vastgesteld op € 3.736 voor beroepsmatig verleende rechtsbijstand.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>Dit arrest is gewezen door de vice-president M.E. van Hilten als voorzitter, en de raadsheren E.N. Punt, M.A. Fierstra, E.F. Faase en P.A.G.M. Cools, in tegenwoordigheid van de waarnemend griffier E. Cichowski, en in het openbaar uitgesproken op 20 februari 2026 .</para>
+    </parablock>
+  </section>
+  <footnote id="_ae03145c-7096-4228-b690-a81948c29ab3" label="1">
+    <para> ECLI:NL:GHAMS:2023:1298.</para>
+  </footnote>
+  <footnote id="_2cf4e2be-8f19-4eb4-af8a-eb4988635899" label="2">
+    <para> Naar de Hoge Raad verstaat: alle verkopen minus alle aankopen.</para>
+  </footnote>
+  <footnote id="_1ad0c15b-97d0-470b-86f2-2d295ec571e8" label="3">
+    <para>  Vgl. HR 29 september 2017, ECLI:NL:HR:2017:2461, rechtsoverweging 2.5.2.</para>
+  </footnote>
+  <footnote id="_d0f662d1-cda4-4edc-9add-62f4248ece6c" label="4">
+    <para> Uitvoeringsverordening (EU) nr. 282/2011 van de Raad van 15 maart 2011 houdende vaststelling van maatregelen ter uitvoering van Richtlijn 2006/112/EG betreffende het gemeenschappelijke stelsel van belasting over de toegevoegde waarde (herschikking). </para>
+  </footnote>
+  <footnote id="_90ef0c1a-1c4e-4bb3-8010-3246136cc491" label="5">
+    <para>  Vgl. HvJ 1 augustus 2025, P GmbH, C-794/23, ECLI:EU:C:2025:622, punt 36. </para>
+  </footnote>
+  <footnote id="_3c067120-2fd9-4493-a5c8-3fbd8eadc524" label="6">
+    <para>  Vgl. HR 26 februari 2021, ECLI:NL:HR:2021:294, rechtsoverweging 4.2.</para>
+  </footnote>
+  <footnote id="_7309983d-d08b-4b9e-96d9-272ca53c3466" label="7">
+    <para>  Vgl. HvJ 1 augustus 2025, P GmbH, C-794/23, ECLI:EU:C:2025:622, punten 40 en 43.</para>
+  </footnote>
+</uitspraak>
+</open-rechtspraak>

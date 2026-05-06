@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:GHDHA:2023:2457</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-03-22T18:35:52</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2023-12-12</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Gerechtshof_Den_Haag" scheme="overheid.RechterlijkeMacht">Gerechtshof Den Haag</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2023-11-16</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">BK-22/01302</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#hogerBeroep">Hoger beroep</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:spatial rdfs:label="Zittingsplaats">Den Haag</dcterms:spatial>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:RBDHA:2022:13389" psi:type="http://psi.rechtspraak.nl/hogerBeroep" psi:aanleg="http://psi.rechtspraak.nl/eerdereAanleg" psi:gevolg="http://psi.rechtspraak.nl/gevolg#(Gedeeltelijke) vernietiging en zelf afgedaan">Eerste aanleg: ECLI:NL:RBDHA:2022:13389, (Gedeeltelijke) vernietiging en zelf afgedaan</dcterms:relation>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>V-N Vandaag 2024/137</rdf:li>
+          <rdf:li>NLF 2024/0159</rdf:li>
+          <rdf:li>NDFR Nieuws 2024/175</rdf:li>
+          <rdf:li>NTFR 2024/405 met annotatie van Mr. E. Swaving Dijkstra</rdf:li>
+          <rdf:li>V-N 2024/14.5 met annotatie van Redactie</rdf:li>
+          <rdf:li>Viditax (FutD) 2024011503</rdf:li>
+          <rdf:li>FutD 2024-0182</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:GHDHA:2023:2457">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:GHDHA:2023:2457</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2024-01-15T13:52:00</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2024-01-15</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:GHDHA:2023:2457 Gerechtshof Den Haag , 16-11-2023 / BK-22/01302</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:GHDHA:2023:2457:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Art. 31a, lid 2, letter e, en lid 8, Wet LB 1964. Artt. 10ec, 10ed, 10ef, lid 1, en 10ei, lid 1, UBLB. Art. 4:6 Awb. Art. 65 AWR. Afwijzing verzoek 30%-bewijsregel. Aanpassing looptijd voor de toepassing van de 30%-regeling. Art. 4:6 Awb kan niet tot herziening van de vastgestelde looptijd leiden nu geen sprake is van nieuw gebleken feiten of veranderde omstandigheden. Art. 65 AWR. Een afwijzing van een verzoek om ambtshalve herziening is geen voor bezwaar vatbare beschikking.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:GHDHA:2023:2457:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <uitspraak.info>
+    <bridgehead role="bold">GERECHTSHOF DEN HAAG</bridgehead>
+    <para />
+    <parablock>
+      <para>Team Belastingrecht</para>
+      <para>meervoudige kamer</para>
+      <para>nummer BK-22/01302</para>
+    </parablock>
+    <para />
+    <para />
+    <bridgehead role="bold">Uitspraak van 16 november 2023</bridgehead>
+    <para />
+    <parablock>
+      <para>in het geding tussen:</para>
+    </parablock>
+    <para />
+    <bridgehead role="bold">
+      [X] , te [Z] , belanghebbende,</bridgehead>
+    <para>(gemachtigde: C.E. Kocks)</para>
+    <para />
+    <parablock>
+      <para>en</para>
+    </parablock>
+    <para />
+    <bridgehead role="bold">de inspecteur van de Belastingdienst, de Inspecteur,</bridgehead>
+    <para>(vertegenwoordiger: […] ) </para>
+    <para />
+    <parablock>
+      <para>op het hoger beroep van de Inspecteur tegen de uitspraak van de Rechtbank Den Haag (de Rechtbank) van 24 november 2022, nummer SGR 21/6670.</para>
+    </parablock>
+    <para />
+    <para />
+  </uitspraak.info>
+  <section role="procesverloop">
+    <title>Procesverloop</title>
+    <para />
+    <paragroup>
+      <nr>1.1.</nr>
+      <para>De Inspecteur heeft het verzoek van belanghebbende om toepassing van de <?linebreak?>30%-regeling voor extraterritoriale werknemers (de 30%-regeling) bij beschikking van 12 april 2021 afgewezen (de afwijzingsbeschikking).</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.2.</nr>
+      <para>Bij uitspraak op bezwaar heeft de Inspecteur belanghebbendes bezwaar tegen de afwijzingsbeschikking afgewezen.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.3.</nr>
+      <para>Belanghebbende heeft tegen de uitspraak op bezwaar beroep ingesteld bij de Rechtbank. Ter zake daarvan is € 49 griffierecht geheven. De beslissing van de Rechtbank luidt, waarbij belanghebbende is aangeduid als eiseres en de Inspecteur als verweerder:</para>
+      <para />
+      <parablock>
+        <para>“De rechtbank:</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>- verklaart het beroep gegrond;</para>
+        <para>- vernietigt de uitspraak op bezwaar;</para>
+        <para>- vernietigt de bestreden beschikking (beschikking 3);</para>
+        <para>- bepaalt dat het verzoek van 8 februari 2021 dient te worden toegewezen zodat de 30%-bewijsregel toepassing vindt tot en met 31 december 2021;</para>
+        <para>- veroordeelt verweerder in de proceskosten van eiseres tot een bedrag van € 2.056;</para>
+        <para>- draagt verweerder op het betaalde griffierecht van € 49 aan eiseres te vergoeden.”</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.4.</nr>
+      <para>De Inspecteur heeft tegen de uitspraak van de Rechtbank hoger beroep ingesteld bij het Hof. Belanghebbende heeft een verweerschrift ingediend. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.5.</nr>
+      <para>De mondelinge behandeling van de zaak heeft plaatsgehad ter zitting van het Hof van 11 oktober 2023. Partijen zijn verschenen. Van het verhandelde ter zitting is een proces-verbaal opgemaakt.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Feiten</title>
+    <para />
+    <paragroup>
+      <nr>2.1.</nr>
+      <para>Belanghebbende en haar toenmalige werkgever [B.V. 1] hebben op 6 december 2018 een verzoek ingediend voor toepassing van de 30%-regeling met als ingangsdatum 1 november 2018. Uit het verzoek volgt dat belanghebbende van 1 september 2013 tot 1 oktober 2016 in Nederland heeft gewerkt en gewoond. De Inspecteur heeft bij beschikking van 11 februari 2019 aan belanghebbende kenbaar gemaakt dat zij in aanmerking komt voor toepassing van de 30%-regeling en daarbij verwezen naar de op dat moment van toepassing zijnde wetgeving (beschikking 1). In beschikking 1 staat vermeld dat de bewijsregel geldt voor de periode 1 november 2018 tot en met 30 september 2023.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.2.</nr>
+      <para>De Inspecteur heeft belanghebbende per brief geïnformeerd over de verkorting van de looptijd van de 30%-regeling van acht naar vijf jaar:</para>
+      <para />
+      <parablock>
+        <para>“(…) </para>
+        <para>Onderdeel van het belastingplan 2019 is de verkorting van de looptijd van de 30%-regeling van 8 naar 5 jaar. Deze maatregel gaat in per 01 januari 2019. Voor werknemers die in 2019 of later in Nederland komen, geldt een maximale looptijd van 5 jaar. </para>
+      </parablock>
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Overgangsrecht </title>
+    <para>Voor bestaande gevallen geldt er overgangsrecht. Voor hen gelden de wijzigingen pas met ingang van 01 januari 2021. Op basis van onderstaand schema kunt u bepalen wat de nieuwe einddatum zal zijn. </para>
+    <para />
+    <informaltable>
+      <tgroup cols="2">
+        <colspec colname="colA" />
+        <colspec colname="colB" />
+        <tbody>
+          <row>
+            <entry>
+              <para>
+                <emphasis role="bold">Einddatum op de beschikking valt in:</emphasis>
+              </para>
+            </entry>
+            <entry>
+              <para>
+                <emphasis role="bold">De nieuwe einddatum is:</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>2019 of 2020</para>
+            </entry>
+            <entry>
+              <para>de einddatum op de beschikking</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>2021, 2022 of 2023</para>
+            </entry>
+            <entry>
+              <para>31 december 2020</para>
+            </entry>
+          </row>
+          <row>
+            <entry>
+              <para>2024 of later</para>
+            </entry>
+            <entry>
+              <para>de einddatum op de beschikking minus 3 jaar</para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    <para>(…)”</para>
+    <para />
+    <paragroup>
+      <nr>2.3.</nr>
+      <para>Belanghebbende en haar toenmalige werkgever [B.V. 2] hebben op <?linebreak?>6 december 2019 een verzoek ingediend voor toepassing van de 30%-regeling met als ingangsdatum 6 januari 2020. De Inspecteur heeft bij beschikking van 13 februari 2020 aan belanghebbende kenbaar gemaakt dat zij in aanmerking komt voor toepassing van de 30%-regeling en daarbij verwezen naar de op dat moment van toepassing zijnde wetgeving (beschikking 2). In beschikking 2 staat vermeld dat de bewijsregel geldt voor de periode 1 januari 2020 tot en met 31 december 2020.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.4.</nr>
+      <para>Belanghebbende en haar toenmalige werkgever [B.V. 3] hebben op 8 februari 2021 een verzoek ingediend voor toepassing van de 30%-regeling met als ingangsdatum 1 januari 2021. De Inspecteur heeft dit verzoek bij de afwijzingsbeschikking afgewezen.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.5.</nr>
+      <para>Op 15 februari 2023 heeft [B.V. 3] een correctie-aangifte loonheffingen (de correctieberichten) ingediend. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.6.</nr>
+      <para>Bij brief van 13 maart 2023 heeft de Inspecteur belanghebbende verzocht om de reden van de correctieberichten aan te geven.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.7.</nr>
+      <para>In een e-mailbericht van 30 maart 2023 schrijft een werknemer van [B.V. 3] het volgende aan de Inspecteur:</para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">“Wij hebben een medewerkster in dienst genomen per 1 januari 2021, welke in bezit was van de 30%-regeling. Deze was geldig tot en met 30 december 2020.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">Echter was er een fout gemaakt met de toekenningsperiode. We hebben alsnog toepassing van de 30%-regeling aangevraagd, maar deze werd afgewezen.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">Hiertegen hebben wij bewaar ingediend en deze werd afgewezen door de Belastingdienst.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">Vervolgens hebben wij een beroepschrift ingediend en uiteindelijk heeft de rechtbank op 25 november 2022 uitspraak gedaan en toepassing van de 30%-regeling toegekend.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">De uitspraak van de Rechtbank Den Haag hebben wij bijgevoegd.</emphasis>
+        </para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Door de initiële afwijzing van de Belastingdienst hebben wij in 2021 bij verloning van het periodieke salarissen de 30%-regeling niet toegepast.</emphasis>
+        </para>
+        <para>
+          <emphasis role="italic">Na deze uitspraak van de Rechtbank in november 2022 hebben wij het loon over 2021 gecorrigeerd en correctieberichten loonheffingen 2021 ingediend.”</emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.8.</nr>
+      <para>Bij brief van 12 april 2023 heeft de Inspecteur de correctieberichten voor het jaar 2021 geaccepteerd:</para>
+      <para />
+      <parablock>
+        <para>“Door de initiële afwijzing van de Belastingdienst heeft [B.V. 3] in 2021 bij verloning van de periodieke salarissen de 30%-regeling niet toegepast. Na de uitspraak van de Rechtbank in november 2022 heeft [B.V. 3] het loon over 2021 gecorrigeerd en daarom de correctieberichten loonheffingen 2021 ingediend. </para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Deze informatie en de tot mijn beschikking staande gegevens geven mij aanleiding om de correctieberichten loonheffingen voor het jaar 2021 te accepteren. Binnenkort zal de teruggave worden verleend of verrekend.”</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.9.</nr>
+      <para>De Inspecteur heeft aan [B.V. 3] met dagtekening 24 april 2023 een teruggaaf van € 11.454 voor de loonheffingen verleend. Dit bedrag is op 11 mei 2023 op de zakelijke rekening van [B.V. 3] gestort. </para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Oordeel van de Rechtbank</title>
+    <para />
+    <para>3. De Rechtbank heeft geoordeeld, waarbij belanghebbende is aangeduid als eiseres en de Inspecteur als verweerder:</para>
+    <para />
+    <parablock>
+      <para>“<emphasis role="underline">Beoordeling van het geschil</emphasis></para>
+    </parablock>
+    <para>7. In de artikelen 10e en verder van het Uitvoeringsbesluit wordt uitvoering gegeven aan het bepaalde in artikel 31a, tweede lid, onderdeel e, van de Wet op de loonbelasting 1964 met betrekking tot vergoedingen en verstrekkingen aan extraterritoriale werknemers.</para>
+    <para />
+    <para>8. Artikel 10ec, eerste lid, van het Uitvoeringsbesluit luidde tot 1 januari 2019:</para>
+    <parablock>
+      <para>
+        <emphasis role="italic">“Voor ingekomen werknemers bedraagt de looptijd van de bewijsregel maximaal acht jaar, ingaande op de eerste dag van de tewerkstelling door de inhoudingsplichtige en eindigende op de laatste dag van het loontijdvak na het loontijdvak waarin die tewerkstelling is geëindigd.”</emphasis>
+      </para>
+      <para>Vanaf 1 januari 2019 luidt de tekst van dat artikel:</para>
+      <para>
+        <emphasis role="italic">“Voor ingekomen werknemers bedraagt de looptijd van de bewijsregel maximaal vijf jaar, ingaande op de eerste dag van de tewerkstelling door de inhoudingsplichtige en eindigende op de laatste dag van het loontijdvak na het loontijdvak waarin die tewerkstelling is geëindigd.”</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <para>9. Artikel III van het Besluit van 19 december 2018 tot wijziging van enige uitvoeringsbesluiten op het gebied van de belastingen[1] bevat overgangsrecht ter zake van werknemers voor wie de 30%-regeling gedurende looptijd wordt verkort en luidt:</para>
+    <bridgehead role="italic">“Voor de werknemer die uiterlijk op 31 december 2018 een vergoeding genoot waarop artikel 31a, tweede lid, onderdeel e, van de Wet op de loonbelasting 1964 zoals dat op 31 december 2018 luidde of artikel 39e van de Wet op de loonbelasting 1964 zoals dat op 31 december 2018 luidde van toepassing was, blijft bij de toepassing van artikel 10ec van het Uitvoeringsbesluit loonbelasting 1965 de ingevolge die bepalingen geldende termijn van maximaal acht jaar, onderscheidenlijk maximaal tien jaar, van toepassing tot en met uiterlijk 31 december 2020”</bridgehead>
+    <para />
+    <parablock>
+      <para>In de parlementaire geschiedenis staat de overgangsregeling nader uitgeschreven:</para>
+      <para>
+        <emphasis role="italic">“Voor de verschillende groepen werknemers geldt het volgende:</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">1. als de huidige einddatum valt in 2019 of 2020: voor deze werknemers zorgt het overgangsrecht ervoor dat zij niet uit de 30%-regeling vallen per 1 januari 2019, maar dat zij die huidige einddatum kunnen aanhouden;</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">2. als de huidige einddatum valt in 2021, 2022 of 2023: voor deze werknemers eindigt de looptijd door het overgangsrecht op 31 december 2020;</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">3. als de huidige einddatum valt in of na 2024: voor deze werknemers wordt de looptijd verkort met drie jaar.”</emphasis>[2]</para>
+    </parablock>
+    <para />
+    <para>10. Artikel 10ed, van het Uitvoeringsbesluit luidt:</para>
+    <parablock>
+      <para>
+        <emphasis role="italic">“1. Indien een ingekomen werknemer tijdens de looptijd een andere inhoudingsplichtige krijgt, blijft op gezamenlijk verzoek van de werknemer en de nieuwe inhoudingsplichtige de bewijsregel gedurende de resterende looptijd van toepassing, mits de periode tussen het einde van de tewerkstelling door de oude inhoudingsplichtige en de totstandkoming van de arbeidsovereenkomst met de nieuwe inhoudingsplichtige niet langer is dan drie maanden.</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">2. Bij een dergelijk verzoek moet door de nieuwe inhoudingsplichtige opnieuw aannemelijk worden gemaakt dat de werknemer behoort te worden aangemerkt als ingekomen werknemer.”</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <para>11. Artikel 10ef, eerste lid, van het Uitvoeringsbesluit luidt:</para>
+    <bridgehead role="italic">“Indien de ingekomen werknemer voorafgaand aan de aanvang van de tewerkstelling als ingekomen werknemer door de inhoudingsplichtige, in Nederland is tewerkgesteld of is verbleven, wordt de looptijd verminderd met de perioden van eerdere tewerkstelling en eerder verblijf.”</bridgehead>
+    <para />
+    <para>12. Artikel 10ei, eerste lid, van het Uitvoeringsbesluit luidt:</para>
+    <bridgehead role="italic">“Een verzoek om toepassing of voortgezette toepassing van de bewijsregel ten aanzien van een ingekomen werknemer wordt gedaan aan de inspecteur. Deze beslist op het verzoek bij voor bezwaar vatbare beschikking.”</bridgehead>
+    <para />
+    <para>13. Naar het oordeel van de rechtbank heeft eiseres recht op toepassing van de 30%-bewijsregel tot en met 31 december 2021. De rechtbank komt tot dit oordeel, nu partijen het erover eens zijn dat de vermindering van de looptijd als bedoeld in artikel 10 ef, eerste lid, van het Uitvoeringsbesluit, 22 maanden bedraagt. Gelet hierop en gelet op de hiervoor geciteerde bepalingen uit het Uitvoeringsbesluit, had de looptijd van de toepassing van de 30%-bewijsregel, - voorafgaand aan de invoering van de looptijdverkorting naar vijf jaar - op grond van de feiten moeten eindigen op 31 december 2024 (looptijd ingaande op 1 november 2018 + 96 maanden (8 jaar) -/- 22 maanden). Gelet op de overgangsregeling (zie 9 hierboven) is de looptijd vervolgens verkort met 3 jaar en had deze dus moeten eindigen op de datum waarop de rechtbank haar nu vaststelt, 31 december 2021.</para>
+    <para>De rechtbank volgt verweerder niet in zijn stelling dat bij de toepassing van artikel 10ei, eerste lid, van het Uitvoeringsbesluit dient te worden uitgegaan van hetgeen in eerdere beschikkingen onherroepelijk is vast komen te staan. Uit deze bepaling volgt immers slechts dat een verzoek om toepassing of voortgezette toepassing van de bewijsregel bij verweerder moet worden gedaan en dat verweerder daarop bij voor bezwaar vatbare beschikking beslist. Noch uit deze bepaling, noch uit artikel 10ed, eerste lid van het Uitvoeringsbesluit kan worden afgeleid dat verweerder bij de beoordeling van het onder 3 vermelde verzoek, diende uit te gaan van de bij (een) eerdere beschikking(en) vastgestelde looptijd, ongeacht of deze onjuist was. Naar aanleiding van het onder 3 gedane verzoek had verweerder opnieuw moeten beoordelen of aan de vereisten van de regeling was voldaan en wat de resterende looptijd was. Niet in geschil is voorts dat aan de overige vereisten voor toepassing van de 30%-regeling is voldaan.</para>
+    <para />
+    <para>14. Gelet op wat hiervoor in 13 is overwogen dient het beroep gegrond te worden verklaard. Gelet hierop behoeven de overige standpunten van eiseres geen bespreking meer.</para>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="underline">Proceskosten</emphasis>
+      </para>
+      <para>De rechtbank veroordeelt verweerder in de door eiseres gemaakte proceskosten. Deze kosten stelt de rechtbank op grond van het Besluit proceskosten bestuursrecht voor de door een derde beroepsmatig verleende rechtsbijstand vast op € 2.056 (1 punt voor het indienen van het bezwaarschrift, 1 punt voor de telefonische hoorzitting met een waarde per punt van € 269, en 1 punt voor het indienen van het beroepschrift, 1 punt voor het verschijnen ter zitting met een waarde per punt van € 759 en een wegingsfactor 1).</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>(…)</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>[1] Staatsblad van het Koninkrijk der Nederlanden, jaargang 2018, nr. 514.</para>
+      <para>[2] Tweede Kamer, vergaderjaar 2018–2019, 35 026, nr. 22, blz. 7. Nota naar aanleiding van het verslag.”</para>
+    </parablock>
+    <para />
+    <para />
+  </section>
+  <section>
+    <title>Omschrijving geschil in hoger beroep en conclusies van partijen</title>
+    <para />
+    <paragroup>
+      <nr>4.1.1.</nr>
+      <para>In geschil is of de afwijzingsbeschikking terecht door de Inspecteur is gegeven, meer specifiek of de looptijd voor de toepassing van de 30%-regeling bij de voortzetting daarvan opnieuw dient te worden beoordeeld zonder rekening te houden met de eerder afgegeven onherroepelijk vaststaande beschikkingen.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.1.2.</nr>
+      <para>Niet in geschil is dat aan de overige vereisten voor de toepassing van de 30%-regeling is voldaan.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.1.3.</nr>
+      <para>Partijen zijn eensluidend van opvatting dat de vermindering van de looptijd zoals bedoeld in artikel 10ef, lid 1, van het Uitvoeringsbesluit Loonbelasting 1965 (UBLB) feitelijk 22 maanden zou moeten bedragen, in plaats van de in beschikking 1 opgenomen vermindering van de looptijd van 37 maanden.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.2.</nr>
+      <para>De Inspecteur concludeert tot vernietiging van de uitspraak van de Rechtbank en tot bevestiging van de uitspraak op bezwaar.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>4.3.</nr>
+      <para>Belanghebbende concludeert – naar het Hof begrijpt – primair tot niet-ontvankelijkheidverklaring van het hoger beroep, subsidiair tot bevestiging van de uitspraak van de Rechtbank. Tevens concludeert belanghebbende tot veroordeling van de Inspecteur in de proceskosten.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>Beoordeling van het hoger beroep</title>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Ontvankelijkheid</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.1.	Belanghebbende betoogt dat de Inspecteur niet-ontvankelijk moet worden verklaard in zijn hoger beroep, omdat hij prematuur uitvoering heeft gegeven aan de uitspraak van de Rechtbank (zie 2.8 en 2.9). Volgens belanghebbende is dit in strijd met artikel 8:106, lid 1, Awb en onderdeel 2.6.7 van het Besluit Beroep in Belastingzaken. Zij verwijst daarbij naar Gerechtshof Arnhem-Leeuwarden 8 oktober 2013, ECLI:NL:GHARL:2013:7501. Belanghebbende stelt dat zij door de handelwijze van de Inspecteur erop mocht vertrouwen dat hij de beslissing van de Rechtbank heeft gehonoreerd. </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.2.	Artikel 8:106, lid 1, van de Algemene wet bestuursrecht (Awb) luidt als volgt:</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>“De werking van een uitspraak van de rechtbank of van de voorzieningenrechter wordt opgeschort totdat de termijn voor het instellen van hoger beroep is verstreken of, indien hoger beroep is ingesteld, op het hoger beroep is beslist, indien:</para>
+      <para>a. de uitspraak betreft een besluit als bedoeld in artikel 9 van de bij deze wet behorende Bevoegdheidsregeling bestuursrechtspraak, of</para>
+      <para>b. tegen de uitspraak hoger beroep kan worden ingesteld bij een gerechtshof.”</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.3.	Onderdeel 2.6.7 van het Besluit Beroep in Belastingzaken luidt, voor zover van belang, als volgt:</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>“1.Voor zover tegen een uitspraak hoger beroep of beroep in (sprong)cassatie wordt ingesteld, of de termijn daarvoor nog niet is verstreken, wordt die uitspraak nog niet uitgevoerd.</para>
+      <para>2.Onderdelen van de uitspraak die in de loop van hoger beroep of beroep in (sprong)cassatie nog aan de orde kunnen worden gesteld, worden nog niet uitgevoerd.</para>
+      <para>3.Als zowel belanghebbende als de inspecteur zich bij de uitspraak neerlegt, draagt de inspecteur zorg voor de uitvoering van de uitspraak nadat deze onherroepelijk is geworden.”</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.4.	Artikel 27h, lid 3, van de Algemene wet inzake rijksbelastingen (AWR) luidt als volgt:</para>
+      <para>“De werking van de uitspraak van de rechtbank of van de voorzieningenrechter wordt opgeschort totdat de termijn voor het instellen van hoger beroep is verstreken of, indien hoger beroep is ingesteld, op het hoger beroep onherroepelijk is beslist. De eerste volzin geldt niet indien de uitspraak een beroep tegen het niet tijdig nemen van een besluit betreft.”</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.5.	Volgens vaste jurisprudentie moet een bezwaar, beroep of (incidenteel) hoger beroep niet-ontvankelijk worden verklaard als de indiener van dat rechtsmiddel geen belang daarbij heeft. Daarvan is sprake als het aanwenden van het rechtsmiddel, ongeacht de gronden waarop het steunt, hem niet in een betere positie kan brengen met betrekking tot het bestreden besluit. Indien het aangewende rechtsmiddel de indiener ervan wel in een betere positie kan brengen met betrekking tot het bestreden besluit en voldaan is aan de overige ontvankelijkheidsvereisten, moet het rechtsmiddel ontvankelijk worden geacht, moeten de door de indiener aangevoerde gronden worden onderzocht en moet worden beoordeeld of het rechtsmiddel wel of niet gegrond is (vgl. HR 11 april 2014, ECLI:NL:HR:2014:878, BNB 2014/122). Daarbij geldt dat het belang bij het voeren van de appelprocedure niet verloren gaat vanwege de enkele reden dat het bestuursorgaan de uitspraak van de Rechtbank heeft uitgevoerd (vgl. CRvB 19 augustus 1996, ECLI:NL:CRVB:1996:ZB6284, en </para>
+      <para>CRvB 4 september 1997, ECLI:NL:CRVB:1997:ZB7227).</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.1.6.	Het Hof is van oordeel dat de Inspecteur een belang heeft. Het ingestelde hoger beroep kan hem met betrekking tot de te geven beschikking immers in een betere positie brengen. De Inspecteur is derhalve ontvankelijk in het hoger beroep. Daaraan doet in dit geval niet af dat de Inspecteur de uitspraak van de Rechtbank heeft uitgevoerd. Daarbij neemt het Hof in aanmerking dat, gelet op de aard van de 30%-regeling, twee partijen zijn betrokken, te weten belanghebbende als degene die de procedure voert en haar werkgever als inhoudingsplichtige die de loonheffing afdraagt. Op 30 maart 2023 heeft de inhoudingsplichtige een toelichting gegeven op de correctieberichten, terwijl belanghebbende gelet op de door het Hof aan haar verzonden brieven op dat moment ervan op de hoogte was of had kunnen zijn dat de Inspecteur hoger beroep had ingesteld. Ter zitting heeft de Inspecteur onbestreden gesteld dat hij er niet van op de hoogte was dat een correctiebericht was ingediend en dat de teruggaaf door een andere afdeling binnen de Belastingdienst was verleend.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Juridisch kader</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.2.1.	Op grond van artikel 31a, lid 2, letter e, en lid 8, van de Wet op de loonbelasting 1964 (Wet LB 1964) geldt dat vergoedingen van kosten en verstrekkingen van tijdelijk verblijf buiten het land van herkomst onder voorwaarden tot maximaal 30% van het daarbij aan te wijzen gedeelte van het loon gedurende vijf jaar wordt beschouwd als vergoeding voor extraterritoriale kosten. </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.2.2.	Artikel 10ec, UBLB bepaalt de duur van de looptijd van de bewijsregel en luidt als volgt:</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>“1. Voor ingekomen werknemers bedraagt de looptijd van de bewijsregel maximaal vijf jaar, ingaande op de eerste dag van de tewerkstelling door de inhoudingsplichtige en eindigende op de laatste dag van het loontijdvak na het loontijdvak waarin die tewerkstelling is geëindigd.”</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>5.2.3.	Voorafgaand aan 1 januari 2019 bedroeg de maximale looptijd van de <?linebreak?>30%-regeling zoals opgenomen in artikel 10ec, lid 1, UBLB, acht jaar. Bij Besluit van 19 december 2018, Stb. 2018, 514, tot wijziging van enige uitvoeringsbesluiten op het gebied van de belastingen is voorzien in overgangsrecht dat luidt als volgt:</para>
+    </parablock>
+    <para />
+  </section>
+  <section>
+    <title>“ARTIKEL III</title>
+    <para>Voor de werknemer die uiterlijk op 31 december 2018 een vergoeding genoot waarop artikel 31a, tweede lid, onderdeel e, van de Wet op de loonbelasting 1964 zoals dat op 31 december 2018 luidde of artikel 39e van de Wet op de loonbelasting 1964 zoals dat op 31 december 2018 luidde van toepassing was, blijft bij de toepassing van artikel 10ec van het Uitvoeringsbesluit loonbelasting 1965 de ingevolge die bepalingen geldende termijn van maximaal acht jaar, onderscheidenlijk maximaal tien jaar, van toepassing tot en met uiterlijk 31 december 2020.”</para>
+    <para />
+    <paragroup>
+      <nr>5.2.4.</nr>
+      <para>Ten aanzien van het overgangsrecht is in de parlementaire geschiedenis het volgende opgemerkt (Kamerstukken II 2015/16, 34410, nr. 2, p. 6):</para>
+      <para />
+      <parablock>
+        <para>“Met de tweede nota van wijziging is in het wetsvoorstel Belastingplan 2019 een specifieke overgangsbepaling opgenomen voor ingekomen werknemers voor wie de looptijd van de 30%-regeling door de voorgestelde verkorting van de looptijd van de regeling zou eindigen in de periode van 1 januari 2019 tot en met 31 december 2020. Zij hebben tot uiterlijk 31 december 2020 recht op toepassing van de 30%-regeling. In juni 2018 zijn de werkgevers en werknemers die het betreft per brief geïnformeerd over de voorgenomen verkorting van de looptijd van de 30%-regeling. De Belastingdienst zal de betrokkenen in een nieuwe brief informeren over het overgangsrecht. Voor de verschillende groepen werknemers geldt het volgende:</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>1. als de huidige einddatum valt in 2019 of 2020: voor deze werknemers zorgt het overgangsrecht ervoor dat zij niet uit de 30%-regeling vallen per 1 januari 2019, maar dat zij die huidige einddatum kunnen aanhouden;</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>2. als de huidige einddatum valt in 2021, 2022 of 2023: voor deze werknemers eindigt de looptijd door het overgangsrecht op 31 december 2020;</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>3. als de huidige einddatum valt in of na 2024: voor deze werknemers wordt de looptijd verkort met drie jaar.”</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.2.5.</nr>
+      <para>Artikel 10ed UBLB schrijft voor wat de gevolgen voor de looptijd van de bewijsregel zijn bij een wisseling van inhoudingsplichtige en luidt als volgt:</para>
+      <para />
+      <parablock>
+        <para>“1. Indien een ingekomen werknemer tijdens de looptijd een andere inhoudingsplichtige krijgt, blijft op gezamenlijk verzoek van de werknemer en de nieuwe inhoudingsplichtige de bewijsregel gedurende de resterende looptijd van toepassing, mits de periode tussen het einde van de tewerkstelling door de oude inhoudingsplichtige en de totstandkoming van de arbeidsovereenkomst met de nieuwe inhoudingsplichtige niet langer is dan drie maanden.</para>
+        <para>2. Bij een dergelijk verzoek moet door de nieuwe inhoudingsplichtige opnieuw aannemelijk worden gemaakt dat de werknemer behoort te worden aangemerkt als ingekomen werknemer.”</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.2.6.</nr>
+      <para>Artikel 10ef, lid 1, UBLB schrijft voor dat de looptijd wordt verminderd met perioden van eerdere tewerkstelling en eerder verblijf van de werknemer en luidt als volgt:</para>
+      <para />
+      <parablock>
+        <para>“Indien de ingekomen werknemer voorafgaand aan de aanvang van de tewerkstelling als ingekomen werknemer door de inhoudingsplichtige, in Nederland is tewerkgesteld of is verbleven, wordt de looptijd verminderd met de perioden van eerdere tewerkstelling en eerder verblijf.”</para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>5.2.7.</nr>
+      <para>Artikel 10ei, lid 1, UBLB schrijft de wijze voor waarop het verzoek om toepassing van de bewijsregel moet worden gedaan alsmede over de beslissing op een dergelijk verzoek en luidt als volgt:</para>
+      <para />
+      <parablock>
+        <para>“Een verzoek om toepassing of voortgezette toepassing van de bewijsregel ten aanzien van een ingekomen werknemer wordt gedaan aan de inspecteur. Deze beslist op het verzoek bij voor bezwaar vatbare beschikking.”</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Looptijd</emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.3.1.</nr>
+      <parablock>
+        <para>De Inspecteur stelt dat hij het verzoek om toepassing van de 30%-regeling op </para>
+        <para>12 april 2021 terecht heeft afgewezen. Meer in het bijzonder stelt de Inspecteur dat het bij wisseling van inhoudingsplichtige uitsluitend mogelijk is om de looptijd voort te zetten voor zover deze eerder bij onherroepelijke beschikking is vastgesteld.</para>
+      </parablock>
+      <para />
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.3.2.</nr>
+      <para>Belanghebbende heeft op 8 februari 2021 verzocht om voortgezette toepassing van de 30%-regeling op grond van de artikelen 10ed, lid 1, en 10ei, lid 1, UBLB. In het systeem van hoofdstuk 4A UBLB ligt besloten dat ten aanzien van een ingekomen werknemer – behoudens gevallen van eerdere tewerkstelling of verblijf – één keer een succesvol verzoek tot toepassing van de 30%-regeling kan worden gedaan. Indien de ingekomen werknemer vóór het verstrijken van de looptijd van de 30%-regeling echter van werkgever (inhoudingsplichtige) wisselt, kan een verzoek tot voortgezette toepassing van de 30%-regeling worden gedaan.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.3.3.</nr>
+      <para>De Inspecteur heeft beschikking 1 genomen met een looptijd eindigend op 30 september 2023 en hij heeft nadien, nadat belanghebbende van inhoudingsplichtige was gewisseld, beschikking 2 genomen met toepassing van het overgangsrecht, resulterend in een looptijd eindigend op 31 december 2020. In het UBLB is niet voorzien in een mogelijkheid tot heroverweging of wijzing van een onherroepelijke beschikking voor toepassing van de 30%-regeling en de daarin vermelde looptijd. Daarom moet de formele rechtskracht van de beschikkingen, en in het onderhavige geval in het bijzonder beschikking 2 en de daarin vermelde looptijd, voor toepassing van de 30%-regeling worden gerespecteerd. Bovendien verwijst de tekst van artikel 10ed, lid 1, UBLB naar ‘de resterende looptijd’ waarmee niets anders kan zijn bedoeld dan de looptijd zoals deze is vastgesteld in de daaraan voorafgaande beschikking, in dit geval beschikking 2. Van een heroverweging van de looptijd – inhoudende een vermindering van 22 maanden in plaats van 37 maanden – bij de beoordeling van het verzoek van 8 februari 2021 kan dan ook geen sprake zijn. Nu aan belanghebbende met het geven van de onherroepelijke beschikkingen 1 en 2 reeds beschikkingen in de zin van artikel 10ei UBLB zijn gegeven, en de looptijd op 31 december 2020 daarmee is geëindigd, is het thans voorliggende verzoek om toepassing van de 30%-regeling voor de periode vanaf 1 januari 2021 terecht afgewezen door de Inspecteur.</para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Artikel 4:6 Awb</emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.4.</nr>
+      <para>Het Hof is van oordeel dat een analoge toepassing van artikel 4:6 Awb ook niet tot herziening van de vastgestelde looptijd van de beschikkingen 1 en 2 en aldus tot verstrekking van een derde beschikking met een looptijd eindigend op 31 december 2021 kan leiden, reeds omdat geen sprake is van nieuw gebleken feiten of veranderde omstandigheden.</para>
+      <para />
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Artikel 65 AWR</emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.5.</nr>
+      <para>Een onjuiste beschikking kan op grond van artikel 65 AWR alleen door de Inspecteur ambtshalve worden herzien. Voor zover belanghebbende het Hof verzoekt een dergelijke beslissing te nemen, kan het Hof daaraan dus niet tegemoet komen. </para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Slotsom </emphasis>
+        </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.6.</nr>
+      <para>Het hoger beroep is gegrond.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>Proceskosten en griffierecht</title>
+    <para />
+    <parablock>
+      <para>Er bestaat geen aanleiding voor een veroordeling in de proceskosten. </para>
+    </parablock>
+    <para />
+    <para />
+  </section>
+  <section role="beslissing">
+    <title>Beslissing</title>
+    <para />
+    <parablock>
+      <para>Het Gerechtshof:</para>
+    </parablock>
+    <itemizedlist mark="-">
+      <listitem>
+        <para>vernietigt de uitspraak van de Rechtbank; en</para>
+      </listitem>
+      <listitem>
+        <para>bevestigt de uitspraak op bezwaar.</para>
+      </listitem>
+    </itemizedlist>
+    <para />
+    <para />
+    <parablock>
+      <para>Deze uitspraak is vastgesteld door T.A. de Hek, R.A. Bosman en J.V. van Noorle Janssen, in tegenwoordigheid van de griffier T.S.K.L. Tjon. De beslissing is op 16 november 2023 in het openbaar uitgesproken.</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>aangetekend aan</para>
+      <para>partijen verzonden:</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Tegen deze uitspraak kunnen beide partijen binnen zes weken na de verzenddatum beroep in cassatie instellen bij </emphasis>
+        <emphasis role="bold italic">de Hoge Raad der Nederlanden via het webportaal van de Hoge Raad www.hogeraad.nl.</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">Bepaalde personen die niet worden vertegenwoordigd door een gemachtigde die beroepsmatig rechtsbijstand verleent, mogen per post beroep in cassatie instellen. Dit zijn natuurlijke personen en verenigingen waarvan de statuten niet zijn opgenomen in een notariële akte. Als zij geen gebruik willen maken van digitaal procederen kunnen deze personen het beroepschrift in cassatie sturen aan </emphasis>
+        <emphasis role="bold italic">de Hoge Raad der Nederlanden (belastingkamer), Postbus 20303, 2500 EH Den Haag.</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">Alle andere personen en gemachtigden die beroepsmatig rechtsbijstand verlenen, zijn in beginsel verplicht digitaal te procederen (zie www.hogeraad.nl).</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Bij het instellen van beroep in cassatie moet het volgende in acht worden genomen:</emphasis>
+      </para>
+    </parablock>
+    <bridgehead role="italic">1 - bij het beroepschrift wordt een afschrift van deze uitspraak gevoegd;</bridgehead>
+    <bridgehead role="italic">2 - (alleen bij procederen op papier) het beroepschrift moet ondertekend zijn;</bridgehead>
+    <bridgehead role="italic">3 - het beroepschrift moet ten minste het volgende vermelden:</bridgehead>
+    <parablock>
+      <para>
+        <emphasis role="italic">     a. - de naam en het adres van de indiener;</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">     b. - de dagtekening;</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">     c. - de vermelding van de uitspraak waartegen het beroep in cassatie is gericht;</emphasis>
+      </para>
+      <para>
+        <emphasis role="italic">     d. - de gronden van het beroep in cassatie.</emphasis>
+      </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Voor het instellen van beroep in cassatie is griffierecht verschuldigd. Na het instellen van beroep in cassatie ontvangt de indiener een nota griffierecht van de griffier van de Hoge Raad. In het cassatieberoepschrift kan de Hoge Raad verzocht worden om de wederpartij te veroordelen in de proceskosten.</emphasis>
+      </para>
+    </parablock>
+    <para />
+  </section>
+</uitspraak>
+</open-rechtspraak>

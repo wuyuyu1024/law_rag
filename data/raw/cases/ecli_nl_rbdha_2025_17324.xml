@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:RBDHA:2025:17324</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-10-08T10:04:12</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-09-19</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Rechtbank_Den_Haag" scheme="overheid.RechterlijkeMacht">Rechtbank Den Haag</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2025-07-22</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">AWB - 24 _ 6926</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#eersteAanlegEnkelvoudig">Eerste aanleg - enkelvoudig</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:spatial rdfs:label="Zittingsplaats">Den Haag</dcterms:spatial>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>Viditax (FutD) 2025092903</rdf:li>
+          <rdf:li>V-N Vandaag 2025/1893</rdf:li>
+          <rdf:li>NLF 2025/2025</rdf:li>
+          <rdf:li>FutD 2025-1965</rdf:li>
+          <rdf:li>V-N 2025/44.2.3</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:RBDHA:2025:17324">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:RBDHA:2025:17324</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-09-26T12:39:44</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-09-26</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:RBDHA:2025:17324 Rechtbank Den Haag , 22-07-2025 / AWB - 24 _ 6926</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:RBDHA:2025:17324:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Inkomstenbelasting. Verweerder was niet tot nader onderzoek gehouden nu hij gemotiveerd heeft aangevoerd dat het tegenwoordig allerminst ongebruikelijk is dat bij het vervullen van een dienstbetrekking in het buitenland ervoor wordt gekozen in Nederland te blijven wonen. Er is aldus sprake van een nieuw feit die navordering rechtvaardigt.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:RBDHA:2025:17324:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <para>
+    <emphasis role="bold caps">Rechtbank DEN HAAG</emphasis>
+  </para>
+  <parablock>
+    <para>Team belastingrecht</para>
+  </parablock>
+  <parablock>
+    <para>zaaknummer: SGR 24/6926</para>
+  </parablock>
+  <parablock>
+    <para>
+      <emphasis role="bold">proces-verbaal van de mondelinge uitspraak van de enkelvoudige kamer van 22 juli 2025 in de zaak tussen</emphasis>
+    </para>
+  </parablock>
+  <section>
+    <title>
+      [eiseres] , wonende te [woonplaats] , eiseres<?linebreak?>(gemachtigde: [naam] ),</title>
+    <para />
+    <parablock>
+      <para>en</para>
+    </parablock>
+    <para />
+  </section>
+  <section>
+    <title>de inspecteur van de Belastingdienst, verweerder.</title>
+    <para />
+    <para />
+  </section>
+  <section>
+    <title>De bestreden uitspraak op bezwaar </title>
+    <para>De uitspraak van verweerder van 8 juli 2024 op het bezwaar van eiseres tegen de aan haar voor het jaar 2018 opgelegde navorderingsaanslag inkomstenbelasting en premie volksverzekeringen (IB/PVV).</para>
+    <para />
+  </section>
+  <section>
+    <title>Zitting </title>
+    <parablock>
+      <para>Het onderzoek ter zitting heeft plaatsgevonden op 8 juli 2025. </para>
+      <para>Namens eiseres is, met bericht van verhindering, niemand verschenen. Verweerder heeft zich laten vertegenwoordigen door mr. [medewerker belastingdienst 1] en mr. [medewerker belastingdienst 2] .</para>
+    </parablock>
+    <para />
+  </section>
+  <section role="beslissing">
+    <title>Beslissing</title>
+    <para>De rechtbank verklaart het beroep ongegrond.</para>
+    <para />
+  </section>
+  <section>
+    <title>Overwegingen</title>
+    <para>1. Eiseres heeft op 6 januari 2020 aangifte IB/PVV voor het jaar 2018 gedaan als binnenlands belastingplichtige. Het belastbaar inkomen uit werk en woning bedraagt € 91.455, waarvan € 90.851 buitenlandse inkomsten uit tegenwoordige arbeid is. De aangifte vermeldt als de werkgever [bedrijfsnaam] . Ter zake van de buitenlandse inkomsten heeft eiseres zich in de aangifte beroepen op vrijstelling ter voorkoming van dubbele belasting. </para>
+    <para />
+    <para>2. Het door de Belastingdienst gebruikte geautomatiseerde systeem voor controle van aangiften heeft de aangifte van eiseres geselecteerd voor beoordeling (‘uitgeworpen’), waarbij het als risicosignaal heeft gegenereerd: “beoordeel buitenlandse inkomsten tegenwoordige arbeid (box 1); beoordeel toename bedrag aftrek elders belast”. Deze uitworpreden heeft echter niet geleid tot een inhoudelijke beoordeling van de aangifte. Met dagtekening 24 december 2020 is de aanslag IB/PVV 2018 geautomatiseerd opgelegd, overeenkomstig de ingediende aangifte </para>
+    <para />
+    <para>3. Op 15 juni 2020 heeft eiseres aangifte IB/PVV voor het jaar 2019 gedaan, opnieuw als binnenlands belastingplichtige. Het aangegeven belastbaar inkomen bestaat voor €  111.908 uit buitenlandse inkomsten uit tegenwoordige arbeid, met vermelding van [bedrijfsnaam] als werkgever. Ter zake van die inkomsten heeft eiseres in de aangifte een beroep gedaan op vrijstelling ter voorkoming van dubbele belasting. </para>
+    <parablock>
+      <para>Naar aanleiding van de ingediende aangifte IB/PVV 2019 heeft verweerder eiseres om nadere informatie verzocht. In het antwoord op dat verzoek heeft de gemachtigde onder andere aan verweerder laten weten dat eiseres van beroep piloot is en als gezagvoerder werkzaam was voor [handelsnaam] , de handelsnaam van [bedrijfsnaam] Ltd. </para>
+      <para>Na verdere correspondentie heeft verweerder de aanslag IB/PVV 2019 opgelegd. Daarbij is hij in zoverre van de aangifte afgeweken dat hij geen voorkoming van dubbele belasting heeft verleend. </para>
+    </parablock>
+    <para />
+    <para>4. Naar aanleiding van het bij de aanslagregeling 2019 gebleken gegevens, waaruit volgt dat de door eiseres genoten inkomsten uit haar dienstbetrekking bij [bedrijfsnaam] Ltd. ter heffing zijn toegewezen aan Nederland, heeft verweerder met dagtekening van 24 mei 2024 een navorderingsaanslag IB/PVV voor het jaar 2018 opgelegd waarmee de bij de primitieve aanslag toegepaste vrijstelling ter voorkoming van dubbele belasting is teruggenomen.</para>
+    <para />
+    <para>5. In geschil is of verweerder op grond van artikel 16, eerste lid, van de Algemene wet inzake rijksbelastingen (de AWR) bevoegd is tot navordering over 2018. </para>
+    <parablock>
+      <para>Eiser stelt zich op het standpunt dat verweerder die bevoegdheid niet heeft, om de reden dat hij een ambtelijk verzuim heeft begaan door niet naar aanleiding van de aangifte 2018 nader onderzoek te doen. </para>
+      <para>Volgens verweerder was hij niet tot nader onderzoek gehouden en is hij tot navordering bevoegd. </para>
+    </parablock>
+    <para />
+    <para>6. Op grond van artikel 16, lid 1, van de Algemene wet inzake rijksbelastingen (AWR) dient de inspecteur voor navordering over een nieuw feit te beschikken, dat wil zeggen een feit dat hem ten tijde van het opleggen van de primitieve aanslag niet bekend was of redelijkerwijs bekend had kunnen zijn. </para>
+    <para>Een feit dat de inspecteur uit nader onderzoek bekend zou zijn geworden, kan niet als ‘nieuw’ gelden als hij tot dat nader onderzoek was gehouden. Dat laatste is het geval wanneer hij, na met een normale zorgvuldigheid kennis te hebben genomen van de inhoud van de aangifte, aan de juistheid van enig daarin opgenomen gegeven in redelijkheid behoort te twijfelen. Voor dergelijke twijfel bestaat geen aanleiding bij de niet-onwaarschijnlijke mogelijkheid dat de in de aangifte opgenomen gegevens juist zijn.<footnote-ref linkend="_dfda17c7-5691-4dcb-9c55-b0152425bf37" /></para>
+    <para />
+    <para>7. Het bestaan van een uitworpreden brengt niet op zichzelf mee dat de inspecteur tot nader onderzoek gehouden is.<footnote-ref linkend="_6871be06-a1c3-4c7f-b99b-968cd097cbed" /> Dat betekent slechts dat niet de bedoeling is dat de aangifte geautomatiseerd wordt afgedaan, maar dat zij door een ambtenaar wordt bestudeerd. Dat in casu de uitworp is genegeerd en de aangifte geautomatiseerd is afgedaan, heeft naar het oordeel van de rechtbank dan ook geen zelfstandige betekenis. </para>
+    <para />
+    <para>8. Op grond van artikel 16, eerste lid, van de Overeenkomst van het Koninkrijk der Nederlanden en Malta tot het vermijden van dubbele belasting uit inkomen is het salaris dat een inwoner van de ene Staat door die Staat belastbaar, tenzij de dienstbetrekking in de andere Staat wordt uitgeoefend. Het beroep in de aangifte op vrijstelling ter voorkoming van dubbele belasting impliceert dat de dienstbetrekking in Malta werd uitgeoefend. Daaruit volgt dat verweerder tot nader onderzoek was gehouden, als de mogelijkheid dat een inwoner van Nederland zijn dienstbetrekking in Malta uitoefent als onwaarschijnlijk heeft te gelden. </para>
+    <parablock>
+      <para>Verweerder heeft aangevoerd dat heden ten dage allerminst ongebruikelijk is dat bij het vervullen van een dienstbetrekking in het buitenland ervoor wordt gekozen in Nederland te blijven wonen, waarbij dan een of tweemaal in de week heen en weer wordt gevlogen en overigens in het werkland wordt overnacht. Verder heeft verweerder verklaard dergelijke situaties in de praktijk veelvuldig tegen te komen, onder andere ook in relatie tot Turkije en Griekenland. </para>
+      <para>Met hetgeen verweerder heeft aangevoerd, heeft hij naar het oordeel van de rechtbank aannemelijk gemaakt dat de mogelijkheid dat een inwoner van Nederland zijn dienstbetrekking op Malta uitoefent niet onwaarschijnlijk is. Dat betekent dat de feiten die bekend werden bij de aanslagregeling 2019 gelden als ‘nieuw feit’ navordering rechtvaardigen. </para>
+    </parablock>
+    <para />
+    <para>9. Eiseres heeft geen afzonderlijke beroepsgronden aangevoerd tegen de in rekening gebrachte belastingrente. Dat in strijd met enige regel van geschreven of ongeschreven recht rente in rekening is gebracht, is gesteld noch gebleken.</para>
+    <para />
+    <para>10. Gelet op wat hiervoor is overwogen is het beroep ongegrond verklaard. Voor een proceskostenveroordeling bestaat geen aanleiding.</para>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>Deze uitspraak is gedaan door mr. M.J. Pelinck, rechter, in aanwezigheid van mr. L.J.E. Steijvers, griffier. De beslissing is in het openbaar uitgesproken op 22 juli 2025.</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>griffier						rechter</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>Afschrift verzonden aan partijen op:</para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+  </section>
+  <section>
+    <title>Rechtsmiddel</title>
+    <parablock>
+      <para>Tegen deze uitspraak kunnen partijen binnen zes weken na de verzenddatum hoger beroep instellen bij het gerechtshof Den Haag (team belastingrecht).</para>
+      <para>Dat kan digitaal via www.rechtspraak.nl, daar klikt u op “Formulieren en inloggen”. Hoger beroep instellen kan ook door verzending van een brief aan het gerechtshof Den Haag (belastingkamer), Postbus 20302, 2500 EH Den Haag.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>Bij het instellen van het hoger beroep dient het volgende in acht te worden genomen:</para>
+    </parablock>
+    <para>1 - bij het hogerberoepschrift wordt een afschrift van deze uitspraak overgelegd;</para>
+    <para>2 - het hogerberoepschrift is, indien het op papier wordt ingediend, ondertekend. </para>
+    <para>Verder vermeldt u ten minste het volgende:</para>
+    <para>a. de naam en het adres van de indiener;</para>
+    <para>b. de datum van verzending;</para>
+    <para>c. een omschrijving van de uitspraak waartegen het hoger beroep is ingesteld;</para>
+    <para>d. de redenen waarom u het niet eens bent met de uitspraak (de gronden van het hoger beroep).</para>
+    <para />
+  </section>
+  <footnote id="_dfda17c7-5691-4dcb-9c55-b0152425bf37" label="1">
+    <para> Zie o.a. HR 12 maart 2010, ECLI:NL:HR:2010:BL7165 en HR 31 mei 2013, ECLI:NL:HR:2013:BX7184.</para>
+  </footnote>
+  <footnote id="_6871be06-a1c3-4c7f-b99b-968cd097cbed" label="2">
+    <para> HR 18 maart 2022, ECLI:NL:HR:2022:379</para>
+  </footnote>
+</uitspraak>
+</open-rechtspraak>

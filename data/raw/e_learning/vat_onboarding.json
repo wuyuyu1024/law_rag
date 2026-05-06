@@ -1,0 +1,10 @@
+{
+  "doc_id": "wiki:synthetic:vat_onboarding",
+  "title": "VAT Onboarding Module",
+  "allowed_roles": ["helpdesk", "inspector", "legal_counsel"],
+  "text": "## Learning Goal\nThis onboarding module introduces the basic structure of VAT support questions and referral boundaries.\n\n## Recognizing Common Questions\nCommon first-line questions involve VAT rates, registration timing, filing frequency, and invoice requirements.\n\n## What Helpdesk Can Say\nHelpdesk may provide public guidance, procedural steps, and links to official sources when the answer is clearly documented.\n\n## When To Escalate\nEscalate when the case turns on factual disputes, anti-abuse concerns, or interpretation of multiple legal sources.",
+  "metadata": {
+    "course_code": "EL-VAT-100",
+    "synthetic_purpose": "assignment_coverage"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "doc_id": "policy:synthetic:fraud_signal_triage",
+  "title": "Fraud Signal Triage Playbook",
+  "security_classification": "restricted",
+  "allowed_roles": ["inspector", "legal_counsel"],
+  "text": "## Scope\nUse this playbook when a return is flagged for possible fraud indicators and the case must be assessed before escalation.\n\n## Intake Checks\nConfirm the taxpayer identity, filing period, linked entities, and whether a prior signal already exists for the same subject.\n\n## Escalation Thresholds\nEscalate when multiple high-risk indicators are present, documentary evidence appears manipulated, or third-party data conflicts with the declared return.\n\n## Handling Notes\nDo not disclose investigation cues to helpdesk staff or external parties. Record the reason for escalation in the case log using the approved fraud-signal template.",
+  "metadata": {
+    "owner_unit": "Tax Integrity Office",
+    "synthetic_purpose": "assignment_coverage"
+  }
+}

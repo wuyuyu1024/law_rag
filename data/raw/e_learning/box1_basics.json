@@ -1,0 +1,10 @@
+{
+  "doc_id": "wiki:synthetic:box1_basics",
+  "title": "Box 1 Basics Learning Module",
+  "allowed_roles": ["helpdesk", "inspector", "legal_counsel"],
+  "text": "## Learning Goal\nThis module introduces the role of Box 1 income in the Dutch income tax system for frontline staff.\n\n## Core Concept\nBox 1 generally covers taxable income from work and home, including employment income and certain owner-occupied home rules.\n\n## Helpdesk Guidance\nHelpdesk staff may explain the high-level structure of Box 1 but must avoid case-specific legal conclusions when evidence is incomplete.\n\n## Escalation\nEscalate to an inspector or legal counsel when the caller asks for a binding interpretation or when multiple tax years interact.",
+  "metadata": {
+    "course_code": "EL-BOX1-101",
+    "synthetic_purpose": "assignment_coverage"
+  }
+}

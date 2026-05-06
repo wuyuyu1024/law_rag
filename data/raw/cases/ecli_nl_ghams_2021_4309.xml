@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:GHAMS:2021:4309</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-03-22T01:57:57</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2022-02-16</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Gerechtshof_Amsterdam" scheme="overheid.RechterlijkeMacht">Gerechtshof Amsterdam</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2021-10-28</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">20/00648</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#hogerBeroep">Hoger beroep</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:spatial rdfs:label="Zittingsplaats">Amsterdam</dcterms:spatial>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:RBNHO:2020:9072" psi:type="http://psi.rechtspraak.nl/hogerBeroep" psi:aanleg="http://psi.rechtspraak.nl/eerdereAanleg" psi:gevolg="http://psi.rechtspraak.nl/gevolg#bekrachtiging/bevestiging">Eerste aanleg: ECLI:NL:RBNHO:2020:9072, Bekrachtiging/bevestiging</dcterms:relation>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:HR:2022:1100" psi:type="http://psi.rechtspraak.nl/cassatie" psi:aanleg="http://psi.rechtspraak.nl/latereAanleg">Cassatie: ECLI:NL:HR:2022:1100</dcterms:relation>
+      <dcterms:references rdfs:label="Wetsverwijzing" bwb:resourceIdentifier="jci1.31:c:BWBR0002471&amp;artikel=31a&amp;g=2022-01-01">Wet op de loonbelasting 1964 31a</dcterms:references>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>V-N Vandaag 2022/432</rdf:li>
+          <rdf:li>NLF 2022/0417</rdf:li>
+          <rdf:li>V-N 2022/11.1.5</rdf:li>
+          <rdf:li>Belastingadvies 2022/13.6</rdf:li>
+          <rdf:li>Viditax (FutD) 2022021601</rdf:li>
+          <rdf:li>FutD 2022-0558</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:GHAMS:2021:4309">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:GHAMS:2021:4309</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2022-02-16T11:10:07</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2022-02-16</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:GHAMS:2021:4309 Gerechtshof Amsterdam , 28-10-2021 / 20/00648</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:GHAMS:2021:4309:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Toepassing van de 30%-regeling is terecht geweigerd.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:GHAMS:2021:4309:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <uitspraak.info>
+    <bridgehead role="bold">GERECHTSHOF AMSTERDAM</bridgehead>
+    <para>Kenmerk 20/00648</para>
+    <para />
+    <parablock>
+      <para>28 oktober 2021</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">uitspraak van de vierde meervoudige belastingkamer </emphasis>
+      </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>op het hoger beroep van</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">
+          [X]
+        </emphasis>, wonende te [Z] , belanghebbende,</para>
+      <para>(gemachtigden: mr. J.F.M. Vink en mr. A. Le)</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>tegen de uitspraak in de zaak met kenmerk HAA 19/5133 van de rechtbank Noord-Holland (hierna: de rechtbank) in het geding tussen</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>belanghebbende </para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>en</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">de inspecteur van de Belastingdienst, </emphasis>de inspecteur.</para>
+    </parablock>
+    <para />
+    <para />
+  </uitspraak.info>
+  <section role="procesverloop">
+    <title>
+      <nr>1</nr>Ontstaan en loop van het geding</title>
+    <para />
+    <paragroup>
+      <nr>1.1.</nr>
+      <para>De inspecteur heeft aan belanghebbende over het jaar 2017 met dagtekening 13 juni 2019 een aanslag in de inkomstenbelasting/premie volksverzekeringen (hierna: de aanslag) opgelegd, berekend naar een belastbaar inkomen uit werk en woning van € 659.899 en een belastbaar inkomen uit sparen en beleggen van € 67.097. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.2.</nr>
+      <para>Na tegen de hiervoor gemelde belastingaanslag door belanghebbende gemaakt bezwaar heeft de inspecteur bij uitspraak op bezwaar, gedagtekend 3 september 2019, die aanslag gehandhaafd.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.3.</nr>
+      <para>Bij uitspraak van 25 september 2020 heeft de rechtbank het tegen de uitspraak op bezwaar door belanghebbende ingestelde beroep ongegrond verklaard.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.4.</nr>
+      <parablock>
+        <para>Het tegen deze uitspraak door belanghebbende ingestelde hoger beroep is bij het Hof ingekomen op 3 november 2020 en aangevuld op 27 november 2020 en 11 januari 2021.</para>
+        <para>De inspecteur heeft een verweerschrift ingediend.</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.5.</nr>
+      <para>Van belanghebbende zijn met dagtekening 24 september 2021 nadere stukken ontvangen en de inspecteur heeft op 4 oktober 2021 een pleitnota ingediend. Van deze stukken is een afschrift aan de wederpartij gezonden.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>1.6.</nr>
+      <para>Het onderzoek ter zitting heeft plaatsgevonden op 5 oktober 2021. Van het verhandelde ter zitting is een proces-verbaal opgemaakt dat met deze uitspraak wordt meegezonden.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>2</nr>Feiten</title>
+    <para />
+    <paragroup>
+      <nr>2.1.</nr>
+      <para>De rechtbank heeft de volgende feiten vastgesteld (in de uitspraak van de rechtbank wordt belanghebbende aangeduid als ‘eiser’ en de inspecteur als ‘verweerder’):</para>
+      <para />
+      <parablock>
+        <para>“<emphasis role="underline">Feiten</emphasis></para>
+      </parablock>
+      <para>1. Eiser maakt sinds 2009 gebruik van de bewijsregel (hierna: de 30%-regeling) van artikel 10ea van het Uitvoeringsbesluit loonbelasting 1965 (hierna: UB LB) met betrekking tot zijn looninkomsten genoten uit zijn dienstbetrekking bij [A B.V.] .</para>
+      <para />
+      <para>2. In 2009 is eiser in dienst getreden bij [A B.V.] . Per 31 maart 2017 is de dienstbetrekking beëindigd.</para>
+      <para />
+      <para>3. Volgens de verklaring van zijn werkgever ( [mw. B] van [A B.V.] ) per e-mail van 13 september 2018 was eiser in de periode 18 januari 2017 tot en met 31 maart 2017 vrijgesteld van werk. Zijn laatste feitelijke werkdag was 17 januari 2017. Dit is ook aan eiser kenbaar gemaakt.</para>
+      <para />
+      <para>4. Over de periode 1 januari 2017 tot en met 28 februari 2017 heeft eiser ter zake van zijn werkzaamheden voor [A B.V.] een fiscaal loon genoten van € 35.106. Op dat bedrag heeft [A B.V.] de 30%-regeling toegepast.</para>
+      <para />
+      <para>5. Op 29 maart 2017 heeft eiser van [A B.V.] een fiscaal loon ontvangen van bruto € 628.323. [A B.V.] heeft de 30%-regeling hierop niet toegepast. Deze betaling betrof een nabetaling van een bonus welke betrekking heeft op werkzaamheden die zijn verricht in het jaar 2016.</para>
+      <para />
+      <para>6. Volgens de jaaropgaaf van [A B.V.] heeft eiser in 2017 een fiscaal loon genoten van</para>
+      <para>€ 663.429.</para>
+      <para />
+      <para>7. Eiser heeft de 30%-regeling in 2017 met ingang van 1 juli 2017 bij een andere inhoudingsplichtige voortgezet.</para>
+      <para />
+      <para>8. In de aangifte ib/pvv voor het jaar 2017 heeft eiser het loon van de jaaropgaaf, ad € 663.429, verminderd met € 188.497 (30% van € 628.323). Het aangegeven inkomen uit werk en woning bedroeg daardoor € 471.402.</para>
+      <para />
+      <para>9. Verweerder heeft deze correctie van € 188.497 niet geaccepteerd en heeft het inkomen uit werk en woning vastgesteld op € 659.899 (€ 471.402 + € 188.497). Daarnaast heeft verweerder een correctie van het belastbare inkomen uit sparen en beleggen toegepast, welke tussen partijen niet in geschil is.</para>
+      <para />
+      <para>10. Gemachtigde van eiser heeft aangegeven dat een vergelijkbare toepassing van de 30%-regeling ook bij vier andere cliënten in de aangifte is opgenomen en is geaccepteerd door de Belastingdienst. Vanwege privacyoverwegingen heeft gemachtigde hierover geen nadere informatie verstrekt in de bezwaarfase maar eerst in het beroepschrift respectievelijk in zijn pleitnota.</para>
+      <para />
+      <para>11. Op 11 september 2013 is het Besluit van de staatssecretaris van Financiën van 23 augustus 2013, DGB 201317DM inzake de 30%-regeling gepubliceerd. Dit besluit is van toepassing met ingang van de dag volgende op de publicatiedatum van de Staatscourant, derhalve 12 september 2013. Het daaraan voorafgaande Besluit van 21 oktober 2005, CPP2005/2378M is met ingang van 12 september 2013 ingetrokken.”</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.2.</nr>
+      <para>Nu de hiervoor vermelde feiten, behoudens het hierna in 2.3 vermelde, door partijen op zichzelf niet zijn bestreden zal ook het Hof daarvan uitgaan. Het Hof voegt daar nog het volgende aan toe.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.3.</nr>
+      <para>Het in onderdeel 5 van de rechtbankuitspraak vermelde fiscale loon van bruto € 628.323 dat belanghebbende van [A B.V.] heeft ontvangen op 29 maart 2017 (hierna: de loonbetaling van maart 2017) betrof - in zoverre in afwijking van hetgeen aldaar vermeld is - voor een bedrag van bruto € 623.350 een bonus en voor een bedrag van bruto € 4.973 het (maand)salaris van belanghebbende over de maand maart van 2017.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.4.</nr>
+      <para>Artikel 5 van de arbeidsovereenkomst tussen belanghebbende en [A Holding B.V.] (een aan [A B.V.] gelieerde vennootschap) luidt, voor zover van belang, als volgt:</para>
+      <para />
+      <parablock>
+        <para>“<emphasis role="bold">5.	</emphasis><emphasis role="bold underline">30% Tax Rule</emphasis></para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.1</nr>
+      <para>If and insofar as the Employee may receive a tax-free allowance for extra-territorial costs under Section 9 of the 1965 Payroll Tax Implementation Decree, the wages form current employment agreed upon with the Employee shall be reduced accordingly for employment law purposes where 100/70 of the wages from current employment agreed to in this fashion equal the wages originally agreed upon from current employment. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.2</nr>
+      <para>If and insofar as paragraph (1) of this article applies, the Employee shall receive an allowance for extra-territorial costs from the employer, equal to 30/70 of the wages from current employment agreed in this fashion.”</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.5.</nr>
+      <para>In de door [A B.V.] aan belanghebbende voor maart 2017 verstrekte loonstrook wordt gespecificeerd dat bij de loonbetaling van maart 2017 geen betaling is verricht voor extraterritoriale kosten (aldaar aangeduid als “Settlement E.T. fees”). In deze loonstrook staat dat € 325.883 aan loonbelasting (“Wage Tax”) ter zake van de loonbetaling van maart 2017 is ingehouden.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>2.6.</nr>
+      <para>In de e-mail van 13 september 2018 (zie onderdeel 3 van de rechtbankuitspraak) heeft [mw. B] van [A B.V.] , onder andere, het volgende aan de Belastingdienst geschreven:</para>
+      <para />
+      <parablock>
+        <para>“(…) In de periode 18 januari 2017 tot en met 31 maart 2017 was hij [Hof: belanghebbende] vrijgesteld van werk.</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>
+          [A B.V.] neemt in dergelijke gevallen steeds het standpunt in dat de werkingsperiode (…) van de 30% regeling beperkt wordt tot en met het einde van de maand volgend op de maand waarin de dienstbetrekking (economisch) is beëindigd. Daarom hebben wij de 30% regeling toegepast op het loon van [X] tot en met februari 2017 en vanaf 1 maart 2017 niet meer. (…)”</para>
+      </parablock>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>3</nr>Geschil in hoger beroep </title>
+    <para />
+    <paragroup>
+      <nr>3.1.</nr>
+      <para>Evenals in eerste aanleg is in hoger beroep is in geschil of de aanslag niet te hoog is vastgesteld. In het bijzonder is in geschil of de inspecteur - al dan niet op basis van het beginsel van fair play of het zorgvuldigheidsbeginsel - het belastbaar inkomen uit werk en woning van belanghebbende had moeten vaststellen op € 471.402 door het in aanmerking nemen van een aftrek van € 188.497.</para>
+      <para />
+      <parablock>
+        <para>In hoger beroep betoogt belanghebbende niet meer dat er sprake is van schending van het gelijkheidsbeginsel (dit punt heeft hij ter zitting van het Hof ingetrokken).</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.2.</nr>
+      <para>Partijen doen hun standpunten steunen op de gronden welke door hen zijn aangevoerd in de van hen afkomstige stukken. Voor hetgeen zij daaraan ter zitting hebben toegevoegd wordt verwezen naar het van het verhandelde ter zitting opgemaakte proces-verbaal.</para>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>4</nr>Het oordeel van de rechtbank</title>
+    <para />
+    <parablock>
+      <para>De rechtbank heeft met betrekking tot het geschil - voor zover in hoger beroep van belang - het volgende overwogen:</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>“<emphasis role="underline">Beoordeling van het geschil</emphasis></para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Wettelijk kader</emphasis>
+      </para>
+    </parablock>
+    <para>16. Het loonbegrip voor de inkomstenbelasting volgt het loonbegrip overeenkomstig de wettelijke bepalingen van de loonbelasting (zie art. 3.81 van de Wet inkomstenbelasting 2001; hierna: Wet IB 2001). De 30%-regeling is opgenomen in art. 31a, tweede lid, sub e, van de Wet op de loonbelasting 1964 (hierna: Wet LB) en is daarmee een onderdeel van de</para>
+    <para>werkkostenregeling (hierna: WKR), welke met ingang van 1 januari 2011 is ingevoerd. Op grond van deze bepaling kan een inhoudingsplichtige extra kosten van tijdelijk verblijf buiten het land van herkomst in het kader van de dienstbetrekking (extraterritoriale kosten) vrij vergoeden. Het betreft ofwel een vergoeding van de werkelijke kosten, welke vergoeding moet worden onderbouwd, ofwel een forfaitaire vergoeding van 30% van het daarbij aan te wijzen gedeelte van het loon zoals uitgewerkt in hoofdstuk 4a UB LB. De regeling geldt zowel voor ingekomen als voor uitgezonden werknemers. De vergoeding voor deze extraterritoriale kosten is binnen de werkkostenregeling vormgegeven als een gerichte vrijstelling (artikel 31a, tweede lid, sub e, Wet LB). De inhoudingsplichtige dient deze aan te wijzen om te voorkomen dat de 30%-vergoeding belast loon vormt, dan wel ten laste komt van de zogenoemde “vrije ruimte”. De rechtbank is van oordeel dat zonder aanwijzing door de werkgever geen sprake kan zijn van een “gerichte” vrijstelling.</para>
+    <para />
+    <para>17. De rechtbank overweegt dat [A B.V.] in haar e-mail van 13 september 2019 heeft verklaard dat de 30%-regeling niet is toegepast over de bonus/nabetaling van € 628.323. Ter zake van deze nabetaling heeft de inhoudingsplichtige derhalve geen 30%-vergoeding aangewezen als gerichte vrijgestelde vergoeding voor de toepassing van de WKR. Inhoudingsplichtige heeft de bonus/nabetaling van € 628.323 via haar salarisadministratie verwerkt zonder (al of niet vrijgestelde) arbeidsrechtelijke of administratieve afsplitsing van een separaat (al of niet belast) 30%-gedeelte. Alsdan komt eiser niet het recht toe om zelfstandig en eenzijdig de nabetaalde bonus van € 628.323 fiscaal te (her)kwalificeren via zijn aangifte ib/pvv in een belast en een onbelast gedeelte. Eiser had, zo heeft verweerder met juistheid gesteld, deze kwalificatie in eerste instantie arbeidsrechtelijk moeten aanvechten bij zijn werkgever, eventueel aangevuld met een bezwaar tegen de inhouding loonheffingen. Deze rechtsgangen heeft hij onbenut voorbij laten gaan. De inkomstenbelasting biedt geen wettelijke mogelijkheid om de fiscale duiding van een eenmaal als belast loon gekwalificeerde betaling met terugwerkende kracht aan te vechten.</para>
+    <para />
+    <para>18. In artikel 10ea, eerste lid, letter a UB LB wordt de grondslag voor de 30%-regeling onder meer beperkt tot het loon uit tegenwoordige dienstbetrekking dat is genoten tijdens de looptijd van de regeling. Uit de tekst van artikel 10ec, eerste lid UB LB blijkt dat de looptijd van de 30%-regeling eindigt op de laatste dag van het loontijdvak na het loontijdvak waarin de tewerkstelling is geëindigd. Een tewerkstelling eindigt zodra een werknemer geen feitelijke werkzaamheden meer voor zijn werkgever dient te verrichten. Vrijstelling van</para>
+    <para>alle werkzaamheden voor een werkgever brengt beëindiging van de tewerkstelling met zich mee. Ook indien een arbeidsbeloning (zoals een bonus) betrekking heeft op een periode dat de werknemer nog tewerkgesteld was bij zijn werkgever, maar wordt uitbetaald en genoten na expiratie van de 30%-regeling. De staatssecretaris heeft dit standpunt expliciet verwoord in zijn Besluit van 23 augustus 2013, Staatscourant 2013, 25663, DGB 2013/70M, vraag 22. De rechtbank acht dat standpunt rechtens juist.</para>
+    <para />
+    <para>19. De dienstbetrekking van eiser is formeel op 31 maart 2017 beëindigd. Echter, doordat hij met ingang van 18 januari 2017 door zijn werkgever werd vrijgesteld van alle werkzaamheden, is ook zijn tewerkstelling (in de zin van artikel 10ec, eerste lid, UB LB) geëindigd op 17 januari 2017 en niet, zoals gemachtigde stelt, eerst op het moment van de formele beëindiging van de dienstbetrekking 31 maart 2017. De looptijd en daarmee de grondslag voor de toepassing van de 30%-regeling is in dat geval voor eiser terecht beperkt tot 28 februari 2017 (de laatste dag van het loontijdvak na het loontijdvak waarin de tewerkstelling is geëindigd). Met ingang van 1 maart 2017 mist de 30%-regeling derhalve toepassing op de loonbetalingen van [A B.V.] .</para>
+    <para />
+    <para>20. Voorts overweegt de rechtbank het navolgende. Eiser heeft de correctie op de 30%-regeling met betrekking tot de bonus in zijn aangifte ib/pvv verwerkt als negatief loon. Verweerder heeft zich op het standpunt gesteld dat een (terug)betaling als negatief loon kan worden gekwalificeerd indien een loonbestanddeel is genoten, maar in tweede instantie wordt terugbetaald, in het algemeen aan degene die het loon heeft uitbetaald. Tot het negatieve loon behoort tevens de betaling van de werknemer aan de werkgever voor boeten, schadeloosstellingen en bijdragen voor verstrekkingen in natura. De rechtbank acht dit standpunt van verweerder juist. Nu geen sprake is van een terugbetaling op basis van een (contractuele) verplichting door eiser aan [A B.V.] als inhoudingsplichtige van enig bedrag, op welke grond dan ook, kan er ook geen sprake zijn van het in aanmerking nemen van een bedrag aan negatief loon. Ook in zoverre mist het standpunt van eiser steun in het recht.”</para>
+    <para />
+    <para />
+  </section>
+  <section role="overwegingen">
+    <title>
+      <nr>5</nr>Beoordeling van het geschil in hoger beroep</title>
+    <para />
+    <paragroup>
+      <nr>5.1.</nr>
+      <parablock>
+        <para>Belanghebbende stelt dat de inspecteur ten onrechte een aftrek € 188.497 niet heeft geaccepteerd. Volgens belanghebbende heeft hij ter zake van deze (gestelde) aftrek recht op toepassing van de zogenoemde 30%-regeling (zoals neergelegd in artikel 31a, lid 2, aanhef en sub e, Wet LB in samenhang gelezen met artikel 10ea UB LB). </para>
+        <para>Ter beoordeling neemt het Hof het volgende toetsingskader (wettekst 2017) in aanmerking.</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Artikel 3.81 Wet IB 2001 bepaalt:</para>
+        <para>“In deze wet en de daarop berustende bepalingen wordt verstaan onder loon: loon overeenkomstig de wettelijke bepalingen van de loonbelasting, met dien verstande dat, voorzover nodig in afwijking van die bepalingen, fooien en dergelijke prestaties van derden in aanmerking worden genomen voor het werkelijk genoten bedrag.”</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Artikel 3.84, lid 1, Wet IB 2001 bepaalt:</para>
+        <para>“Tot loon behoren niet voordelen waarover de belasting op grond van artikel 31 of artikel 32ab in verbinding met artikel 31 van de Wet op de loonbelasting 1964 is verschuldigd door de inhoudingsplichtige, evenmin als een hierdoor voor de belastingplichtige ontstaan voordeel.”</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Artikel 10, lid 1, Wet LB bepaalt:</para>
+        <para>“Loon is al hetgeen uit een dienstbetrekking of een vroegere dienstbetrekking wordt genoten, daaronder mede begrepen hetgeen wordt vergoed of verstrekt in het kader van de dienstbetrekking.”</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Artikel 31, lid 1, aanhef en sub f, Wet LB bepaalt:</para>
+        <para>“Eindheffingsbestanddelen zijn:</para>
+      </parablock>
+      <para>f. voor zover sprake is van tegenwoordige arbeid: door de inhoudingsplichtige aan te wijzen vergoedingen en verstrekkingen, daaronder begrepen door de inhoudingsplichtige aan te wijzen gedeelten van vergoedingen en verstrekkingen, voor zover de omvang van de aangewezen vergoedingen en verstrekkingen niet in belangrijke mate groter is dan de omvang van de vergoedingen en verstrekkingen die in voor het overige overeenkomstige omstandigheden in de regel worden aangewezen;”</para>
+      <para />
+      <parablock>
+        <para>In artikel 31a, lid 1 en lid 2, aanhef en sub e, Wet LB is opgenomen:</para>
+        <para>“1. Het bedrag van de verschuldigde belasting met betrekking tot vergoedingen en verstrekkingen als bedoeld in artikel 31, eerste lid, onderdeel f en onderdeel g, wordt per inhoudingsplichtige bepaald.</para>
+      </parablock>
+      <para>2. De verschuldigde belasting met betrekking tot vergoedingen en verstrekkingen als bedoeld in artikel 31, eerste lid, onderdeel f en onderdeel g, wordt bepaald naar een tarief van 80%, met dien verstande dat deze vergoedingen en verstrekkingen worden verminderd, maar niet verder dan tot nihil, met het bedrag aan vrije ruimte als bedoeld in het derde lid, alsmede met vergoedingen en verstrekkingen als bedoeld in artikel 31, eerste lid, onderdeel f en onderdeel g, ter zake of in de vorm van: </para>
+      <para>(…)</para>
+      <para>e. extra kosten van tijdelijk verblijf buiten het land van herkomst in het kader van de dienstbetrekking (extraterritoriale kosten), met dien verstande dat voor bij of krachtens algemene maatregel van bestuur aan te wijzen groepen werknemers die door een inhoudingsplichtige van buiten Nederland in dienstbetrekking worden genomen of buiten Nederland worden uitgezonden, onder daarbij te stellen voorwaarden, geldt dat vergoedingen van kosten en verstrekkingen van verblijf buiten het land van herkomst - voor van buiten Nederland in dienstbetrekking genomen werknemers gedurende ten hoogste acht jaar - ten minste worden beschouwd als vergoeding voor extraterritoriale kosten tot ten hoogste 30% van het daarbij aan te wijzen gedeelte van het loon, alsmede tot het bedrag van de daarbij aan te wijzen schoolgelden;”</para>
+      <para />
+      <parablock>
+        <para>Artikel 10ea, lid 1, aanhef en sub a, UB LB  houdt in:</para>
+        <para>“Vergoedingen en verstrekkingen aan extraterritoriale werknemers van kosten, respectievelijk ter voorkoming van kosten van verblijf buiten het land van herkomst worden, ten aanzien van ingekomen werknemers op gezamenlijk verzoek van de werknemer en de inhoudingsplichtige, in elk geval beschouwd als vergoeding voor extraterritoriale kosten tot (bewijsregel):</para>
+      </parablock>
+      <para>a. 30% van de grondslag, waarbij de grondslag de som is van:</para>
+      <parablock>
+        <para>1°.het loon uit tegenwoordige dienstbetrekking ter zake van het verblijf buiten het land van herkomst dat is genoten tijdens de looptijd van de bewijsregel en waarover met toepassing van de artikelen 20a, 20b, 26 en 26b van de wet belasting wordt geheven, voor zover de ingekomen of uitgezonden werknemer ter zake geen recht heeft op voorkoming van dubbele belasting;</para>
+        <para>2°.de vergoeding voor extraterritoriale kosten, bedoeld in artikel 31a, tweede lid, onderdeel e, van de wet;”</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.2.</nr>
+      <parablock>
+        <para>In voornoemd artikel 31, lid 1, sub f, Wet LB is voor situaties waarin sprake is van loon uit tegenwoordige arbeid geregeld dat door de werkgever aan te wijzen (gedeelten van) vergoedingen en verstrekkingen als eindheffingsbestanddeel kwalificeren voor zover de omvang van de aangewezen vergoedingen en verstrekkingen niet in belangrijke mate groter is dan de omvang van de vergoedingen en verstrekkingen die in voor het overige overeenkomstige omstandigheden in de regel worden aangewezen.</para>
+        <para>Een vergoeding voor extraterritoriale kosten kan op grond van artikel 31a, lid 2, aanhef en sub e, Wet LB als een ‘gerichte vrijstelling’ als eindheffingsbestanddeel worden aangemerkt mits de vergoeding door de inhoudingsplichtige als eindheffingsbestanddeel is aangewezen.</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.3.</nr>
+      <parablock>
+        <para>Niet in geschil is dat [A B.V.] (inhoudingsplichtige) op de loonbetaling van maart 2017 loonbelasting heeft ingehouden zonder toepassing van de 30%-regeling. Evenmin is in geschil dat [A B.V.] de gehele betaling van € 628.323 administratief heeft aangemerkt als bruto loon zonder daarvan een vergoeding voor extraterritoriale kosten af te splitsen (zie ook de loonstrook voor maart 2017 in 2.5 en hetgeen is opgenomen in de email van [A B.V.] aan de Belastingdienst in 2.6). Hieruit concludeert het Hof, gelijk de rechtbank heeft geoordeeld in  rechtsoverweging 17, dat [A B.V.] de loonbetaling van maart 2017 niet (gedeeltelijk) heeft aangewezen als een gerichte vrijstelling als bedoeld in artikel 31a, lid 2, aanhef en sub e, Wet LB en ook niet als zodanig (op individueel administratief niveau) heeft verwerkt in haar loonadministratie. </para>
+        <para>Hetgeen is opgenomen in belanghebbendes arbeidsovereenkomst (zie het citaat in 2.4) maakt deze conclusie niet anders. De daarin vervatte afspraak dat (naar het Hof begrijpt) 30% van de aldaar beschreven grondslag geldt als een vergoeding voor extraterritoriale kosten (wat daar ook verder van zij) leidt er immers niet toe dat moet worden geoordeeld dat de loonbetaling van maart 2017 wel (gedeeltelijk) door [A B.V.] als een gerichte vrijstelling is aangewezen en afgesplitst als extraterritoriale kosten is geadministreerd.</para>
+        <para>Dit brengt met zich mee dat het gehele bedrag van de loonbetaling van maart 2017 heeft te gelden als loon in de zin van artikel 10 Wet LB. Aangezien voor het loonbegrip in de inkomstenbelasting op grond van artikel 3.81 en 3.84 Wet IB 2001 wordt aangesloten bij het loonbegrip voor de loonbelasting, werkt de keuze van [A B.V.] om de loonbestanddelen niet als eindheffingsbestanddeel aan te merken door naar de inkomstenbelasting. </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.4.</nr>
+      <para>Nu niet voldaan is aan de voorwaarde dat aanwijzing als eindheffingsbestanddeel heeft plaatsgevonden (zie 5.3), is het voor de beslechting van het geschil niet meer relevant of voldaan is aan de overige voorwaarden voor toepassing van de 30%-regeling (zoals opgenomen in artikel 31a, lid 2, aanhef en sub e, Wet LB in samenhang gelezen met hoofdstuk 4a van het UB LB). Niettemin zal het Hof, ten overvloede en gelet op het debat tussen partijen, kort ingaan op hetgeen over en weer is aangevoerd aangaande de looptijd van de 30%-regeling als bedoeld in artikel 10ec, lid 1, UB LB en de vraag of door de inspecteur is gehandeld in strijd met enig algemeen beginsel van behoorlijk bestuur. </para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.5.</nr>
+      <para>In artikel 10ec, lid 1, UB LB (tekst 2017) is onder andere geregeld dat de looptijd van de 30%-regeling voor ingekomen werknemers eindigt op de laatste dag van het loontijdvak na het loontijdvak waarin die tewerkstelling is geëindigd. Partijen verschillen van inzicht wat met tewerkstelling wordt bedoeld. Belanghebbende betoogt dat de tewerkstelling van belanghebbende bij [A B.V.] eindigt op 31 maart 2017; het einde van zijn dienstbetrekking met [A B.V.] . De term ‘tewerkstelling’ duidt op (de formele duur van) het dienstverband en niet op feitelijke werkzaamheden, aldus belanghebbende. Volgens de inspecteur dient (het einde van de) tewerkstelling materieel te worden uitgelegd; het einde van de tewerkstelling is dan het moment waarop de verplichting werkzaamheden te verrichten feitelijk is geëindigd. In casu is belanghebbende vanaf 18 januari 2017 vrijgesteld van werkzaamheden door [A B.V.] . Het gevolg is dat de looptijd van de 30%-regeling eindigde op 28 februari 2017 (laatste dag van het eerste loontijdvak dat aanving nadat de tewerkstelling is geëindigd). De loonbetaling van maart 2017 is dus na het verstrijken van die looptijd verricht, aldus de inspecteur.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.6.</nr>
+      <para>Het Hof is van oordeel dat met ‘tewerkstelling’ in de zin van artikel 10ec, lid 1, UB LB wordt bedoeld: de feitelijke tewerkstelling op grond van een privaatrechtelijke dienstbetrekking en dat deze eindigt indien, vooruitlopend op de beëindiging van de privaatrechtelijke dienstbetrekking, de verplichting werkzaamheden te verrichten is geëindigd. Het Hof leidt dit af uit het arrest van de Hoge Raad van 17 april 2009 (ECLI:NL:HR:2009:BI1248) waarin in rechtsoverweging 3.3.4. is opgenomen:   </para>
+      <para />
+      <parablock>
+        <para>“Daarbij past het dat de maximale looptijd van de 30%-regeling wordt berekend vanaf het moment waarop een werknemer als bedoeld in artikel 2, lid 1, van de Wet feitelijk te werk wordt gesteld, ongeacht de vraag of hij toen reeds als werknemer in de zin van de loonbelasting werd aangemerkt, en ook ongeacht de vraag of de forfaitaire vergoedingsregeling voor extraterritoriale kosten toen reeds op hem van toepassing was.”</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>In het arrest van de Hoge Raad van 22 september 2017 (ECLI:NL:HR:2017:2420; met daarin de verwijzing naar de onderdelen 6.28 tot en met 6.40 van de conclusie van de advocaat-generaal van 13 juni 2017, ECLI:NL:PHR:2017:557) wordt deze “feitelijke” uitleg bevestigd.</para>
+        <para>Deze uitleg is naar het oordeel van het Hof in lijn met de ratio van de 30%-regeling. Voor inkomende werknemers, zoals belanghebbende, ziet de 30%-regeling immers op kosten van verblijf buiten het land van herkomst, terwijl de noodzaak van het verblijf buiten het land van herkomst voor de dienstbetrekking verdwijnt zodra de werknemer van werkzaamheden (in Nederland) is vrijgesteld.</para>
+        <para>Het Hof acht belanghebbendes uitleg van het begrip tewerkstelling overigens ook niet zonder meer in lijn met de betekenis die hieraan in het normale spraakgebruik wordt gegeven. Ook in het normale spraakgebruik  impliceert dit begrip dat er sprake is van het verrichten van feitelijke werkzaamheden (vgl. ook Hof ’s-Hertogenbosch 10 juni 2021, ECLI:NL:GHSHE:2021:1680). Daarvan is belanghebbende nu juist gedurende de periode van 18 januari 2017 tot en met 31 maart 2017 vrijgesteld. Hetgeen belanghebbende overigens op dit punt heeft aangevoerd, brengt het Hof niet tot een ander oordeel.</para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.7.</nr>
+      <para>Het bovenstaande leidt ertoe dat de looptijd van de bewijsregel (de 30%-regeling) in de zin van artikel 10ec, lid 1, UB LB voor belanghebbende eindigde op 28 februari 2017, aangezien hij met ingang van 18 januari 2017 geen feitelijke werkzaamheden meer heeft verricht in het kader van zijn dienstbetrekking bij [A B.V.] . Het laatste tijdvak waarover de 30%-regeling toegepast kon worden was februari 2017.</para>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>5.8.</nr>
+      <para>Uit hetgeen in 5.5, 5.6 en 5.7 is overwogen volgt niet dat de inspecteur in strijd heeft gehandeld met enig algemeen beginsel van behoorlijk bestuur. De klacht van belanghebbende op dit punt faalt dan ook. Indien er -al veronderstellenderwijs van uitgegaan zou worden dat [A B.V.] zich bij de loonbetaling van maart 2017 gericht heeft op beleid van de Belastingdienst, dan kan dit de inspecteur niet worden verweten omdat het beleid berust op een juiste interpretatie van artikel 10ec, lid 1, UB LB. Alsdan is tevens geen grond voor het oordeel dat de inspecteur bij het opleggen van de aanslag heeft gehandeld in strijd met enig algemeen beginsel van behoorlijk bestuur. Hiermee is ook geen grond voor de door belanghebbende verzochte redelijke wetstoepassing.</para>
+      <para />
+      <parablock>
+        <para>
+          <emphasis role="italic">Slotsom</emphasis>
+        </para>
+        <para>De slotsom is dat het hoger beroep van belanghebbende ongegrond is. De uitspraak van de rechtbank dient te worden bevestigd.</para>
+      </parablock>
+      <para />
+      <para />
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>6</nr>Kosten</title>
+    <para />
+    <parablock>
+      <para>Het Hof ziet geen aanleiding voor een kostenveroordeling op de voet van artikel 8:75 Awb in verbinding met artikel 8:108 van die wet.</para>
+    </parablock>
+    <para />
+    <para />
+  </section>
+  <section>
+    <title>
+      <nr>7</nr>Beslissing</title>
+    <para />
+    <parablock>
+      <para>Het Hof bevestigt de uitspraak van de rechtbank.</para>
+    </parablock>
+    <para />
+    <para />
+    <parablock>
+      <para>De uitspraak is gedaan door mrs. J-P.R. van den Berg, voorzitter, M.J. Leijdekker en I.J.F.A. van Vijfeijken, leden van de belastingkamer, in tegenwoordigheid van mr. M.H. Hogendoorn, als griffier. De beslissing is op 28 oktober 2021 in het openbaar uitgesproken. </para>
+    </parablock>
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <para />
+    <parablock>
+      <para>Tegen deze uitspraak kunnen beide partijen binnen zes weken na de verzenddatum beroep in cassatie instellen bij <emphasis role="bold">de Hoge Raad der Nederlanden via het webportaal van de Hoge Raad www.hogeraad.nl. </emphasis></para>
+      <para>Bepaalde personen die niet worden vertegenwoordigd door een gemachtigde die beroepsmatig rechtsbijstand verleent, mogen per post beroep in cassatie instellen. Dit zijn natuurlijke personen en verenigingen waarvan de statuten niet zijn opgenomen in een notariële akte. Als zij geen gebruik willen maken van digitaal procederen kunnen deze personen het beroepschrift in cassatie sturen aan<emphasis role="bold"> de Hoge Raad der Nederlanden (belastingkamer), postbus 20303, 2500 EH Den Haag</emphasis>. Alle andere personen en gemachtigden die beroepsmatig rechtsbijstand verlenen, zijn in beginsel verplicht digitaal te procederen (zie www.hogeraad.nl). </para>
+      <para>Bij het instellen van beroep in cassatie moet het volgende in acht worden genomen:</para>
+    </parablock>
+    <para>1. bij het beroepschrift wordt een afschrift van deze uitspraak gevoegd;</para>
+    <para>2 - ( alleen bij procederen op papier) het beroepschrift moet ondertekend zijn;</para>
+    <para>3 - het beroepschrift moet ten minste het volgende vermelden:</para>
+    <parablock>
+      <para>              a. de naam en het adres van de indiener;</para>
+      <para>              b. de dagtekening;</para>
+      <para>              c. een omschrijving van de uitspraak waartegen het beroep in cassatie is gericht;</para>
+      <para>             d. de gronden van het beroep in cassatie.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>Voor het instellen van beroep in cassatie is griffierecht verschuldigd. Na het instellen van beroep in cassatie ontvangt de indiener een nota griffierecht van de griffier van de Hoge Raad. In het cassatieberoepschrift kan de Hoge Raad verzocht worden om de wederpartij te veroordelen in de proceskosten.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="underline">Toelichting rechtsmiddelverwijzing</emphasis>
+      </para>
+      <para>Per 15 april 2020 is digitaal procederen bij de Hoge Raad opengesteld. Niet-natuurlijke personen (daaronder begrepen publiekrechtelijke lichamen) en professionele gemachtigden zijn verplicht digitaal te procederen. Wie niet verplicht is om digitaal te procederen, kan op vrijwillige basis digitaal procederen. Hieronder leest u hoe een cassatieberoepschrift wordt ingediend.</para>
+      <para>
+        <emphasis role="italic">Digitaal procederen</emphasis>
+      </para>
+      <para>Het webportaal van de Hoge Raad is toegankelijk via “Login Mijn Zaak Hoge Raad” op www.hogeraad.nl. Informatie over de inlogmiddelen vindt u op www.hogeraad.nl. </para>
+      <para>Niet in Nederland wonende of gevestigde partijen of professionele gemachtigden hebben in beginsel geen geschikt inlogmiddel en kunnen daarom niet inloggen in het webportaal. Zij kunnen zo lang zij niet over een geschikt inlogmiddel kunnen beschikken, per post procederen.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="italic">Per post procederen</emphasis>
+      </para>
+      <para>Alleen bepaalde personen mogen beroep in cassatie instellen per post in plaats van via het webportaal. Zij mogen dit bovendien alleen als zij zonder een professionele gemachtigde procederen. Het gaat om natuurlijke personen die geen ondernemer zijn en verenigingen waarvan de statuten niet zijn opgenomen in een notariële akte. Een professionele gemachtigde moet altijd digitaal procederen, ongeacht voor wie de gemachtigde optreedt. Degene die op papier mag procederen en dat ook wil, kan het beroepschrift in cassatie sturen aan <emphasis role="bold">de Hoge Raad der Nederlanden (belastingkamer), postbus 20303, 2500 EH Den Haag.</emphasis></para>
+    </parablock>
+    <para />
+    <para />
+  </section>
+</uitspraak>
+</open-rechtspraak>

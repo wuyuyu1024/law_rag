@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:HR:2025:335</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-09-16T11:26:36</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-02-27</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Hoge_Raad_der_Nederlanden" scheme="overheid.RechterlijkeMacht">Hoge Raad</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2025-02-28</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">22/01959</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#cassatie">Cassatie</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:GHAMS:2022:1289" psi:type="http://psi.rechtspraak.nl/cassatie" psi:aanleg="http://psi.rechtspraak.nl/eerdereAanleg">In cassatie op : ECLI:NL:GHAMS:2022:1289</dcterms:relation>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>Viditax (FutD) 2025022817</rdf:li>
+          <rdf:li>NDFR Nieuws 2025/383</rdf:li>
+          <rdf:li>V-N Vandaag 2025/402</rdf:li>
+          <rdf:li>FutD 2025-0435</rdf:li>
+          <rdf:li>Sdu Nieuws Belastingzaken 2025/252</rdf:li>
+          <rdf:li>NTFR 2025/409 met annotatie van MR. DRS. W.A.P. NIEUWENHUIZEN</rdf:li>
+          <rdf:li>V-N 2025/11.12</rdf:li>
+          <rdf:li>NLF 2025/0533 met annotatie van Madeleine Merkx</rdf:li>
+          <rdf:li>NJB 2025/600</rdf:li>
+          <rdf:li>BNB 2025/62 met annotatie van B.G. van Zadelhoff</rdf:li>
+          <rdf:li>FED 2025/49 met annotatie van J.B.O. Bijl</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2025:335">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2025:335</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-02-27T12:19:08</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-02-28</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:HR:2025:335 Hoge Raad , 28-02-2025 / 22/01959</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:HR:2025:335:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Omzetbelasting; procesrecht; art. 2 Wet OB; internetveiling voor consumenten van door derde ondernemers aangeboden reizen, arrangementen en producten; gevolgen voor omzetbelasting bij niet-verzilvering winnende bod; betekenis vaststellingsovereenkomst voor grenzen van rechtsstrijd.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:HR:2025:335:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <uitspraak.info>
+    <para />
+    <parablock>
+      <para>HOGE RAAD DER NEDERLANDEN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>BELASTINGKAMER</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">Nummer </emphasis>22/01959 </para>
+      <para>
+        <emphasis role="bold">Datum	</emphasis>28 februari 2025</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>ARREST</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>in de zaak van</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>de fiscale eenheid [X] C.S. (hierna: belanghebbende)</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>tegen</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>de STAATSSECRETARIS VAN FINANCIËN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>op het beroep in cassatie tegen de uitspraak van het Gerechtshof Amsterdam van 12 april 2022, nr. 21/00165<footnote-ref linkend="_e010243c-9bf9-4fa8-bb24-b050a2526bd5" />, op het hoger beroep van belanghebbende tegen een uitspraak van de Rechtbank Noord-Holland (nr. HAA 18/4008) betreffende het door belanghebbende op aangifte voldane bedrag aan omzetbelasting over het tijdvak 1 januari 2016 tot en met 31 maart 2016.</para>
+    </parablock>
+    <para />
+  </uitspraak.info>
+  <section>
+    <title>
+      <nr>1</nr>Geding in cassatie</title>
+    <parablock>
+      <para>Belanghebbende, vertegenwoordigd door J.F. Kijftenbelt en W. Gelderblom, heeft tegen de uitspraak van het Hof beroep in cassatie ingesteld. Het beroepschrift in cassatie is aan dit arrest gehecht en maakt daarvan deel uit.</para>
+      <para>De Staatssecretaris, vertegenwoordigd door [P], heeft een verweerschrift ingediend.</para>
+      <para>Belanghebbende heeft een conclusie van repliek ingediend.</para>
+    </parablock>
+  </section>
+  <section>
+    <title>
+      <nr>2</nr>Uitgangspunten in cassatie</title>
+    <paragroup>
+      <nr>2.1</nr>
+      <para>Belanghebbende is een fiscale eenheid in de zin van artikel 7, lid 4, van de Wet op de omzetbelasting 1968 (hierna: de Wet). </para>
+    </paragroup>
+    <paragroup>
+      <nr>2.2</nr>
+      <para>Een van belanghebbende deel uitmakende vennootschap (hierna: de vennootschap) biedt via haar website een internetveiling voor consumenten aan. Die veiling houdt in dat de consument – na aanmelding op de website – kan bieden op door andere ondernemers aangeboden producten of diensten zoals reizen of arrangementen. Het gaat bijvoorbeeld om een verblijf in een hotel of bungalowpark, een bezoek aan een pretpark of een beauty &amp; wellness centrum, of een avondje uit eten in een restaurant. Bij de bieding is vermeld op welke dag of dagen de desbetreffende dienst of het desbetreffende product beschikbaar is. <?linebreak?>De hoogste bieder is de winnaar (hierna: de winnaar) van de geveilde dienst of het geveilde product (hierna tezamen: het product) en is gehouden daarvoor te betalen. De in dat kader tot stand gekomen overeenkomst kan door de winnaar niet worden geannuleerd of herroepen.</para>
+    </paragroup>
+    <paragroup>
+      <nr>2.3</nr>
+      <para>De winnaar moet de geboden prijs binnen vijf werkdagen aan de vennootschap betalen, vermeerderd met een bedrag aan administratiekosten. Na deze betaling ontvangt de winnaar van de vennootschap een digitale bon met een code (hierna: de bon). Met de bon kan het product worden geboekt of besteld op de website van de vennootschap (hierna ook: het verzilveren). Het verzilveren moet binnen een vooraf vastgestelde periode plaatsvinden en geschiedt op basis van beschikbaarheid van het product bij de aanbieder ervan. De door de vennootschap aan de winnaar verstrekte bon kan – voordat het verzilveren heeft plaatsgevonden – door de winnaar worden weggegeven of verkocht. </para>
+    </paragroup>
+    <paragroup>
+      <nr>2.4</nr>
+      <para>Als de winnaar het product tijdig heeft geboekt of besteld, dus tijdig heeft verzilverd, geeft de vennootschap de ondernemer die het product ter veiling aanbood, opdracht tot uitvoering van de prestatie. Volgens de tot de stukken van het geding behorende overeenkomst van opdracht tot het doen veilen en leveren van arrangementen en/of accommodaties en/of overige diensten en/of producten, gesloten tussen de vennootschap en de aanbieder van het product, veilt de vennootschap op eigen naam op haar platform de producten en levert de aanbieder het product namens en op verzoek van de vennootschap aan de winnaar. Tussen de vennootschap en de aanbieder is overeengekomen dat de vennootschap na het verzilveren van het product het tussen de vennootschap en de aanbieder voor het product overeengekomen bedrag aan die aanbieder betaalt. Daartoe stuurt de vennootschap die aanbieder maandelijks achteraf een ‘selfbilling’ factuur, inclusief de door die aanbieder af te dragen omzetbelasting, voor het aantal boekingen of bestellingen dat winnaars in de verstreken maand bij de desbetreffende aanbieder hebben gemaakt of gedaan, per boeking of bestelling vermenigvuldigd met het tussen de vennootschap en de aanbieder overeengekomen bedrag.</para>
+    </paragroup>
+    <paragroup>
+      <nr>2.5</nr>
+      <para>Als het product niet of niet tijdig is geboekt of besteld, dus als de bon niet is verzilverd (door partijen aangeduid als no show of non-redemption), heeft de winnaar geen recht op terugbetaling van het aan de vennootschap betaalde bedrag. In die gevallen ontvangt de aanbieder geen uitbetaling van de vennootschap. Van alle bonnen wordt tussen de 4 en 16 procent niet verzilverd.</para>
+    </paragroup>
+    <paragroup>
+      <nr>2.6</nr>
+      <parablock>
+        <para>Met het oog op het vaststellen van de gevolgen voor de heffing van omzetbelasting van de hiervoor in 2.2 bedoelde veiling hebben de vennootschap en de Inspecteur in september 2012 een vaststellingsovereenkomst gesloten (hierna: VSO1). VSO1 houdt, voor zover in cassatie van belang, in:</para>
+        <para>“3. Kwestie waarover overleg is gevoerd </para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Partijen verkeren over de volgende zaken in onzekerheid.</para>
+        <para>(…)</para>
+        <para>• Is belanghebbende in geval van de zogenoemde ‘no show’ btw verschuldigd over de van de consument ontvangen vergoeding?</para>
+        <para>(…)</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>4. Inhoud van de overeenkomst </para>
+        <para>(…)</para>
+        <para>Ter beëindiging van het hiervoor bedoelde geschil zijn partijen het volgende overeengekomen:</para>
+        <para>(…)</para>
+        <para>• Voor de duur van deze overeenkomst vormt ‘no show’ (niet verzilverde vouchers) een btw-prestatie. De vergoeding voor de ‘no show’ volgt de btw-behandeling van de achterliggende prestatie;</para>
+        <para>(…)</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>5. Geldigheidsduur van de overeenkomst </para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>De overeenkomst geldt van 1 januari 2008 tot en met 31 december 2012. De overeenkomst wordt na 31 december 2012 stilzwijgend verlengd.</para>
+        <para>(…)</para>
+        <para>Belanghebbende is van mening dat de discussie inzake de btw-gevolgen van de ‘no show’ kan worden gevoerd los van de ’aan en door' discussie. Het staat belanghebbende vrij, indien gewenst, na 31 december 2012 een bezwaarschrift in te dienen tegen de verschuldigde btw inzake de ‘no show’. Tijdens de eventuele bezwaarprocedure zal in nauw overleg met de Belastingdienst worden bekeken in hoeverre een zelfstandige discussie van dit onderwerp mogelijk is. Het staat belanghebbende vervolgens vrij de bezwaarprocedure voort te zetten dan wel het bezwaarschrift in te trekken.”</para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>2.7</nr>
+      <parablock>
+        <para>In december 2015 hebben de vennootschap en de Inspecteur een tweede vaststellingsovereenkomst gesloten (hierna: VSO2). VSO2 houdt, voor zover in cassatie van belang, in:</para>
+        <para>“2. Omschrijving van het geschil/de onzekerheid:</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>De kwesties waarover partijen een vaststellingsovereenkomst wensen aan te gaan, betreffen: </para>
+        <para>(…)</para>
+        <para>
+          <?linebreak?>4. het maken van afspraken voor de periode vanaf 1 januari 2013 betreffende de bezwaren non-redemption.</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>3. Overleg en correspondentie:</para>
+      </parablock>
+      <para />
+      <parablock>
+        <para>Aan de totstandkoming van deze overeenkomst is het volgende voorafgegaan: </para>
+      </parablock>
+      <para />
+    </paragroup>
+    <paragroup>
+      <nr>3.1 [</nr>
+      <para>de vennootschap] heeft bij brief van 31 mei 2013 (voor het eerst) pro forma bezwaar gemaakt tegen de voldoening op de btw-aangifte over het eerste kwartaal 2013. Dit bezwaar betreft de toepassing van de gewijzigde reisbureauregeling ingaande 1 april 2012. Bij de motivering van dit bezwaar van 31 juli 2013 is naast de toepassing van de reisbureauregeling voor de door [de vennootschap] verkochte overnachtingen (hotel/bungalow) en pakketreizen ook bezwaar gemaakt tegen de btw-behandeling van alle niet-ingewisselde vouchers (non-redemption) betreffende de verkochte productcategorieën zoals avondje uit, beauty &amp; wellness, bungalowparken, dagje weg (bijv. pretparken, concerten), hotels, producten, restaurants en vakanties. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.2</nr>
+      <para>Voor de tijdvakken vanaf het tweede kwartaal 2013 heeft [de vennootschap] over dezelfde onderwerpen als bedoeld in onderdeel 3.1 eveneens bezwaarschriften ingediend tegen de voldoening op de betreffende btw-aangiften.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.3</nr>
+      <para>Naar aanleiding van de ingediende bezwaarschriften hebben partijen meerdere besprekingen gevoerd en correspondentie gewisseld, waaronder de laatste bespreking van 22 juni 2015. In deze bespreking hebben partijen de mogelijkheden van een totaalcompromis verkend over het onderwerp toepassing van de reisbureauregeling. Dit totaalcompromis betreft niet het afzien van bezwaar en/of beroep op het onderwerp non-redemption. Een procedureafspraak betreffende dit onderwerp non-redemption maakt echter wel deel uit van deze vaststellingsovereenkomst. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.4 (…)</nr>
+      <parablock>
+        <para>Met betrekking tot de door de klanten niet ingewisselde vouchers, verkregen bij de gewonnen veiling, is [de vennootschap] van oordeel dat zij in het geheel geen btw is verschuldigd.</para>
+        <para>(…)</para>
+      </parablock>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <?linebreak?>
+      <emphasis role="bold">4. Inhoud van de overeenkomst:</emphasis> </title>
+    <para />
+    <parablock>
+      <para>Partijen verbinden aan de hiervoor vermelde feiten de volgende fiscaalrechtelijke en civielrechtelijke gevolgen:</para>
+      <para>(…)</para>
+    </parablock>
+    <paragroup>
+      <nr>4.5</nr>
+      <para>De ondertekening van deze overeenkomst geldt als de schriftelijke intrekking door [de vennootschap] van alle door haar ingediende bezwaarschriften tegen de voldoening op de btw-aangiften vanaf het eerste kwartaal 2013 tot en met het tweede kwartaal 2015. </para>
+    </paragroup>
+    <paragroup>
+      <nr>4.6 [</nr>
+      <parablock>
+        <para>De vennootschap] zal uiterlijk over het tweede kwartaal 2016 een nieuw bezwaarschrift indienen tegen de voldoening op de btw-aangifte betreffende de btw-behandeling van niet ingewisselde vouchers (non-redemption) betreffende de verkochte productcategorieën zoals avondje uit, beauty &amp; wellness, bungalowparken, dagje weg (bijv. pretparken, concerten), hotels, producten, restaurants en vakanties. De uitkomst van deze onherroepelijk vaststaande bezwaar en/of beroepsprocedure over dit bezwaartijdvak zal [de Inspecteur] ambtshalve toepassen op de niet ingewisselde vouchers over alle tijdvakken vanaf 1 januari 2013. [De Inspecteur] houdt zich hierbij het recht voor om zich gezien de gesloten vaststellingsovereenkomst van 5 september 2012 op het standpunt te stellen dat [de vennootschap] sowieso geen btw-teruggaaf toekomt voor alle vóór 1 januari 2013 verkochte vouchers die naderhand niet worden ingewisseld. Eveneens zal [de Inspecteur] de uitkomst van de onherroepelijk vaststaande bezwaar en/of beroepsprocedure ambtshalve toepassen over alle tijdvakken gelegen na het tijdvak van bezwaar, zodat [de vennootschap] niet voor ieder tijdvak afzonderlijk bezwaar behoeft aan te tekenen. Bij het indienen van bezwaar verplicht [de vennootschap] zich dat de administratie vanaf 1 januari 2013 rondom de niet ingewisselde vouchers voor eventueel onderzoek door [de Inspecteur] beschikbaar wordt gehouden. </para>
+        <para>(…)”</para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>2.8</nr>
+      <para>Belanghebbende heeft op aangifte over het eerste kwartaal van 2016 omzetbelasting voldaan ter zake van het totaal van de bedragen die zij gedurende dit tijdvak naar aanleiding van de hiervoor in 2.2 bedoelde internetveilingen van consumenten heeft ontvangen. Tegen het op aangifte voldane bedrag heeft zij bezwaar gemaakt en verzocht om teruggaaf van omzetbelasting. Zij stelt zich wat betreft de niet-verzilverde bonnen op het standpunt dat zij geen belastbare prestaties heeft verricht en dat zij daarom geen omzetbelasting is verschuldigd. </para>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>3</nr>De oordelen van het Hof</title>
+    <paragroup>
+      <nr>3.1</nr>
+      <para>Het Hof heeft het geschil in hoger beroep omschreven als een geschil over het antwoord op de vraag of de Inspecteur het verzoek om teruggaaf terecht heeft afgewezen. Meer in het bijzonder is volgens het Hof in geschil of, en zo ja op welk moment, belanghebbende een aan heffing van omzetbelasting onderworpen prestatie verricht in de gevallen waarin de bon die de vennootschap aan de winnaar doet toekomen, niet wordt verzilverd. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.2</nr>
+      <parablock>
+        <para>Rechtsoverweging 5.3 van de uitspraak van het Hof houdt het volgende in:</para>
+        <para>“Ter zitting heeft belanghebbende de stelling ingenomen dat zij, voor het onderhavige tijdvak, niet gebonden is aan de vso uit september 2012, voor zover deze bepaalt dat voor de duur van die overeenkomst een ‘no show’ (niet-verzilverde bon) een btw-prestatie is. <?linebreak?>Desgevraagd heeft de inspecteur verklaard zich wel gebonden te achten aan die bepaling en ook belanghebbende daaraan gebonden acht. Het Hof oordeelt als volgt.”</para>
+      </parablock>
+    </paragroup>
+    <paragroup>
+      <nr>3.3</nr>
+      <para>Het Hof heeft vervolgens tot uitgangspunt genomen dat VSO1 en VSO2 geldige vaststellingsovereenkomsten als bedoeld in artikel 7:900, lid 1, BW zijn en dat partijen wat betreft de duiding van de hiervoor in 2.2 weergegeven prestaties gebonden zijn aan de afspraken die zij daarbij hebben gemaakt. Die afspraken hielden volgens het Hof onder meer in dat partijen zijn uitgegaan van de zogenoemde commissionairsfictie als bedoeld in artikel 4, lid 4, van de Wet, hetgeen in dit geval wil zeggen dat voor de heffing van omzetbelasting ervan wordt uitgegaan dat de vennootschap op eigen naam maar op order en voor rekening van de aanbieder de prestatie jegens de winnaar verleent die de aanbieder wordt geacht aan de vennootschap te verlenen. Volgens het Hof moet daarom tot uitgangspunt worden genomen dat partijen ook voor de in geschil zijnde periode (het eerste kwartaal van 2016) aan die duiding van prestaties zijn gebonden omdat in VSO1 is opgenomen dat die overeenkomst na 31 december 2012 stilzwijgend wordt verlengd. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.4</nr>
+      <para>Het Hof heeft vervolgens het standpunt van belanghebbende verworpen dat de afspraak om de commissionairsfictie toe te passen ook ziet op niet-verzilverde bonnen en dat met betrekking tot de niet-verzilverde bonnen niet aan heffing van omzetbelasting kan worden toegekomen omdat alsdan het gewonnen product niet wordt afgenomen en in die gevallen dus een effectieve ‘aan prestatie’ (aan de vennootschap) en bijgevolg ‘door-prestatie’ (door de vennootschap) ontbreekt. Volgens het Hof volgt deze uitleg niet uit de tekst van VSO1 en is bovendien niet aannemelijk dat de Inspecteur in zoverre geheel zou hebben willen afzien van de heffing van omzetbelasting. Anders dan belanghebbende aanvoert, laat de tekst van VSO1 die luidt “Voor de duur van deze overeenkomst vormt ‘no show’ (niet-verzilverde vouchers) een btw-prestatie”, volgens het Hof geen andere uitleg toe dan dat voor de duur van deze overeenkomst een no show als een prestatie voor de omzetbelasting geldt. Als belanghebbende op dit voor haar relevante punt geen bindende afspraak had willen maken, had zij, aldus het Hof, VSO1 niet moeten ondertekenen, deze overeenkomst moeten opzeggen of een voorbehoud moeten maken, hetgeen zij heeft nagelaten. <?linebreak?>Dat in VSO1 is vastgelegd dat het belanghebbende vrijstaat, indien gewenst, na 31 december 2012 een bezwaarschrift in te dienen tegen de verschuldigde btw inzake de no show, heeft het Hof niet tot een ander oordeel gebracht. Die toevoeging ziet immers, zo verstaat het Hof partijen, niet op de vraag óf in die gevallen sprake is van een prestatie, maar op de vraag hoe die prestatie – wat betreft maatstaf van heffing en/of tarief – in de heffing moet worden betrokken. </para>
+    </paragroup>
+    <paragroup>
+      <nr>3.5</nr>
+      <para>Daarna heeft het Hof – volgens de bestreden uitspraak: ten overvloede – overwogen dat ook als deze afspraak in VSO1 niet was opgenomen, het tot het oordeel zou zijn gekomen dat een no show een aan heffing van omzetbelasting onderworpen prestatie vormt, bestaande in de overdracht van een recht als zodanig, en wel op het tijdstip waarop de vennootschap de bon aan de winnaar ter beschikking stelt. Hiertoe heeft het Hof overwogen dat er op het moment dat de winnaar zijn bod plaatste en de veiling sluit, een rechtsbetrekking tot stand komt tussen de vennootschap en de winnaar, inhoudende dat de winnaar is gehouden zijn bod vermeerderd met € 5 administratiekosten te betalen en dat de vennootschap de winnaar direct na betaling een digitale bon moet doen toekomen waarmee hij het gewonnen product – volgens het Hof een duidelijk identificeerbare prestatie – kan verzilveren. Dat de bon niet altijd wordt verzilverd, doet daaraan volgens het Hof niet af. <?linebreak?>Wat betreft de vraag op welk moment de prestatie wordt verricht, is volgens het Hof bepalend op welk moment de winnaar de beschikkingsmacht over het product verkrijgt. Dat is, aldus het Hof het moment waarop de winnaar de bon elektronisch ontvangt. Volgens het Hof is de uitgifte van de bon een voltooide prestatie die moet worden beschouwd als een zelfstandig belastbaar feit, omdat daarmee een voordeel wordt overgedragen waardoor de ontvanger van dat recht een (potentieel onmiddellijke) verbruiker wordt<emphasis role="bold">. </emphasis></para>
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>
+      <nr>4</nr>Beoordeling van de middelen</title>
+    <paragroup>
+      <nr>4.1</nr>
+      <para>Middel 1 is gericht tegen het hiervoor in 3.4 weergegeven oordeel van het Hof. Het middel betoogt dat het Hof buiten de grenzen van de rechtsstrijd is getreden door eigener beweging een andere uitleg te geven aan in de VSO’s gemaakte afspraken dan die partijen vanaf het maken ervan aan die afspraken hebben gegeven, terwijl vanaf de aanvang van deze procedure tussen belanghebbende en de Inspecteur de uitleg of toepassing van de VSO’s geen onderwerp van geschil is geweest. Belanghebbende en de Inspecteur zijn namelijk van meet af aan ervan uitgegaan dat het belanghebbende vrijstond om na 31 december 2012 te procederen over de gevolgen voor de heffing van omzetbelasting van niet-verzilverde bonnen, waaronder de vraag of en, zo ja, wanneer belanghebbende/de vennootschap in zo’n geval een belastbare prestatie verricht. Dit een en ander wordt bevestigd in onderdeel 4.6 van VSO2 alsmede door de omstandigheid dat de Inspecteur in deze procedure de bezwaren van belanghebbende tegen de heffing van omzetbelasting van meet af aan, ook op dit geschilpunt, inhoudelijk heeft behandeld.</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.2</nr>
+      <para>Middel 1 wordt terecht voorgesteld. De stukken van het geding laten geen andere conclusie toe dan dat het geschil tussen partijen in eerste aanleg en in hoger beroep mede betrof de vraag of in geval van een no show een belastbare prestatie voor de omzetbelasting wordt verricht. In dit licht is het hiervoor in 3.4 weergegeven oordeel van het Hof dan ook onbegrijpelijk. Uit geen van de gedingstukken blijkt dat de Inspecteur, toen het Hof ter zitting de uitleg en betekenis van VSO1 ter sprake bracht, uitdrukkelijk en ondubbelzinnig heeft verklaard de rechtsstrijd in hoger beroep te willen uitbreiden met het standpunt dat aan toewijzing van het verzoek om teruggaaf voor het onderhavige tijdvak reeds in de weg staat dat VSO1 de bindende afspraak bevat dat belanghebbende niet zal procederen over de vraag of zij een aan heffing van omzetbelasting onderworpen prestatie verricht in de gevallen waarin de bon niet wordt verzilverd. De hiervoor in 3.2 weergegeven verklaring van de Inspecteur ter zitting van het Hof dat hij zich gebonden acht aan VSO1 en dat dit voor beide partijen geldt, kan niet als zodanig worden aangemerkt.<?linebreak?>Gelet op het van aanvang af bestaande geschil tussen partijen en het verloop van het geding tot op de zitting, een en ander bezien in het licht van onderdeel 4.6 van VSO2, moet worden geconcludeerd dat het Hof de grenzen van het geschil dat partijen bij het Hof verdeeld hield, heeft overschreden door de uitspraak van de Rechtbank te bevestigen op de grond dat belanghebbende jegens de Inspecteur eraan moet worden gehouden dat bij het niet verzilveren van een bon een aan heffing van omzetbelasting onderworpen prestatie wordt verricht.</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.3</nr>
+      <para>Gelet op hetgeen hiervoor in 4.2 is overwogen, behoeft middel 2, dat is voorgesteld voor het geval middel 1 zou falen, geen behandeling meer. </para>
+    </paragroup>
+    <paragroup>
+      <nr>4.4</nr>
+      <para>Middel 1 kan niet tot cassatie leiden, gelet op hetgeen hierna over middel 3 wordt overwogen.</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.5</nr>
+      <para>Middel 3 is gericht tegen de hiervoor in 3.5 weergegeven oordelen van het Hof dat ook los van VSO1 op het tijdstip van de verstrekking van de bon aan de winnaar een belastbare prestatie wordt verricht. <?linebreak?>Het middel betoogt daartoe in de eerste plaats dat het Hof ook op dit punt buiten de grenzen van de rechtsstrijd is getreden. Het Hof had niet mogen abstraheren van de afspraken die partijen in VSO1 over de juridische duiding van de prestaties hebben gemaakt, te weten dat bij wel verzilverde bonnen de belastbare prestatie bestaat in het daadwerkelijk leveren van het product. Aldus heeft het Hof in strijd met de artikelen 3 en 4 van de Wet en de hiervoor bedoelde afspraken tussen partijen geoordeeld dat al op het moment van verstrekking van de bon een belastbaar feit plaatsvindt. <?linebreak?>Verder stelt het middel dat ook wanneer wordt geabstraheerd van de afspraken in VSO1, het oordeel van het Hof dat de verstrekking van de bon de belastbare levering van een recht als zodanig is, rechtens onjuist is. De door het Hof bedoelde beschikkingsmacht is volgens het middel namelijk gereserveerd voor de levering van goederen en de bon is niet meer dan een middel om tot verstrekking van het product te komen. Het middel bestrijdt in dit verband ook het oordeel van het Hof dat al tijdens het veilingproces de toekomstige prestatie identificeerbaar is. Tot het moment van boeking of bestelling door de winnaar is de datum waarop de prestatie wordt verricht, niet bekend, is in veel gevallen de specifieke plaats niet bekend, en is in voorkomend geval (bij franchisenemers of meerdere vakantieparken die in één deal meedoen) de presterende aanbieder onbekend. </para>
+      <paragroup>
+        <nr>4.6.1</nr>
+        <para>Bij de behandeling van middel 3 stelt de Hoge Raad het volgende voorop. </para>
+      </paragroup>
+      <paragroup>
+        <nr>4.6.2</nr>
+        <para>Op grond van artikel 1, aanhef en letter a, van de Wet zijn aan omzetbelasting onderworpen leveringen van goederen en diensten die in Nederland door een als zodanig handelende ondernemer onder bezwarende titel worden verricht. Een goed wordt onder bezwarende titel geleverd en een dienst wordt onder bezwarende titel verricht in de zin van deze bepaling –en is dus belastbaar – wanneer tussen de ondernemer en de afnemer van het goed of de dienst een rechtsbetrekking ontstaat op grond waarvan over en weer prestaties worden uitgewisseld en waarbij de door de leverancier of dienstverrichter ontvangen vergoeding de werkelijke tegenprestatie vormt voor een aan de afnemer verrichte individualiseerbare prestatie. Dit laatste is het geval als er tussen de door de leverancier of dienstverrichter jegens de afnemer verrichte handeling(en) en de door de leverancier of dienstverrichter te ontvangen tegenprestatie een rechtstreeks verband bestaat.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.6.3</nr>
+        <para>Wanneer de hiervoor bedoelde rechtsbetrekking tot stand is gekomen tussen een ondernemer en een particulier/consument als afnemer, geldt dat de ondernemer niet verplicht is op de voet van artikel 34c van de Wet een factuur uit te reiken. In dat geval wordt die ondernemer op grond van artikel 13, lid 1, letter b, van de Wet als regel de omzetbelasting verschuldigd op het tijdstip waarop de levering of de dienst wordt verricht. Op grond van artikel 14, lid 1, van de Wet moet de in het desbetreffende tijdvak verschuldigd geworden omzetbelasting op aangifte worden voldaan. </para>
+      </paragroup>
+      <paragroup>
+        <nr>4.6.4</nr>
+        <para>Artikel 13, lid 2, van de Wet voorziet in een uitzondering op de hiervoor in 4.6.3 bedoelde regel. In dat artikellid is bepaald dat, in afwijking van het bepaalde in artikel 13, lid 1, van de Wet, de omzetbelasting of het desbetreffende gedeelte daarvan uiterlijk wordt verschuldigd op het tijdstip waarop de vergoeding geheel of gedeeltelijk wordt ontvangen. Dit betekent dat wanneer de ondernemer met de afnemer is overeengekomen dat de vergoeding geheel of gedeeltelijk aan de ondernemer moet zijn betaald voordat de ondernemer overgaat tot levering van het goed of verrichting van de dienst, de ondernemer de omzetbelasting wordt verschuldigd op het tijdstip waarop de vergoeding geheel of gedeeltelijk wordt ontvangen (en dus is vooruitbetaald). <?linebreak?>Voor verschuldigdheid van omzetbelasting bij vooruitbetaling is noodzakelijk dat op het tijdstip van vooruitbetaling, de toekomstige prestatie – dat wil zeggen het goed waarvan de levering of de dienst waarvan de verrichting is overeengekomen – voldoende nauwkeurig is omschreven, in die zin dat alle voor de heffing van omzetbelasting relevante bestanddelen van die prestatie bekend zijn.<footnote-ref linkend="_f631bb9a-520a-461e-8a18-d49376bf6075" /><?linebreak?>Ook in het geval van verschuldigdheid bij vooruitbetaling op grond van artikel 13, lid 2, van de Wet moet de aldus in een tijdvak verschuldigd geworden omzetbelasting op grond van artikel 14, lid 1, van de Wet op aangifte worden voldaan.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.1</nr>
+        <para>Voor zover middel 3 aanvoert dat het Hof niet had mogen abstraheren van de afspraken in VSO1, wordt als volgt overwogen. <?linebreak?>Voor de Rechtbank en voor het Hof was in geschil of en, zo ja, op welk moment de vennootschap voor de verstrekking van de bonnen die door de winnaars niet worden verzilverd, omzetbelasting wordt verschuldigd. Wanneer de rechter, uitgaande van de vastgestelde feiten, constateert dat de wettelijke bepalingen die de grondslag vormen voor de beslechting van het geschil dat partijen verdeeld houdt, niet of anders moeten worden toegepast dan partijen voor ogen staat, schendt de rechter het bepaalde in artikel 8:69, lid 2, Awb niet indien hij voor de afdoening van het geschil die bepalingen rechtens juist toepast. Het Hof was dus niet gehouden om hetgeen partijen in VSO1 over de juridische duiding bij wel verzilverde bonnen hebben afgesproken, in aanmerking te nemen bij de beoordeling van het onderhavige geschil, dat juist niet-verzilverde bonnen betreft. Middel 3 faalt in zoverre. </para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.2</nr>
+        <para>Het Hof heeft geoordeeld dat het voor de winnaar tijdens het veilingproces helder is op welke prestatie zijn bod betrekking heeft en dat daarmee dus de prestatie waarop het winnende bod ziet, voor de heffing van omzetbelasting duidelijk identificeerbaar is. Anders dan middel 3 in zoverre betoogt, geeft dat oordeel niet blijk van een onjuiste rechtsopvatting. Met dat oordeel heeft het Hof tot uitdrukking gebracht dat tijdens het veilingproces alle voor de heffing van omzetbelasting relevante elementen van de prestatie bekend zijn. <?linebreak?>Dat oordeel is ook niet onbegrijpelijk of onvoldoende gemotiveerd. De omstandigheid dat op het moment van totstandkoming van de rechtsbetrekking tussen de vennootschap en de winnaar nog niet vaststaat wanneer en/of waar het goed precies zal worden geleverd dan wel de dienst zal worden verricht, hoeft niet af te doen aan het oordeel van het Hof dat de vennootschap met de winnaar een prestatie is overeengekomen die voor de heffing van omzetbelasting voldoende identificeerbaar is. Dat geldt ook voor de omstandigheid dat in voorkomend geval bij franchisenemers of meerdere vakantieparken die in één deal meedoen, de presterende aanbieder onbekend is. Voor de winnaar is immers de vennootschap degene die gehouden is tot uitvoering van de gewonnen prestatie. Middel 3 faalt ook in zoverre.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.3</nr>
+        <para>Uit hetgeen hiervoor in 4.7.2 is geoordeeld, volgt dat het door de winnaar aan de vennootschap te betalen bedrag moet worden aangemerkt als de tegenprestatie (vergoeding) voor een individualiseerbare prestatie. Verder volgt uit de hiervoor in onderdeel 2 weergegeven uitgangspunten in cassatie dat de vennootschap de winnaar verplicht tot betaling van de vergoeding voordat tot verdere uitvoering van de prestatie wordt overgegaan.  <?linebreak?>Wanneer de winnaar aldus betaalt voor een op een later tijdstip te verrichten individualiseerbare prestatie tot uitvoering waarvan de vennootschap zich heeft verbonden, wordt belanghebbende in elk geval op grond van artikel 13, lid 2, van de Wet op het tijdstip waarop betaling door de winnaar aan de vennootschap plaatsvindt, de omzetbelasting verschuldigd ter zake van die vergoeding. Aan de op die betaling volgende verstrekking van de bon komt in dit opzicht geen betekenis toe. </para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.4</nr>
+        <para>Verder doet aan de hiervoor bedoelde verschuldigdheid van omzetbelasting op het tijdstip van vooruitbetaling niet af dat de vennootschap van de winnaar eist dat deze binnen een door de vennootschap gestelde termijn een bepaalde handeling verricht om het recht op uitvoering van de prestatie van de vennootschap jegens de winnaar te effectueren, in dit geval de hiervoor in 2.3 bedoelde boeking of bestelling op de website van de vennootschap.<?linebreak?>Aan de verschuldigdheid op het tijdstip van vooruitbetaling kan evenmin afdoen dat ondanks de ontvangen betaling, niet is uitgesloten dat de winnaar de hiervoor bedoelde boeking of bestelling niet of niet tijdig verricht. Immers, wanneer de vergoeding moet zijn betaald voordat de ondernemer (in dit geval de vennootschap) de afgesproken prestatie jegens de afnemer (in dit geval de winnaar) verricht, heeft de afnemer recht op uitvoering van de uit de overeenkomst voor de ondernemer voortvloeiende verplichting(en), ongeacht of die afnemer effectief gebruik zal gaan maken van dat recht. Middel 3 faalt ook in zoverre.</para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.5</nr>
+        <para>Wat betreft de stelling van middel 3 dat de vennootschap in het geval van een no show de gewonnen prestatie niet heeft hoeven uitvoeren en zij dus geen belastbare prestatie heeft verricht en daarom alsnog recht heeft op teruggaaf van de op aangifte voldane omzetbelasting voor zover deze betrekking heeft op niet afgenomen prestaties (no shows), wordt het volgende overwogen.<?linebreak?>Anders dan middel 3 betoogt, kan in een geval als het onderhavige niet met succes worden verdedigd dat de vennootschap niet een belastbare prestatie heeft verricht. De omstandigheid dat de winnaar nadat hij heeft betaald, niet een boeking of bestelling op de website van de vennootschap verricht, is in dit geval niet van invloed op het bestaan van de hiervoor in 4.6.2 bedoelde rechtsbetrekking, en evenmin op het rechtstreekse verband tussen de door de vennootschap jegens de winnaar verrichte handeling(en) en de door haar van de winnaar ontvangen en nadien niet terugbetaalde tegenprestatie. <?linebreak?>Zoals uit de hiervoor in onderdeel 2 vermelde uitgangspunten in cassatie immers volgt, heeft de vennootschap op het tijdstip van ontvangst van de vooruitbetaling werkzaamheden verricht om jegens de winnaar uitvoering van de gewonnen prestatie mogelijk te maken. De vennootschap heeft de winnaar de bon verstrekt met het oog op boeking of bestelling van de prestatie op haar website en daarmee de winnaar bevestigd de gewonnen prestatie te willen voltooien. Het is alleen de winnaar aan te rekenen dat het niet tot voltooiing van de prestatie is gekomen. Dit betekent dat het bedrag dat de winnaar aan de vennootschap heeft betaald, zonder recht op restitutie, moet worden beschouwd als een vergoeding voor door haar verrichte handelingen (in dit geval tezamen een dienst) die onder bezwarende titel is verricht en die vergoeding daarom aan omzetbelasting blijft onderworpen.<footnote-ref linkend="_f0e2c398-a0ad-4287-8b44-ff914a61535a" /> Middel 3 faalt ook in zoverre. </para>
+      </paragroup>
+      <paragroup>
+        <nr>4.7.6</nr>
+        <para>In het geval waarin een boeking achterwege blijft en de vennootschap de hiervoor in 2.4 bedoelde aanbieders dus niet opdraagt om op haar naam de gewonnen prestatie uit te voeren, komt – anders dan waarvan middel 3 kennelijk is uitgegaan – voor het antwoord op de vraag of belanghebbende recht heeft op teruggaaf van de voldane omzetbelasting vanwege niet-verzilvering, geen betekenis toe aan de regeling voor commissionairs, zoals neergelegd in artikel 3, lid 6, van de Wet dan wel artikel 4, lid 4, van de Wet.<footnote-ref linkend="_5e24d649-97ac-42fd-9897-fde15f498731" /> Ook wanneer de winnaar wel een boeking doet, is belanghebbende de omzetbelasting in de gegeven omstandigheden op grond van artikel 13, lid 2, van de Wet verschuldigd en moet aan de hand van de tussen de vennootschap en de aanbieder bestaande rechtsbetrekking worden beoordeeld wanneer de aanbieder omzetbelasting verschuldigd wordt ter zake van het op naam van en in opdracht van de vennootschap uitvoeren van de gewonnen prestatie. </para>
+      </paragroup>
+    </paragroup>
+    <paragroup>
+      <nr>4.8</nr>
+      <para>De Hoge Raad heeft ook de overige klachten van middel 3 en de klachten van de middelen 4 en 5 over de uitspraak van het Hof beoordeeld. De uitkomst hiervan is dat deze klachten niet kunnen leiden tot vernietiging van die uitspraak. De Hoge Raad hoeft niet te motiveren waarom hij tot dit oordeel is gekomen. Bij de beoordeling van deze klachten is het namelijk niet nodig om antwoord te geven op vragen die van belang zijn voor de eenheid of de ontwikkeling van het recht (zie artikel 81, lid 1, van de Wet op de rechterlijke organisatie).</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.9</nr>
+      <para>De slotsom is dat de beslissing van het Hof dat de Inspecteur het verzoek om teruggaaf terecht heeft afgewezen, juist is.</para>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>5</nr>Proceskosten</title>
+    <para>De Hoge Raad ziet geen aanleiding voor een veroordeling in de proceskosten.</para>
+  </section>
+  <section role="beslissing">
+    <title>
+      <nr>6</nr>Beslissing</title>
+    <para>De Hoge Raad verklaart het beroep in cassatie ongegrond.</para>
+    <para />
+    <parablock>
+      <para>Dit arrest is gewezen door de vice-president M.E. van Hilten als voorzitter, en de raadsheren E.N. Punt, M.A. Fierstra, E.F. Faase en P.A.G.M. Cools, in tegenwoordigheid van de waarnemend griffier E. Cichowski, en in het openbaar uitgesproken op 28 februari 2025.</para>
+    </parablock>
+  </section>
+  <footnote id="_e010243c-9bf9-4fa8-bb24-b050a2526bd5" label="1">
+    <para> ECLI:NL:GHAMS:2022:1289.</para>
+  </footnote>
+  <footnote id="_f631bb9a-520a-461e-8a18-d49376bf6075" label="2">
+    <para> Vgl. HvJ 23 december 2015, Air France-KLM en Hop!-Brit Air SAS, C-250/14 en C-289/14, ECLI:EU:C:2015:841, punten 38 tot en met 40 en aldaar aangehaalde rechtspraak.</para>
+  </footnote>
+  <footnote id="_f0e2c398-a0ad-4287-8b44-ff914a61535a" label="3">
+    <para> Vgl. HvJ 28 november 2024, rhtb: projekt gmbh tegen Parkring 14-16 Immobilienverwaltung GmbH, C-622/23, ECLI:EU:C:2024:994, punten 19 tot en met 21.</para>
+  </footnote>
+  <footnote id="_5e24d649-97ac-42fd-9897-fde15f498731" label="4">
+    <para> Vgl. HR 19 september 2014, ECLI:NL:HR:2014:2678, rechtsoverweging 3.3. </para>
+    <para />
+  </footnote>
+</uitspraak>
+</open-rechtspraak>

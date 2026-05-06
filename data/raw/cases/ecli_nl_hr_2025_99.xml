@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-rechtspraak>
+  <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:ecli="https://e-justice.europa.eu/ecli" xmlns:tr="http://tuchtrecht.overheid.nl/" xmlns:eu="http://publications.europa.eu/celex/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bwb="bwb-dl" xmlns:cvdr="http://decentrale.regelgeving.overheid.nl/cvdr/" xmlns:psi="http://psi.rechtspraak.nl/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description>
+      <dcterms:identifier>ECLI:NL:HR:2025:99</dcterms:identifier>
+      <dcterms:format>text/xml</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-03-22T00:03:17</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-01-17</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:creator rdfs:label="Instantie" resourceIdentifier="http://standaarden.overheid.nl/owms/terms/Hoge_Raad_der_Nederlanden" scheme="overheid.RechterlijkeMacht">Hoge Raad</dcterms:creator>
+      <dcterms:date rdfs:label="Uitspraakdatum">2025-01-17</dcterms:date>
+      <psi:zaaknummer rdfs:label="Zaaknr">22/04746</psi:zaaknummer>
+      <dcterms:type rdf:language="nl" resourceIdentifier="http://psi.rechtspraak.nl/uitspraak">Uitspraak</dcterms:type>
+      <psi:procedure rdf:language="nl" rdfs:label="Procedure" resourceIdentifier="http://psi.rechtspraak.nl/procedure#cassatie">Cassatie</psi:procedure>
+      <dcterms:coverage>NL</dcterms:coverage>
+      <dcterms:subject rdfs:label="Rechtsgebied" resourceIdentifier="http://psi.rechtspraak.nl/rechtsgebied#bestuursrecht_belastingrecht">Bestuursrecht; Belastingrecht</dcterms:subject>
+      <dcterms:relation rdfs:label="Formele relatie" ecli:resourceIdentifier="ECLI:NL:GHAMS:2022:3637" psi:type="http://psi.rechtspraak.nl/cassatie" psi:aanleg="http://psi.rechtspraak.nl/eerdereAanleg">In cassatie op : ECLI:NL:GHAMS:2022:3637</dcterms:relation>
+      <dcterms:hasVersion rdfs:label="Vindplaatsen" resourceIdentifier="http://psi.rechtspraak.nl/vindplaats">
+        <rdf:list>
+          <rdf:li>Rechtspraak.nl</rdf:li>
+          <rdf:li>Viditax (FutD) 2025011709</rdf:li>
+          <rdf:li>V-N Vandaag 2025/59</rdf:li>
+          <rdf:li>FutD 2025-0105</rdf:li>
+          <rdf:li>NTFR 2025/169</rdf:li>
+          <rdf:li>NLF 2025/0139 met annotatie van Werner Gelderblom</rdf:li>
+          <rdf:li>V-N 2025/5.21 met annotatie van Redactie</rdf:li>
+        </rdf:list>
+      </dcterms:hasVersion>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2025:99">
+      <dcterms:identifier>http://deeplink.rechtspraak.nl/uitspraak?id=ECLI:NL:HR:2025:99</dcterms:identifier>
+      <dcterms:format>text/html</dcterms:format>
+      <dcterms:accessRights>public</dcterms:accessRights>
+      <dcterms:modified>2025-01-17T10:20:20</dcterms:modified>
+      <dcterms:issued rdfs:label="Publicatiedatum">2025-01-17</dcterms:issued>
+      <dcterms:publisher resourceIdentifier="http://rechtspraak.nl/">Raad voor de Rechtspraak</dcterms:publisher>
+      <dcterms:language>nl</dcterms:language>
+      <dcterms:title rdf:language="nl">ECLI:NL:HR:2025:99 Hoge Raad , 17-01-2025 / 22/04746</dcterms:title>
+      <dcterms:abstract resourceIdentifier="../../rs:inhoudsindicatie" />
+    </rdf:Description>
+  </rdf:RDF>
+  <inhoudsindicatie id="ECLI:NL:HR:2025:99:INH" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <para>Omzetbelasting; art. 9, lid 2, letter a, Wet OB 1968 en Tabel I, post b.3, bij de Wet OB 1968; punt 14 van Bijlage III bij BTW-richtlijn 2006; verlaagd tarief; gelegenheid geven tot sportbeoefening; surfen en surflessen op het strand met gebruikmaking van voor het omkleden en douchen ingerichte vrachtcontainer op het strand.</para>
+    </inhoudsindicatie>
+  <uitspraak id="ECLI:NL:HR:2025:99:DOC" lang="nl" xml:space="preserve" xmlns="http://www.rechtspraak.nl/schema/rechtspraak-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <uitspraak.info>
+    <para />
+    <parablock>
+      <para>HOGE RAAD DER NEDERLANDEN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>BELASTINGKAMER</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>
+        <emphasis role="bold">Nummer </emphasis>22/04746 </para>
+      <para>
+        <emphasis role="bold">Datum	</emphasis>17 januari 2025</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>ARREST</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>in de zaak van</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>V.O.F. [X] (hierna: belanghebbende)</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>tegen</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>de STAATSSECRETARIS VAN FINANCIËN</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>op het beroep in cassatie tegen de uitspraak van het Gerechtshof Amsterdam van 1 november 2022, nr. 21/00234<footnote-ref linkend="_0dcc41f9-66ea-4512-81d2-6ae35bff3493" />, op het hoger beroep van de Inspecteur tegen een uitspraak van de Rechtbank Noord-Holland (nr. HAA 19/204) betreffende een door belanghebbende op aangifte voldaan bedrag aan omzetbelasting over het tijdvak 1 april 2014 tot en met 30 juni 2014.</para>
+    </parablock>
+  </uitspraak.info>
+  <section>
+    <title>
+      <nr>1</nr>Geding in cassatie</title>
+    <paragroup>
+      <nr>1.1</nr>
+      <para>Belanghebbende, vertegenwoordigd door F. Jagersma, heeft tegen de uitspraak van het Hof beroep in cassatie ingesteld. Het beroepschrift in cassatie is aan dit arrest gehecht en maakt daarvan deel uit.<?linebreak?>De Staatssecretaris, vertegenwoordigd door [P], heeft een verweerschrift ingediend.<?linebreak?>Belanghebbende heeft een conclusie van repliek ingediend.</para>
+    </paragroup>
+    <paragroup>
+      <nr>1.2</nr>
+      <para>Belanghebbende heeft verzocht om de Staat te veroordelen tot een vergoeding van immateriële schade in het geval de procedure dusdanig lang duurt dat daarmee spanning en frustratie bij belanghebbende wordt verondersteld.</para>
+    </paragroup>
+  </section>
+  <section role="overwegingen">
+    <title>
+      <nr>2</nr>Beoordeling van het middel</title>
+    <paragroup>
+      <nr>2.1</nr>
+      <para>Het middel slaagt op de gronden die zijn vermeld in rechtsoverwegingen 4.2 tot en met 4.4 van het arrest dat de Hoge Raad vandaag heeft uitgesproken in de zaak met nummer 22/04594, ECLI:NL:HR:2025:8.</para>
+      <paragroup>
+        <nr>2.2.1</nr>
+        <para>Gelet op hetgeen hiervoor in 2.1 is overwogen, kan de uitspraak van het Hof niet in stand blijven. De Hoge Raad kan de zaak afdoen. </para>
+      </paragroup>
+      <paragroup>
+        <nr>2.2.2</nr>
+        <para>De stukken van het geding laten geen andere slotsom toe dan dat de door belanghebbende aangeboden dienstverlening, als geheel genomen, uitsluitend verband houdt met de beoefening van sport, waaronder het ontvangen van de nodige instructie in een accommodatie, begeleiding, en het gebruik van kleedruimten ter voorbereiding op het eigenlijke sporten. Deze dienstverlening valt daarom binnen de reikwijdte van post b.3 van de bij de Wet op de omzetbelasting 1968 behorende Tabel I. De uitspraak van de Rechtbank moet worden bevestigd.</para>
+      </paragroup>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>3</nr>Overschrijding van de redelijke termijn in de cassatieprocedure</title>
+    <paragroup>
+      <nr>3.1</nr>
+      <para>Belanghebbende heeft de Hoge Raad verzocht om bij overschrijding van de redelijke termijn voor de behandeling van het cassatieberoep, de Staat te veroordelen tot een vergoeding van immateriële schade.</para>
+    </paragroup>
+    <paragroup>
+      <nr>3.2</nr>
+      <para>In deze zaak is beroep in cassatie ingesteld op 16 december 2022. Het tijdsverloop sindsdien tot het moment dat de Hoge Raad in deze zaak arrest wijst, levert wat de cassatieprocedure betreft een overschrijding op van de redelijke termijn met niet meer dan zes maanden. Aan belanghebbende komt daarom een vergoeding van immateriële schade toe van € 500.</para>
+    </paragroup>
+  </section>
+  <section>
+    <title>
+      <nr>4</nr>Proceskosten</title>
+    <paragroup>
+      <nr>4.1</nr>
+      <para>De Staatssecretaris zal worden veroordeeld in de kosten van het geding in cassatie en de Inspecteur zal worden veroordeeld in de kosten van het geding voor het Hof.</para>
+    </paragroup>
+    <paragroup>
+      <nr>4.2</nr>
+      <para>Gelet op artikel VI van de Ministeriële regeling van 8 november 2024<footnote-ref linkend="_eaa285d2-852a-4032-87ed-59ea40afa512" /> en de op die regeling gegeven toelichting moeten de hiervoor in 4.1 bedoelde vergoedingen worden berekend naar de waarde per punt zoals deze ten tijde van het wijzen van dit arrest geldt, dat wil zeggen naar een waarde per punt van € 907.<footnote-ref linkend="_41d51579-b318-4f0c-9b8e-6a6c2ed7f247" /></para>
+    </paragroup>
+  </section>
+  <section role="beslissing">
+    <title>
+      <nr>5</nr>Beslissing</title>
+    <parablock>
+      <para>De Hoge Raad:</para>
+      <para>- verklaart het beroep in cassatie gegrond,</para>
+      <para>- vernietigt de uitspraak van het Hof, maar uitsluitend voor zover deze betrekking heeft op de voldoening van omzetbelasting en op de beslissing over de vergoeding van proceskosten voor het hoger beroep,</para>
+      <para>- bevestigt de uitspraak van de Rechtbank,</para>
+      <para>- veroordeelt de Staat (de Minister van Justitie en Veiligheid) tot vergoeding van de aan de cassatieprocedure toerekenbare immateriële schade, vastgesteld op € 500,</para>
+      <para>- draagt de Staatssecretaris van Financiën op aan belanghebbende te vergoeden het griffierecht dat belanghebbende voor de behandeling van het beroep in cassatie heeft betaald van € 548,</para>
+      <para>- veroordeelt de Staatssecretaris van Financiën in de kosten van belanghebbende voor het geding in cassatie, vastgesteld op € 3.628 voor beroepsmatig verleende rechtsbijstand,</para>
+      <para>- veroordeelt de Inspecteur in de kosten van belanghebbende voor het geding voor het Hof, vastgesteld op € 1.814 voor beroepsmatig verleende rechtsbijstand, en</para>
+      <para>- draagt de Inspecteur op aan het Hof het griffierecht te betalen voor de behandeling van het hoger beroep van € 541.</para>
+    </parablock>
+    <para />
+    <parablock>
+      <para>Dit arrest is gewezen door de vice-president M.E. van Hilten als voorzitter, en de raadsheren E.N. Punt en M.A. Fierstra, in tegenwoordigheid van de waarnemend griffier E. Cichowski, en in het openbaar uitgesproken op 17 januari 2025.</para>
+    </parablock>
+  </section>
+  <footnote id="_0dcc41f9-66ea-4512-81d2-6ae35bff3493" label="1">
+    <para> ECLI:NL:GHAMS:2022:3637.</para>
+  </footnote>
+  <footnote id="_eaa285d2-852a-4032-87ed-59ea40afa512" label="2">
+    <para> Regeling van de Staatssecretaris van Justitie en Veiligheid van 8 november 2024, nr. 5868220, tot indexering van bedragen in de Algemene wet bestuursrecht, het Besluit proceskosten bestuursrecht en de Wet griffierechten burgerlijke zaken, Stcrt. 2024, 38002.</para>
+  </footnote>
+  <footnote id="_41d51579-b318-4f0c-9b8e-6a6c2ed7f247" label="3">
+    <para> Vgl. HR 18 november 2022, ECLI:NL:HR:2022:1657, rechtsoverweging 2.7.3.</para>
+  </footnote>
+</uitspraak>
+</open-rechtspraak>
