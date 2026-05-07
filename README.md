@@ -2,18 +2,18 @@
 
 Runnable architecture demo for the technical assessment in [assignment.md](./assignment.md): a secure, citation-grounded, permission-aware RAG assistant for a national tax authority.
 
-The demo is intentionally smaller than the production target, but it implements the core control points: legal-aware chunking, pre-retrieval RBAC, hybrid retrieval, reranking, evidence-gated answering/refusal, semantic cache policy, evaluation, and promotion gates.
+The demo is intentionally smaller than the production target, but it implements the core control points: legal-aware chunking, pre-retrieval RBAC, hybrid retrieval, evidence-gated answering/refusal, semantic cache policy, evaluation, and promotion gates.
 
-## Start Here
+## For Reviewers
 
-- [docs/index.md](./docs/index.md): recommended reading order
-- [SUBMISSION.md](./SUBMISSION.md): main module-by-module assessment answer
-- [docs/demo-script.md](./docs/demo-script.md): live presentation flow and what each demo case proves
-- [docs/architecture.md](./docs/architecture.md): system diagram
-- [docs/production-delta.md](./docs/production-delta.md): what remains before real deployment
-- [docs/decisions/README.md](./docs/decisions/README.md): optional architecture decision appendix
+1. Read [SUBMISSION.md](./SUBMISSION.md) for the module-by-module assessment answer.
+2. Recreate the generated demo data if this is a fresh clone.
+3. Run the interview demo.
+4. Run the verification gate.
 
-## Recreate Demo Data
+This should be evaluated as a runnable architecture demo plus production blueprint, not as a full production tax-authority deployment.
+
+## Fresh Clone Setup
 
 Generated corpus and index artifacts are intentionally not committed. From a fresh clone, rebuild them before running the dense demo:
 
@@ -58,6 +58,14 @@ uv run python scripts/run_eval.py --candidate-label local-demo --gate-promotion
 ```
 
 Current local gate expectation: 19 gold cases pass with zero unauthorized retrieval failures.
+
+## More Docs
+
+- [docs/demo-script.md](./docs/demo-script.md): live presentation flow and what each demo case proves
+- [docs/architecture.md](./docs/architecture.md): system diagram
+- [docs/production-delta.md](./docs/production-delta.md): what remains before real deployment
+- [docs/index.md](./docs/index.md): recommended reading order
+- [docs/decisions/README.md](./docs/decisions/README.md): optional architecture decision appendix
 
 ## Optional Services
 
