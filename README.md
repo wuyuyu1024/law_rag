@@ -13,6 +13,20 @@ The demo is intentionally smaller than the production target, but it implements 
 - [docs/production-delta.md](./docs/production-delta.md): what remains before real deployment
 - [docs/decisions/README.md](./docs/decisions/README.md): optional architecture decision appendix
 
+## Recreate Demo Data
+
+Generated corpus and index artifacts are intentionally not committed. From a fresh clone, rebuild them before running the dense demo:
+
+```bash
+uv run python scripts/download_legal_demo_data.py \
+  --config configs/data_sources.sample.json \
+  --out-dir data/raw \
+  --lock-file configs/demo_corpus.lock.json
+uv run python scripts/parse_raw_data.py
+uv run python scripts/build_chunks.py
+uv run python scripts/build_dense_index.py --recreate
+```
+
 ## Quick Demo
 
 ```bash
@@ -44,18 +58,6 @@ uv run python scripts/run_eval.py --candidate-label local-demo --gate-promotion
 ```
 
 Current local gate expectation: 19 gold cases pass with zero unauthorized retrieval failures.
-
-## Build The Demo Corpus
-
-```bash
-uv run python scripts/download_legal_demo_data.py \
-  --config configs/data_sources.sample.json \
-  --out-dir data/raw \
-  --lock-file configs/demo_corpus.lock.json
-uv run python scripts/parse_raw_data.py
-uv run python scripts/build_chunks.py
-uv run python scripts/build_dense_index.py --recreate
-```
 
 ## Optional Services
 
