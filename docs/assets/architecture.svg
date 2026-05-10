@@ -87,21 +87,21 @@
   <text class="label" x="597.5" y="617">Reranker backend</text>
   <text class="small" x="597.5" y="640">deterministic or cross-encoder</text>
 
-  <polygon points="1002,488 1128,568 1002,648 876,568" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
-  <text class="label" x="1002" y="556">Evidence</text>
-  <text class="label" x="1002" y="579">sufficient?</text>
+  <polygon points="1002,455 1128,525 1002,595 876,525" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+  <text class="label" x="1002" y="514">Evidence</text>
+  <text class="label" x="1002" y="537">sufficient?</text>
 
   <rect class="node-success" x="875" y="330" width="255" height="86"/>
   <text class="label" x="1002.5" y="365">Answer with</text>
   <text class="label" x="1002.5" y="388">citations</text>
 
-  <rect class="node-repair" x="875" y="665" width="255" height="58"/>
-  <text class="label" x="1002.5" y="690">Repair / retry</text>
-  <text class="small" x="1002.5" y="711">focused query, max 1 attempt</text>
+  <rect class="node-repair" x="875" y="625" width="255" height="60"/>
+  <text class="label" x="1002.5" y="651">Repair / retry</text>
+  <text class="small" x="1002.5" y="673">focused query, max 1 attempt</text>
 
-  <rect class="node-alert" x="875" y="745" width="255" height="58"/>
-  <text class="label" x="1002.5" y="771">Structured refusal</text>
-  <text class="small" x="1002.5" y="792">unsafe or retry exhausted</text>
+  <rect class="node-alert" x="875" y="740" width="255" height="64"/>
+  <text class="label" x="1002.5" y="767">Structured refusal</text>
+  <text class="small" x="1002.5" y="789">unsafe or retry exhausted</text>
 
   <rect class="node-cache" x="1270" y="330" width="245" height="86"/>
   <text class="label" x="1392.5" y="365">Semantic cache</text>
@@ -125,19 +125,19 @@
   <path class="edge-red" d="M 597.5 421 L 597.5 457"/>
   <path class="edge" d="M 597.5 541 L 597.5 577"/>
 
-  <path class="edge" d="M 720 623 L 802 623 L 802 568 L 867 568"/>
-  <path class="edge-blue" d="M 1002 488 L 1002 425"/>
-  <text class="edge-label" x="1022" y="455">relevant</text>
-  <path class="edge-red" d="M 1002 648 L 1002 656"/>
-  <text class="edge-label" x="1022" y="661">ambiguous or irrelevant</text>
-  <path class="edge-blue" d="M 875 694 L 795 694 L 795 383 L 729 383"/>
-  <text class="edge-label" x="733" y="682">focused retry query</text>
-  <path class="edge-red" d="M 1002 723 L 1002 736"/>
-  <text class="edge-label" x="1022" y="734">still weak</text>
+  <path class="edge" d="M 720 623 L 802 623 L 802 525 L 867 525"/>
+  <path class="edge-blue" d="M 1002 455 L 1002 425"/>
+  <text class="edge-label" x="1022" y="444">relevant</text>
+  <path class="edge-red" d="M 1002 595 L 1002 616"/>
+  <text class="edge-label" x="1022" y="612">ambiguous or irrelevant</text>
+  <path class="edge-blue" d="M 875 655 L 795 655 L 795 383 L 729 383"/>
+  <text class="edge-label" x="733" y="643">focused retry query</text>
+  <path class="edge-red" d="M 1002 685 L 1002 731"/>
+  <text class="edge-label" x="1022" y="716">still weak</text>
 
   <path class="edge-blue" d="M 1130 373 L 1261 373"/>
   <path class="edge" d="M 1130 373 L 1195 373 L 1195 628 L 1261 628"/>
-  <path class="edge" d="M 1130 774 L 1195 774 L 1195 628 L 1261 628"/>
+  <path class="edge" d="M 1130 772 L 1195 772 L 1195 628 L 1261 628"/>
 
   <path class="edge-dashed" d="M 1392 330 L 1392 105 L 598 105 L 598 216"/>
   <text class="edge-label" x="910" y="99">role, jurisdiction, and version namespace</text>
