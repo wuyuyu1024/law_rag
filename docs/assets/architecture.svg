@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1760" height="900" viewBox="0 0 1760 900" role="img" aria-labelledby="title desc">
   <title id="title">Permission-aware legal RAG architecture</title>
   <desc id="desc">A visual architecture diagram showing ingestion, retrieval, agent control, cache, and evaluation flows.</desc>
   <defs>
@@ -38,7 +38,7 @@
     </style>
   </defs>
 
-  <rect class="page" x="0" y="0" width="1600" height="900"/>
+  <rect class="page" x="0" y="0" width="1760" height="900"/>
   <text class="title" x="55" y="58">Permission-aware legal RAG architecture</text>
   <text class="subtitle" x="55" y="88">RBAC constrains candidates before scoring; weak evidence triggers a bounded repair loop; citations remain structured data.</text>
 
@@ -49,11 +49,11 @@
   <rect class="lane" x="415" y="125" width="370" height="695" fill="#eef5ff" stroke="#93c5fd"/>
   <text class="lane-title" x="442" y="162">2. Retrieval Strategy</text>
 
-  <rect class="lane" x="820" y="125" width="365" height="695" fill="#fff7e6" stroke="#facc15"/>
+  <rect class="lane" x="820" y="125" width="410" height="695" fill="#fff7e6" stroke="#facc15"/>
   <text class="lane-title" x="847" y="162">3. Agentic RAG Control</text>
 
-  <rect class="lane" x="1220" y="125" width="345" height="695" fill="#f5f3ff" stroke="#c4b5fd"/>
-  <text class="lane-title" x="1247" y="162">4. Ops, Security &amp; Eval</text>
+  <rect class="lane" x="1270" y="125" width="455" height="695" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text class="lane-title" x="1297" y="162">4. Ops, Security &amp; Eval</text>
 
   <rect class="node" x="85" y="225" width="245" height="76"/>
   <text class="label" x="207.5" y="257">Raw sources</text>
@@ -87,32 +87,32 @@
   <text class="label" x="597.5" y="617">Reranker backend</text>
   <text class="small" x="597.5" y="640">deterministic or cross-encoder</text>
 
-  <polygon points="1002,455 1128,525 1002,595 876,525" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
-  <text class="label" x="1002" y="514">Evidence</text>
-  <text class="label" x="1002" y="537">sufficient?</text>
+  <polygon points="1025,415 1160,495 1025,575 890,495" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+  <text class="label" x="1025" y="484">Evidence</text>
+  <text class="label" x="1025" y="507">sufficient?</text>
 
-  <rect class="node-success" x="875" y="330" width="255" height="86"/>
-  <text class="label" x="1002.5" y="365">Answer with</text>
-  <text class="label" x="1002.5" y="388">citations</text>
+  <rect class="node-success" x="895" y="300" width="260" height="76"/>
+  <text class="label" x="1025" y="332">Answer with</text>
+  <text class="label" x="1025" y="355">citations</text>
 
-  <rect class="node-repair" x="875" y="625" width="255" height="60"/>
-  <text class="label" x="1002.5" y="651">Repair / retry</text>
-  <text class="small" x="1002.5" y="673">focused query, max 1 attempt</text>
+  <rect class="node-repair" x="895" y="625" width="260" height="60"/>
+  <text class="label" x="1025" y="651">Repair / retry</text>
+  <text class="small" x="1025" y="673">focused query, max 1 attempt</text>
 
-  <rect class="node-alert" x="875" y="740" width="255" height="64"/>
-  <text class="label" x="1002.5" y="767">Structured refusal</text>
-  <text class="small" x="1002.5" y="789">unsafe or retry exhausted</text>
+  <rect class="node-alert" x="895" y="740" width="260" height="64"/>
+  <text class="label" x="1025" y="767">Structured refusal</text>
+  <text class="small" x="1025" y="789">unsafe or retry exhausted</text>
 
-  <rect class="node-cache" x="1270" y="330" width="245" height="86"/>
-  <text class="label" x="1392.5" y="365">Semantic cache</text>
-  <text class="small" x="1392.5" y="388">public, relevant, non-exact</text>
+  <rect class="node-cache" x="1325" y="280" width="340" height="82"/>
+  <text class="label" x="1495" y="315">Semantic cache</text>
+  <text class="small" x="1495" y="338">public, relevant, non-exact</text>
 
-  <rect class="node-strong" x="1270" y="585" width="245" height="86"/>
-  <text class="label" x="1392.5" y="619">Evaluation and</text>
-  <text class="label" x="1392.5" y="642">promotion gate</text>
+  <rect class="node-strong" x="1325" y="520" width="340" height="90"/>
+  <text class="label" x="1495" y="556">Evaluation and</text>
+  <text class="label" x="1495" y="579">promotion gate</text>
 
-  <rect class="badge" x="1268" y="735" width="250" height="36"/>
-  <text class="badge-text" x="1393" y="758">audit logs and observability</text>
+  <rect class="badge" x="1345" y="705" width="300" height="44"/>
+  <text class="badge-text" x="1495" y="731">audit logs and observability</text>
 
   <path class="edge" d="M 207.5 301 L 207.5 337"/>
   <path class="edge" d="M 207.5 421 L 207.5 457"/>
@@ -125,20 +125,21 @@
   <path class="edge-red" d="M 597.5 421 L 597.5 457"/>
   <path class="edge" d="M 597.5 541 L 597.5 577"/>
 
-  <path class="edge" d="M 720 623 L 802 623 L 802 525 L 867 525"/>
-  <path class="edge-blue" d="M 1002 455 L 1002 425"/>
-  <text class="edge-label" x="1022" y="444">relevant</text>
-  <path class="edge-red" d="M 1002 595 L 1002 616"/>
-  <text class="edge-label" x="1022" y="612">ambiguous or irrelevant</text>
-  <path class="edge-blue" d="M 875 655 L 795 655 L 795 383 L 729 383"/>
-  <text class="edge-label" x="733" y="643">focused retry query</text>
-  <path class="edge-red" d="M 1002 685 L 1002 731"/>
-  <text class="edge-label" x="1022" y="716">still weak</text>
+  <path class="edge" d="M 720 623 L 802 623 L 802 495 L 881 495"/>
+  <path class="edge-blue" d="M 1025 415 L 1025 385"/>
+  <text class="edge-label" x="1044" y="404">relevant</text>
+  <path class="edge-red" d="M 1025 575 L 1025 616"/>
+  <text class="edge-label" x="1044" y="603">ambiguous or irrelevant</text>
+  <path class="edge-blue" d="M 895 655 L 805 655 L 805 383 L 729 383"/>
+  <text class="edge-label" x="812" y="646">focused retry</text>
+  <path class="edge-red" d="M 1025 685 L 1025 731"/>
+  <text class="edge-label" x="1044" y="716">still weak</text>
 
-  <path class="edge-blue" d="M 1130 373 L 1261 373"/>
-  <path class="edge" d="M 1130 373 L 1195 373 L 1195 628 L 1261 628"/>
-  <path class="edge" d="M 1130 772 L 1195 772 L 1195 628 L 1261 628"/>
+  <path class="edge-blue" d="M 1155 338 L 1316 338"/>
+  <path class="edge" d="M 1155 356 L 1248 356 L 1248 565 L 1316 565"/>
+  <path class="edge" d="M 1155 772 L 1248 772 L 1248 590 L 1316 590"/>
+  <path class="edge" d="M 1495 610 L 1495 696"/>
 
-  <path class="edge-dashed" d="M 1392 330 L 1392 105 L 598 105 L 598 216"/>
-  <text class="edge-label" x="910" y="99">role, jurisdiction, and version namespace</text>
+  <path class="edge-dashed" d="M 1495 280 L 1495 112 L 598 112 L 598 216"/>
+  <text class="edge-label" x="980" y="106">role, jurisdiction, and version namespace</text>
 </svg>
