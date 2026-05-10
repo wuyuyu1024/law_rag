@@ -1,43 +1,6 @@
 # Architecture Overview
 
-```mermaid
-flowchart TB
-    subgraph ingestion["Ingestion & Knowledge Structuring"]
-        raw["Raw sources"]
-        parse["Normalize documents"]
-        chunk["Legal-aware chunks"]
-        indexes[(Permission-tagged indexes)]
-        raw --> parse --> chunk --> indexes
-    end
-
-    subgraph retrieval["Retrieval Strategy"]
-        request["User query + scope"]
-        rbac["Pre-retrieval RBAC filters"]
-        retrieve["Hybrid retrieval"]
-        rerank["Reranker backend"]
-        request --> rbac --> retrieve --> rerank
-    end
-
-    subgraph agent["Agentic RAG & Self-Healing"]
-        grade{"Evidence sufficient?"}
-        answer["Answer with citations"]
-        refuse["Structured refusal"]
-        grade -- "relevant" --> answer
-        grade -- "ambiguous, missing, outdated, or unauthorized" --> refuse
-    end
-
-    subgraph ops["Production Ops, Security & Evaluation"]
-        cache[(Semantic cache)]
-        eval["Evaluation and promotion gate"]
-    end
-
-    indexes --> rbac
-    rerank --> grade
-    answer --> cache
-    cache -.->|role, jurisdiction, version namespace| request
-    answer --> eval
-    refuse --> eval
-```
+![Permission-aware legal RAG architecture](./assets/architecture.svg)
 
 The important control points are:
 

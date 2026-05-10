@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Permission-aware legal RAG architecture</title>
+  <desc id="desc">A visual architecture diagram showing ingestion, retrieval, agent control, cache, and evaluation flows.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b91c1c"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .page { fill: #f8fafc; }
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #475569; }
+      .lane { stroke-width: 2; rx: 18; filter: url(#shadow); }
+      .lane-title { font: 700 20px Arial, sans-serif; fill: #0f172a; }
+      .node { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; rx: 12; }
+      .node-strong { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.5; rx: 12; }
+      .node-alert { fill: #fef2f2; stroke: #dc2626; stroke-width: 2.5; rx: 12; }
+      .node-success { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2.5; rx: 12; }
+      .node-cache { fill: #faf5ff; stroke: #9333ea; stroke-width: 2.5; rx: 12; }
+      .label { font: 700 17px Arial, sans-serif; fill: #111827; text-anchor: middle; }
+      .small { font: 400 14px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .edge { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+      .edge-blue { fill: none; stroke: #2563eb; stroke-width: 3; marker-end: url(#arrow-blue); }
+      .edge-red { fill: none; stroke: #b91c1c; stroke-width: 3; marker-end: url(#arrow-red); }
+      .edge-dashed { fill: none; stroke: #7c3aed; stroke-width: 3; stroke-dasharray: 10 8; marker-end: url(#arrow); }
+      .edge-label { font: 700 13px Arial, sans-serif; fill: #334155; }
+      .badge { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 11; }
+      .badge-text { font: 700 12px Arial, sans-serif; fill: #334155; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1600" height="900"/>
+  <text class="title" x="55" y="58">Permission-aware legal RAG architecture</text>
+  <text class="subtitle" x="55" y="88">RBAC constrains candidates before scoring; evidence gates every answer; citations remain structured data.</text>
+
+  <rect class="lane" x="35" y="125" width="345" height="695" fill="#edf7f2" stroke="#8fd0aa"/>
+  <text class="lane-title" x="62" y="162">1. Ingestion &amp; Knowledge</text>
+  <text class="lane-title" x="62" y="187">Structuring</text>
+
+  <rect class="lane" x="415" y="125" width="370" height="695" fill="#eef5ff" stroke="#93c5fd"/>
+  <text class="lane-title" x="442" y="162">2. Retrieval Strategy</text>
+
+  <rect class="lane" x="820" y="125" width="365" height="695" fill="#fff7e6" stroke="#facc15"/>
+  <text class="lane-title" x="847" y="162">3. Agentic RAG Control</text>
+
+  <rect class="lane" x="1220" y="125" width="345" height="695" fill="#f5f3ff" stroke="#c4b5fd"/>
+  <text class="lane-title" x="1247" y="162">4. Ops, Security &amp; Eval</text>
+
+  <rect class="node" x="85" y="225" width="245" height="76"/>
+  <text class="label" x="207.5" y="257">Raw sources</text>
+  <text class="small" x="207.5" y="280">laws, cases, policy, learning</text>
+
+  <rect class="node" x="85" y="345" width="245" height="76"/>
+  <text class="label" x="207.5" y="377">Normalize documents</text>
+  <text class="small" x="207.5" y="400">stable IDs and metadata</text>
+
+  <rect class="node" x="85" y="465" width="245" height="76"/>
+  <text class="label" x="207.5" y="497">Legal-aware chunks</text>
+  <text class="small" x="207.5" y="520">article, paragraph, section</text>
+
+  <rect class="node-strong" x="85" y="585" width="245" height="86"/>
+  <text class="label" x="207.5" y="619">Permission-tagged</text>
+  <text class="label" x="207.5" y="642">indexes</text>
+
+  <rect class="node" x="475" y="225" width="245" height="76"/>
+  <text class="label" x="597.5" y="257">User query + scope</text>
+  <text class="small" x="597.5" y="280">role, jurisdiction, as-of date</text>
+
+  <rect class="node-alert" x="475" y="345" width="245" height="76"/>
+  <text class="label" x="597.5" y="377">Pre-retrieval RBAC</text>
+  <text class="small" x="597.5" y="400">filters candidate set first</text>
+
+  <rect class="node" x="475" y="465" width="245" height="76"/>
+  <text class="label" x="597.5" y="497">Hybrid retrieval</text>
+  <text class="small" x="597.5" y="520">lexical + dense + RRF</text>
+
+  <rect class="node" x="475" y="585" width="245" height="76"/>
+  <text class="label" x="597.5" y="617">Reranker backend</text>
+  <text class="small" x="597.5" y="640">deterministic or cross-encoder</text>
+
+  <polygon points="1002,488 1128,568 1002,648 876,568" fill="#ffffff" stroke="#d97706" stroke-width="3"/>
+  <text class="label" x="1002" y="556">Evidence</text>
+  <text class="label" x="1002" y="579">sufficient?</text>
+
+  <rect class="node-success" x="875" y="330" width="255" height="86"/>
+  <text class="label" x="1002.5" y="365">Answer with</text>
+  <text class="label" x="1002.5" y="388">citations</text>
+
+  <rect class="node-alert" x="875" y="705" width="255" height="76"/>
+  <text class="label" x="1002.5" y="737">Structured refusal</text>
+  <text class="small" x="1002.5" y="760">missing, conflicting, unauthorized</text>
+
+  <rect class="node-cache" x="1270" y="330" width="245" height="86"/>
+  <text class="label" x="1392.5" y="365">Semantic cache</text>
+  <text class="small" x="1392.5" y="388">public, relevant, non-exact</text>
+
+  <rect class="node-strong" x="1270" y="585" width="245" height="86"/>
+  <text class="label" x="1392.5" y="619">Evaluation and</text>
+  <text class="label" x="1392.5" y="642">promotion gate</text>
+
+  <rect class="badge" x="1268" y="735" width="250" height="36"/>
+  <text class="badge-text" x="1393" y="758">audit logs and observability</text>
+
+  <path class="edge" d="M 207.5 301 L 207.5 337"/>
+  <path class="edge" d="M 207.5 421 L 207.5 457"/>
+  <path class="edge" d="M 207.5 541 L 207.5 577"/>
+
+  <path class="edge-blue" d="M 330 628 L 405 628 L 405 383 L 466 383"/>
+  <text class="edge-label" x="352" y="616">authorized corpus</text>
+
+  <path class="edge" d="M 597.5 301 L 597.5 337"/>
+  <path class="edge-red" d="M 597.5 421 L 597.5 457"/>
+  <path class="edge" d="M 597.5 541 L 597.5 577"/>
+
+  <path class="edge" d="M 720 623 L 802 623 L 802 568 L 867 568"/>
+  <path class="edge-blue" d="M 1002 488 L 1002 425"/>
+  <text class="edge-label" x="1022" y="455">relevant</text>
+  <path class="edge-red" d="M 1002 648 L 1002 696"/>
+  <text class="edge-label" x="1022" y="680">insufficient</text>
+
+  <path class="edge-blue" d="M 1130 373 L 1261 373"/>
+  <path class="edge" d="M 1130 373 L 1195 373 L 1195 628 L 1261 628"/>
+  <path class="edge" d="M 1130 743 L 1195 743 L 1195 628 L 1261 628"/>
+
+  <path class="edge-dashed" d="M 1392 330 L 1392 105 L 598 105 L 598 216"/>
+  <text class="edge-label" x="910" y="99">role, jurisdiction, and version namespace</text>
+</svg>
