@@ -1,28 +1,40 @@
 # Architecture Overview
 
 ```mermaid
-flowchart LR
-    raw[Raw sources<br/>laws, cases, policy, e-learning]
-    parse[Normalize documents<br/>stable IDs and metadata]
-    chunk[Legal-aware chunking<br/>article, paragraph, section]
-    indexes[(Indexes<br/>Qdrant dense vectors<br/>lexical/exact lookup)]
-    request[User query<br/>role, jurisdiction, as-of date]
-    rbac[Pre-retrieval RBAC and scope filters]
-    retrieve[Hybrid retrieval<br/>lexical + dense + RRF]
-    rerank[Reranker backend<br/>deterministic or cross-encoder]
-    grade[Evidence grader<br/>relevant, ambiguous, irrelevant]
-    answer[Answer with citations]
-    refuse[Structured refusal]
-    cache[(Semantic cache<br/>public, relevant, non-exact only)]
-    eval[Evaluation and promotion gate]
+flowchart TB
+    subgraph ingestion["Ingestion & Knowledge Structuring"]
+        raw["Raw sources"]
+        parse["Normalize documents"]
+        chunk["Legal-aware chunks"]
+        indexes[(Permission-tagged indexes)]
+        raw --> parse --> chunk --> indexes
+    end
 
-    raw --> parse --> chunk --> indexes
-    request --> rbac --> retrieve --> rerank --> grade
+    subgraph retrieval["Retrieval Strategy"]
+        request["User query + scope"]
+        rbac["Pre-retrieval RBAC filters"]
+        retrieve["Hybrid retrieval"]
+        rerank["Reranker backend"]
+        request --> rbac --> retrieve --> rerank
+    end
+
+    subgraph agent["Agentic RAG & Self-Healing"]
+        grade{"Evidence sufficient?"}
+        answer["Answer with citations"]
+        refuse["Structured refusal"]
+        grade -- "relevant" --> answer
+        grade -- "ambiguous, missing, outdated, or unauthorized" --> refuse
+    end
+
+    subgraph ops["Production Ops, Security & Evaluation"]
+        cache[(Semantic cache)]
+        eval["Evaluation and promotion gate"]
+    end
+
     indexes --> rbac
-    grade -->|relevant| answer
-    grade -->|ambiguous or irrelevant| refuse
+    rerank --> grade
     answer --> cache
-    cache -. role/jurisdiction/version namespace .-> request
+    cache -.->|role, jurisdiction, version namespace| request
     answer --> eval
     refuse --> eval
 ```
